@@ -16,4 +16,6 @@ Then open [http://localhost:3000](http://localhost:3000) to see your app.
 
 ## Deployment
 
-Learn more how to deploy on [Nuxt docs](https://nuxt.com/docs/getting-started/deployment).
+I use vercel to host my portfolio site.
+After you push change to my branch, you can see preview site on the pull request view.
+Production site is <https://tkc66-buzz-portfolio.vercel.app>.
