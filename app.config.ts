@@ -1,8 +1,7 @@
 export default defineAppConfig({
   cover: '/cover.jpg',
   socials: {
-    twitter: 'Atinux',
-    github: 'Atinux/content-wind',
-    mastodon: '@atinux@webtoo.ls'
+    twitter: 'buzz_tkc',
+    github: 'tkc66-buzz/portfolio',
   }
 })
