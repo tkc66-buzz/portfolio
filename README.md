@@ -1,7 +1,5 @@
 # My Website
 
-My website made by [Content Wind](https://content-wind.nuxt.space) theme.
-
 ## Setup
 
 ```bash
@@ -18,4 +16,7 @@ Then open [http://localhost:3000](http://localhost:3000) to see your app.
 
 ## Deployment
 
-Learn more how to deploy on [Nuxt docs](https://nuxt.com/docs/getting-started/deployment).
+I use vercel to host my portfolio site.
+After you push change to my branch, you can see preview site on the pull request view.
+
+After confirming in preview site, you can merge branch to main. Finally modification would be reflect on production site <https://tkc66-buzz-portfolio.vercel.app>.

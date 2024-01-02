@@ -1,9 +1,7 @@
 export default defineAppConfig({
-  // Configure Content Wind here
-  cover: '/cover.jpg',
+  cover: '/photo_walking.jpg',
   socials: {
-    twitter: 'Atinux',
-    github: 'Atinux/content-wind',
-    mastodon: '@atinux@webtoo.ls'
+    twitter: 'buzz_tkc',
+    github: 'tkc66-buzz/portfolio',
   }
 })
