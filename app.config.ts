@@ -1,5 +1,5 @@
 export default defineAppConfig({
-  cover: '/cover.jpg',
+  cover: '/photo_walking.jpg',
   socials: {
     twitter: 'buzz_tkc',
     github: 'tkc66-buzz/portfolio',
