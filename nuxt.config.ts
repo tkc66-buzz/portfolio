@@ -1,3 +1,8 @@
 export default defineNuxtConfig({
-  extends: 'content-wind'
+  extends: 'content-wind',
+  content: {
+    highlight: {
+      theme: 'one-dark-pro',
+    }
+  }
 })
