@@ -11,13 +11,13 @@ export function Contact() {
         中身はあとで本番の連絡先に差し替えます。今は NES ボタンだけ配置。
       </p>
       <div className="mt-6 flex flex-wrap gap-3">
-        <a className="nes-btn is-error" href="mailto:buzz@example.com">
+        <a className="nes-btn is-error" href="worktkc66@gmail.com">
           Email
         </a>
-        <a className="nes-btn is-primary" href="https://github.com/yourid">
+        <a className="nes-btn is-primary" href="https://github.com/tkc66-buzz">
           GitHub
         </a>
-        <a className="nes-btn" href="https://x.com/yourid">
+        <a className="nes-btn" href="https://x.com/buzz_tkc">
           X / Twitter
         </a>
       </div>
