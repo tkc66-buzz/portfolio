@@ -1,9 +1,10 @@
 # NES.css × Next.js Portfolio Starter
 
-A minimal Next.js (App Router) starter that pairs Tailwind CSS and NES.css with TypeScript, src/ directory layout, and Google Fonts (Noto Sans JP + Press Start 2P). Push the `main` branch to kick off the existing CI and deploy on Vercel.
+A minimal Next.js (App Router) starter that pairs Tailwind CSS and NES.css with TypeScript, src/ directory layout, and Google Fonts (Noto Sans JP + Press Start 2P). Push the `main` branch to kick off the existing CI and deploy on Vercel.  
+For tooling specifics see [AGENTS.md](AGENTS.md); Claude-focused workflows live in [CLAUDE.md](CLAUDE.md).
 
 ## Requirements
-- Node.js >= 20.9.0 (matches Next.js 16 requirement)
+- Node.js >= 20.9.0 (matches Next.js 16 requirement; repo currently uses v25.2.0)
 - pnpm 8+ (or compatible package manager)
 
 ## Setup
