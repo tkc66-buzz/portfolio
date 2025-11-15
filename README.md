@@ -1,22 +1,42 @@
-# My Website
+# Buzz NES.css Portfolio
 
-## Setup
+Phase 1 of the Famicom-style portfolio for Takeshi Watanabe (Buzz). Built with Next.js 16 + TypeScript + Tailwind CSS + NES.css. This commit focuses on the "frame" only—each section ships with placeholder copy so real content can slide in during Phase 2.
 
-```bash
-npm install
+## What's included now
+- Hero, About, Projects (grid), Skills, Contact sections composed via `src/components/*`
+- Famicom palette (red `#a20000`, gold `#d7b05b`, background `#111`) and retro typography (Press Start 2P + Noto Sans JP)
+- NES.css buttons, badges, and progress bars wired up for later polish
+
+## Project layout
+```
+src/
+  app/
+    layout.tsx      // fonts, NES import, metadata
+    page.tsx        // assembles Hero → Contact sections
+    globals.css     // Tailwind + palette helpers
+  components/
+    Hero.tsx
+    About.tsx
+    Projects.tsx
+    Skills.tsx
+    Contact.tsx
 ```
 
-## Development
-
+## Getting started
 ```bash
-npm run dev
+pnpm install
+pnpm dev
 ```
+Visit http://localhost:3000 and you'll see the empty frames ready for content.
 
-Then open [http://localhost:3000](http://localhost:3000) to see your app.
+## Scripts
+- `pnpm dev` – Next.js dev server
+- `pnpm build` – Production build (used by Vercel)
+- `pnpm start` – Run the production build locally
+- `pnpm lint` – ESLint (core web vitals config)
 
-## Deployment
+## Next phases
+1. **Phase 2 – Content**: swap placeholder text for real About/Projects/Skills/Contact data.
+2. **Phase 3 – Polish**: dot backgrounds, NES balloons, PRESS START animation, cursor effects, etc.
 
-I use vercel to host my portfolio site.
-After you push change to my branch, you can see preview site on the pull request view.
-
-After confirming in preview site, you can merge branch to main. Finally modification would be reflect on production site <https://tkc66-buzz-portfolio.vercel.app>.
+When a change affects dependencies or workflows, remember to update README / docs alongside the code.
