@@ -1,31 +1,69 @@
-# NES.css × Next.js Portfolio Starter
+Portfolio
 
-A minimal Next.js (App Router) starter that pairs Tailwind CSS and NES.css with TypeScript, src/ directory layout, and Google Fonts (Noto Sans JP + Press Start 2P). Push the `main` branch to kick off the existing CI and deploy on Vercel.  
-For tooling specifics see [AGENTS.md](AGENTS.md); Claude-focused workflows live in [CLAUDE.md](CLAUDE.md).
+Phase 1 of the Famicom-style portfolio for Takeshi Watanabe (Buzz). Built with Next.js 16 + TypeScript + Tailwind CSS + NES.css. This commit focuses on the "frame" only—each section ships with placeholder copy so real content can slide in during Phase 2.
 
-## Requirements
-- Node.js >= 20.9.0 (matches Next.js 16 requirement; repo currently uses v25.2.0)
-- pnpm 8+ (or compatible package manager)
+## What's included now
 
-## Setup
+- Hero, About, Projects (grid), Skills, Contact sections composed via `src/components/*`
+- Famicom palette (red `#a20000`, gold `#d7b05b`, background `#111`) and retro typography (Press Start 2P + Noto Sans JP)
+- NES.css buttons, badges, and progress bars wired up for later polish
+
+## Project layout
+
+```
+src/
+  app/
+    layout.tsx      // fonts, NES import, metadata
+    page.tsx        // assembles Hero → Contact sections
+    globals.css     // Tailwind + palette helpers
+  components/
+    Hero.tsx
+    About.tsx
+    Projects.tsx
+    Skills.tsx
+    Contact.tsx
+```
+
+Visit <http://localhost:3000> to confirm the Mario-inspired layout.
+
+## Getting started
+
 ```bash
 pnpm install
 pnpm dev
 ```
-Visit http://localhost:3000 to confirm the Mario-inspired layout.
+
+Visit <http://localhost:3000> and you'll see the empty frames ready for content.
+
+## Scripts
+
+- `pnpm dev` – Next.js dev server
+- `pnpm build` – Production build (used by Vercel)
+- `pnpm start` – Run the production build locally
+- `pnpm lint` – ESLint (core web vitals config)
+
+## Next phases
+
+1. **Phase 2 – Content**: swap placeholder text for real About/Projects/Skills/Contact data.
+2. **Phase 3 – Polish**: dot backgrounds, NES balloons, PRESS START animation, cursor effects, etc.
+
+When a change affects dependencies or workflows, remember to update README / docs alongside the code
 
 ## Available scripts
+
 - `pnpm dev` – start Next.js in development mode
 - `pnpm build` – production build (invoked by Vercel)
 - `pnpm start` – run the production build locally
 - `pnpm lint` – run ESLint over the repo
 
 ## Deployment
+
 1. Commit your changes on `main` (or merge your feature branch).
 2. Push to GitHub; Vercel will automatically build via the connected pipeline.
 3. For manual deploys you can also run `pnpm dlx vercel` followed by `pnpm dlx vercel --prod`.
 
 ## Customizing next steps
+
 - Update the copy in `src/app/page.tsx` with your real bio, projects, and contact links.
 - Drop a `public/og.png` and extend `src/app/layout.tsx` metadata for richer previews.
 - Tweak NES colors or swap the background (`src/app/globals.css`) for other retro palettes.

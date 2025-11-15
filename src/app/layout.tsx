@@ -1,8 +1,8 @@
+import "nes.css/css/nes.min.css";
 import type { Metadata } from "next";
+import { Noto_Sans_JP, Press_Start_2P } from "next/font/google";
 import type { ReactNode } from "react";
 import "./globals.css";
-import "nes.css/css/nes.min.css";
-import { Noto_Sans_JP, Press_Start_2P } from "next/font/google";
 
 const noto = Noto_Sans_JP({ subsets: ["latin"], variable: "--font-noto" });
 const press = Press_Start_2P({
@@ -12,8 +12,8 @@ const press = Press_Start_2P({
 });
 
 export const metadata: Metadata = {
-  title: "Your Name – Portfolio",
-  description: "NES.css × TypeScript Minimal Starter",
+  title: "Takeshi Watanabe (Buzz) – Portfolio",
+  description: "Famicom-inspired NES.css portfolio powered by Next.js + TypeScript.",
   icons: { icon: "/favicon.ico" },
 };
 

@@ -12,5 +12,9 @@ body {
 }
 
 body {
+.frame {
+  border: 4px solid #d7b05b;
+  box-shadow: 4px 4px 0 #a20000;
   background: #212529;
+  }
 }
