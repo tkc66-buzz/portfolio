@@ -13,7 +13,10 @@ Focused tips for Anthropic Claude Code / Workbench agents interacting with this 
 3. `pnpm lint` – primary verification step (no tests yet). Add playwright/vitest if implementing complex features.
 
 ## Repo Hotspots
-- `src/app/page.tsx` – Landing page content blocks (About/Projects/Contact). Update copy or split into components under `src/components`.
+- `src/app/page.tsx` – Landing page composition (Hero → TOC → sections). Keep it thin; put content in sections and data in `src/content/portfolio.ts`.
+- `src/components/TableOfContents.tsx` – TOC UI (in-page navigation).
+- `src/components/sections/*` – Semantic sections; each owns a stable `id` for `#hash` navigation.
+- `src/content/portfolio.ts` – Single source of truth for portfolio content (easy updates).
 - `src/app/layout.tsx` – Imports NES.css, fonts, metadata; extend when adding OG tags or global providers.
 - `tailwind.config.js` – Update `content` array if adding directories.
 - `postcss.config.js` – Standard pipeline; modify when adding plugins like `postcss-nesting`.

@@ -4,7 +4,7 @@ Phase 1 of the Famicom-style portfolio for Takeshi Watanabe (Buzz). Built with N
 
 ## What's included now
 
-- Hero, About, Projects (grid), Skills, Contact sections composed via `src/components/*`
+- Hero + TOC + Profile/Experience/Projects/Skills/Contact sections (single-page) composed via `src/components/*`
 - Famicom palette (red `#a20000`, gold `#d7b05b`, background `#111`) and retro typography (Press Start 2P + Noto Sans JP)
 - NES.css buttons, badges, and progress bars wired up for later polish
 
@@ -14,14 +14,18 @@ Phase 1 of the Famicom-style portfolio for Takeshi Watanabe (Buzz). Built with N
 src/
   app/
     layout.tsx      // fonts, NES import, metadata
-    page.tsx        // assembles Hero → Contact sections
+    page.tsx        // assembles Hero → TOC → sections/*
     globals.css     // Tailwind + palette helpers
   components/
     Hero.tsx
-    About.tsx
-    Projects.tsx
-    Skills.tsx
-    Contact.tsx
+    TableOfContents.tsx
+    toc.ts
+    sections/
+      ProfileSection.tsx
+      ExperienceSection.tsx
+      ProjectsSection.tsx
+      SkillsSection.tsx
+      ContactSection.tsx
 ```
 
 Visit <http://localhost:3000> to confirm the Mario-inspired layout.
@@ -64,7 +68,7 @@ When a change affects dependencies or workflows, remember to update README / doc
 
 ## Customizing next steps
 
-- Update the copy in `src/app/page.tsx` with your real bio, projects, and contact links.
+- Update the copy/data in `src/content/portfolio.ts` (profile/experience/projects/skills/contact).
 - Drop a `public/og.png` and extend `src/app/layout.tsx` metadata for richer previews.
 - Tweak NES colors or swap the background (`src/app/globals.css`) for other retro palettes.
 - Add new sections/components under `src/components` and include them via `@/` alias.

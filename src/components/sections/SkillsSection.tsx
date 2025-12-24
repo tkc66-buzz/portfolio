@@ -1,18 +1,19 @@
-const skills = [
-  { label: "TypeScript", level: 90 },
-  { label: "Next.js", level: 85 },
-  { label: "Design Systems", level: 80 },
-  { label: "Motion & Micro UX", level: 70 },
-];
+import { skills } from "@/content/portfolio";
 
-export function Skills() {
+export function SkillsSection() {
   return (
-    <section className="nes-container with-title bg-black/40 text-fami-ivory">
-      <h2 className="title text-fami-gold" style={{ fontFamily: "var(--font-press)" }}>
-        Skills
+    <section
+      id={skills.id}
+      className="scroll-mt-6 frame bg-[#1b1b1b] p-6 text-fami-ivory"
+    >
+      <h2
+        className="text-xl text-fami-gold"
+        style={{ fontFamily: "var(--font-press)" }}
+      >
+        {skills.heading}
       </h2>
-      <div className="space-y-4">
-        {skills.map((skill) => (
+      <div className="mt-3 space-y-4">
+        {skills.items.map((skill) => (
           <div key={skill.label}>
             <div className="flex items-center justify-between text-xs uppercase tracking-[0.2em] text-fami-gold">
               <span>{skill.label}</span>
@@ -29,3 +30,5 @@ export function Skills() {
     </section>
   );
 }
+
+
