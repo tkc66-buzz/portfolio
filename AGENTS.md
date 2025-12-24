@@ -35,6 +35,7 @@ Unified cheat sheet so any AI agent (Claude Code, GPT, etc.) can understand the 
 - Semantic sections live under `src/components/sections/*` and each owns a stable `id`
   for in-page anchor navigation.
 - Content data is centralized in `src/content/portfolio.ts` for maintainability.
+  - Private overrides can be injected via env vars (no private content committed to git).
 
 ## Workflow Expectations
 - Branch from feature branch, open PR → merge to `main` → Vercel autodeploy.

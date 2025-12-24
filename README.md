@@ -69,6 +69,15 @@ When a change affects dependencies or workflows, remember to update README / doc
 ## Customizing next steps
 
 - Update the copy/data in `src/content/portfolio.ts` (profile/experience/projects/skills/contact).
+- If you want to keep some details off the public repo, you can provide private overrides via
+  environment variables (see `src/content/portfolio.ts`: `PORTFOLIO_PRIVATE_JSON` or
+  `PORTFOLIO_PRIVATE_URL`).
+  - For Google Sheets/Docs maintenance, a practical pattern is:
+    Google Sheet (Drive) → Google Apps Script Web App (JSON API + token) →
+    set `PORTFOLIO_PRIVATE_URL` + `PORTFOLIO_PRIVATE_URL_BEARER` +
+    `PORTFOLIO_PRIVATE_REVALIDATE_SECONDS=86400` (24h cache).
+  - Projects can include `visibility: "public" | "private"`. Private items will be redacted
+    on the public page (summary/outcome/link hidden).
 - Drop a `public/og.png` and extend `src/app/layout.tsx` metadata for richer previews.
 - Tweak NES colors or swap the background (`src/app/globals.css`) for other retro palettes.
 - Add new sections/components under `src/components` and include them via `@/` alias.

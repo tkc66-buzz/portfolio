@@ -1,6 +1,7 @@
-import { profile } from "@/content/portfolio";
+import { getPortfolio } from "@/content/portfolio";
 
-export function ProfileSection() {
+export async function ProfileSection() {
+  const { profile } = await getPortfolio();
   return (
     <section
       id={profile.id}

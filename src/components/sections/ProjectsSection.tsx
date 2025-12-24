@@ -1,6 +1,7 @@
-import { projects } from "@/content/portfolio";
+import { getPortfolio } from "@/content/portfolio";
 
-export function ProjectsSection() {
+export async function ProjectsSection() {
+  const { projects } = await getPortfolio();
   return (
     <section
       id={projects.id}
@@ -20,6 +21,8 @@ export function ProjectsSection() {
 
       <div className="mt-4 grid gap-4 md:grid-cols-2">
         {projects.items.map((project) => (
+          // `visibility` defaults to "public" if omitted
+          // Private items should avoid disclosing sensitive details.
           <article
             key={project.title}
             className="frame bg-[#1b1b1b] p-4 text-fami-ivory"
@@ -31,15 +34,24 @@ export function ProjectsSection() {
               >
                 {project.title}
               </h3>
-              {project.status ? (
-                <span className="nes-badge is-primary text-[0.6rem]">
-                  <span>{project.status}</span>
-                </span>
-              ) : null}
+              <div className="flex items-center gap-2">
+                {project.visibility === "private" ? (
+                  <span className="nes-badge is-error text-[0.6rem]">
+                    <span>PRIVATE</span>
+                  </span>
+                ) : null}
+                {project.status ? (
+                  <span className="nes-badge is-primary text-[0.6rem]">
+                    <span>{project.status}</span>
+                  </span>
+                ) : null}
+              </div>
             </div>
 
             <p className="mt-2 text-sm [font-family:var(--font-noto)]">
-              {project.summary}
+              {project.visibility === "private"
+                ? "詳細は面談でお話しできます（NDA等に配慮）。"
+                : project.summary}
             </p>
 
             <dl className="mt-3 space-y-2 text-xs [font-family:var(--font-noto)]">
@@ -57,13 +69,15 @@ export function ProjectsSection() {
                   ))}
                 </dd>
               </div>
-              <div className="flex gap-2">
-                <dt className="w-20 text-fami-gold">Outcome</dt>
-                <dd>{project.outcomeOrLearning}</dd>
-              </div>
+              {project.visibility === "private" ? null : (
+                <div className="flex gap-2">
+                  <dt className="w-20 text-fami-gold">Outcome</dt>
+                  <dd>{project.outcomeOrLearning}</dd>
+                </div>
+              )}
             </dl>
 
-            {project.link ? (
+            {project.visibility === "private" ? null : project.link ? (
               <a
                 className="nes-btn mt-4 w-full text-center"
                 href={project.link.href}
