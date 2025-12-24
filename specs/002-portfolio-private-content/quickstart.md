@@ -45,7 +45,8 @@ Set Script Properties:
 
 Implement `doGet(e)`:
 
-- Check `Authorization: Bearer <token>`
+- Check `?token=<token>` (recommended; Apps Script does not reliably expose Authorization header)
+- (Optional) Also accept `Authorization: Bearer <token>` as a fallback if headers are available
 - Read the spreadsheet
 - Return JSON shaped as `Partial<Portfolio>` (only overrides you need), e.g.:
   - `experience: { heading, highlights }`
@@ -74,5 +75,3 @@ Set:
 2. Change a sheet row and confirm it **does not** update immediately (cache).
 3. To force fast iteration temporarily, set:
    - `PORTFOLIO_PRIVATE_REVALIDATE_SECONDS=0`
-
-

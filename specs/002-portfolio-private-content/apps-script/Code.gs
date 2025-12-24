@@ -25,12 +25,22 @@ function unauthorized_(status, body) {
 }
 
 function assertAuthorized_(e) {
-  const header =
-    (e && e.headers && (e.headers.Authorization || e.headers.authorization)) || "";
   const token = getBearerToken_();
   if (!token) return { ok: false, body: { error: "Server not configured" } };
-  if (header !== `Bearer ${token}`) return { ok: false, body: { error: "Unauthorized" } };
-  return { ok: true };
+
+  // IMPORTANT:
+  // Apps Script Web Apps don't reliably expose request headers (including Authorization)
+  // to `doGet(e)`. Prefer query param auth: `?token=...`.
+  const tokenParam =
+    (e && e.parameter && (e.parameter.token || e.parameter.TOKEN)) || "";
+  if (String(tokenParam) === String(token)) return { ok: true };
+
+  // Best-effort fallback if headers are available in some environments:
+  const header =
+    (e && e.headers && (e.headers.Authorization || e.headers.authorization)) || "";
+  if (header === `Bearer ${token}`) return { ok: true };
+
+  return { ok: false, body: { error: "Unauthorized" } };
 }
 
 function sheetToObjects_(sheet) {

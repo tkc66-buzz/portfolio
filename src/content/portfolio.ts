@@ -172,6 +172,17 @@ async function loadPrivatePortfolioFromUrl(): Promise<Partial<Portfolio> | null>
   const timeoutMs = Number(process.env.PORTFOLIO_PRIVATE_TIMEOUT_MS ?? "3000");
   const timeout = Number.isFinite(timeoutMs) ? Math.max(0, timeoutMs) : 3000;
 
+  const withQueryToken = (targetUrl: string) => {
+    if (!token) return targetUrl;
+    const u = new URL(targetUrl);
+    // Prefer query token for Apps Script endpoints, since Authorization headers are
+    // not reliably available to `doGet(e)` in Apps Script Web Apps.
+    if (u.hostname === "script.google.com" || u.hostname === "script.googleusercontent.com") {
+      u.searchParams.set("token", token);
+    }
+    return u.toString();
+  };
+
   const fetchWithAuth = async (targetUrl: string, signal: AbortSignal) => {
     return await fetch(targetUrl, {
       headers: token ? { Authorization: `Bearer ${token}` } : undefined,
@@ -192,7 +203,7 @@ async function loadPrivatePortfolioFromUrl(): Promise<Partial<Portfolio> | null>
   let res: Response | null = null;
   try {
     for (let i = 0; i < 3; i++) {
-      res = await fetchWithAuth(currentUrl, controller.signal);
+      res = await fetchWithAuth(withQueryToken(currentUrl), controller.signal);
       const isRedirect = res.status >= 300 && res.status < 400;
       if (!isRedirect) break;
       const location = res.headers.get("location");
