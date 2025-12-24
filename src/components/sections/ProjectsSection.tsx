@@ -54,28 +54,28 @@ export async function ProjectsSection() {
                 : project.summary}
             </p>
 
-            <dl className="mt-3 space-y-2 text-xs [font-family:var(--font-noto)]">
-              <div className="flex gap-2">
-                <dt className="w-20 text-fami-gold">Role</dt>
-                <dd>{project.role}</dd>
-              </div>
-              <div className="flex gap-2">
-                <dt className="w-20 text-fami-gold">Tech</dt>
-                <dd className="flex flex-wrap gap-1">
-                  {project.tech.map((t) => (
-                    <span key={t} className="nes-badge is-warning text-[0.55rem]">
-                      <span>{t}</span>
-                    </span>
-                  ))}
-                </dd>
-              </div>
-              {project.visibility === "private" ? null : (
+            {project.visibility === "private" ? null : (
+              <dl className="mt-3 space-y-2 text-xs [font-family:var(--font-noto)]">
+                <div className="flex gap-2">
+                  <dt className="w-20 text-fami-gold">Role</dt>
+                  <dd>{project.role}</dd>
+                </div>
+                <div className="flex gap-2">
+                  <dt className="w-20 text-fami-gold">Tech</dt>
+                  <dd className="flex flex-wrap gap-1">
+                    {project.tech.map((t) => (
+                      <span key={t} className="nes-badge is-warning text-[0.55rem]">
+                        <span>{t}</span>
+                      </span>
+                    ))}
+                  </dd>
+                </div>
                 <div className="flex gap-2">
                   <dt className="w-20 text-fami-gold">Outcome</dt>
                   <dd>{project.outcomeOrLearning}</dd>
                 </div>
-              )}
-            </dl>
+              </dl>
+            )}
 
             {project.visibility === "private" ? null : project.link ? (
               <a

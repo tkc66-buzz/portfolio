@@ -152,12 +152,19 @@ async function loadPrivatePortfolioFromUrl(): Promise<Partial<Portfolio> | null>
   const token = process.env.PORTFOLIO_PRIVATE_URL_BEARER;
   const revalidateSeconds = Number(process.env.PORTFOLIO_PRIVATE_REVALIDATE_SECONDS ?? "86400");
   const revalidate = Number.isFinite(revalidateSeconds) ? Math.max(0, revalidateSeconds) : 86400;
+  const timeoutMs = Number(process.env.PORTFOLIO_PRIVATE_TIMEOUT_MS ?? "3000");
+  const timeout = Number.isFinite(timeoutMs) ? Math.max(0, timeoutMs) : 3000;
+
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeout);
   const res = await fetch(url, {
     headers: token ? { Authorization: `Bearer ${token}` } : undefined,
     // Cache private portfolio responses on the server to reduce load on the upstream.
     // (Next.js fetch cache) default is cacheable; we set an explicit revalidate window.
     next: { revalidate },
+    signal: controller.signal,
   });
+  clearTimeout(timer);
 
   if (!res.ok) return null;
   return (await res.json()) as Partial<Portfolio>;
@@ -170,6 +177,7 @@ async function loadPrivatePortfolioFromUrl(): Promise<Partial<Portfolio> | null>
  * - PORTFOLIO_PRIVATE_JSON (JSON string)
  * - PORTFOLIO_PRIVATE_URL (+ optional PORTFOLIO_PRIVATE_URL_BEARER)
  * - PORTFOLIO_PRIVATE_REVALIDATE_SECONDS (default: 86400)
+ * - PORTFOLIO_PRIVATE_TIMEOUT_MS (default: 3000)
  */
 export async function getPortfolio(): Promise<Portfolio> {
   const source = process.env.PORTFOLIO_PRIVATE_SOURCE; // "env" | "url" | undefined

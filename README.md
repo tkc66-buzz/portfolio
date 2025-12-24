@@ -78,6 +78,7 @@ When a change affects dependencies or workflows, remember to update README / doc
     `PORTFOLIO_PRIVATE_REVALIDATE_SECONDS=86400` (24h cache).
   - Projects can include `visibility: "public" | "private"`. Private items will be redacted
     on the public page (summary/outcome/link hidden).
+    - With current UI, `visibility="private"` also hides role/tech/outcome/link (title + badges only).
 - Drop a `public/og.png` and extend `src/app/layout.tsx` metadata for richer previews.
 - Tweak NES colors or swap the background (`src/app/globals.css`) for other retro palettes.
 - Add new sections/components under `src/components` and include them via `@/` alias.
