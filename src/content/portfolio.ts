@@ -124,10 +124,26 @@ function normalizeLinks(links: ExternalLink[]): ExternalLink[] {
   });
 }
 
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null;
+}
+
+function isPortfolioPatch(value: unknown): value is Partial<Portfolio> {
+  if (!isRecord(value)) return false;
+  // Accept only objects that contain at least one known top-level key.
+  // This prevents accidentally merging error payloads like { error: "Unauthorized" }.
+  return (
+    "profile" in value ||
+    "experience" in value ||
+    "projects" in value ||
+    "skills" in value ||
+    "contact" in value
+  );
+}
+
 function mergePortfolio(base: Portfolio, patch: Partial<Portfolio>): Portfolio {
+  // Only merge known keys; do not spread arbitrary top-level keys onto Portfolio.
   const merged: Portfolio = {
-    ...base,
-    ...patch,
     profile: { ...base.profile, ...(patch.profile ?? {}) },
     experience: { ...base.experience, ...(patch.experience ?? {}) },
     projects: { ...base.projects, ...(patch.projects ?? {}) },
@@ -142,7 +158,8 @@ function mergePortfolio(base: Portfolio, patch: Partial<Portfolio>): Portfolio {
 async function loadPrivatePortfolioFromEnv(): Promise<Partial<Portfolio> | null> {
   const raw = process.env.PORTFOLIO_PRIVATE_JSON;
   if (!raw) return null;
-  return JSON.parse(raw) as Partial<Portfolio>;
+  const parsed: unknown = JSON.parse(raw);
+  return isPortfolioPatch(parsed) ? (parsed as Partial<Portfolio>) : null;
 }
 
 async function loadPrivatePortfolioFromUrl(): Promise<Partial<Portfolio> | null> {
@@ -167,7 +184,8 @@ async function loadPrivatePortfolioFromUrl(): Promise<Partial<Portfolio> | null>
   clearTimeout(timer);
 
   if (!res.ok) return null;
-  return (await res.json()) as Partial<Portfolio>;
+  const parsed: unknown = await res.json();
+  return isPortfolioPatch(parsed) ? (parsed as Partial<Portfolio>) : null;
 }
 
 /**
