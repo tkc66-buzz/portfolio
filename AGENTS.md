@@ -29,6 +29,13 @@ Unified cheat sheet so any AI agent (Claude Code, GPT, etc.) can understand the 
 4. **Styling Flow** – NES.css + Tailwind; prefer utility classes plus `.nes-*` components.
 5. **Testing** – No automated tests yet; rely on lint/build. Agents should add tests when implementing logic.
 
+## UI / Information Architecture Notes
+- Landing page composition lives in `src/app/page.tsx` and is intentionally thin.
+- TOC navigation is implemented via `src/components/TableOfContents.tsx` + `src/components/toc.ts`.
+- Semantic sections live under `src/components/sections/*` and each owns a stable `id`
+  for in-page anchor navigation.
+- Content data is centralized in `src/content/portfolio.ts` for maintainability.
+
 ## Workflow Expectations
 - Branch from feature branch, open PR → merge to `main` → Vercel autodeploy.
 - When adding runtime deps, update `package.json` and lockfile, then document them in this playbook.
