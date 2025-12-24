@@ -1,9 +1,9 @@
-# Quickstart: Private content via Google Sheets (Bearer) + 24h cache
+# Quickstart: Private content via Google Sheets (POST token) + 24h cache
 
 ## Goal
 
 Keep Experience/Projects in Google Sheets (Drive) while keeping the GitHub repo public.
-The site loads **private overrides server-side** via a Bearer-protected JSON endpoint,
+The site loads **private overrides server-side** via a token-protected JSON endpoint,
 and caches responses for 24 hours by default.
 
 ## 1) Create Google Sheet (template)
@@ -35,7 +35,7 @@ Header row:
 - `linkLabel` (optional; ignored when `visibility=private`)
 - `linkHref` (optional; ignored when `visibility=private`)
 
-## 2) Create Apps Script Web App (Bearer protected JSON)
+## 2) Create Apps Script Web App (POST body token protected JSON)
 
 In the Spreadsheet: **Extensions → Apps Script**.
 
@@ -43,10 +43,11 @@ Set Script Properties:
 
 - `BEARER_TOKEN`: random long string (do not commit)
 
-Implement `doGet(e)`:
+Implement `doPost(e)`:
 
-- Check `?token=<token>` (recommended; Apps Script does not reliably expose Authorization header)
-- (Optional) Also accept `Authorization: Bearer <token>` as a fallback if headers are available
+- Read JSON body: `{ "token": "<secret>" }`
+- Compare against Script Property `BEARER_TOKEN`
+- (Optional) Also accept `Authorization: Bearer <token>` as a best-effort fallback
 - Read the spreadsheet
 - Return JSON shaped as `Partial<Portfolio>` (only overrides you need), e.g.:
   - `experience: { heading, highlights }`
@@ -75,3 +76,11 @@ Set:
 2. Change a sheet row and confirm it **does not** update immediately (cache).
 3. To force fast iteration temporarily, set:
    - `PORTFOLIO_PRIVATE_REVALIDATE_SECONDS=0`
+
+### Quick API test (local)
+
+```bash
+curl -L -X POST -H "Content-Type: application/json" \
+  -d '{"token":"<your bearer token>"}' \
+  "<your apps script web app url>"
+```

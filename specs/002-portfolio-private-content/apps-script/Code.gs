@@ -30,17 +30,28 @@ function assertAuthorized_(e) {
 
   // IMPORTANT:
   // Apps Script Web Apps don't reliably expose request headers (including Authorization)
-  // to `doGet(e)`. Prefer query param auth: `?token=...`.
-  const tokenParam =
-    (e && e.parameter && (e.parameter.token || e.parameter.TOKEN)) || "";
-  if (String(tokenParam) === String(token)) return { ok: true };
+  // to `doGet(e)`. Use POST body auth: { "token": "<secret>" }.
+  const tokenFromBody = getTokenFromBody_(e);
+  if (tokenFromBody && String(tokenFromBody) === String(token))
+    return { ok: true };
 
   // Best-effort fallback if headers are available in some environments:
   const header =
-    (e && e.headers && (e.headers.Authorization || e.headers.authorization)) || "";
+    (e && e.headers && (e.headers.Authorization || e.headers.authorization)) ||
+    "";
   if (header === `Bearer ${token}`) return { ok: true };
 
   return { ok: false, body: { error: "Unauthorized" } };
+}
+
+function getTokenFromBody_(e) {
+  try {
+    if (!e || !e.postData || !e.postData.contents) return "";
+    const parsed = JSON.parse(e.postData.contents);
+    return parsed && parsed.token ? String(parsed.token) : "";
+  } catch (err) {
+    return "";
+  }
 }
 
 function sheetToObjects_(sheet) {
@@ -89,25 +100,22 @@ function normalizeProjects_(rows) {
     });
 }
 
-function doGet(e) {
-  const auth = assertAuthorized_(e);
-  if (!auth.ok) return unauthorized_(401, auth.body);
-
+function buildPayload_() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const expSheet = ss.getSheetByName(SHEET_EXPERIENCE);
   const projSheet = ss.getSheetByName(SHEET_PROJECTS);
   if (!expSheet || !projSheet) {
-    return unauthorized_(400, {
+    return {
       error: "Missing sheets",
       required: [SHEET_EXPERIENCE, SHEET_PROJECTS],
-    });
+    };
   }
 
   const expRows = sheetToObjects_(expSheet);
   const projRows = sheetToObjects_(projSheet);
 
   // Return Partial<Portfolio> (only the parts you want to override)
-  const payload = {
+  return {
     experience: {
       heading: "Experience",
       highlights: normalizeExperience_(expRows),
@@ -117,10 +125,22 @@ function doGet(e) {
       items: normalizeProjects_(projRows),
     },
   };
+}
 
+function doGet(e) {
+  // GET is intentionally not supported for auth, because Apps Script does not reliably expose headers.
+  // Use POST with JSON body: { "token": "<secret>" }.
+  return unauthorized_(405, {
+    error: "Method not allowed. Use POST with JSON body token.",
+  });
+}
+
+function doPost(e) {
+  const auth = assertAuthorized_(e);
+  if (!auth.ok) return unauthorized_(401, auth.body);
+
+  const payload = buildPayload_();
   const output = ContentService.createTextOutput(JSON.stringify(payload));
   output.setMimeType(ContentService.MimeType.JSON);
   return output;
 }
-
-
