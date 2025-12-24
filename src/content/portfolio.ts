@@ -172,18 +172,38 @@ async function loadPrivatePortfolioFromUrl(): Promise<Partial<Portfolio> | null>
   const timeoutMs = Number(process.env.PORTFOLIO_PRIVATE_TIMEOUT_MS ?? "3000");
   const timeout = Number.isFinite(timeoutMs) ? Math.max(0, timeoutMs) : 3000;
 
+  const fetchWithAuth = async (targetUrl: string, signal: AbortSignal) => {
+    return await fetch(targetUrl, {
+      headers: token ? { Authorization: `Bearer ${token}` } : undefined,
+      // Cache private portfolio responses on the server to reduce load on the upstream.
+      // (Next.js fetch cache) default is cacheable; we set an explicit revalidate window.
+      next: { revalidate },
+      redirect: "manual",
+      signal,
+    });
+  };
+
+  // Apps Script Web App often redirects from `script.google.com` → `script.googleusercontent.com`.
+  // Many HTTP clients (and fetch) will drop Authorization on cross-origin redirects.
+  // We follow redirects manually to preserve Bearer auth.
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), timeout);
-  const res = await fetch(url, {
-    headers: token ? { Authorization: `Bearer ${token}` } : undefined,
-    // Cache private portfolio responses on the server to reduce load on the upstream.
-    // (Next.js fetch cache) default is cacheable; we set an explicit revalidate window.
-    next: { revalidate },
-    signal: controller.signal,
-  });
-  clearTimeout(timer);
+  let currentUrl = url;
+  let res: Response | null = null;
+  try {
+    for (let i = 0; i < 3; i++) {
+      res = await fetchWithAuth(currentUrl, controller.signal);
+      const isRedirect = res.status >= 300 && res.status < 400;
+      if (!isRedirect) break;
+      const location = res.headers.get("location");
+      if (!location) break;
+      currentUrl = new URL(location, currentUrl).toString();
+    }
+  } finally {
+    clearTimeout(timer);
+  }
 
-  if (!res.ok) return null;
+  if (!res || !res.ok) return null;
   const parsed: unknown = await res.json();
   return isPortfolioPatch(parsed) ? (parsed as Partial<Portfolio>) : null;
 }
