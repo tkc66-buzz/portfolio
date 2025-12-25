@@ -23,9 +23,9 @@ description: "Tasks for 005 – Writing / Blog Links"
 
 **Purpose**: Confirm the integration points for adding a new section + TOC entry.
 
-- [ ] T001 Confirm current TOC config and section composition in `src/components/toc.ts` and `src/app/page.tsx`
-- [ ] T002 Confirm current content source-of-truth patterns in `src/content/portfolio.ts`
-- [ ] T003 [P] Confirm link safety pattern (`target="_blank"` + `rel="noreferrer"`) in existing sections (`src/components/sections/ContactSection.tsx`, `src/components/sections/ProjectsSection.tsx`)
+- [x] T001 Confirm current TOC config and section composition in `src/components/toc.ts` and `src/app/page.tsx`
+- [x] T002 Confirm current content source-of-truth patterns in `src/content/portfolio.ts`
+- [x] T003 [P] Confirm link safety pattern (`target="_blank"` + `rel="noreferrer"`) in existing sections (`src/components/sections/ContactSection.tsx`, `src/components/sections/ProjectsSection.tsx`)
 
 ---
 
@@ -35,9 +35,9 @@ description: "Tasks for 005 – Writing / Blog Links"
 
 **⚠️ CRITICAL**: No user story work should begin until this phase is complete.
 
-- [ ] T004 Decide and fix the new TOC id (`writing`) and label (`Writing`) in `src/components/toc.ts`
-- [ ] T005 Add the new section component file `src/components/sections/WritingSection.tsx` (server component, same frame styling)
-- [ ] T006 Wire the section into page composition in `src/app/page.tsx` (keep page thin; preserve section order)
+- [x] T004 Decide and fix the new TOC id (`writing`) and label (`Writing`) in `src/components/toc.ts`
+- [x] T005 Add the new section component file `src/components/sections/WritingSection.tsx` (server component, same frame styling)
+- [x] T006 Wire the section into page composition in `src/app/page.tsx` (keep page thin; preserve section order)
 
 **Checkpoint**: The app compiles and `#writing` anchor exists (even before content polish).
 
@@ -51,10 +51,10 @@ description: "Tasks for 005 – Writing / Blog Links"
 
 ### Implementation for User Story 1
 
-- [ ] T007 [US1] Add `writing` section data (heading + two links) to `src/content/portfolio.ts`
-- [ ] T008 [US1] Render blog links in `src/components/sections/WritingSection.tsx` (NES buttons + short labels: “Tech (Medium)”, “Casual”)
-- [ ] T009 [US1] Ensure external links are safe in `src/components/sections/WritingSection.tsx` (`target="_blank"`, `rel="noreferrer"`)
-- [ ] T010 [US1] Keep TOC count reasonable (<= 8 items) and verify TOC labels remain scannable in `src/components/toc.ts`
+- [x] T007 [US1] Add `writing` section data (heading + two links) to `src/content/portfolio.ts`
+- [x] T008 [US1] Render blog links in `src/components/sections/WritingSection.tsx` (NES buttons + short labels: “Tech (Medium)”, “Casual”)
+- [x] T009 [US1] Ensure external links are safe in `src/components/sections/WritingSection.tsx` (`target="_blank"`, `rel="noreferrer"`)
+- [x] T010 [US1] Keep TOC count reasonable (<= 8 items) and verify TOC labels remain scannable in `src/components/toc.ts`
 
 **Checkpoint**: Writing section is reachable via TOC and contains the two correct URLs.
 
@@ -64,10 +64,10 @@ description: "Tasks for 005 – Writing / Blog Links"
 
 **Purpose**: Finish with quality gates and doc sync (top-level UX changed).
 
-- [ ] T011 Update docs to mention the new Writing section in `README.md`, `AGENTS.md`, and `CLAUDE.md`
-- [ ] T012 Run `specs/005-blog-links/quickstart.md` verification steps
-- [ ] T013 Run `pnpm lint` and fix any issues
-- [ ] T014 Run `pnpm build` and fix any issues
+- [x] T011 Update docs to mention the new Writing section in `README.md`, `AGENTS.md`, and `CLAUDE.md`
+- [x] T012 Run `specs/005-blog-links/quickstart.md` verification steps
+- [x] T013 Run `pnpm lint` and fix any issues
+- [x] T014 Run `pnpm build` and fix any issues
 
 ---
 

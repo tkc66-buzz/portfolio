@@ -16,6 +16,7 @@ Focused tips for Anthropic Claude Code / Workbench agents interacting with this 
 - `src/app/page.tsx` – Landing page composition (Hero → TOC → sections). Keep it thin; put content in sections and data in `src/content/portfolio.ts`.
 - `src/components/TableOfContents.tsx` – TOC UI (in-page navigation).
 - `src/components/sections/*` – Semantic sections; each owns a stable `id` for `#hash` navigation.
+- `src/components/sections/WritingSection.tsx` – Writing/blog links section (external links).
 - `src/content/portfolio.ts` – Public content + optional private overrides loaded server-side via env vars:
   - `PORTFOLIO_PRIVATE_SOURCE` = `env` or `url`
   - `PORTFOLIO_PRIVATE_JSON` (JSON string)

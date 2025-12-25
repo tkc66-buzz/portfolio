@@ -5,6 +5,7 @@ import { ExperienceSection } from "@/components/sections/ExperienceSection";
 import { ProfileSection } from "@/components/sections/ProfileSection";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
+import { WritingSection } from "@/components/sections/WritingSection";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
         <ProfileSection />
         <ExperienceSection />
         <ProjectsSection />
+        <WritingSection />
         <SkillsSection />
         <ContactSection />
       </div>
