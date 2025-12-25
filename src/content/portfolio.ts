@@ -32,6 +32,11 @@ export type Skill = {
   level: number;
 };
 
+export type SkillCategory = {
+  name: string;
+  items: Skill[];
+};
+
 export type SectionContent = {
   id: TocItemId;
   heading: string;
@@ -40,7 +45,7 @@ export type SectionContent = {
 export type Profile = SectionContent & { body: string };
 export type Experience = SectionContent & { highlights: ExperienceHighlight[] };
 export type Projects = SectionContent & { items: Project[] };
-export type Skills = SectionContent & { items: Skill[] };
+export type Skills = SectionContent & { items: Skill[]; categories?: SkillCategory[] };
 export type Contact = SectionContent & { blurb: string; links: ExternalLink[] };
 
 export type Portfolio = {
@@ -97,11 +102,45 @@ export const publicPortfolio: Portfolio = {
   skills: {
     id: "skills",
     heading: "Skills",
+    // Backward compatible: `items` can still be used by external overrides.
     items: [
-      { label: "TypeScript", level: 90 },
-      { label: "Next.js", level: 85 },
-      { label: "Design Systems", level: 80 },
-      { label: "Motion & Micro UX", level: 70 },
+      { label: "Go", level: 85 },
+      { label: "TypeScript", level: 85 },
+      { label: "AWS", level: 75 },
+      { label: "GCP", level: 70 },
+    ],
+    categories: [
+      {
+        name: "Backend",
+        items: [
+          { label: "Go", level: 85 },
+          { label: "API Design", level: 80 },
+          { label: "SQL / Data modeling", level: 75 },
+        ],
+      },
+      {
+        name: "Infrastructure",
+        items: [
+          { label: "AWS", level: 75 },
+          { label: "Terraform", level: 70 },
+          { label: "Observability", level: 70 },
+        ],
+      },
+      {
+        name: "Data / ML",
+        items: [
+          { label: "Data Science", level: 70 },
+          { label: "ML Engineering", level: 65 },
+        ],
+      },
+      {
+        name: "Frontend",
+        items: [
+          { label: "TypeScript", level: 85 },
+          { label: "React / Next.js", level: 75 },
+          { label: "Design Systems", level: 70 },
+        ],
+      },
     ],
   },
   contact: {
