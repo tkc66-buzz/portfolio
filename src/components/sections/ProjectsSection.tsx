@@ -7,7 +7,10 @@ function isExternalHttpHref(href: string) {
 export async function ProjectsSection() {
   const { projects } = await getPortfolio();
   return (
-    <section id={projects.id} className="frame scroll-mt-6 bg-[#1b1b1b] p-6 text-fami-ivory">
+    <section
+      id={projects.id}
+      className="frame scroll-mt-[var(--menu-offset)] bg-[#1b1b1b] p-6 text-fami-ivory"
+    >
       <header className="flex items-baseline justify-between">
         <h2 className="text-xl text-fami-gold" style={{ fontFamily: "var(--font-press)" }}>
           {projects.heading}
@@ -26,7 +29,7 @@ export async function ProjectsSection() {
           <article
             key={project.title}
             id={project.anchorId}
-            className="scroll-mt-6 frame bg-[#1b1b1b] p-4 text-fami-ivory"
+            className="frame scroll-mt-[var(--menu-offset)] bg-[#1b1b1b] p-4 text-fami-ivory"
           >
             <div className="flex items-center justify-between">
               <h3 className="text-sm text-fami-gold" style={{ fontFamily: "var(--font-press)" }}>

@@ -5,7 +5,7 @@ export function TableOfContents() {
     <nav
       id="menu"
       aria-label="Menu"
-      className="frame bg-[#1b1b1b] p-4 text-fami-ivory"
+      className="hud frame sticky top-[var(--menu-top)] z-50 bg-[#1b1b1b]/90 p-4 text-fami-ivory backdrop-blur supports-[backdrop-filter]:bg-[#1b1b1b]/70"
     >
       <div className="mb-3 flex items-baseline justify-between">
         <h2 className="text-sm text-fami-gold" style={{ fontFamily: "var(--font-press)" }}>
@@ -13,11 +13,11 @@ export function TableOfContents() {
         </h2>
       </div>
 
-      <ul className="flex flex-wrap gap-2">
+      <ul className="flex gap-2 overflow-x-auto pb-1 sm:flex-wrap sm:overflow-visible sm:pb-0">
         {TOC_ITEMS.map((item) => (
           <li key={item.id}>
             <a
-              className="nes-btn text-[0.75rem] uppercase tracking-wide focus:outline-none focus-visible:ring-4 focus-visible:ring-fami-gold focus-visible:ring-offset-4 focus-visible:ring-offset-[#1b1b1b]"
+              className="nes-btn is-primary is-small shrink-0 text-[0.7rem] uppercase tracking-wide focus:outline-none focus-visible:ring-4 focus-visible:ring-fami-gold focus-visible:ring-offset-4 focus-visible:ring-offset-[#111]"
               href={tocHref(item.id)}
             >
               {item.label}

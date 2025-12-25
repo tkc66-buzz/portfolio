@@ -1,18 +1,17 @@
-# Implementation Plan: Refine Experience vs Projects (IA + Content)
+# Implementation Plan: Sticky MENU (Always Visible Navigation)
 
-**Branch**: `009-exp-project-brushup` | **Date**: 2025-12-25 | **Spec**: `specs/009-exp-project-brushup/spec.md`  
-**Input**: Feature specification from `/Users/takeshiwatanabe/EureWorks/private/git/portfolio/specs/009-exp-project-brushup/spec.md`
+**Branch**: `011-sticky-menu` | **Date**: 2025-12-25 | **Spec**: `specs/011-sticky-menu/spec.md`  
+**Input**: Feature specification from `/Users/takeshiwatanabe/EureWorks/private/git/portfolio/specs/011-sticky-menu/spec.md`
 
 **Note**: This template is filled in by the `/speckit.plan` command. See `.specify/templates/commands/plan.md` for the execution workflow.
 
 ## Summary
 
-Experience と Projects の役割分担（情報設計）を明確化し、内容（公開/秘匿含む）をブラッシュアップするための設計を行う。
+スクロールしても常に見える MENU を実装し、長い1ページでも迷子にならないようにする。
 
-- **Experience**: 「職務/役割/責務/領域の変遷」を時系列で短く提示（Why/Howの“軸”）
-- **Projects**: 「課題→アクション→結果（証拠）/学び」の事例集（軸の“証拠”）
-
-実装は `src/content/portfolio.ts`（SSOT）と `src/components/sections/ExperienceSection.tsx` / `ProjectsSection.tsx` のUI改善を中心に行う前提。
+- 既存の `TOC_ITEMS`（SSOT）をそのまま使う
+- 既存の `TableOfContents` を “Sticky HUD Menu” として再スタイリング
+- アンカー遷移のオフセット（`scroll-mt-*`）を固定メニュー高さに合わせる
 
 ## Technical Context
 
@@ -24,13 +23,13 @@ Experience と Projects の役割分担（情報設計）を明確化し、内�
 
 **Language/Version**: TypeScript 5.x (Next.js App Router)  
 **Primary Dependencies**: Next.js 16, React 19, Tailwind CSS, NES.css  
-**Storage**: `src/content/portfolio.ts` (public) + optional private overrides via env/URL (server-side)  
-**Testing**: No automated tests currently; verify with `pnpm lint` + `pnpm build` + manual check  
-**Target Platform**: Web (Vercel deploy; SSR/SSG via Next.js)  
+**Storage**: N/A  
+**Testing**: No automated tests requested; validate manually + `pnpm lint` + `pnpm build`  
+**Target Platform**: Web (Vercel)  
 **Project Type**: Web application (Next.js App Router under `src/`)  
-**Performance Goals**: Keep single-page scan fast; no heavy deps; avoid over-rendering  
-**Constraints**: Respect privacy (Projects/Experience may have private overrides); do not leak secrets to client  
-**Scale/Scope**: Content/UI refinement (no new backend)
+**Performance Goals**: Keep JS at 0 if possible (pure CSS sticky); no new deps  
+**Constraints**: Must remain readable on mobile; sticky menu must not cover section headings on anchor jump  
+**Scale/Scope**: Navigation UX + styling only
 
 ## Constitution Check
 
@@ -47,10 +46,9 @@ gates (adapt per feature) are:
 
 **Gate evaluation (pre-research)**:
 
-- Principle compliance: ✅（情報設計を明確にし、ストーリーの“証拠”を強化する）
-- Retro+Usability: ✅（テキスト階層・読みやすさを優先しつつNES.cssの枠を維持）
-- Lightweight: ✅（原則追加依存なしで改善）
-- SSOT: ✅（`src/content/portfolio.ts` 中心で整合させる）
+- Principle compliance: ✅（閲覧体験の改善＝ストーリーの到達性を上げる）
+- Retro+Usability: ✅（レトロHUD + 押しやすさ/視認性を両立）
+- Lightweight: ✅（CSS中心、依存追加なし）
 
 ## Project Structure
 
@@ -79,15 +77,15 @@ specs/[###-feature]/
 src/
   app/
     page.tsx
+    globals.css
   components/
-    sections/
-      ExperienceSection.tsx
-      ProjectsSection.tsx
-  content/
-    portfolio.ts
+    TableOfContents.tsx   # will become sticky HUD menu
+    toc.ts                # TOC_ITEMS (SSOT)
+  components/sections/
+    *Section.tsx          # each section has stable id + scroll-mt-*
 ```
 
-**Structure Decision**: Web application (Next.js App Router). Content is centralized in `src/content/portfolio.ts`.
+**Structure Decision**: Web application (Next.js App Router). Implement sticky menu via CSS + existing anchor links.
 
 ## Complexity Tracking
 
