@@ -204,9 +204,16 @@ export const publicPortfolio: Portfolio = {
     id: "activities",
     heading: "Activities",
     groups: [
-      { name: "Talks", items: [] },
-      { name: "Books", items: [] },
-      { name: "Community", items: [] },
+      { name: "Talks",
+        items: [
+        { year: "2020", title: "AWS Partner Summit Tokyo", context: "AWS Partner Summit Tokyoにオンラインで登壇しました", link: { label: "開催記事", href: "https://aws.amazon.com/jp/blogs/psa/aws-partner-summit-tokyo/" } },
+      ] },
+      { name: "Books", items: [
+        { year: "2025", title: "Tech Blog", context: "Medium", link: { label: "Medium", href: "https://medium.com/@buzz_tkc" } },
+      ] },
+      { name: "Community", items: [
+        { year: "2025", title: "Tech Blog", context: "Medium", link: { label: "Medium", href: "https://medium.com/@buzz_tkc" } },
+      ] },
     ],
   },
   skills: {
@@ -256,13 +263,7 @@ export const publicPortfolio: Portfolio = {
     id: "contact",
     heading: "Contact",
     blurb:
-      "採用・協業・技術相談など、目的に合わせてご連絡ください。\n\n" +
-      "連絡してほしい内容の例:\n" +
-      "・Backend/Infra の設計・実装・運用改善\n" +
-      "・既存システムの段階移行（リプレース/移行設計/リスク管理）\n" +
-      "・Observability（Datadog等）/SLO/障害対応の仕組み化\n" +
-      "・TypeScript のフルスタック開発\n\n" +
-      "返信目安: 24–48時間以内（状況により前後します）",
+      "副業・技術相談など、お気軽にご連絡ください。",
     links: [
       { label: "Email", href: "worktkc2018@gmail.com" },
       { label: "X / Twitter", href: "https://x.com/buzz_tkc" },
