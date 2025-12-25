@@ -1,5 +1,7 @@
 import "server-only";
 
+import { unstable_cache } from "next/cache";
+
 import type { TocItemId } from "@/components/toc";
 
 export type ExternalLink = {
@@ -182,37 +184,43 @@ async function loadPrivatePortfolioFromUrl(): Promise<Partial<Portfolio> | null>
       // Apps Script Web Apps don't reliably expose Authorization headers to `doGet(e)`.
       // We avoid query params (leaky) and instead send the token in POST body.
       // NOTE: Apps Script must implement `doPost(e)` and validate JSON body.
-      // Cache private portfolio responses on the server to reduce load on the upstream.
-      // (Next.js fetch cache) default is cacheable; we set an explicit revalidate window.
-      next: { revalidate },
       redirect: "manual",
       signal,
     });
   };
 
-  // Apps Script Web App often redirects from `script.google.com` → `script.googleusercontent.com`.
-  // Many HTTP clients (and fetch) will drop Authorization on cross-origin redirects.
-  // We follow redirects manually to preserve Bearer auth.
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), timeout);
-  let currentUrl = url;
-  let res: Response | null = null;
-  try {
-    for (let i = 0; i < 3; i++) {
-      res = await fetchWithAuth(currentUrl, controller.signal);
-      const isRedirect = res.status >= 300 && res.status < 400;
-      if (!isRedirect) break;
-      const location = res.headers.get("location");
-      if (!location) break;
-      currentUrl = new URL(location, currentUrl).toString();
+  const fetchPrivatePatch = async () => {
+    // Apps Script Web App often redirects from `script.google.com` → `script.googleusercontent.com`.
+    // We follow redirects manually and keep sending the auth body on each hop.
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), timeout);
+    let currentUrl = url;
+    let res: Response | null = null;
+    try {
+      for (let i = 0; i < 3; i++) {
+        res = await fetchWithAuth(currentUrl, controller.signal);
+        const isRedirect = res.status >= 300 && res.status < 400;
+        if (!isRedirect) break;
+        const location = res.headers.get("location");
+        if (!location) break;
+        currentUrl = new URL(location, currentUrl).toString();
+      }
+    } finally {
+      clearTimeout(timer);
     }
-  } finally {
-    clearTimeout(timer);
-  }
 
-  if (!res || !res.ok) return null;
-  const parsed: unknown = await res.json();
-  return isPortfolioPatch(parsed) ? (parsed as Partial<Portfolio>) : null;
+    if (!res || !res.ok) return null;
+    const parsed: unknown = await res.json();
+    return isPortfolioPatch(parsed) ? (parsed as Partial<Portfolio>) : null;
+  };
+
+  // Note: Next.js fetch cache does not reliably cache non-GET requests.
+  // We use unstable_cache to cache the resolved patch for the configured window.
+  const cached = unstable_cache(fetchPrivatePatch, ["portfolio-private-url", url, token ?? ""], {
+    revalidate,
+  });
+
+  return await cached();
 }
 
 /**

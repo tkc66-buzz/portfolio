@@ -61,6 +61,11 @@ Deploy:
 
 Copy the Web App URL.
 
+### IMPORTANT: After editing Code.gs, redeploy
+
+If you change `Code.gs`, you MUST redeploy (edit deployment or create a new deployment),
+otherwise the Web App may keep serving an older version (e.g., GET-only / no doPost).
+
 ## 3) Configure Vercel env vars
 
 Set:
@@ -84,3 +89,6 @@ curl -L -X POST -H "Content-Type: application/json" \
   -d '{"token":"<your bearer token>"}' \
   "<your apps script web app url>"
 ```
+
+If you still see HTML or `405 Allow: GET, HEAD`, the deployment is not updated or the URL is not
+the Web App URL.
