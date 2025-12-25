@@ -29,7 +29,16 @@ export type ExperienceHighlight = {
 
 export type Skill = {
   label: string;
-  level: number;
+  /**
+   * Years of hands-on experience (preferred).
+   * Use integer or half steps (e.g. 3.5).
+   */
+  years?: number;
+  /**
+   * Legacy subjective score (0-100). Kept for backward compatibility with older data.
+   * Prefer `years`.
+   */
+  level?: number;
 };
 
 export type SkillCategory = {
@@ -104,41 +113,41 @@ export const publicPortfolio: Portfolio = {
     heading: "Skills",
     // Backward compatible: `items` can still be used by external overrides.
     items: [
-      { label: "Go", level: 85 },
-      { label: "TypeScript", level: 85 },
-      { label: "AWS", level: 75 },
-      { label: "GCP", level: 70 },
+      { label: "Go", years: 3 },
+      { label: "TypeScript", years: 3 },
+      { label: "AWS", years: 3 },
+      { label: "GCP", years: 2 },
     ],
     categories: [
       {
         name: "Backend",
         items: [
-          { label: "Go", level: 85 },
-          { label: "API Design", level: 80 },
-          { label: "SQL / Data modeling", level: 75 },
+          { label: "Go", years: 3 },
+          { label: "API Design", years: 4 },
+          { label: "SQL / Data modeling", years: 4 },
         ],
       },
       {
         name: "Infrastructure",
         items: [
-          { label: "AWS", level: 75 },
-          { label: "Terraform", level: 70 },
-          { label: "Observability", level: 70 },
+          { label: "AWS", years: 3 },
+          { label: "Terraform", years: 3 },
+          { label: "Observability", years: 4 },
         ],
       },
       {
         name: "Data / ML",
         items: [
-          { label: "Data Science", level: 70 },
-          { label: "ML Engineering", level: 65 },
+          { label: "Data Science", years: 2 },
+          { label: "ML Engineering", years: 2 },
         ],
       },
       {
         name: "Frontend",
         items: [
-          { label: "TypeScript", level: 85 },
-          { label: "React / Next.js", level: 75 },
-          { label: "Design Systems", level: 70 },
+          { label: "TypeScript", years: 3 },
+          { label: "React / Next.js", years: 3 },
+          { label: "Design Systems", years: 3 },
         ],
       },
     ],
