@@ -60,6 +60,23 @@ export type Portfolio = {
   contact: Contact;
 };
 
+function flattenSkillCategories(categories: SkillCategory[]): Skill[] {
+  const byLabel = new Map<string, Skill>();
+  for (const cat of categories) {
+    for (const skill of cat.items) {
+      if (!byLabel.has(skill.label)) byLabel.set(skill.label, skill);
+    }
+  }
+  return [...byLabel.values()];
+}
+
+function normalizeSkills(skills: Skills): Skills {
+  if (skills.categories && skills.categories.length > 0) {
+    return { ...skills, items: flattenSkillCategories(skills.categories) };
+  }
+  return skills;
+}
+
 export const publicPortfolio: Portfolio = {
   profile: {
     id: "profile",
@@ -106,14 +123,9 @@ export const publicPortfolio: Portfolio = {
   skills: {
     id: "skills",
     heading: "Skills",
-    // Backward compatible: `items` can still be used by external overrides.
-    items: [
-      { label: "Go", years: 3 },
-      { label: "TypeScript", years: 3 },
-      { label: "AWS", years: 3 },
-      { label: "Terraform", years: 3 },
-      { label: "Observability", years: 4 },
-    ],
+    // Backward-compatible: keep `items` but do not manually maintain it.
+    // It will be derived from categories by `normalizeSkills()`.
+    items: [],
     categories: [
       {
         name: "Backend (Go / TypeScript)",
@@ -128,10 +140,10 @@ export const publicPortfolio: Portfolio = {
       {
         name: "Infrastructure",
         items: [
-          { label: "AWS", years: 3 },
+          { label: "AWS", years: 8 },
           { label: "GCP", years: 2 },
-          { label: "Terraform", years: 3 },
-          { label: "Observability", years: 4 },
+          { label: "Terraform", years: 4 },
+          { label: "Observability", years: 5 },
           { label: "CI/CD", years: 3 },
         ],
       },
@@ -203,10 +215,11 @@ function mergePortfolio(base: Portfolio, patch: Partial<Portfolio>): Portfolio {
 
   // Strictness: Skills MUST have exact years. If a private override provides invalid skills,
   // ignore only the skills override (keep the rest).
-  const skillsValid = validateSkills(mergedCandidate.skills);
+  const normalizedSkills = normalizeSkills(mergedCandidate.skills);
+  const skillsValid = validateSkills(normalizedSkills);
   const merged: Portfolio = skillsValid
-    ? mergedCandidate
-    : { ...mergedCandidate, skills: base.skills };
+    ? { ...mergedCandidate, skills: normalizedSkills }
+    : { ...mergedCandidate, skills: normalizeSkills(base.skills) };
 
   merged.contact.links = normalizeLinks(merged.contact.links);
   return merged;
