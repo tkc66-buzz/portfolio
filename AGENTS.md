@@ -39,6 +39,7 @@ Unified cheat sheet so any AI agent (Claude Code, GPT, etc.) can understand the 
   - Skills support categorized groups (`skills.categories`) with a backward-compatible flat list (`skills.items`) derived from categories.
     - Skills use `years` (required) and can optionally include `firstUsedYear` / `lastUsedYear` to show recency.
   - Writing/Blog links live in `portfolio.writing` and are rendered in `src/components/sections/WritingSection.tsx`.
+  - Activities (Talks/Books/Community) live in `portfolio.activities` and are rendered in `src/components/sections/ActivitiesSection.tsx`.
 
 ## Workflow Expectations
 - Branch from feature branch, open PR → merge to `main` → Vercel autodeploy.

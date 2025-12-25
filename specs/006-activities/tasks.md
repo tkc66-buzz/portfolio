@@ -23,9 +23,9 @@ description: "Tasks for 006 – Activities (Talks / Books / Community)"
 
 **Purpose**: Confirm the integration points for adding a new proof surface + TOC entry.
 
-- [ ] T001 Confirm current TOC config and section composition in `src/components/toc.ts` and `src/app/page.tsx`
-- [ ] T002 Confirm current content source-of-truth patterns and private override merge in `src/content/portfolio.ts`
-- [ ] T003 [P] Confirm external link safety pattern in existing sections (`src/components/sections/WritingSection.tsx`, `src/components/sections/ContactSection.tsx`)
+- [x] T001 Confirm current TOC config and section composition in `src/components/toc.ts` and `src/app/page.tsx`
+- [x] T002 Confirm current content source-of-truth patterns and private override merge in `src/content/portfolio.ts`
+- [x] T003 [P] Confirm external link safety pattern in existing sections (`src/components/sections/WritingSection.tsx`, `src/components/sections/ContactSection.tsx`)
 
 ---
 
@@ -35,10 +35,10 @@ description: "Tasks for 006 – Activities (Talks / Books / Community)"
 
 **⚠️ CRITICAL**: No user story work should begin until this phase is complete.
 
-- [ ] T004 Decide final IA as **split** (Writing vs Activities) and document rationale in `specs/006-activities/research.md`
-- [ ] T005 Add TOC id (`activities`) + label (`Activities`) in `src/components/toc.ts`
-- [ ] T006 Add new section component file `src/components/sections/ActivitiesSection.tsx` (server component, same frame styling)
-- [ ] T007 Wire the section into page composition in `src/app/page.tsx` (keep page thin; choose section order)
+- [x] T004 Decide final IA as **split** (Writing vs Activities) and document rationale in `specs/006-activities/research.md`
+- [x] T005 Add TOC id (`activities`) + label (`Activities`) in `src/components/toc.ts`
+- [x] T006 Add new section component file `src/components/sections/ActivitiesSection.tsx` (server component, same frame styling)
+- [x] T007 Wire the section into page composition in `src/app/page.tsx` (keep page thin; choose section order)
 
 **Checkpoint**: The app compiles and the `#activities` anchor exists.
 
@@ -52,10 +52,10 @@ description: "Tasks for 006 – Activities (Talks / Books / Community)"
 
 ### Implementation for User Story 1
 
-- [ ] T008 [US1] Extend content model and add `portfolio.activities` to `src/content/portfolio.ts` (types + `publicPortfolio` + merge)
-- [ ] T009 [US1] Render grouped items (Talks/Books/Community) in `src/components/sections/ActivitiesSection.tsx`
-- [ ] T010 [US1] Implement explicit empty state (“Coming soon”) when a group has zero items in `src/components/sections/ActivitiesSection.tsx`
-- [ ] T011 [US1] Ensure external links are safe in `src/components/sections/ActivitiesSection.tsx` (`target="_blank"`, `rel="noreferrer"`)
+- [x] T008 [US1] Extend content model and add `portfolio.activities` to `src/content/portfolio.ts` (types + `publicPortfolio` + merge)
+- [x] T009 [US1] Render grouped items (Talks/Books/Community) in `src/components/sections/ActivitiesSection.tsx`
+- [x] T010 [US1] Implement explicit empty state (“Coming soon”) when a group has zero items in `src/components/sections/ActivitiesSection.tsx`
+- [x] T011 [US1] Ensure external links are safe in `src/components/sections/ActivitiesSection.tsx` (`target="_blank"`, `rel="noreferrer"`)
 
 **Checkpoint**: Activities section is scannable in <1 minute and does not leak unsafe links.
 
@@ -69,8 +69,8 @@ description: "Tasks for 006 – Activities (Talks / Books / Community)"
 
 ### Implementation for User Story 2
 
-- [ ] T012 [US2] Add short explanatory copy to `src/components/sections/WritingSection.tsx` and/or `src/components/sections/ActivitiesSection.tsx` so roles are obvious
-- [ ] T013 [US2] Verify TOC count and label scan-ability in `src/components/toc.ts` (no overlong labels)
+- [x] T012 [US2] Add short explanatory copy to `src/components/sections/WritingSection.tsx` and/or `src/components/sections/ActivitiesSection.tsx` so roles are obvious
+- [x] T013 [US2] Verify TOC count and label scan-ability in `src/components/toc.ts` (no overlong labels)
 
 **Checkpoint**: No confusion between Writing and Activities; navigation remains fast.
 
@@ -80,10 +80,10 @@ description: "Tasks for 006 – Activities (Talks / Books / Community)"
 
 **Purpose**: Quality gates + docs sync for top-level UX change.
 
-- [ ] T014 Update docs to mention the new Activities section in `README.md`, `AGENTS.md`, and `CLAUDE.md`
-- [ ] T015 Run `specs/006-activities/quickstart.md` verification steps
-- [ ] T016 Run `pnpm lint` and fix any issues
-- [ ] T017 Run `pnpm build` and fix any issues
+- [x] T014 Update docs to mention the new Activities section in `README.md`, `AGENTS.md`, and `CLAUDE.md`
+- [x] T015 Run `specs/006-activities/quickstart.md` verification steps
+- [x] T016 Run `pnpm lint` and fix any issues
+- [x] T017 Run `pnpm build` and fix any issues
 
 ---
 

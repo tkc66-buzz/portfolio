@@ -64,6 +64,20 @@ export type Experience = SectionContent & { highlights: ExperienceHighlight[] };
 export type Projects = SectionContent & { items: Project[] };
 export type Skills = SectionContent & { items: Skill[]; categories?: SkillCategory[] };
 export type Writing = SectionContent & { items: ExternalLink[] };
+
+export type ActivityItem = {
+  year: string;
+  title: string;
+  context?: string;
+  link?: ExternalLink;
+};
+
+export type ActivityGroup = {
+  name: "Talks" | "Books" | "Community";
+  items: ActivityItem[];
+};
+
+export type Activities = SectionContent & { groups: ActivityGroup[] };
 export type Contact = SectionContent & { blurb: string; links: ExternalLink[] };
 
 export type Portfolio = {
@@ -71,6 +85,7 @@ export type Portfolio = {
   experience: Experience;
   projects: Projects;
   writing: Writing;
+  activities: Activities;
   skills: Skills;
   contact: Contact;
 };
@@ -185,6 +200,15 @@ export const publicPortfolio: Portfolio = {
       { label: "Casual (sizu.me)", href: "https://sizu.me/buzz" },
     ],
   },
+  activities: {
+    id: "activities",
+    heading: "Activities",
+    groups: [
+      { name: "Talks", items: [] },
+      { name: "Books", items: [] },
+      { name: "Community", items: [] },
+    ],
+  },
   skills: {
     id: "skills",
     heading: "Skills",
@@ -270,6 +294,7 @@ function isPortfolioPatch(value: unknown): value is Partial<Portfolio> {
     "experience" in value ||
     "projects" in value ||
     "writing" in value ||
+    "activities" in value ||
     "skills" in value ||
     "contact" in value
   );
@@ -282,6 +307,7 @@ function mergePortfolio(base: Portfolio, patch: Partial<Portfolio>): Portfolio {
     experience: { ...base.experience, ...(patch.experience ?? {}) },
     projects: { ...base.projects, ...(patch.projects ?? {}) },
     writing: { ...base.writing, ...(patch.writing ?? {}) },
+    activities: { ...base.activities, ...(patch.activities ?? {}) },
     skills: { ...base.skills, ...(patch.skills ?? {}) },
     contact: { ...base.contact, ...(patch.contact ?? {}) },
   };
@@ -433,5 +459,6 @@ export const profile = publicPortfolio.profile;
 export const experience = publicPortfolio.experience;
 export const projects = publicPortfolio.projects;
 export const writing = publicPortfolio.writing;
+export const activities = publicPortfolio.activities;
 export const skills = publicPortfolio.skills;
 export const contact = publicPortfolio.contact;

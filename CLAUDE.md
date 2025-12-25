@@ -17,6 +17,7 @@ Focused tips for Anthropic Claude Code / Workbench agents interacting with this 
 - `src/components/TableOfContents.tsx` – TOC UI (in-page navigation).
 - `src/components/sections/*` – Semantic sections; each owns a stable `id` for `#hash` navigation.
 - `src/components/sections/WritingSection.tsx` – Writing/blog links section (external links).
+- `src/components/sections/ActivitiesSection.tsx` – Activities section (Talks/Books/Community).
 - `src/content/portfolio.ts` – Public content + optional private overrides loaded server-side via env vars:
   - `PORTFOLIO_PRIVATE_SOURCE` = `env` or `url`
   - `PORTFOLIO_PRIVATE_JSON` (JSON string)

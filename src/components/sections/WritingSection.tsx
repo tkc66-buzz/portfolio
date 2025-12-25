@@ -19,7 +19,7 @@ export async function WritingSection() {
       </h2>
 
       <p className="mt-3 text-sm [font-family:var(--font-noto)]">
-        技術記事と雑記を分けて書いています。
+        記事（Writing）は文章のまとめ。登壇/書籍/コミュニティは Activities に分けています。
       </p>
 
       <div className="mt-6 flex flex-wrap gap-3">
