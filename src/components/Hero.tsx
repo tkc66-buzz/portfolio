@@ -14,8 +14,9 @@ export function Hero() {
         Takeshi Watanabe <span className="text-fami-gold">(Buzz)</span>
       </h1>
       <p className="mt-4 text-base md:text-lg [font-family:var(--font-noto)]">
-        Crafting playful front-end experiences that blend retro charm with
-        modern DX.
+        Backend Engineer (Go) with a Platform/Infra mindset—shipping reliable
+        systems, observability. Also builds TypeScript
+        full-stack and has a Data/ML background.
       </p>
       <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
         <button className="nes-btn is-error uppercase tracking-wide">
