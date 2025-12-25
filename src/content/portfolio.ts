@@ -206,21 +206,22 @@ export const publicPortfolio: Portfolio = {
     groups: [
       { name: "Talks",
         items: [
-        { year: "2020", title: "AWS Partner Summit Tokyo", context: "AWS Partner Summit Tokyoにオンラインで登壇しました", link: { label: "開催記事", href: "https://aws.amazon.com/jp/blogs/psa/aws-partner-summit-tokyo/" } },
+        { year: "2020", title: "AWS Partner Summit Tokyo", context: "AWS Partner Summit TokyoにAWS ANGEL DOJOでアライアンス賞を受賞したプロダクトを紹介しました", link: { label: "開催記事", href: "https://aws.amazon.com/jp/blogs/psa/aws-partner-summit-tokyo/" } },
+        { year: "2024", title: "Developpers Summit", context: "Developper Summit TokyoにPlatform Engineeringについてオフラインで登壇しました", link: { label: "イベント詳細", href: "https://event.shoeisha.jp/devsumi/20240215/session/4807" } },
       ] },
       { name: "Books", items: [
-        { year: "2025", title: "Tech Blog", context: "Medium", link: { label: "Medium", href: "https://medium.com/@buzz_tkc" } },
+        { year: "2024", title: "Real World Platform Engineering: 現場の知恵とノウハウ", context: "Platform Engineeringの現場でのノウハウや導入についてMeetup メンバーで書籍を執筆し、技術書典と技書博で発売しました。", link: { label: "技術書典", href: "https://techbookfest.org/product/qunTLHG5hLbL91bBX9dqDU?productVariantID=diV811bQsBeU5YfWhtGym0" },}
       ] },
       { name: "Community", items: [
-        { year: "2025", title: "Tech Blog", context: "Medium", link: { label: "Medium", href: "https://medium.com/@buzz_tkc" } },
+        { year: "2024", title: "Platform Engineering Kaigi Core Staff", context: "日本初となるPlatform Engineeringに関するカンファレンス開催に貢献しました。", link: { label: "Platform Engineering Kaigi", href: "https://www.cnia.io/pek2024/" } },
+        { year: "2019-2025", title: "SRE NEXT Core Staff", context: "SRE NEXT Core Staffとして、SNS、 会場、 スポンサー、 司会等を担当しました。", link: { label: "SRE NEXT", href: "https://sre-next.dev/" } },
+        { year: "2022-2025", title: "Cloud Native Days Core Staff", context: "Cloud Native Daysの配信担当としてハイブリッドイベント開催に貢献しました。", link: { label: "Cloud Native Days", href: "https://cloudnativedays.jp/" } },
       ] },
     ],
   },
   skills: {
     id: "skills",
     heading: "Skills",
-    // Backward-compatible: keep `items` but do not manually maintain it.
-    // It will be derived from categories by `normalizeSkills()`.
     items: [],
     categories: [
       {
