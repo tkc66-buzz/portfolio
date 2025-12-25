@@ -1,4 +1,4 @@
-# Feature Specification: Hero “Menu” Button (Navigation)
+# Feature Specification: Menu Navigation (Hero + Menu)
 
 **Feature Branch**: `010-hero-buttons`  
 **Created**: 2025-12-25  
@@ -7,29 +7,29 @@
 
 ## User Scenarios & Testing *(mandatory)*
 
-### User Story 1 - Heroの「Menu」ボタンが迷わず使える (Priority: P1)
+### User Story 1 - Menuが迷わず使える (Priority: P1)
 
-Hero に “Menu” ボタンが表示されている場合、押したらメニューへ移動し、迷子にならずに各セクションへ移動できる。
+Hero 直下に Menu が表示されており、迷子にならずに各セクションへ移動できる。
 
 **Why this priority**: 入口のUIで「押せそうなのに何も起きない」はUXとして致命的で、離脱につながる。
 
 **Independent Test**:
-- “Menu” を押すと `#menu` に移動する
+- Menu から任意のセクションへ移動できる
 
 **Acceptance Scenarios**:
-1. **Given** 任意の状態、**When** Menu を押す、**Then** `#menu` に移動する
+1. **Given** 初見ユーザー、**When** Menu のボタンを押す、**Then** 対応するセクションへ移動する
 
 ---
 
 ### Edge Cases
 
-- `#menu` が存在しない場合でも（想定外）、ページが壊れないこと
+- Menu が画面外にある場合でも、スクロールで到達できること
 
 ## Requirements *(mandatory)*
 
 ### Functional Requirements
 
-- **FR-001**: Menu は `#menu` に遷移する
+- **FR-001**: Menu から各セクションへ hash navigation できる
 - **FR-002**: 追加依存は入れず、Server Componentを維持する（単純なアンカーリンク）
 
 ### Key Entities *(include if feature involves data)*

@@ -1,13 +1,13 @@
-# Research: Hero “Menu” behavior
+# Research: Menu placement (Hero + Menu)
 
-## Decision: Keep only “Menu” (remove Start/Continue)
+## Decision: Show Menu directly under Hero (no Hero button)
 
-**Decision**: Remove Start/Continue and keep a single Menu button that jumps to the Menu.
+**Decision**: Remove Start/Continue and do not add a redundant Hero button; show Menu directly under the Hero.
 
 **Rationale**:
 - Removes “clickable but does nothing” confusion at the page entry point
-- Keeps the retro vibe (Menu is still a “game-like” affordance) while being unambiguous
-- Uses plain anchor navigation (no client code needed)
+- Avoids duplicate navigation affordances (Hero button + visible Menu)
+- Keeps everything unambiguous and lightweight (plain anchor navigation)
 
 **Alternatives considered**:
 - **Keep Start/Continue**: can add personality, but tends to feel arbitrary on a one-page portfolio.
