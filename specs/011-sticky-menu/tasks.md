@@ -23,9 +23,9 @@ description: "Tasks for 011 – Sticky MENU (Always Visible Navigation)"
 
 **Purpose**: Confirm current Menu UI and current anchor behavior.
 
-- [ ] T001 Confirm current Menu component structure in `src/components/TableOfContents.tsx` and `src/components/toc.ts`
-- [ ] T002 Confirm page composition order in `src/app/page.tsx` (Hero → Menu → sections)
-- [ ] T003 Confirm current section anchor offsets (`scroll-mt-*`) in `src/components/sections/*Section.tsx`
+- [x] T001 Confirm current Menu component structure in `src/components/TableOfContents.tsx` and `src/components/toc.ts`
+- [x] T002 Confirm page composition order in `src/app/page.tsx` (Hero → Menu → sections)
+- [x] T003 Confirm current section anchor offsets (`scroll-mt-*`) in `src/components/sections/*Section.tsx`
 
 ---
 
@@ -35,9 +35,9 @@ description: "Tasks for 011 – Sticky MENU (Always Visible Navigation)"
 
 **⚠️ CRITICAL**: No user story work should begin until this phase is complete.
 
-- [ ] T004 Decide sticky mechanism as CSS `position: sticky` (no JS) and document in `specs/011-sticky-menu/research.md`
-- [ ] T005 Define the target sticky top offset and target menu height (rough) in `specs/011-sticky-menu/research.md`
-- [ ] T006 Decide anchor offset approach (increase `scroll-mt-*` or CSS variable) and document in `specs/011-sticky-menu/research.md`
+- [x] T004 Decide sticky mechanism as CSS `position: sticky` (no JS) and document in `specs/011-sticky-menu/research.md`
+- [x] T005 Define the target sticky top offset and target menu height (rough) in `specs/011-sticky-menu/research.md`
+- [x] T006 Decide anchor offset approach (increase `scroll-mt-*` or CSS variable) and document in `specs/011-sticky-menu/research.md`
 
 **Checkpoint**: We have a clear design for “always visible” and “headings not covered”.
 
@@ -51,9 +51,9 @@ description: "Tasks for 011 – Sticky MENU (Always Visible Navigation)"
 
 ### Implementation for User Story 1
 
-- [ ] T007 [US1] Make Menu sticky using Tailwind/CSS in `src/components/TableOfContents.tsx` (`position: sticky`, `top-*`, `z-*`)
-- [ ] T008 [US1] Add necessary spacing so the sticky Menu doesn’t overlap content in `src/app/page.tsx` (e.g., wrapper gap/padding)
-- [ ] T009 [US1] Adjust section `scroll-mt-*` values to account for sticky Menu height in `src/components/sections/*Section.tsx`
+- [x] T007 [US1] Make Menu sticky using Tailwind/CSS in `src/components/TableOfContents.tsx` (`position: sticky`, `top-*`, `z-*`)
+- [x] T008 [US1] Add necessary spacing so the sticky Menu doesn’t overlap content in `src/app/page.tsx` (e.g., wrapper gap/padding)
+- [x] T009 [US1] Adjust section `scroll-mt-*` values to account for sticky Menu height in `src/components/sections/*Section.tsx`
 
 **Checkpoint**: Sticky Menu works without JS and anchors don’t hide headings.
 
@@ -67,9 +67,9 @@ description: "Tasks for 011 – Sticky MENU (Always Visible Navigation)"
 
 ### Implementation for User Story 2
 
-- [ ] T010 [US2] Apply “HUD” styling (contrast, subtle shadow, optional blur) in `src/components/TableOfContents.tsx`
-- [ ] T011 [US2] Ensure buttons remain tappable on mobile (wrapping/gap/size) in `src/components/TableOfContents.tsx`
-- [ ] T012 [US2] Ensure focus styles remain strong for keyboard navigation in `src/components/TableOfContents.tsx`
+- [x] T010 [US2] Apply “HUD” styling (contrast, subtle shadow, optional blur) in `src/components/TableOfContents.tsx`
+- [x] T011 [US2] Ensure buttons remain tappable on mobile (wrapping/gap/size) in `src/components/TableOfContents.tsx`
+- [x] T012 [US2] Ensure focus styles remain strong for keyboard navigation in `src/components/TableOfContents.tsx`
 
 **Checkpoint**: “Cool retro HUD” achieved without hurting readability.
 
@@ -79,10 +79,10 @@ description: "Tasks for 011 – Sticky MENU (Always Visible Navigation)"
 
 **Purpose**: Quality gates + docs sync for top-level UX change.
 
-- [ ] T013 Update docs to mention sticky Menu in `README.md`, `AGENTS.md`, and `CLAUDE.md`
-- [ ] T014 Run `specs/011-sticky-menu/quickstart.md` verification steps
-- [ ] T015 Run `pnpm lint` and fix any issues
-- [ ] T016 Run `pnpm build` and fix any issues
+- [x] T013 Update docs to mention sticky Menu in `README.md`, `AGENTS.md`, and `CLAUDE.md`
+- [x] T014 Run `specs/011-sticky-menu/quickstart.md` verification steps
+- [x] T015 Run `pnpm lint` and fix any issues
+- [x] T016 Run `pnpm build` and fix any issues
 
 ---
 
@@ -100,5 +100,3 @@ description: "Tasks for 011 – Sticky MENU (Always Visible Navigation)"
 
 - T007 and T009 can be parallelized carefully if different files are edited (Menu vs sections.
 - In US2, T010–T012 are mostly the same file and should be done sequentially.
-
-

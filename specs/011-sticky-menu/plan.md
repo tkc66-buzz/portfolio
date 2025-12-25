@@ -45,6 +45,7 @@ gates (adapt per feature) are:
   `README.md`, `AGENTS.md`, and `CLAUDE.md` together.
 
 **Gate evaluation (pre-research)**:
+
 - Principle compliance: ✅（閲覧体験の改善＝ストーリーの到達性を上げる）
 - Retro+Usability: ✅（レトロHUD + 押しやすさ/視認性を両立）
 - Lightweight: ✅（CSS中心、依存追加なし）

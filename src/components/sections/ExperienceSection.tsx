@@ -19,7 +19,10 @@ export async function ExperienceSection() {
   );
 
   return (
-    <section id={experience.id} className="frame scroll-mt-6 bg-[#1b1b1b] p-6 text-fami-ivory">
+    <section
+      id={experience.id}
+      className="frame scroll-mt-[var(--menu-offset)] bg-[#1b1b1b] p-6 text-fami-ivory"
+    >
       <h2 className="text-xl text-fami-gold" style={{ fontFamily: "var(--font-press)" }}>
         {experience.heading}
       </h2>
@@ -31,28 +34,28 @@ export async function ExperienceSection() {
           const { main, evidence } = splitEvidence(item.text);
           const anchor = evidence ? anchorByTitle.get(evidence) : undefined;
           return (
-          <li key={item.year} className="flex gap-3">
-            <span className="shrink-0">
-              <span className="nes-badge is-warning text-[0.6rem]">
-                <span>{item.year}</span>
+            <li key={item.year} className="flex gap-3">
+              <span className="shrink-0">
+                <span className="nes-badge is-warning text-[0.6rem]">
+                  <span>{item.year}</span>
+                </span>
               </span>
-            </span>
-            <div className="min-w-0">
-              <p className="leading-relaxed">{main}</p>
-              {evidence ? (
-                <p className="mt-1 text-xs text-fami-ivory/90">
-                  <span className="text-fami-gold">Evidence</span>:{" "}
-                  {anchor ? (
-                    <a className="underline" href={`#${anchor}`}>
-                      {evidence}
-                    </a>
-                  ) : (
-                    <span>{evidence}</span>
-                  )}
-                </p>
-              ) : null}
-            </div>
-          </li>
+              <div className="min-w-0">
+                <p className="leading-relaxed">{main}</p>
+                {evidence ? (
+                  <p className="mt-1 text-xs text-fami-ivory/90">
+                    <span className="text-fami-gold">Evidence</span>:{" "}
+                    {anchor ? (
+                      <a className="underline" href={`#${anchor}`}>
+                        {evidence}
+                      </a>
+                    ) : (
+                      <span>{evidence}</span>
+                    )}
+                  </p>
+                ) : null}
+              </div>
+            </li>
           );
         })}
       </ul>

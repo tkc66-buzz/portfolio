@@ -11,14 +11,14 @@ Focused tips for Anthropic Claude Code / Workbench agents interacting with this 
 ## How to Start a Session
 
 1. `pnpm install` – installs deps using `.npmrc` hoist settings.
-2. `pnpm dev` – launches dev server on http://localhost:3000.
+2. `pnpm dev` – launches dev server on `http://localhost:3000`.
 3. `pnpm lint` – primary verification step (no tests yet). Add playwright/vitest if implementing complex features.
 4. `pnpm format:check` – formatter check (Prettier + Tailwind class sorting).
 
 ## Repo Hotspots
 
 - `src/app/page.tsx` – Landing page composition (Hero → Menu → sections). Keep it thin; put content in sections and data in `src/content/portfolio.ts`.
-- `src/components/TableOfContents.tsx` – Menu UI (in-page navigation).
+- `src/components/TableOfContents.tsx` – Menu UI (in-page navigation, sticky HUD).
 - `src/components/Hero.tsx` – Hero header (no buttons; Menu is directly below).
 - `src/components/sections/*` – Semantic sections; each owns a stable `id` for `#hash` navigation.
 - `src/components/sections/WritingSection.tsx` – Writing/blog links section (external links).

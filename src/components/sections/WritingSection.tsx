@@ -7,7 +7,10 @@ function isExternalHttpHref(href: string) {
 export async function WritingSection() {
   const { writing } = await getPortfolio();
   return (
-    <section id={writing.id} className="frame scroll-mt-6 bg-[#1b1b1b] p-6 text-fami-ivory">
+    <section
+      id={writing.id}
+      className="frame scroll-mt-[var(--menu-offset)] bg-[#1b1b1b] p-6 text-fami-ivory"
+    >
       <h2 className="text-xl text-fami-gold" style={{ fontFamily: "var(--font-press)" }}>
         {writing.heading}
       </h2>

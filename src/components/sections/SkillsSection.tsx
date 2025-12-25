@@ -23,7 +23,10 @@ export async function SkillsSection() {
   const maxYears = yearValues.length > 0 ? Math.max(...yearValues, 5) : 5;
 
   return (
-    <section id={skills.id} className="frame scroll-mt-6 bg-[#1b1b1b] p-6 text-fami-ivory">
+    <section
+      id={skills.id}
+      className="frame scroll-mt-[var(--menu-offset)] bg-[#1b1b1b] p-6 text-fami-ivory"
+    >
       <h2 className="text-xl text-fami-gold" style={{ fontFamily: "var(--font-press)" }}>
         {skills.heading}
       </h2>

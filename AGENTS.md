@@ -38,6 +38,7 @@ Unified cheat sheet so any AI agent (Claude Code, GPT, etc.) can understand the 
 - Landing page composition lives in `src/app/page.tsx` and is intentionally thin.
 - Menu navigation is implemented via `src/components/TableOfContents.tsx` + `src/components/toc.ts`.
 - Menu is displayed directly under the Hero and provides in-page navigation.
+- Menu is styled as a sticky “HUD” so it remains visible while scrolling.
 - Semantic sections live under `src/components/sections/*` and each owns a stable `id`
   for in-page anchor navigation.
 - Content data is centralized in `src/content/portfolio.ts` for maintainability.

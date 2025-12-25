@@ -1,4 +1,4 @@
-Portfolio
+# Portfolio
 
 Phase 1 of the Famicom-style portfolio for Takeshi Watanabe (Buzz). Built with Next.js 16 + TypeScript + Tailwind CSS + NES.css. This commit focuses on the "frame" only—each section ships with placeholder copy so real content can slide in during Phase 2.
 
@@ -8,10 +8,11 @@ Phase 1 of the Famicom-style portfolio for Takeshi Watanabe (Buzz). Built with N
 - Famicom palette (red `#a20000`, gold `#d7b05b`, background `#111`) and retro typography (Press Start 2P + Noto Sans JP)
 - NES.css buttons, badges, and progress bars wired up for later polish
 - Menu is displayed directly under the Hero and provides in-page navigation
+- Menu is a **sticky HUD**: it stays visible while scrolling for fast section jumping
 
 ## Project layout
 
-```
+```text
 src/
   app/
     layout.tsx      // fonts, NES import, metadata

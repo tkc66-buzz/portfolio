@@ -34,7 +34,11 @@
 - Without offset, anchor jumps land under the sticky menu and headings get hidden
 
 **Implementation approach**:
-- Either increase `scroll-mt-*` on sections (preferred: consistent `scroll-mt-24` etc.)
-- Or set a CSS variable for header height and reuse across sections (future enhancement)
+- Define CSS variables for the sticky menu geometry:
+  - `--menu-top`: sticky top spacing
+  - `--menu-offset`: anchor jump offset (>= menu height + top spacing)
+- Apply:
+  - Sticky: `top-[var(--menu-top)]` on `src/components/TableOfContents.tsx`
+  - Anchor offsets: `scroll-mt-[var(--menu-offset)]` on each section (and project card anchors)
 
 
