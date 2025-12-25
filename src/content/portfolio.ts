@@ -119,9 +119,21 @@ export const publicPortfolio: Portfolio = {
     id: "experience",
     heading: "Experience",
     highlights: [
-      { year: "2025", text: "プロダクトの体験設計と実装を横断してリード" },
-      { year: "2024", text: "デザインシステム/コンポーネント整備で開発速度を改善" },
-      { year: "2023", text: "Next.js を中心にフロント基盤を刷新" },
+      {
+        year: "2025",
+        text:
+          "Backend Engineer (Go)。運用・開発体験・プロダクト価値の三点をつなぐ改善をリード（設計〜実装〜運用）。",
+      },
+      {
+        year: "2024",
+        text:
+          "信頼性と速度のトレードオフを解消するために、監視/アラート/オンコール運用を整備し、障害対応の再現性を上げた。",
+      },
+      {
+        year: "2019–2023",
+        text:
+          "ML/Data/Platform/Infra領域を横断。要件が曖昧な段階から仕組みに落として運用に乗せる（PoCで終わらせない）を得意領域にした。",
+      },
     ],
   },
   projects: {
@@ -130,23 +142,36 @@ export const publicPortfolio: Portfolio = {
     items: [
       {
         visibility: "public",
-        title: "Retro Commerce",
-        summary: "NES感UIのEC体験。",
-        role: "Front-end",
-        tech: ["TypeScript", "Next.js", "Tailwind"],
-        outcomeOrLearning: "UIの一貫性と可読性を崩さずにスピードを出す型を作れた。",
-        link: { label: "Details", href: "#" },
-        status: "2024",
+        title: "Goによるバックエンド刷新",
+        summary:
+          "既存システムの制約を踏まえつつ、段階移行でリスクを抑えながら置き換えを推進。",
+        role: "Tech Lead / Backend",
+        tech: ["Go", "AWS", "SQL", "Observability"],
+        outcomeOrLearning:
+          "移行の設計（分割/切替/ロールバック）と、運用を含めた品質担保の型を作れた。",
+        status: "2024–2025",
       },
       {
         visibility: "public",
-        title: "Arcade CMS",
-        summary: "レトロテーマの管理画面。",
-        role: "Design Systems",
-        tech: ["React", "Component Design"],
-        outcomeOrLearning: "運用し続けられるコンポーネント粒度を学んだ。",
-        link: { label: "Details", href: "#" },
-        status: "2023",
+        title: "監視・運用改善（Datadog中心）",
+        summary:
+          "障害対応の属人性を下げるため、観測性の底上げとアラート設計を見直し。",
+        role: "Infrastructure / Platform",
+        tech: ["Datadog", "AWS", "SLO", "Incident Response"],
+        outcomeOrLearning:
+          "“見える化”だけで終わらせず、アクションに繋がるメトリクス/アラートに落とす重要性を再確認。",
+        status: "2019–2025",
+      },
+      {
+        visibility: "public",
+        title: "ゼロからのインフラ基盤構築（副業）",
+        summary:
+          "サービス立ち上げ初期から、環境分離/CI/CD/IaCを揃え、継続運用できる土台を構築。",
+        role: "Infra / Full-stack (TypeScript)",
+        tech: ["AWS", "Terraform", "CI/CD", "TypeScript"],
+        outcomeOrLearning:
+          "最初に“運用の標準”を置くことで、後からの速度と安全性が両立できることを実感。",
+        status: "2021–2025",
       },
     ],
   },
@@ -196,7 +221,14 @@ export const publicPortfolio: Portfolio = {
   contact: {
     id: "contact",
     heading: "Contact",
-    blurb: "お気軽にご連絡ください。",
+    blurb:
+      "採用・協業・技術相談など、目的に合わせてご連絡ください。\n\n" +
+      "連絡してほしい内容の例:\n" +
+      "・Backend/Infra の設計・実装・運用改善\n" +
+      "・既存システムの段階移行（リプレース/移行設計/リスク管理）\n" +
+      "・Observability（Datadog等）/SLO/障害対応の仕組み化\n" +
+      "・TypeScript のフルスタック開発\n\n" +
+      "返信目安: 24–48時間以内（状況により前後します）",
     links: [
       { label: "Email", href: "worktkc2018@gmail.com" },
       { label: "X / Twitter", href: "https://x.com/buzz_tkc" },

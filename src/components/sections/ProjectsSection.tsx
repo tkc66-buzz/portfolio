@@ -1,5 +1,9 @@
 import { getPortfolio } from "@/content/portfolio";
 
+function isExternalHttpHref(href: string) {
+  return href.startsWith("http://") || href.startsWith("https://");
+}
+
 export async function ProjectsSection() {
   const { projects } = await getPortfolio();
   return (
@@ -15,7 +19,7 @@ export async function ProjectsSection() {
           {projects.heading}
         </h2>
         <span className="text-xs uppercase tracking-[0.3em] text-fami-gold">
-          GRID VIEW
+          CASE FILES
         </span>
       </header>
 
@@ -48,17 +52,34 @@ export async function ProjectsSection() {
               </div>
             </div>
 
-            <p className="mt-2 text-sm [font-family:var(--font-noto)]">
+            <p className="mt-2 text-sm leading-relaxed [font-family:var(--font-noto)]">
               {project.visibility === "private"
-                ? "詳細は面談でお話しできます（NDA等に配慮）。"
+                ? "NDA等に配慮し、公開できる範囲のみ記載しています。詳細は面談で共有できます。"
                 : project.summary}
             </p>
 
-            {project.visibility === "private" ? null : (
-              <dl className="mt-3 space-y-2 text-xs [font-family:var(--font-noto)]">
+            {project.visibility === "private" ? (
+              <div className="mt-3 text-xs [font-family:var(--font-noto)]">
+                <div className="flex flex-wrap gap-1">
+                  <span className="nes-badge is-warning text-[0.55rem]">
+                    <span>Backend/Infra</span>
+                  </span>
+                  <span className="nes-badge is-warning text-[0.55rem]">
+                    <span>Migration</span>
+                  </span>
+                  <span className="nes-badge is-warning text-[0.55rem]">
+                    <span>Reliability</span>
+                  </span>
+                </div>
+                <p className="mt-2 leading-relaxed text-fami-ivory/90">
+                  話せる範囲: 役割/設計観点/意思決定/学び（固有名詞や数値は非公開）
+                </p>
+              </div>
+            ) : (
+              <dl className="mt-3 space-y-3 text-xs [font-family:var(--font-noto)]">
                 <div className="flex gap-2">
                   <dt className="w-20 text-fami-gold">Role</dt>
-                  <dd>{project.role}</dd>
+                  <dd className="font-medium">{project.role}</dd>
                 </div>
                 <div className="flex gap-2">
                   <dt className="w-20 text-fami-gold">Tech</dt>
@@ -72,7 +93,7 @@ export async function ProjectsSection() {
                 </div>
                 <div className="flex gap-2">
                   <dt className="w-20 text-fami-gold">Outcome</dt>
-                  <dd>{project.outcomeOrLearning}</dd>
+                  <dd className="leading-relaxed">{project.outcomeOrLearning}</dd>
                 </div>
               </dl>
             )}
@@ -81,8 +102,8 @@ export async function ProjectsSection() {
               <a
                 className="nes-btn mt-4 w-full text-center"
                 href={project.link.href}
-                target={project.link.href.startsWith("http") ? "_blank" : undefined}
-                rel={project.link.href.startsWith("http") ? "noreferrer" : undefined}
+                target={isExternalHttpHref(project.link.href) ? "_blank" : undefined}
+                rel={isExternalHttpHref(project.link.href) ? "noreferrer" : undefined}
               >
                 {project.link.label}
               </a>

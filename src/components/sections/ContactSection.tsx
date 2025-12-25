@@ -17,7 +17,7 @@ export async function ContactSection() {
       >
         {contact.heading}
       </h2>
-      <p className="mt-3 text-sm [font-family:var(--font-noto)]">
+      <p className="mt-3 whitespace-pre-line text-sm [font-family:var(--font-noto)]">
         {contact.blurb}
       </p>
       <div className="mt-6 flex flex-wrap gap-3">

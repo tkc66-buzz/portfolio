@@ -13,11 +13,15 @@ export async function ExperienceSection() {
       >
         {experience.heading}
       </h2>
-      <ul className="mt-3 space-y-2 text-sm [font-family:var(--font-noto)]">
+      <ul className="mt-4 space-y-3 text-sm [font-family:var(--font-noto)]">
         {experience.highlights.map((item) => (
           <li key={item.year} className="flex gap-3">
-            <span className="shrink-0 text-fami-gold">{item.year}</span>
-            <span>{item.text}</span>
+            <span className="shrink-0">
+              <span className="nes-badge is-warning text-[0.6rem]">
+                <span>{item.year}</span>
+              </span>
+            </span>
+            <span className="leading-relaxed">{item.text}</span>
           </li>
         ))}
       </ul>
