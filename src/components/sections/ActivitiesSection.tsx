@@ -8,14 +8,8 @@ export async function ActivitiesSection() {
   const { activities } = await getPortfolio();
 
   return (
-    <section
-      id={activities.id}
-      className="scroll-mt-6 frame bg-[#1b1b1b] p-6 text-fami-ivory"
-    >
-      <h2
-        className="text-xl text-fami-gold"
-        style={{ fontFamily: "var(--font-press)" }}
-      >
+    <section id={activities.id} className="frame scroll-mt-6 bg-[#1b1b1b] p-6 text-fami-ivory">
+      <h2 className="text-xl text-fami-gold" style={{ fontFamily: "var(--font-press)" }}>
         {activities.heading}
       </h2>
 
@@ -34,9 +28,7 @@ export async function ActivitiesSection() {
             </h3>
 
             {group.items.length === 0 ? (
-              <p className="mt-3 text-sm [font-family:var(--font-noto)]">
-                Coming soon
-              </p>
+              <p className="mt-3 text-sm [font-family:var(--font-noto)]">Coming soon</p>
             ) : (
               <ul className="mt-3 space-y-3 text-sm [font-family:var(--font-noto)]">
                 {group.items.map((item) => (
@@ -50,9 +42,7 @@ export async function ActivitiesSection() {
                           <span className="truncate">{item.title}</span>
                         </div>
                         {item.context ? (
-                          <p className="mt-1 text-xs text-fami-ivory/90">
-                            {item.context}
-                          </p>
+                          <p className="mt-1 text-xs text-fami-ivory/90">{item.context}</p>
                         ) : null}
                       </div>
 
@@ -77,5 +67,3 @@ export async function ActivitiesSection() {
     </section>
   );
 }
-
-

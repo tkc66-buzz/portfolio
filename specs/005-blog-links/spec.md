@@ -17,7 +17,7 @@
 - Avoid adding new runtime dependencies.
 - Preserve the single-page UX + TOC navigation.
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 ### User Story 1 - 読者がブログへ迷わず到達できる (Priority: P1)
 
@@ -40,7 +40,7 @@
 - 外部リンクが一時的に落ちていてもページ自体は壊れない
 - 既存の private overrides 機構を壊さない（このfeatureはpublic側の導線追加のみ）
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 ### Functional Requirements
 
@@ -49,11 +49,9 @@
 - **FR-003**: 外部リンクは別タブで開き、`rel="noreferrer"` を付与しなければならない
 - **FR-004**: 既存のTOC/アンカー移動のUXを壊してはならない
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 ### Measurable Outcomes
 
 - **SC-001**: 読者が1クリックでTech/Casual blogへ到達できる
 - **SC-002**: `pnpm lint` と `pnpm build` が通る
-
-

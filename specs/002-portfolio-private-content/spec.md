@@ -5,7 +5,7 @@
 **Status**: Draft  
 **Input**: User description: "外部データ（Google Sheets/Apps Script）から経験・実績を注入し、公開/非公開を制御する"
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 ### User Story 1 - 公開RepoにPrivate情報を置かずに、内容を更新できる (Priority: P1)
 
@@ -60,7 +60,7 @@
 - 外部データが遅い/落ちている（タイムアウト含む）
 - キャッシュ中に更新が反映されない（運用上の期待値調整）
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 ### Functional Requirements
 
@@ -70,12 +70,12 @@
 - **FR-004**: Projectsは `visibility` を持ち、`private` のものは公開ページ上で詳細を表示してはならない
 - **FR-005**: システムは外部データ取得をキャッシュできなければならない（例: 24時間）
 
-### Key Entities *(include if feature involves data)*
+### Key Entities _(include if feature involves data)_
 
 - **Portfolio (Partial)**: 外部データとして注入される上書きデータ（Experience/Projects等の一部でも可）
 - **Project.visibility**: `public | private`（公開ページでの開示レベル）
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 ### Measurable Outcomes
 

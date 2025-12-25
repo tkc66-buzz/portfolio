@@ -47,6 +47,9 @@ Visit <http://localhost:3000> and you'll see the empty frames ready for content.
 - `pnpm build` – Production build (used by Vercel)
 - `pnpm start` – Run the production build locally
 - `pnpm lint` – ESLint (core web vitals config)
+- `pnpm lint:fix` – ESLint auto-fix
+- `pnpm format` – Prettier write (includes Tailwind class sorting)
+- `pnpm format:check` – Prettier check
 
 ## Next phases
 

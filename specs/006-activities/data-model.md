@@ -43,5 +43,3 @@ type Activities = SectionContent & {
 
 - Empty groups are allowed, but the section should show a clear empty state (“Coming soon”).
 - External links must be rendered safely (`target="_blank"` + `rel="noreferrer"`).
-
-

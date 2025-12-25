@@ -1,12 +1,11 @@
 ---
-
 description: "Tasks for Portfolio TOC + Section Granularity"
 ---
 
 # Tasks: Portfolio TOC + Section Granularity
 
 **Input**: Design documents from `specs/001-portfolio-toc/`  
-**Prerequisites**: plan.md (required), spec.md (required for user stories), research.md, data-model.md, contracts/, quickstart.md  
+**Prerequisites**: plan.md (required), spec.md (required for user stories), research.md, data-model.md, contracts/, quickstart.md
 
 **Tests**: Tests are OPTIONAL. No automated tests were explicitly requested for this feature.  
 **Organization**: Tasks are grouped by user story to enable independent implementation and validation.

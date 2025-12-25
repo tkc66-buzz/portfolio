@@ -40,5 +40,3 @@ Use this checklist when editing `src/content/portfolio.ts` (Experience/Projects/
 - **Role clarity**: state what you owned (design / implementation / ops / leadership).
 - **Scan-first**: each project must communicate `role + tech + outcome` in one card.
 - **Private items**: show only safe meta + “話せる範囲” guidance; never include sensitive details.
-
-

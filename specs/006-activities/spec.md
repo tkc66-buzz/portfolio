@@ -21,7 +21,7 @@
 - Avoid adding new runtime dependencies.
 - Preserve the single-page UX + TOC navigation (<= 8 items guideline).
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 ### User Story 1 - 第三者が「アウトプット/社会的活動」を把握できる (Priority: P1)
 
@@ -59,7 +59,7 @@
 - 外部リンクが一時的に落ちていてもページ自体は壊れない
 - private override 機構を壊さない（このfeatureはpublic側の導線/表示追加）
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 ### Functional Requirements
 
@@ -69,11 +69,9 @@
 - **FR-004**: TOC/アンカー移動のUXを壊してはならない（8項目ガイドも考慮）
 - **FR-005**: 既存の `portfolio.writing` と整合する情報設計でなければならない（統合/分離の判断含む）
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 ### Measurable Outcomes
 
 - **SC-001**: 読者が1分以内に「登壇/執筆/コミュニティ活動」の有無と概要を把握できる
 - **SC-002**: `pnpm lint` と `pnpm build` が通る
-
-

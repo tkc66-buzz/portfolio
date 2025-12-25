@@ -6,6 +6,7 @@
 ## Summary
 
 Replace scaffolding/placeholder-ish copy with a cohesive public narrative for:
+
 - Experience (proof of responsibility + outcomes)
 - Projects (scan-able cards that “prove” skill/impact)
 - Contact (clear CTA: what to reach out about, response expectation)
@@ -26,7 +27,7 @@ All changes must preserve privacy guarantees: public-only must read well, privat
 
 ## Constitution Check
 
-*GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
+_GATE: Must pass before Phase 0 research. Re-check after Phase 1 design._
 
 - Principle compliance: Improves “Personality-First Storytelling” by replacing filler with evidence-backed narrative.
 - Retro aesthetic + usability: Keep hierarchy clear and scan-friendly; don’t over-style.
@@ -38,6 +39,7 @@ All changes must preserve privacy guarantees: public-only must read well, privat
 ## Phase 0: Outline & Research
 
 **Unknowns (resolved in `research.md`)**
+
 - Public-safe “proof set” and phrasing patterns under NDA constraints
 - How to state impact without leaking sensitive numbers
 - CTA structure that increases qualified inbound

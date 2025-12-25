@@ -3,6 +3,7 @@
 ## Overview
 
 This feature is content-focused. It primarily updates text and presentation while preserving:
+
 - server-side private overrides (`PORTFOLIO_PRIVATE_*`)
 - redaction behavior for `Project.visibility="private"`
 
@@ -24,6 +25,7 @@ type Experience = SectionContent & { highlights: ExperienceHighlight[] };
 ```
 
 **Notes**
+
 - If richer “timeframe/role” is desired later, add optional fields (not required for this feature).
 
 ### Project (current)
@@ -42,6 +44,7 @@ type Project = {
 ```
 
 **Validation / Rules**
+
 - For public projects, all proof fields should be present.
 - For private projects, the UI must redact sensitive fields (already implemented).
 
@@ -52,6 +55,5 @@ type Contact = SectionContent & { blurb: string; links: ExternalLink[] };
 ```
 
 **Rules**
+
 - `blurb` should include CTA examples (what to contact about) and response expectation.
-
-

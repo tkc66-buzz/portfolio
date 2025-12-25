@@ -18,5 +18,3 @@
 
 - **Decision**: For external links, open in new tab and set `rel="noreferrer"`.
 - **Rationale**: Standard safety practice; avoids leaking referrer and prevents tabnabbing patterns.
-
-

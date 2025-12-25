@@ -26,5 +26,3 @@ Open `http://localhost:3000`.
 4. **Quality gates**
    - `pnpm lint`
    - `pnpm build`
-
-

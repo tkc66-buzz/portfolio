@@ -94,11 +94,7 @@ function yearsFromRangeInclusive(firstUsedYear: number, lastUsedYear: number): n
   return Math.max(0, lastUsedYear - firstUsedYear + 1);
 }
 
-function skillRange(
-  label: string,
-  firstUsedYear: number,
-  lastUsedYear: number,
-): Skill {
+function skillRange(label: string, firstUsedYear: number, lastUsedYear: number): Skill {
   return {
     label,
     years: yearsFromRangeInclusive(firstUsedYear, lastUsedYear),
@@ -138,18 +134,15 @@ export const publicPortfolio: Portfolio = {
     highlights: [
       {
         year: "2025",
-        text:
-          "Backend Engineer (Go)。運用・開発体験・プロダクト価値の三点をつなぐ改善をリード（設計〜実装〜運用）。",
+        text: "Backend Engineer (Go)。運用・開発体験・プロダクト価値の三点をつなぐ改善をリード（設計〜実装〜運用）。",
       },
       {
         year: "2024",
-        text:
-          "信頼性と速度のトレードオフを解消するために、監視/アラート/オンコール運用を整備し、障害対応の再現性を上げた。",
+        text: "信頼性と速度のトレードオフを解消するために、監視/アラート/オンコール運用を整備し、障害対応の再現性を上げた。",
       },
       {
         year: "2019–2023",
-        text:
-          "ML/Data/Platform/Infra領域を横断。要件が曖昧な段階から仕組みに落として運用に乗せる（PoCで終わらせない）を得意領域にした。",
+        text: "ML/Data/Platform/Infra領域を横断。要件が曖昧な段階から仕組みに落として運用に乗せる（PoCで終わらせない）を得意領域にした。",
       },
     ],
   },
@@ -160,8 +153,7 @@ export const publicPortfolio: Portfolio = {
       {
         visibility: "public",
         title: "Goによるバックエンド刷新",
-        summary:
-          "既存システムの制約を踏まえつつ、段階移行でリスクを抑えながら置き換えを推進。",
+        summary: "既存システムの制約を踏まえつつ、段階移行でリスクを抑えながら置き換えを推進。",
         role: "Tech Lead / Backend",
         tech: ["Go", "AWS", "SQL", "Observability"],
         outcomeOrLearning:
@@ -171,8 +163,7 @@ export const publicPortfolio: Portfolio = {
       {
         visibility: "public",
         title: "監視・運用改善（Datadog中心）",
-        summary:
-          "障害対応の属人性を下げるため、観測性の底上げとアラート設計を見直し。",
+        summary: "障害対応の属人性を下げるため、観測性の底上げとアラート設計を見直し。",
         role: "Infrastructure / Platform",
         tech: ["Datadog", "AWS", "SLO", "Incident Response"],
         outcomeOrLearning:
@@ -182,8 +173,7 @@ export const publicPortfolio: Portfolio = {
       {
         visibility: "public",
         title: "ゼロからのインフラ基盤構築（副業）",
-        summary:
-          "サービス立ち上げ初期から、環境分離/CI/CD/IaCを揃え、継続運用できる土台を構築。",
+        summary: "サービス立ち上げ初期から、環境分離/CI/CD/IaCを揃え、継続運用できる土台を構築。",
         role: "Infra / Full-stack (TypeScript)",
         tech: ["AWS", "Terraform", "CI/CD", "TypeScript"],
         outcomeOrLearning:
@@ -204,19 +194,69 @@ export const publicPortfolio: Portfolio = {
     id: "activities",
     heading: "Activities",
     groups: [
-      { name: "Talks",
+      {
+        name: "Talks",
         items: [
-        { year: "2020", title: "AWS Partner Summit Tokyo", context: "AWS Partner Summit TokyoにAWS ANGEL DOJOでアライアンス賞を受賞したプロダクトを紹介しました", link: { label: "開催記事", href: "https://aws.amazon.com/jp/blogs/psa/aws-partner-summit-tokyo/" } },
-        { year: "2024", title: "Developpers Summit", context: "Developper Summit TokyoにPlatform Engineeringについてオフラインで登壇しました", link: { label: "イベント詳細", href: "https://event.shoeisha.jp/devsumi/20240215/session/4807" } },
-      ] },
-      { name: "Books", items: [
-        { year: "2024", title: "Real World Platform Engineering: 現場の知恵とノウハウ", context: "Platform Engineeringの現場でのノウハウや導入についてMeetup メンバーで書籍を執筆し、技術書典と技書博で発売しました。", link: { label: "技術書典", href: "https://techbookfest.org/product/qunTLHG5hLbL91bBX9dqDU?productVariantID=diV811bQsBeU5YfWhtGym0" },}
-      ] },
-      { name: "Community", items: [
-        { year: "2024", title: "Platform Engineering Kaigi Core Staff", context: "日本初となるPlatform Engineeringに関するカンファレンス開催に貢献しました。", link: { label: "Platform Engineering Kaigi", href: "https://www.cnia.io/pek2024/" } },
-        { year: "2019-2025", title: "SRE NEXT Core Staff", context: "SRE NEXT Core Staffとして、SNS、 会場、 スポンサー、 司会等を担当しました。", link: { label: "SRE NEXT", href: "https://sre-next.dev/" } },
-        { year: "2022-2025", title: "Cloud Native Days Core Staff", context: "Cloud Native Daysの配信担当としてハイブリッドイベント開催に貢献しました。", link: { label: "Cloud Native Days", href: "https://cloudnativedays.jp/" } },
-      ] },
+          {
+            year: "2020",
+            title: "AWS Partner Summit Tokyo",
+            context:
+              "AWS Partner Summit TokyoにAWS ANGEL DOJOでアライアンス賞を受賞したプロダクトを紹介しました",
+            link: {
+              label: "開催記事",
+              href: "https://aws.amazon.com/jp/blogs/psa/aws-partner-summit-tokyo/",
+            },
+          },
+          {
+            year: "2024",
+            title: "Developpers Summit",
+            context:
+              "Developper Summit TokyoにPlatform Engineeringについてオフラインで登壇しました",
+            link: {
+              label: "イベント詳細",
+              href: "https://event.shoeisha.jp/devsumi/20240215/session/4807",
+            },
+          },
+        ],
+      },
+      {
+        name: "Books",
+        items: [
+          {
+            year: "2024",
+            title: "Real World Platform Engineering: 現場の知恵とノウハウ",
+            context:
+              "Platform Engineeringの現場でのノウハウや導入についてMeetup メンバーで書籍を執筆し、技術書典と技書博で発売しました。",
+            link: {
+              label: "技術書典",
+              href: "https://techbookfest.org/product/qunTLHG5hLbL91bBX9dqDU?productVariantID=diV811bQsBeU5YfWhtGym0",
+            },
+          },
+        ],
+      },
+      {
+        name: "Community",
+        items: [
+          {
+            year: "2024",
+            title: "Platform Engineering Kaigi Core Staff",
+            context: "日本初となるPlatform Engineeringに関するカンファレンス開催に貢献しました。",
+            link: { label: "Platform Engineering Kaigi", href: "https://www.cnia.io/pek2024/" },
+          },
+          {
+            year: "2019-2025",
+            title: "SRE NEXT Core Staff",
+            context: "SRE NEXT Core Staffとして、SNS、 会場、 スポンサー、 司会等を担当しました。",
+            link: { label: "SRE NEXT", href: "https://sre-next.dev/" },
+          },
+          {
+            year: "2022-2025",
+            title: "Cloud Native Days Core Staff",
+            context: "Cloud Native Daysの配信担当としてハイブリッドイベント開催に貢献しました。",
+            link: { label: "Cloud Native Days", href: "https://cloudnativedays.jp/" },
+          },
+        ],
+      },
     ],
   },
   skills: {
@@ -246,10 +286,7 @@ export const publicPortfolio: Portfolio = {
       },
       {
         name: "Data / ML",
-        items: [
-          skillRange("Data Analysis", 2019, 2022),
-          skillRange("ML Engineering", 2019, 2022),
-        ],
+        items: [skillRange("Data Analysis", 2019, 2022), skillRange("ML Engineering", 2019, 2022)],
       },
       {
         name: "Frontend",
@@ -263,8 +300,7 @@ export const publicPortfolio: Portfolio = {
   contact: {
     id: "contact",
     heading: "Contact",
-    blurb:
-      "副業・技術相談など、お気軽にご連絡ください。",
+    blurb: "副業・技術相談など、お気軽にご連絡ください。",
     links: [
       { label: "Email", href: "worktkc2018@gmail.com" },
       { label: "X / Twitter", href: "https://x.com/buzz_tkc" },
@@ -327,8 +363,7 @@ function mergePortfolio(base: Portfolio, patch: Partial<Portfolio>): Portfolio {
 }
 
 function validateSkills(skills: Skills): boolean {
-  const isValidYears = (y: unknown) =>
-    typeof y === "number" && Number.isFinite(y) && y >= 0;
+  const isValidYears = (y: unknown) => typeof y === "number" && Number.isFinite(y) && y >= 0;
 
   const isValidUsageYear = (y: unknown) =>
     typeof y === "number" && Number.isInteger(y) && y >= 1970 && y <= 2100;

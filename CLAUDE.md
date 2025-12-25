@@ -3,16 +3,20 @@
 Focused tips for Anthropic Claude Code / Workbench agents interacting with this repo.
 
 ## Quick Facts
+
 - **Framework**: Next.js 16 (App Router, TypeScript, Tailwind 3, NES.css theme).
 - **Runtime**: Node.js v25.2.0 via `nvm` (see `~/.nvm/versions/node/v25.2.0`). Ensure `source ~/.nvm/nvm.sh` before running commands.
 - **Package Manager**: pnpm 10.13.1. Prefer `pnpm install` over npm/yarn to keep lockfile consistent.
 
 ## How to Start a Session
+
 1. `pnpm install` – installs deps using `.npmrc` hoist settings.
 2. `pnpm dev` – launches dev server on http://localhost:3000.
 3. `pnpm lint` – primary verification step (no tests yet). Add playwright/vitest if implementing complex features.
+4. `pnpm format:check` – formatter check (Prettier + Tailwind class sorting).
 
 ## Repo Hotspots
+
 - `src/app/page.tsx` – Landing page composition (Hero → TOC → sections). Keep it thin; put content in sections and data in `src/content/portfolio.ts`.
 - `src/components/TableOfContents.tsx` – TOC UI (in-page navigation).
 - `src/components/sections/*` – Semantic sections; each owns a stable `id` for `#hash` navigation.
@@ -30,23 +34,28 @@ Focused tips for Anthropic Claude Code / Workbench agents interacting with this 
 - `postcss.config.js` – Standard pipeline; modify when adding plugins like `postcss-nesting`.
 
 ## Coding Conventions
+
 - Use TypeScript with strict mode on; favor functional components + server components unless interactivity is required.
 - Prefer Tailwind utilities; fallback to NES.css classes for retro widgets.
 - Keep metadata in `layout.tsx` accurate whenever you add new assets (`public/og.png`, etc.).
 
 ## Deployment Checklist for Claude
+
 1. Bump `package.json` version if the change is user-facing (current version: `1.0.0`).
 2. Run `pnpm build` to catch Next.js warnings before pushing.
 3. Ensure docs (`README.md`, `AGENTS.md`, `CLAUDE.md`) mention new dependencies or workflows.
 4. Merge to `main` and push to trigger Vercel.
 
 ## Troubleshooting
+
 - **Missing styles**: Confirm Tailwind `content` globs include new files; run `pnpm dev` again.
 - **Font issues**: Check that `var(--font-press)` / `var(--font-noto)` are used in inline styles or className as needed.
 - **Node mismatch**: `nvm use 25.2.0`; Next.js requires >=20.9.0.
 
 ## Documentation Sync Rules (Claude)
+
 Treat these steps as part of every task:
+
 1. Review `README.md`, `AGENTS.md`, and this file before making code changes so you know the current stack and workflows.
 2. If you alter dependencies, scripts, runtime assumptions, deployment flow, or high-level UI behavior, update **all three docs** in the same PR/commit. Never leave them out of sync.
 3. Tailor the messaging per file:
@@ -57,8 +66,9 @@ Treat these steps as part of every task:
 5. End your task report with “Docs synced” (or explain why not) to prove you enforced the rule set.
 
 ## Useful Snippets
+
 ```bash
 source ~/.nvm/nvm.sh && nvm use 25.2.0
 pnpm install
-pnpm lint && pnpm build
+pnpm format:check && pnpm lint && pnpm build
 ```

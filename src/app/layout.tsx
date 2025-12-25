@@ -20,9 +20,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ja">
-      <body className={`${noto.variable} ${press.variable} text-white`}>
-        {children}
-      </body>
+      <body className={`${noto.variable} ${press.variable} text-white`}>{children}</body>
     </html>
   );
 }
