@@ -158,10 +158,11 @@ export const publicPortfolio: Portfolio = {
     items: [],
     categories: [
       {
-        name: "Backend (Go / TypeScript)",
+        name: "Backend",
         items: [
           skillRange("Go", 2022, CURRENT_YEAR),
           skillRange("TypeScript", 2023, CURRENT_YEAR),
+          skillRange("Python", 2019, 2022),
           skillRange("API Design", 2019, CURRENT_YEAR),
           skillRange("RDB / NoSQL", 2019, CURRENT_YEAR),
         ],
