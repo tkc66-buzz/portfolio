@@ -4,6 +4,8 @@ import { Noto_Sans_JP, Press_Start_2P } from "next/font/google";
 import type { ReactNode } from "react";
 import "./globals.css";
 
+import { HashProgressTracker } from "@/components/HashProgressTracker";
+
 const noto = Noto_Sans_JP({ subsets: ["latin"], variable: "--font-noto" });
 const press = Press_Start_2P({
   weight: "400",
@@ -26,7 +28,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ja">
-      <body className={`${noto.variable} ${press.variable} text-white`}>{children}</body>
+      <body className={`${noto.variable} ${press.variable} text-white`}>
+        <HashProgressTracker />
+        {children}
+      </body>
     </html>
   );
 }
