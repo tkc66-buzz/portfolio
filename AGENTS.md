@@ -37,7 +37,7 @@ Unified cheat sheet so any AI agent (Claude Code, GPT, etc.) can understand the 
 
 - Landing page composition lives in `src/app/page.tsx` and is intentionally thin.
 - TOC navigation is implemented via `src/components/TableOfContents.tsx` + `src/components/toc.ts`.
-- Hero has functional navigation buttons: Start jumps to `#profile`, Continue resumes last visited hash.
+- Hero has functional navigation buttons: Start jumps to `#experience`, Continue warps to a random section.
 - Semantic sections live under `src/components/sections/*` and each owns a stable `id`
   for in-page anchor navigation.
 - Content data is centralized in `src/content/portfolio.ts` for maintainability.

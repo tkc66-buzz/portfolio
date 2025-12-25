@@ -1,41 +1,53 @@
 "use client";
 
+import { TOC_ITEMS } from "@/components/toc";
+
 import { useCallback } from "react";
 
-const STORAGE_KEY = "portfolio:lastHash";
+function currentVisibleSectionId(): string | null {
+  // “Always moves”: we avoid selecting the section that appears to be currently in view.
+  // This is a lightweight heuristic (no observers).
+  const ids = TOC_ITEMS.map((i) => i.id);
+  const candidates = ids
+    .map((id) => {
+      const el = document.getElementById(id);
+      if (!el) return null;
+      const rect = el.getBoundingClientRect();
+      // Only consider sections that are at least partially within the viewport.
+      const inView = rect.bottom > 0 && rect.top < window.innerHeight;
+      if (!inView) return null;
+      const distance = Math.abs(rect.top);
+      return { id, distance };
+    })
+    .filter((v): v is { id: (typeof TOC_ITEMS)[number]["id"]; distance: number } => v !== null);
 
-function safeGetLastHash(): string | null {
-  try {
-    const v = window.localStorage.getItem(STORAGE_KEY);
-    if (!v) return null;
-    if (!v.startsWith("#") || v === "#") return null;
-    return v;
-  } catch {
-    return null;
-  }
+  if (candidates.length === 0) return null;
+  candidates.sort((a, b) => a.distance - b.distance);
+  return candidates[0]?.id ?? null;
 }
 
-function safeSetLastHash(hash: string) {
-  try {
-    window.localStorage.setItem(STORAGE_KEY, hash);
-  } catch {
-    // ignore
-  }
+function scrollToSection(id: string) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  // Update the URL hash (not strictly required for movement).
+  window.location.hash = `#${id}`;
 }
 
-function jumpTo(hash: string) {
-  safeSetLastHash(hash);
-  window.location.hash = hash;
+function pickRandomSectionId(excludeId?: string | null): string {
+  const candidates = TOC_ITEMS.map((i) => i.id).filter((id) => id !== excludeId);
+  // Always return something; if all are excluded (shouldn't happen), fall back to experience.
+  if (candidates.length === 0) return "experience";
+  return candidates[Math.floor(Math.random() * candidates.length)];
 }
 
 export function HeroActions() {
   const onStart = useCallback(() => {
-    jumpTo("#profile");
+    scrollToSection("experience");
   }, []);
 
   const onContinue = useCallback(() => {
-    const last = safeGetLastHash();
-    jumpTo(last ?? "#experience");
+    const next = pickRandomSectionId(currentVisibleSectionId());
+    scrollToSection(next);
   }, []);
 
   return (

@@ -9,8 +9,8 @@
 
 Hero の “Start / Continue” が何も起きない状態を解消し、ページ内ナビゲーションとして機能させる。
 
-- Start: `#profile` にジャンプ
-- Continue: 直近のhashに復帰（未保存時は `#experience`）
+- Start: `#experience` にジャンプ
+- Continue: ランダムなセクションへ “WARP” （現在見ているセクションは避ける）
 
 実装は最小の Client Component で行い、既存の Server Component 構成（Hero/sections）は崩さない。
 
@@ -24,12 +24,12 @@ Hero の “Start / Continue” が何も起きない状態を解消し、ペー
 
 **Language/Version**: TypeScript 5.x (Next.js App Router)  
 **Primary Dependencies**: Next.js 16, React 19, Tailwind CSS, NES.css  
-**Storage**: `localStorage` (client-only) for last visited hash  
+**Storage**: N/A (no persistence; Continue is random)  
 **Testing**: No automated tests requested; validate manually + `pnpm lint` + `pnpm build`  
 **Target Platform**: Web (Vercel)  
 **Project Type**: Web application (Next.js App Router under `src/`)  
-**Performance Goals**: Keep JS minimal (one small tracker + one small action component)  
-**Constraints**: Must not break when localStorage is unavailable; keep Server Components by default  
+**Performance Goals**: Keep JS minimal (one small action component only)  
+**Constraints**: Keep Server Components by default; Continue should always move without observers  
 **Scale/Scope**: Hero area behavior only (top-level UX)
 
 ## Constitution Check
@@ -80,10 +80,9 @@ src/
   components/
     Hero.tsx
     HeroActions.tsx
-    HashProgressTracker.tsx
 ```
 
-**Structure Decision**: Web application (Next.js App Router). Add one client component for actions and one tiny tracker.
+**Structure Decision**: Web application (Next.js App Router). Add one client component for actions.
 
 ## Complexity Tracking
 

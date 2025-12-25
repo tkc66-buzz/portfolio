@@ -17,17 +17,19 @@
 - **Only anchors (`<a href>` without state)**: simpler but “Continue” becomes meaningless.
 - **Use IntersectionObserver to track section in view**: more accurate but adds complexity and JS weight; not needed for MVP.
 
-## Decision: Store last visited hash via `hashchange` + localStorage
+## Decision: Make Continue a “WARP” (random section)
 
-**Decision**: Use a tiny global tracker that listens to `hashchange` and stores the last meaningful hash in `localStorage`.
+**Decision**: Treat Continue as a playful “random warp” that always scrolls to a section.
+
+- Picks a random TOC section id
+- Avoids the section that appears to be currently in view (heuristic)
 
 **Rationale**:
-- Most navigation is already hash-based (TOC links)
-- Minimal client code; no DOM observers; no extra deps
-- Works across reloads
+- Gives the button a clear “game” meaning even without a long session state
+- Avoids adding persistence or observers while still feeling dynamic
 
-**Constraints**:
-- localStorage can be blocked → must fail safe
-- ignore invalid hashes (empty / `#`)
+**Alternatives considered**:
+- **Resume last visited hash**: felt “meaningless” in practice for this portfolio context
+- **Next unread section**: useful but requires state/persistence; can be added later if desired
 
 

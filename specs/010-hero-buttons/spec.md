@@ -14,39 +14,39 @@ Hero に “Start / Continue” ボタンが表示されている場合、押し
 **Why this priority**: 入口のUIで「押せそうなのに何も起きない」はUXとして致命的で、離脱につながる。
 
 **Independent Test**:
-- “Start” を押すと `#profile` に移動する
-- “Continue” を押すと、最後に見ていたセクション（hash）に戻る（初回はデフォルトへ）
+- “Start” を押すと `#experience` に移動する
+- “Continue” を押すと、毎回ランダムなセクションへ移動する（現在見ているセクションは避ける）
 
 **Acceptance Scenarios**:
-1. **Given** 初回訪問（保存hashなし）、**When** Continue を押す、**Then** `#experience` に移動する
-2. **Given** 目次で `#projects` に移動済み、**When** Continue を押す、**Then** `#projects` に移動する
-3. **Given** 任意の状態、**When** Start を押す、**Then** `#profile` に移動する
+1. **Given** 任意の状態、**When** Start を押す、**Then** `#experience` に移動する
+2. **Given** `#projects` を表示中、**When** Continue を押す、**Then** `#projects` 以外のどこかへ移動する
+3. **Given** `#skills` を表示中、**When** Continue を連続で押す、**Then** 毎回いずれかのセクションへ移動する（同一セクション固定にならない）
 
 ---
 
 ### Edge Cases
 
-- localStorage が使えない（プライベートブラウズ/ブロック）場合でも壊れないこと
-- 不正なhash（`#`のみ、空）を保存/復帰しないこと
+- hashが付いていない状態でスクロールしていても、Continueが現在表示中のセクションを避けられること
+- すべてのセクションがDOM上に存在しないケースでも（想定外）、Continueが落ちないこと
 
 ## Requirements *(mandatory)*
 
 ### Functional Requirements
 
-- **FR-001**: Start は `#profile` に遷移する
-- **FR-002**: Continue は直近のhashに遷移し、未保存時はデフォルト（`#experience`）に遷移する
-- **FR-003**: 直近hashは、ページ内のhashchange（TOCやHero操作）から保存する
-- **FR-004**: localStorage が利用できない環境でもサイトを壊さない（例外を握りつぶす）
+- **FR-001**: Start は `#experience` に遷移する
+- **FR-002**: Continue はランダムにセクションへ遷移する（現在見ているセクションは避ける）
+- **FR-003**: Continue は “必ず動く” こと（同一セクションへの遷移を避ける）
+- **FR-004**: 追加依存は入れず、クライアントコードを最小に保つ
 
 ### Key Entities *(include if feature involves data)*
 
-- **LastVisitedHash**: `localStorage["portfolio:lastHash"]` に保存する `#...` 文字列
+- なし（永続状態は持たない）
 
 ## Success Criteria *(mandatory)*
 
 ### Measurable Outcomes
 
 - **SC-001**: Heroボタンが“押しても何も起きない”状態がなくなる
-- **SC-002**: 初回でも Continue が意図した場所（デフォルト）へ案内できる
+- **SC-002**: Continue が “ワープ” として直感的に機能し、押すたびに動く
 
 
