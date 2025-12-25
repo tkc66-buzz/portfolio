@@ -7,7 +7,7 @@
 
 ## Summary
 
-Hero の “Menu” ボタンで目次（TOC）にジャンプできるようにし、入口で迷子にならないようにする。
+Hero の “Menu” ボタンでメニューにジャンプできるようにし、入口で迷子にならないようにする。
 
 実装は最小の Client Component で行い、既存の Server Component 構成（Hero/sections）は崩さない。
 
@@ -79,7 +79,7 @@ src/
     TableOfContents.tsx
 ```
 
-**Structure Decision**: Web application (Next.js App Router). Use simple anchor navigation to `#toc`.
+**Structure Decision**: Web application (Next.js App Router). Use simple anchor navigation to `#menu`.
 
 ## Complexity Tracking
 

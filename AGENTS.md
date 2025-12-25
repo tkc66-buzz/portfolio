@@ -36,8 +36,8 @@ Unified cheat sheet so any AI agent (Claude Code, GPT, etc.) can understand the 
 ## UI / Information Architecture Notes
 
 - Landing page composition lives in `src/app/page.tsx` and is intentionally thin.
-- TOC navigation is implemented via `src/components/TableOfContents.tsx` + `src/components/toc.ts`.
-- Hero has a “Menu” button that jumps to the TOC (`#toc`).
+- Menu navigation is implemented via `src/components/TableOfContents.tsx` + `src/components/toc.ts`.
+- Hero has a “Menu” button that jumps to the Menu (`#menu`).
 - Semantic sections live under `src/components/sections/*` and each owns a stable `id`
   for in-page anchor navigation.
 - Content data is centralized in `src/content/portfolio.ts` for maintainability.

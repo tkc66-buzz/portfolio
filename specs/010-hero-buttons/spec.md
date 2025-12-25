@@ -9,27 +9,27 @@
 
 ### User Story 1 - Heroの「Menu」ボタンが迷わず使える (Priority: P1)
 
-Hero に “Menu” ボタンが表示されている場合、押したら目次（TOC）へ移動し、迷子にならずに各セクションへ移動できる。
+Hero に “Menu” ボタンが表示されている場合、押したらメニューへ移動し、迷子にならずに各セクションへ移動できる。
 
 **Why this priority**: 入口のUIで「押せそうなのに何も起きない」はUXとして致命的で、離脱につながる。
 
 **Independent Test**:
-- “Menu” を押すと `#toc` に移動する
+- “Menu” を押すと `#menu` に移動する
 
 **Acceptance Scenarios**:
-1. **Given** 任意の状態、**When** Menu を押す、**Then** `#toc` に移動する
+1. **Given** 任意の状態、**When** Menu を押す、**Then** `#menu` に移動する
 
 ---
 
 ### Edge Cases
 
-- `#toc` が存在しない場合でも（想定外）、ページが壊れないこと
+- `#menu` が存在しない場合でも（想定外）、ページが壊れないこと
 
 ## Requirements *(mandatory)*
 
 ### Functional Requirements
 
-- **FR-001**: Menu は `#toc` に遷移する
+- **FR-001**: Menu は `#menu` に遷移する
 - **FR-002**: 追加依存は入れず、Server Componentを維持する（単純なアンカーリンク）
 
 ### Key Entities *(include if feature involves data)*

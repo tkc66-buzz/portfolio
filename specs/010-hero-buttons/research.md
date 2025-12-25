@@ -2,7 +2,7 @@
 
 ## Decision: Keep only “Menu” (remove Start/Continue)
 
-**Decision**: Remove Start/Continue and keep a single Menu button that jumps to the TOC.
+**Decision**: Remove Start/Continue and keep a single Menu button that jumps to the Menu.
 
 **Rationale**:
 - Removes “clickable but does nothing” confusion at the page entry point

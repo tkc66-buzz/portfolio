@@ -9,8 +9,8 @@ pnpm dev
 
 Open `http://localhost:3000` and verify:
 
-1. **Menu** jumps to `#toc`.
-2. TOC buttons still navigate to sections via hash.
+1. **Menu** jumps to `#menu`.
+2. Menu buttons still navigate to sections via hash.
 
 ## Quality gates
 
