@@ -15,6 +15,11 @@ export type Visibility = "public" | "private";
 
 export type Project = {
   visibility?: Visibility; // default: "public"
+  /**
+   * Optional in-page anchor id for direct linking (e.g. from Experience evidence hints).
+   * Keep stable once published.
+   */
+  anchorId?: string;
   title: string;
   summary: string;
   role: string;
@@ -134,50 +139,63 @@ export const publicPortfolio: Portfolio = {
     highlights: [
       {
         year: "2025",
-        text: "Backend Engineer (Go)。運用・開発体験・プロダクト価値の三点をつなぐ改善をリード（設計〜実装〜運用）。",
+        text:
+          "Backend Engineer (Go)。運用・開発体験・プロダクト価値をつなぐ改善を、設計〜実装〜運用まで一貫してリード。 / Evidence: Goによるバックエンド刷新",
       },
       {
         year: "2024",
-        text: "信頼性と速度のトレードオフを解消するために、監視/アラート/オンコール運用を整備し、障害対応の再現性を上げた。",
+        text:
+          "信頼性と速度のトレードオフを解消するために、観測性（メトリクス/ログ/トレース）とアラート設計を整備し、障害対応の再現性を引き上げた。 / Evidence: 監視・運用改善（Datadog中心）",
       },
       {
         year: "2019–2023",
-        text: "ML/Data/Platform/Infra領域を横断。要件が曖昧な段階から仕組みに落として運用に乗せる（PoCで終わらせない）を得意領域にした。",
+        text:
+          "ML/Data/Platform/Infra領域を横断。曖昧な要件を設計に落とし、運用に乗る形で仕組み化する（PoCで終わらせない）を得意領域にした。 / Evidence: ゼロからのインフラ基盤構築（副業）",
       },
     ],
   },
   projects: {
     id: "projects",
     heading: "Projects",
+    // Copy checklist (public):
+    // - Problem: why it mattered
+    // - Action: what you did (and key tradeoffs)
+    // - Result/Learning: what changed (or what you learned if metrics can't be shared)
     items: [
       {
         visibility: "public",
+        anchorId: "project-go-migration",
         title: "Goによるバックエンド刷新",
-        summary: "既存システムの制約を踏まえつつ、段階移行でリスクを抑えながら置き換えを推進。",
+        summary:
+          "課題: 既存システムの制約下での刷新。対応: 段階移行（切替/ロールバック前提）でリスクを抑えつつ置き換えを推進。",
         role: "Tech Lead / Backend",
         tech: ["Go", "AWS", "SQL", "Observability"],
         outcomeOrLearning:
-          "移行の設計（分割/切替/ロールバック）と、運用を含めた品質担保の型を作れた。",
+          "結果/学び: 分割・切替・ロールバックを含む移行設計と、運用まで含めた品質担保の型を作れた。",
         status: "2024–2025",
       },
       {
         visibility: "public",
+        anchorId: "project-observability",
         title: "監視・運用改善（Datadog中心）",
-        summary: "障害対応の属人性を下げるため、観測性の底上げとアラート設計を見直し。",
+        summary:
+          "課題: 障害対応の属人性と検知ノイズ。対応: 観測性の底上げとアラート設計の見直しで、アクションに繋がる運用へ。",
         role: "Infrastructure / Platform",
         tech: ["Datadog", "AWS", "SLO", "Incident Response"],
         outcomeOrLearning:
-          "“見える化”だけで終わらせず、アクションに繋がるメトリクス/アラートに落とす重要性を再確認。",
+          "結果/学び: “見える化”で終わらせず、意思決定と行動に繋がるメトリクス/アラートへ落とす重要性を再確認。",
         status: "2019–2025",
       },
       {
         visibility: "public",
+        anchorId: "project-greenfield-infra",
         title: "ゼロからのインフラ基盤構築（副業）",
-        summary: "サービス立ち上げ初期から、環境分離/CI/CD/IaCを揃え、継続運用できる土台を構築。",
+        summary:
+          "課題: 立ち上げ初期に“運用前提の土台”がない。対応: 環境分離/CI/CD/IaCを揃え、継続運用できる基盤を構築。",
         role: "Infra / Full-stack (TypeScript)",
         tech: ["AWS", "Terraform", "CI/CD", "TypeScript"],
         outcomeOrLearning:
-          "最初に“運用の標準”を置くことで、後からの速度と安全性が両立できることを実感。",
+          "結果/学び: 最初に“運用の標準”を置くことで、後からの速度と安全性が両立できると実感。",
         status: "2021–2025",
       },
     ],
