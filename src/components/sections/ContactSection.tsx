@@ -1,10 +1,11 @@
-import { contact } from "@/content/portfolio";
+import { getPortfolio } from "@/content/portfolio";
 
 function isExternalHttpHref(href: string) {
   return href.startsWith("http://") || href.startsWith("https://");
 }
 
-export function ContactSection() {
+export async function ContactSection() {
+  const { contact } = await getPortfolio();
   return (
     <section
       id={contact.id}

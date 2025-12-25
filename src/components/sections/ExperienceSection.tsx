@@ -1,6 +1,7 @@
-import { experience } from "@/content/portfolio";
+import { getPortfolio } from "@/content/portfolio";
 
-export function ExperienceSection() {
+export async function ExperienceSection() {
+  const { experience } = await getPortfolio();
   return (
     <section
       id={experience.id}

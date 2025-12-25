@@ -1,6 +1,7 @@
-import { skills } from "@/content/portfolio";
+import { getPortfolio } from "@/content/portfolio";
 
-export function SkillsSection() {
+export async function SkillsSection() {
+  const { skills } = await getPortfolio();
   return (
     <section
       id={skills.id}
