@@ -28,4 +28,10 @@ Open `http://localhost:3000`.
 4. **Quality gates**
    - Run `pnpm lint` and `pnpm build` successfully.
 
+## Definition of Done (quick)
+
+- Public-only (no private overrides) still reads as a complete narrative (no placeholder-ish copy).
+- With private overrides enabled, the page still renders and private projects remain redacted.
+- Contact includes explicit CTA examples + response expectation.
+
 

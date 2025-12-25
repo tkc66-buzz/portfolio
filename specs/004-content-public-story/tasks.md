@@ -23,9 +23,9 @@ description: "Tasks for Phase 2 Content – Public Storytelling (Experience/Proj
 
 **Purpose**: Align on where content lives and what “done” means for public storytelling.
 
-- [ ] T001 Confirm current content sources and render flow in `src/app/page.tsx` + `src/content/portfolio.ts`
-- [ ] T002 Confirm privacy constraints and redaction behavior for `visibility="private"` in `src/components/sections/ProjectsSection.tsx`
-- [ ] T003 [P] Create a “public-proof writing checklist” in `specs/004-content-public-story/research.md` (NDA-safe phrasing patterns)
+- [x] T001 Confirm current content sources and render flow in `src/app/page.tsx` + `src/content/portfolio.ts`
+- [x] T002 Confirm privacy constraints and redaction behavior for `visibility="private"` in `src/components/sections/ProjectsSection.tsx`
+- [x] T003 [P] Create a “public-proof writing checklist” in `specs/004-content-public-story/research.md` (NDA-safe phrasing patterns)
 
 ---
 
@@ -35,9 +35,9 @@ description: "Tasks for Phase 2 Content – Public Storytelling (Experience/Proj
 
 **⚠️ CRITICAL**: No user story work should begin until this phase is complete.
 
-- [ ] T004 Ensure public-only mode is coherent (no placeholder-ish copy) by reviewing `publicPortfolio` in `src/content/portfolio.ts`
-- [ ] T005 Ensure private override fallback remains safe by validating merge/validation behavior in `src/content/portfolio.ts` (public-only must not crash)
-- [ ] T006 Capture “definition of done” checks inside `specs/004-content-public-story/quickstart.md` (public-only, private override, private redaction)
+- [x] T004 Ensure public-only mode is coherent (no placeholder-ish copy) by reviewing `publicPortfolio` in `src/content/portfolio.ts`
+- [x] T005 Ensure private override fallback remains safe by validating merge/validation behavior in `src/content/portfolio.ts` (public-only must not crash)
+- [x] T006 Capture “definition of done” checks inside `specs/004-content-public-story/quickstart.md` (public-only, private override, private redaction)
 
 **Checkpoint**: Public-only renders cleanly, and private override paths remain optional and safe.
 
@@ -51,11 +51,11 @@ description: "Tasks for Phase 2 Content – Public Storytelling (Experience/Proj
 
 ### Implementation for User Story 1
 
-- [ ] T007 [US1] Rewrite public Experience highlights for evidence + clarity in `src/content/portfolio.ts` (`publicPortfolio.experience.highlights`)
-- [ ] T008 [US1] Rewrite public Projects data to match proof set in `src/content/portfolio.ts` (`publicPortfolio.projects.items`)
-- [ ] T009 [P] [US1] Improve Projects scan-ability layout (role/tech/outcome hierarchy) in `src/components/sections/ProjectsSection.tsx`
-- [ ] T010 [P] [US1] Improve Experience readability (timeline density / spacing) in `src/components/sections/ExperienceSection.tsx`
-- [ ] T011 [US1] Confirm headings are unambiguous and consistent in `src/components/sections/ExperienceSection.tsx` and `src/components/sections/ProjectsSection.tsx`
+- [x] T007 [US1] Rewrite public Experience highlights for evidence + clarity in `src/content/portfolio.ts` (`publicPortfolio.experience.highlights`)
+- [x] T008 [US1] Rewrite public Projects data to match proof set in `src/content/portfolio.ts` (`publicPortfolio.projects.items`)
+- [x] T009 [P] [US1] Improve Projects scan-ability layout (role/tech/outcome hierarchy) in `src/components/sections/ProjectsSection.tsx`
+- [x] T010 [P] [US1] Improve Experience readability (timeline density / spacing) in `src/components/sections/ExperienceSection.tsx`
+- [x] T011 [US1] Confirm headings are unambiguous and consistent in `src/components/sections/ExperienceSection.tsx` and `src/components/sections/ProjectsSection.tsx`
 
 **Checkpoint**: Projects cards “prove” role/tech/outcome; Experience includes timeframe-feel/responsibility/outcome (NDA-safe).
 
@@ -69,10 +69,10 @@ description: "Tasks for Phase 2 Content – Public Storytelling (Experience/Proj
 
 ### Implementation for User Story 2
 
-- [ ] T012 [US2] Define a consistent “private card minimal proof” copy strategy in `src/components/sections/ProjectsSection.tsx` (what to show vs hide)
-- [ ] T013 [US2] Update Projects rendering for `visibility="private"` to avoid “empty card” feel while still redacting (title + safe meta only) in `src/components/sections/ProjectsSection.tsx`
-- [ ] T014 [US2] Review public Projects copy to avoid leaking identifiers (names/URLs/internal terms) in `src/content/portfolio.ts`
-- [ ] T015 [US2] Validate fallback behavior: if private override fails, public-only narrative still stands in `src/content/portfolio.ts`
+- [x] T012 [US2] Define a consistent “private card minimal proof” copy strategy in `src/components/sections/ProjectsSection.tsx` (what to show vs hide)
+- [x] T013 [US2] Update Projects rendering for `visibility="private"` to avoid “empty card” feel while still redacting (title + safe meta only) in `src/components/sections/ProjectsSection.tsx`
+- [x] T014 [US2] Review public Projects copy to avoid leaking identifiers (names/URLs/internal terms) in `src/content/portfolio.ts`
+- [x] T015 [US2] Validate fallback behavior: if private override fails, public-only narrative still stands in `src/content/portfolio.ts`
 
 **Checkpoint**: Private cards are safe by construction; public-only remains coherent; overall Projects section still reads “strong”.
 
@@ -86,9 +86,9 @@ description: "Tasks for Phase 2 Content – Public Storytelling (Experience/Proj
 
 ### Implementation for User Story 3
 
-- [ ] T016 [US3] Rewrite Contact CTA blurb (3–5 “good inbound” examples + response expectation) in `src/content/portfolio.ts` (`publicPortfolio.contact.blurb`)
-- [ ] T017 [US3] Ensure Contact links are safe + correct (mailto / target/rel) in `src/components/sections/ContactSection.tsx`
-- [ ] T018 [US3] Confirm Contact copy matches desired inbound (job / side work / consulting / tech talk) in `src/content/portfolio.ts`
+- [x] T016 [US3] Rewrite Contact CTA blurb (3–5 “good inbound” examples + response expectation) in `src/content/portfolio.ts` (`publicPortfolio.contact.blurb`)
+- [x] T017 [US3] Ensure Contact links are safe + correct (mailto / target/rel) in `src/components/sections/ContactSection.tsx`
+- [x] T018 [US3] Confirm Contact copy matches desired inbound (job / side work / consulting / tech talk) in `src/content/portfolio.ts`
 
 **Checkpoint**: Contact section is specific, actionable, and low-friction.
 
@@ -98,10 +98,10 @@ description: "Tasks for Phase 2 Content – Public Storytelling (Experience/Proj
 
 **Purpose**: Final quality checks and small UX polish without adding dependencies.
 
-- [ ] T019 Run `specs/004-content-public-story/quickstart.md` verification steps (public-only, private override, private redaction)
-- [ ] T020 Run `pnpm lint` and fix any issues
-- [ ] T021 Run `pnpm build` and fix any issues
-- [ ] T022 [P] Mobile scan pass: spacing/typography readability in `src/components/sections/ExperienceSection.tsx`, `src/components/sections/ProjectsSection.tsx`, `src/components/sections/ContactSection.tsx`
+- [x] T019 Run `specs/004-content-public-story/quickstart.md` verification steps (public-only, private override, private redaction)
+- [x] T020 Run `pnpm lint` and fix any issues
+- [x] T021 Run `pnpm build` and fix any issues
+- [x] T022 [P] Mobile scan pass: spacing/typography readability in `src/components/sections/ExperienceSection.tsx`, `src/components/sections/ProjectsSection.tsx`, `src/components/sections/ContactSection.tsx`
 
 ---
 

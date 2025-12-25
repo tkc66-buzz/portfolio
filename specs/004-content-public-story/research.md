@@ -30,4 +30,15 @@
 - **Alternatives considered**:
   - Generic “お気軽に” only → rejected (low intent, unclear).
 
+## Public-proof writing checklist (NDA-safe)
+
+Use this checklist when editing `src/content/portfolio.ts` (Experience/Projects/Contact):
+
+- **No identifiers**: avoid internal project names, private URLs, customer names, unreleased features.
+- **Evidence over adjectives**: replace “頑張った/改善した” with mechanism + outcome.
+- **Impact without leakage**: prefer safe bands (`X–Y`) or proxy metrics (p95 latency, incident count, lead time).
+- **Role clarity**: state what you owned (design / implementation / ops / leadership).
+- **Scan-first**: each project must communicate `role + tech + outcome` in one card.
+- **Private items**: show only safe meta + “話せる範囲” guidance; never include sensitive details.
+
 
