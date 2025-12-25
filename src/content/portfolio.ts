@@ -174,7 +174,7 @@ async function loadPrivatePortfolioFromUrl(): Promise<Partial<Portfolio> | null>
   const timeoutMs = Number(process.env.PORTFOLIO_PRIVATE_TIMEOUT_MS ?? "3000");
   const timeout = Number.isFinite(timeoutMs) ? Math.max(0, timeoutMs) : 3000;
 
-  const fetchWithAuth = async (targetUrl: string, signal: AbortSignal) => {
+  const postForExecution = async (targetUrl: string, signal: AbortSignal) => {
     const headers: Record<string, string> = { "Content-Type": "application/json" };
     if (token) headers.Authorization = `Bearer ${token}`;
     return await fetch(targetUrl, {
@@ -189,21 +189,36 @@ async function loadPrivatePortfolioFromUrl(): Promise<Partial<Portfolio> | null>
     });
   };
 
+  const getContent = async (targetUrl: string, signal: AbortSignal) => {
+    return await fetch(targetUrl, {
+      method: "GET",
+      redirect: "manual",
+      signal,
+    });
+  };
+
   const fetchPrivatePatch = async () => {
-    // Apps Script Web App often redirects from `script.google.com` → `script.googleusercontent.com`.
-    // We follow redirects manually and keep sending the auth body on each hop.
+    // Apps Script Web Apps typically respond with a 302 to a content URL on
+    // `script.googleusercontent.com`. That content URL only supports GET/HEAD.
+    //
+    // So we:
+    // 1) POST to the /exec URL (execute script + auth)
+    // 2) Follow redirects with GET to retrieve the actual JSON content
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), timeout);
-    let currentUrl = url;
     let res: Response | null = null;
     try {
-      for (let i = 0; i < 3; i++) {
-        res = await fetchWithAuth(currentUrl, controller.signal);
+      // Step 1: Execute (POST)
+      res = await postForExecution(url, controller.signal);
+
+      // Step 2: Follow redirects with GET
+      for (let i = 0; i < 5 && res; i++) {
         const isRedirect = res.status >= 300 && res.status < 400;
         if (!isRedirect) break;
         const location = res.headers.get("location");
         if (!location) break;
-        currentUrl = new URL(location, currentUrl).toString();
+        const nextUrl = new URL(location, url).toString();
+        res = await getContent(nextUrl, controller.signal);
       }
     } finally {
       clearTimeout(timer);

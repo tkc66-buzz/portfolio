@@ -85,7 +85,7 @@ Set:
 ### Quick API test (local)
 
 ```bash
-curl -L -X POST -H "Content-Type: application/json" \
+curl -i -L -H "Content-Type: application/json" \
   -d '{"token":"<your bearer token>"}' \
   "<your apps script web app url>"
 ```
