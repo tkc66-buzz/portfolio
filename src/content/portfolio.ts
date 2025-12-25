@@ -4,6 +4,8 @@ import { unstable_cache } from "next/cache";
 
 import type { TocItemId } from "@/components/toc";
 
+const CURRENT_YEAR = new Date().getFullYear();
+
 export type ExternalLink = {
   label: string;
   href: string;
@@ -70,6 +72,23 @@ export type Portfolio = {
   skills: Skills;
   contact: Contact;
 };
+
+function yearsFromRangeInclusive(firstUsedYear: number, lastUsedYear: number): number {
+  return Math.max(0, lastUsedYear - firstUsedYear + 1);
+}
+
+function skillRange(
+  label: string,
+  firstUsedYear: number,
+  lastUsedYear: number,
+): Skill {
+  return {
+    label,
+    years: yearsFromRangeInclusive(firstUsedYear, lastUsedYear),
+    firstUsedYear,
+    lastUsedYear,
+  };
+}
 
 function flattenSkillCategories(categories: SkillCategory[]): Skill[] {
   const byLabel = new Map<string, Skill>();
@@ -141,34 +160,34 @@ export const publicPortfolio: Portfolio = {
       {
         name: "Backend (Go / TypeScript)",
         items: [
-          { label: "Go", years: 3 },
-          { label: "TypeScript", years: 3 },
-          { label: "API Design", years: 7 },
-          { label: "SQL / Data modeling", years: 7 },
+          skillRange("Go", 2022, CURRENT_YEAR),
+          skillRange("TypeScript", 2023, CURRENT_YEAR),
+          skillRange("API Design", 2019, CURRENT_YEAR),
+          skillRange("RDB / NoSQL", 2019, CURRENT_YEAR),
         ],
       },
       {
         name: "Infrastructure",
         items: [
-          { label: "AWS", years: 8 },
-          { label: "Google Cloud Platform", years: 3 },
-          { label: "Terraform", years: 4 },
-          { label: "Observability", years: 5 },
-          { label: "CI/CD", years: 7 },
+          skillRange("AWS", 2019, CURRENT_YEAR),
+          skillRange("GCP", 2022, CURRENT_YEAR),
+          skillRange("Terraform", 2021, CURRENT_YEAR),
+          skillRange("Observability (Datadog)", 2019, CURRENT_YEAR),
+          skillRange("CI/CD", 2019, CURRENT_YEAR),
         ],
       },
       {
         name: "Data / ML",
         items: [
-          { label: "Data Analysis", years: 3 },
-          { label: "ML Engineering", years: 3 },
+          skillRange("Data Analysis", 2019, 2022),
+          skillRange("ML Engineering", 2019, 2022),
         ],
       },
       {
         name: "Frontend",
         items: [
-          { label: "TypeScript", years: 3 },
-          { label: "React", years: 3 },
+          skillRange("TypeScript", 2023, CURRENT_YEAR),
+          skillRange("React", 2023, CURRENT_YEAR),
         ],
       },
     ],
