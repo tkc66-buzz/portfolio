@@ -33,12 +33,7 @@ export type Skill = {
    * Years of hands-on experience (preferred).
    * Use integer or half steps (e.g. 3.5).
    */
-  years?: number;
-  /**
-   * Legacy subjective score (0-100). Kept for backward compatibility with older data.
-   * Prefer `years`.
-   */
-  level?: number;
+  years: number;
 };
 
 export type SkillCategory = {
@@ -198,7 +193,7 @@ function isPortfolioPatch(value: unknown): value is Partial<Portfolio> {
 
 function mergePortfolio(base: Portfolio, patch: Partial<Portfolio>): Portfolio {
   // Only merge known keys; do not spread arbitrary top-level keys onto Portfolio.
-  const merged: Portfolio = {
+  const mergedCandidate: Portfolio = {
     profile: { ...base.profile, ...(patch.profile ?? {}) },
     experience: { ...base.experience, ...(patch.experience ?? {}) },
     projects: { ...base.projects, ...(patch.projects ?? {}) },
@@ -206,10 +201,27 @@ function mergePortfolio(base: Portfolio, patch: Partial<Portfolio>): Portfolio {
     contact: { ...base.contact, ...(patch.contact ?? {}) },
   };
 
+  // Strictness: Skills MUST have exact years. If a private override provides invalid skills,
+  // ignore only the skills override (keep the rest).
+  const skillsValid = validateSkills(mergedCandidate.skills);
+  const merged: Portfolio = skillsValid
+    ? mergedCandidate
+    : { ...mergedCandidate, skills: base.skills };
+
   merged.contact.links = normalizeLinks(merged.contact.links);
   return merged;
 }
 
+function validateSkills(skills: Skills): boolean {
+  const isValidYears = (y: unknown) =>
+    typeof y === "number" && Number.isFinite(y) && y >= 0;
+
+  const validateItems = (items: Skill[]) => items.every((s) => isValidYears(s.years));
+
+  if (!validateItems(skills.items)) return false;
+  if (!skills.categories) return true;
+  return skills.categories.every((c) => validateItems(c.items));
+}
 async function loadPrivatePortfolioFromEnv(): Promise<Partial<Portfolio> | null> {
   const raw = process.env.PORTFOLIO_PRIVATE_JSON;
   if (!raw) return null;

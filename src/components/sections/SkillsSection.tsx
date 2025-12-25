@@ -5,11 +5,6 @@ function formatYears(years: number) {
   return `${years}y`;
 }
 
-function skillValueYears(skill: { years?: number; level?: number }) {
-  if (typeof skill.years === "number") return skill.years;
-  return null;
-}
-
 export async function SkillsSection() {
   const { skills } = await getPortfolio();
   const categories =
@@ -19,7 +14,7 @@ export async function SkillsSection() {
     ? categories.flatMap((c) => c.items)
     : skills.items;
   const yearValues = allSkills
-    .map((s) => skillValueYears(s))
+    .map((s) => s.years)
     .filter((v): v is number => typeof v === "number" && Number.isFinite(v) && v >= 0);
   const maxYears = yearValues.length > 0 ? Math.max(...yearValues, 5) : 5;
 
@@ -50,14 +45,12 @@ export async function SkillsSection() {
                     <div className="flex items-center justify-between text-xs uppercase tracking-[0.2em] text-fami-gold">
                       <span>{skill.label}</span>
                       <span className="normal-case">
-                        {skillValueYears(skill) !== null
-                          ? formatYears(skillValueYears(skill)!)
-                          : "—"}
+                        {formatYears(skill.years)}
                       </span>
                     </div>
                     <progress
                       className="nes-progress is-warning"
-                      value={skillValueYears(skill) ?? 0}
+                      value={skill.years}
                       max={maxYears}
                     />
                   </div>
@@ -73,14 +66,12 @@ export async function SkillsSection() {
               <div className="flex items-center justify-between text-xs uppercase tracking-[0.2em] text-fami-gold">
                 <span>{skill.label}</span>
                 <span className="normal-case">
-                  {skillValueYears(skill) !== null
-                    ? formatYears(skillValueYears(skill)!)
-                    : "—"}
+                  {formatYears(skill.years)}
                 </span>
               </div>
               <progress
                 className="nes-progress is-warning"
-                value={skillValueYears(skill) ?? 0}
+                value={skill.years}
                 max={maxYears}
               />
             </div>

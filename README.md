@@ -81,7 +81,7 @@ When a change affects dependencies or workflows, remember to update README / doc
     - With current UI, `visibility="private"` also hides role/tech/outcome/link (title + badges only).
 - Skills can be maintained either as a flat list (`skills.items`) or grouped by category
   (`skills.categories`) for clearer storytelling.
-  - Prefer `years` (hands-on years) over subjective scores; legacy `level` is supported for backward compatibility.
+  - `years` (hands-on years) is required; subjective scoring is intentionally not used.
 - Drop a `public/og.png` and extend `src/app/layout.tsx` metadata for richer previews.
 - Tweak NES colors or swap the background (`src/app/globals.css`) for other retro palettes.
 - Add new sections/components under `src/components` and include them via `@/` alias.
