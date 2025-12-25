@@ -11,7 +11,6 @@ export function TableOfContents() {
         <h2 className="text-sm text-fami-gold" style={{ fontFamily: "var(--font-press)" }}>
           MENU
         </h2>
-        <span className="text-[0.6rem] uppercase tracking-[0.3em] text-fami-gold">MENU</span>
       </div>
 
       <ul className="flex flex-wrap gap-2">
