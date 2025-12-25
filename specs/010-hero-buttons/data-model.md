@@ -4,6 +4,6 @@ This feature has no server-side data model changes.
 
 ## Client-side state
 
-- None (Continue is a random “warp”; no persistence)
+- None (Menu is a plain anchor link; no persistence)
 
 

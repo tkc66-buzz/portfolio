@@ -1,4 +1,4 @@
-# Implementation Plan: Hero Start/Continue Buttons (Navigation)
+# Implementation Plan: Hero “Menu” Button (Navigation)
 
 **Branch**: `010-hero-buttons` | **Date**: 2025-12-25 | **Spec**: `specs/010-hero-buttons/spec.md`  
 **Input**: Feature specification from `/Users/takeshiwatanabe/EureWorks/private/git/portfolio/specs/010-hero-buttons/spec.md`
@@ -7,10 +7,7 @@
 
 ## Summary
 
-Hero の “Start / Continue” が何も起きない状態を解消し、ページ内ナビゲーションとして機能させる。
-
-- Start: `#experience` にジャンプ
-- Continue: ランダムなセクションへ “WARP” （現在見ているセクションは避ける）
+Hero の “Menu” ボタンで目次（TOC）にジャンプできるようにし、入口で迷子にならないようにする。
 
 実装は最小の Client Component で行い、既存の Server Component 構成（Hero/sections）は崩さない。
 
@@ -24,12 +21,12 @@ Hero の “Start / Continue” が何も起きない状態を解消し、ペー
 
 **Language/Version**: TypeScript 5.x (Next.js App Router)  
 **Primary Dependencies**: Next.js 16, React 19, Tailwind CSS, NES.css  
-**Storage**: N/A (no persistence; Continue is random)  
+**Storage**: N/A  
 **Testing**: No automated tests requested; validate manually + `pnpm lint` + `pnpm build`  
 **Target Platform**: Web (Vercel)  
 **Project Type**: Web application (Next.js App Router under `src/`)  
-**Performance Goals**: Keep JS minimal (one small action component only)  
-**Constraints**: Keep Server Components by default; Continue should always move without observers  
+**Performance Goals**: Keep JS minimal (no client components required)  
+**Constraints**: Keep Server Components by default  
 **Scale/Scope**: Hero area behavior only (top-level UX)
 
 ## Constitution Check
@@ -79,10 +76,10 @@ src/
     layout.tsx
   components/
     Hero.tsx
-    HeroActions.tsx
+    TableOfContents.tsx
 ```
 
-**Structure Decision**: Web application (Next.js App Router). Add one client component for actions.
+**Structure Decision**: Web application (Next.js App Router). Use simple anchor navigation to `#toc`.
 
 ## Complexity Tracking
 

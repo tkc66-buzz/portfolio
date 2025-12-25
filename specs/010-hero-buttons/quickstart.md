@@ -1,4 +1,4 @@
-# Quickstart: Verify Hero Start/Continue
+# Quickstart: Verify Hero Menu
 
 ## Run
 
@@ -9,9 +9,8 @@ pnpm dev
 
 Open `http://localhost:3000` and verify:
 
-1. **Start** jumps to `#experience`.
-2. **Continue** warps to a random section (and avoids the section currently in view).
-3. Repeated Continue clicks keep moving you around (no “stuck” behavior).
+1. **Menu** jumps to `#toc`.
+2. TOC buttons still navigate to sections via hash.
 
 ## Quality gates
 

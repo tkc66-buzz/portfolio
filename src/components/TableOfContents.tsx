@@ -2,7 +2,11 @@ import { TOC_ITEMS, tocHref } from "@/components/toc";
 
 export function TableOfContents() {
   return (
-    <nav aria-label="Table of contents" className="frame bg-[#1b1b1b] p-4 text-fami-ivory">
+    <nav
+      id="toc"
+      aria-label="Table of contents"
+      className="frame bg-[#1b1b1b] p-4 text-fami-ivory"
+    >
       <div className="mb-3 flex items-baseline justify-between">
         <h2 className="text-sm text-fami-gold" style={{ fontFamily: "var(--font-press)" }}>
           MENU
