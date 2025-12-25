@@ -79,6 +79,10 @@ When a change affects dependencies or workflows, remember to update README / doc
   - Projects can include `visibility: "public" | "private"`. Private items will be redacted
     on the public page (summary/outcome/link hidden).
     - With current UI, `visibility="private"` also hides role/tech/outcome/link (title + badges only).
+- Skills can be maintained either as a flat list (`skills.items`) or grouped by category
+  (`skills.categories`) for clearer storytelling.
+  - `years` (hands-on years) is required; subjective scoring is intentionally not used.
+  - Optionally add `firstUsedYear` / `lastUsedYear` (numeric years) to show recency vs past usage (e.g. `7y (2018–2024)`).
 - Drop a `public/og.png` and extend `src/app/layout.tsx` metadata for richer previews.
 - Tweak NES colors or swap the background (`src/app/globals.css`) for other retro palettes.
 - Add new sections/components under `src/components` and include them via `@/` alias.

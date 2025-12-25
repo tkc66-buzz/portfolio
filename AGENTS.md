@@ -36,6 +36,8 @@ Unified cheat sheet so any AI agent (Claude Code, GPT, etc.) can understand the 
   for in-page anchor navigation.
 - Content data is centralized in `src/content/portfolio.ts` for maintainability.
   - Private overrides can be injected via env vars (no private content committed to git).
+  - Skills support categorized groups (`skills.categories`) with a backward-compatible flat list (`skills.items`) derived from categories.
+    - Skills use `years` (required) and can optionally include `firstUsedYear` / `lastUsedYear` to show recency.
 
 ## Workflow Expectations
 - Branch from feature branch, open PR → merge to `main` → Vercel autodeploy.

@@ -4,6 +4,8 @@ import { unstable_cache } from "next/cache";
 
 import type { TocItemId } from "@/components/toc";
 
+const CURRENT_YEAR = new Date().getFullYear();
+
 export type ExternalLink = {
   label: string;
   href: string;
@@ -29,7 +31,27 @@ export type ExperienceHighlight = {
 
 export type Skill = {
   label: string;
-  level: number;
+  /**
+   * Years of hands-on experience (preferred).
+   * Use integer or half steps (e.g. 3.5).
+   */
+  years: number;
+  /**
+   * First year you used this skill in practice (optional).
+   * If set, `lastUsedYear` must also be set.
+   */
+  firstUsedYear?: number;
+  /**
+   * Last year you used this skill in practice (optional).
+   * Use the current year if you still use it.
+   * If set, `firstUsedYear` must also be set.
+   */
+  lastUsedYear?: number;
+};
+
+export type SkillCategory = {
+  name: string;
+  items: Skill[];
 };
 
 export type SectionContent = {
@@ -40,7 +62,7 @@ export type SectionContent = {
 export type Profile = SectionContent & { body: string };
 export type Experience = SectionContent & { highlights: ExperienceHighlight[] };
 export type Projects = SectionContent & { items: Project[] };
-export type Skills = SectionContent & { items: Skill[] };
+export type Skills = SectionContent & { items: Skill[]; categories?: SkillCategory[] };
 export type Contact = SectionContent & { blurb: string; links: ExternalLink[] };
 
 export type Portfolio = {
@@ -50,6 +72,40 @@ export type Portfolio = {
   skills: Skills;
   contact: Contact;
 };
+
+function yearsFromRangeInclusive(firstUsedYear: number, lastUsedYear: number): number {
+  return Math.max(0, lastUsedYear - firstUsedYear + 1);
+}
+
+function skillRange(
+  label: string,
+  firstUsedYear: number,
+  lastUsedYear: number,
+): Skill {
+  return {
+    label,
+    years: yearsFromRangeInclusive(firstUsedYear, lastUsedYear),
+    firstUsedYear,
+    lastUsedYear,
+  };
+}
+
+function flattenSkillCategories(categories: SkillCategory[]): Skill[] {
+  const byLabel = new Map<string, Skill>();
+  for (const cat of categories) {
+    for (const skill of cat.items) {
+      if (!byLabel.has(skill.label)) byLabel.set(skill.label, skill);
+    }
+  }
+  return [...byLabel.values()];
+}
+
+function normalizeSkills(skills: Skills): Skills {
+  if (skills.categories && skills.categories.length > 0) {
+    return { ...skills, items: flattenSkillCategories(skills.categories) };
+  }
+  return skills;
+}
 
 export const publicPortfolio: Portfolio = {
   profile: {
@@ -97,11 +153,44 @@ export const publicPortfolio: Portfolio = {
   skills: {
     id: "skills",
     heading: "Skills",
-    items: [
-      { label: "TypeScript", level: 90 },
-      { label: "Next.js", level: 85 },
-      { label: "Design Systems", level: 80 },
-      { label: "Motion & Micro UX", level: 70 },
+    // Backward-compatible: keep `items` but do not manually maintain it.
+    // It will be derived from categories by `normalizeSkills()`.
+    items: [],
+    categories: [
+      {
+        name: "Backend",
+        items: [
+          skillRange("Go", 2022, CURRENT_YEAR),
+          skillRange("TypeScript", 2023, CURRENT_YEAR),
+          skillRange("Python", 2019, 2022),
+          skillRange("API Design", 2019, CURRENT_YEAR),
+          skillRange("RDB / NoSQL", 2019, CURRENT_YEAR),
+        ],
+      },
+      {
+        name: "Infrastructure",
+        items: [
+          skillRange("AWS", 2019, CURRENT_YEAR),
+          skillRange("GCP", 2022, CURRENT_YEAR),
+          skillRange("Terraform", 2021, CURRENT_YEAR),
+          skillRange("Observability (Datadog)", 2019, CURRENT_YEAR),
+          skillRange("CI/CD", 2019, CURRENT_YEAR),
+        ],
+      },
+      {
+        name: "Data / ML",
+        items: [
+          skillRange("Data Analysis", 2019, 2022),
+          skillRange("ML Engineering", 2019, 2022),
+        ],
+      },
+      {
+        name: "Frontend",
+        items: [
+          skillRange("TypeScript", 2023, CURRENT_YEAR),
+          skillRange("React", 2023, CURRENT_YEAR),
+        ],
+      },
     ],
   },
   contact: {
@@ -145,7 +234,7 @@ function isPortfolioPatch(value: unknown): value is Partial<Portfolio> {
 
 function mergePortfolio(base: Portfolio, patch: Partial<Portfolio>): Portfolio {
   // Only merge known keys; do not spread arbitrary top-level keys onto Portfolio.
-  const merged: Portfolio = {
+  const mergedCandidate: Portfolio = {
     profile: { ...base.profile, ...(patch.profile ?? {}) },
     experience: { ...base.experience, ...(patch.experience ?? {}) },
     projects: { ...base.projects, ...(patch.projects ?? {}) },
@@ -153,10 +242,41 @@ function mergePortfolio(base: Portfolio, patch: Partial<Portfolio>): Portfolio {
     contact: { ...base.contact, ...(patch.contact ?? {}) },
   };
 
+  // Strictness: Skills MUST have exact years. If a private override provides invalid skills,
+  // ignore only the skills override (keep the rest).
+  const normalizedSkills = normalizeSkills(mergedCandidate.skills);
+  const skillsValid = validateSkills(normalizedSkills);
+  const merged: Portfolio = skillsValid
+    ? { ...mergedCandidate, skills: normalizedSkills }
+    : { ...mergedCandidate, skills: normalizeSkills(base.skills) };
+
   merged.contact.links = normalizeLinks(merged.contact.links);
   return merged;
 }
 
+function validateSkills(skills: Skills): boolean {
+  const isValidYears = (y: unknown) =>
+    typeof y === "number" && Number.isFinite(y) && y >= 0;
+
+  const isValidUsageYear = (y: unknown) =>
+    typeof y === "number" && Number.isInteger(y) && y >= 1970 && y <= 2100;
+
+  const validateUsageRange = (s: Skill) => {
+    const hasFirst = typeof s.firstUsedYear !== "undefined";
+    const hasLast = typeof s.lastUsedYear !== "undefined";
+    if (hasFirst !== hasLast) return false;
+    if (!hasFirst) return true;
+    if (!isValidUsageYear(s.firstUsedYear) || !isValidUsageYear(s.lastUsedYear)) return false;
+    return (s.firstUsedYear as number) <= (s.lastUsedYear as number);
+  };
+
+  const validateItems = (items: Skill[]) =>
+    items.every((s) => isValidYears(s.years) && validateUsageRange(s));
+
+  if (!validateItems(skills.items)) return false;
+  if (!skills.categories) return true;
+  return skills.categories.every((c) => validateItems(c.items));
+}
 async function loadPrivatePortfolioFromEnv(): Promise<Partial<Portfolio> | null> {
   const raw = process.env.PORTFOLIO_PRIVATE_JSON;
   if (!raw) return null;
