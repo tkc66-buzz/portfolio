@@ -32,13 +32,10 @@ function assertAuthorized_(e) {
   // Apps Script Web Apps don't reliably expose request headers (including Authorization)
   // to `doGet(e)`. Use POST body auth: { "token": "<secret>" }.
   const tokenFromBody = getTokenFromBody_(e);
-  if (tokenFromBody && String(tokenFromBody) === String(token))
-    return { ok: true };
+  if (tokenFromBody && String(tokenFromBody) === String(token)) return { ok: true };
 
   // Best-effort fallback if headers are available in some environments:
-  const header =
-    (e && e.headers && (e.headers.Authorization || e.headers.authorization)) ||
-    "";
+  const header = (e && e.headers && (e.headers.Authorization || e.headers.authorization)) || "";
   if (header === `Bearer ${token}`) return { ok: true };
 
   return { ok: false, body: { error: "Unauthorized" } };

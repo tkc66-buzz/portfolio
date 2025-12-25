@@ -20,5 +20,3 @@
 
 - **Decision**: External links open in new tab with `rel="noreferrer"`.
 - **Rationale**: Matches existing safety pattern in the repo and avoids referrer leakage/tabnabbing patterns.
-
-

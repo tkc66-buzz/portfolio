@@ -6,10 +6,7 @@ function formatYears(years: number) {
 }
 
 function formatUsageRange(skill: { firstUsedYear?: number; lastUsedYear?: number }) {
-  if (
-    typeof skill.firstUsedYear === "number" &&
-    typeof skill.lastUsedYear === "number"
-  ) {
+  if (typeof skill.firstUsedYear === "number" && typeof skill.lastUsedYear === "number") {
     return `${skill.firstUsedYear}–${skill.lastUsedYear}`;
   }
   return null;
@@ -17,26 +14,17 @@ function formatUsageRange(skill: { firstUsedYear?: number; lastUsedYear?: number
 
 export async function SkillsSection() {
   const { skills } = await getPortfolio();
-  const categories =
-    skills.categories && skills.categories.length > 0 ? skills.categories : null;
+  const categories = skills.categories && skills.categories.length > 0 ? skills.categories : null;
 
-  const allSkills = categories
-    ? categories.flatMap((c) => c.items)
-    : skills.items;
+  const allSkills = categories ? categories.flatMap((c) => c.items) : skills.items;
   const yearValues = allSkills
     .map((s) => s.years)
     .filter((v): v is number => typeof v === "number" && Number.isFinite(v) && v >= 0);
   const maxYears = yearValues.length > 0 ? Math.max(...yearValues, 5) : 5;
 
   return (
-    <section
-      id={skills.id}
-      className="scroll-mt-6 frame bg-[#1b1b1b] p-6 text-fami-ivory"
-    >
-      <h2
-        className="text-xl text-fami-gold"
-        style={{ fontFamily: "var(--font-press)" }}
-      >
+    <section id={skills.id} className="frame scroll-mt-6 bg-[#1b1b1b] p-6 text-fami-ivory">
+      <h2 className="text-xl text-fami-gold" style={{ fontFamily: "var(--font-press)" }}>
         {skills.heading}
       </h2>
       {categories ? (
@@ -81,11 +69,7 @@ export async function SkillsSection() {
                   {formatUsageRange(skill) ? ` (${formatUsageRange(skill)})` : ""}
                 </span>
               </div>
-              <progress
-                className="nes-progress is-warning"
-                value={skill.years}
-                max={maxYears}
-              />
+              <progress className="nes-progress is-warning" value={skill.years} max={maxYears} />
             </div>
           ))}
         </div>
@@ -93,5 +77,3 @@ export async function SkillsSection() {
     </section>
   );
 }
-
-

@@ -7,20 +7,12 @@ function isExternalHttpHref(href: string) {
 export async function ProjectsSection() {
   const { projects } = await getPortfolio();
   return (
-    <section
-      id={projects.id}
-      className="scroll-mt-6 frame bg-[#1b1b1b] p-6 text-fami-ivory"
-    >
+    <section id={projects.id} className="frame scroll-mt-6 bg-[#1b1b1b] p-6 text-fami-ivory">
       <header className="flex items-baseline justify-between">
-        <h2
-          className="text-xl text-fami-gold"
-          style={{ fontFamily: "var(--font-press)" }}
-        >
+        <h2 className="text-xl text-fami-gold" style={{ fontFamily: "var(--font-press)" }}>
           {projects.heading}
         </h2>
-        <span className="text-xs uppercase tracking-[0.3em] text-fami-gold">
-          CASE FILES
-        </span>
+        <span className="text-xs uppercase tracking-[0.3em] text-fami-gold">CASE FILES</span>
       </header>
 
       <p className="mt-3 text-sm [font-family:var(--font-noto)]">
@@ -37,10 +29,7 @@ export async function ProjectsSection() {
             className="scroll-mt-6 frame bg-[#1b1b1b] p-4 text-fami-ivory"
           >
             <div className="flex items-center justify-between">
-              <h3
-                className="text-sm text-fami-gold"
-                style={{ fontFamily: "var(--font-press)" }}
-              >
+              <h3 className="text-sm text-fami-gold" style={{ fontFamily: "var(--font-press)" }}>
                 {project.title}
               </h3>
               <div className="flex items-center gap-2">
@@ -122,5 +111,3 @@ export async function ProjectsSection() {
     </section>
   );
 }
-
-

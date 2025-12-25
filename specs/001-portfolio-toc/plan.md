@@ -34,7 +34,7 @@ composition layer.
 
 ## Constitution Check
 
-*GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
+_GATE: Must pass before Phase 0 research. Re-check after Phase 1 design._
 
 Use `.specify/memory/constitution.md` as the source of truth. This repo’s default
 gates (adapt per feature) are:
@@ -66,6 +66,7 @@ specs/001-portfolio-toc/
 ```
 
 ### Source Code (repository root)
+
 <!--
   ACTION REQUIRED: Replace the placeholder tree below with the concrete layout
   for this feature. Delete unused options and expand the chosen structure with
@@ -96,6 +97,6 @@ each section can own its `id` and heading.
 
 > **Fill ONLY if Constitution Check has violations that must be justified**
 
-| Violation | Why Needed | Simpler Alternative Rejected Because |
-|-----------|------------|-------------------------------------|
-| N/A | No constitution violations expected | N/A |
+| Violation | Why Needed                          | Simpler Alternative Rejected Because |
+| --------- | ----------------------------------- | ------------------------------------ |
+| N/A       | No constitution violations expected | N/A                                  |

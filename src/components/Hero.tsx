@@ -7,10 +7,7 @@ export function Hero() {
       >
         PRESS START
       </p>
-      <h1
-        className="text-2xl md:text-3xl"
-        style={{ fontFamily: "var(--font-press)" }}
-      >
+      <h1 className="text-2xl md:text-3xl" style={{ fontFamily: "var(--font-press)" }}>
         Takeshi Watanabe <span className="text-fami-gold">(Buzz)</span>
       </h1>
       <p className="mt-4 text-base md:text-lg [font-family:var(--font-noto)]">
@@ -19,12 +16,8 @@ export function Hero() {
         full-stack and has a Data/ML background.
       </p>
       <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-        <button className="nes-btn is-error uppercase tracking-wide">
-          Start
-        </button>
-        <button className="nes-btn text-[0.75rem] uppercase tracking-wide">
-          Continue
-        </button>
+        <button className="nes-btn is-error uppercase tracking-wide">Start</button>
+        <button className="nes-btn text-[0.75rem] uppercase tracking-wide">Continue</button>
       </div>
     </section>
   );

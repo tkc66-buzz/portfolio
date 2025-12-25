@@ -16,6 +16,8 @@ src/
     layout.tsx      // fonts, NES import, metadata
     page.tsx        // assembles Hero → TOC → sections/*
     globals.css     // Tailwind + palette helpers
+    favicon.ico     // legacy favicon fallback
+    icon.svg        // primary tab icon (SVG)
   components/
     Hero.tsx
     TableOfContents.tsx
@@ -47,6 +49,9 @@ Visit <http://localhost:3000> and you'll see the empty frames ready for content.
 - `pnpm build` – Production build (used by Vercel)
 - `pnpm start` – Run the production build locally
 - `pnpm lint` – ESLint (core web vitals config)
+- `pnpm lint:fix` – ESLint auto-fix
+- `pnpm format` – Prettier write (includes Tailwind class sorting)
+- `pnpm format:check` – Prettier check
 
 ## Next phases
 
@@ -86,5 +91,6 @@ When a change affects dependencies or workflows, remember to update README / doc
   - `years` (hands-on years) is required; subjective scoring is intentionally not used.
   - Optionally add `firstUsedYear` / `lastUsedYear` (numeric years) to show recency vs past usage (e.g. `7y (2018–2024)`).
 - Drop a `public/og.png` and extend `src/app/layout.tsx` metadata for richer previews.
+- Customize the browser tab icon via `src/app/icon.svg` (and keep `src/app/favicon.ico` as fallback).
 - Tweak NES colors or swap the background (`src/app/globals.css`) for other retro palettes.
 - Add new sections/components under `src/components` and include them via `@/` alias.

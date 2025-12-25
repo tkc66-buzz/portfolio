@@ -44,5 +44,3 @@ To avoid drift from double definitions:
 - `27bf8ba` feat: show skill usage range (first/last year)
 - `233b349` chore: fill skill year ranges
 - `097c51b` chore: finalize skills (backend label + python)
-
-

@@ -17,6 +17,7 @@ type Writing = SectionContent & {
 ```
 
 **Rules**
+
 - `items` must include at least:
   - Tech blog (Medium)
   - Casual blog (しずかなインターネット)
@@ -26,5 +27,3 @@ type Writing = SectionContent & {
 
 - `Portfolio.writing` is a sibling section alongside `profile/experience/projects/skills/contact`.
 - `Writing.id` must match the TOC id for anchor navigation.
-
-

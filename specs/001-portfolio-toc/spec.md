@@ -5,7 +5,7 @@
 **Status**: Draft  
 **Input**: User description: "まずは目次のコンテンツを考えたい。ファイルでいうと @src/app/page.tsx なのかな。コンテンツ自体はこれでいいのかな？もっといい粒度にできたりする？"
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 ### User Story 1 - 初見で人物像がつかめる目次と構成 (Priority: P1)
 
@@ -60,7 +60,7 @@
 - セクションの内容がまだ未確定で “空” に近い場合（「準備中」などで誤解を生まない表現が必要）
 - プロジェクトの情報が欠けている（成果が数値で出せない等）場合の扱い
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 ### Functional Requirements
 
@@ -71,12 +71,12 @@
 - **FR-005**: Projects は各項目に最低限「一言概要 / 役割 / 技術（カテゴリ） / 成果または学び / 外部リンク（任意）」を含まなければならない
 - **FR-006**: 目次の項目数は原則 **8項目以下** に保たなければならない（超える場合は統合または階層化の理由を明記する）
 
-### Key Entities *(include if feature involves data)*
+### Key Entities _(include if feature involves data)_
 
 - **Section**: ポートフォリオの情報を分類する単位（例: Profile, Experience, Projects, Skills, Contact）
 - **TOC Item**: Section への導線（表示名、並び順、対象セクション）
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 ### Measurable Outcomes
 

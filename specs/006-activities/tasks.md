@@ -5,7 +5,7 @@ description: "Tasks for 006 – Activities (Talks / Books / Community)"
 # Tasks: 006 – Activities (Talks / Books / Community)
 
 **Input**: Design documents from `/Users/takeshiwatanabe/EureWorks/private/git/portfolio/specs/006-activities/`  
-**Prerequisites**: `plan.md` (required), `spec.md` (required), `research.md`, `data-model.md`, `contracts/`, `quickstart.md`  
+**Prerequisites**: `plan.md` (required), `spec.md` (required), `research.md`, `data-model.md`, `contracts/`, `quickstart.md`
 
 **Tests**: No automated tests requested. Verify via `quickstart.md`, plus `pnpm lint` and `pnpm build`.
 
@@ -110,5 +110,3 @@ description: "Tasks for 006 – Activities (Talks / Books / Community)"
 Task: "Add activities data model + public data to src/content/portfolio.ts"
 Task: "Implement ActivitiesSection UI in src/components/sections/ActivitiesSection.tsx"
 ```
-
-

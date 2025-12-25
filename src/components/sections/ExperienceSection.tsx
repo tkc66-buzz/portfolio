@@ -19,14 +19,8 @@ export async function ExperienceSection() {
   );
 
   return (
-    <section
-      id={experience.id}
-      className="scroll-mt-6 frame bg-[#1b1b1b] p-6 text-fami-ivory"
-    >
-      <h2
-        className="text-xl text-fami-gold"
-        style={{ fontFamily: "var(--font-press)" }}
-      >
+    <section id={experience.id} className="frame scroll-mt-6 bg-[#1b1b1b] p-6 text-fami-ivory">
+      <h2 className="text-xl text-fami-gold" style={{ fontFamily: "var(--font-press)" }}>
         {experience.heading}
       </h2>
       <p className="mt-3 text-sm [font-family:var(--font-noto)]">
@@ -65,5 +59,3 @@ export async function ExperienceSection() {
     </section>
   );
 }
-
-
