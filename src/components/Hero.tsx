@@ -15,10 +15,6 @@ export function Hero() {
         systems, observability. Also builds TypeScript
         full-stack and has a Data/ML background.
       </p>
-      <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-        <button className="nes-btn is-error uppercase tracking-wide">Start</button>
-        <button className="nes-btn text-[0.75rem] uppercase tracking-wide">Continue</button>
-      </div>
     </section>
   );
 }
