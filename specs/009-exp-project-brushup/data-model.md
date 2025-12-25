@@ -38,6 +38,9 @@ This feature focuses on content + presentation first. If we need richer structur
 - Keep `projects.items` as-is, but ensure each public item reads as:
   - problem → action → result/learning
 
+**Chosen for this feature**: Option A (MVP).  
+We may add a tiny optional field (`Project.anchorId?: string`) only for in-page linking between Experience evidence hints → Project cards.
+
 ### Option B (additive fields; future-proof)
 
 Add optional fields without breaking existing rendering:

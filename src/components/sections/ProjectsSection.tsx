@@ -23,13 +23,18 @@ export async function ProjectsSection() {
         </span>
       </header>
 
+      <p className="mt-3 text-sm [font-family:var(--font-noto)]">
+        具体的な事例（証拠）をまとめています。課題→対応→結果/学びを短く読める形にしています。
+      </p>
+
       <div className="mt-4 grid gap-4 md:grid-cols-2">
         {projects.items.map((project) => (
           // `visibility` defaults to "public" if omitted
           // Private items should avoid disclosing sensitive details.
           <article
             key={project.title}
-            className="frame bg-[#1b1b1b] p-4 text-fami-ivory"
+            id={project.anchorId}
+            className="scroll-mt-6 frame bg-[#1b1b1b] p-4 text-fami-ivory"
           >
             <div className="flex items-center justify-between">
               <h3
@@ -52,6 +57,9 @@ export async function ProjectsSection() {
               </div>
             </div>
 
+            <p className="mt-3 text-xs text-fami-gold [font-family:var(--font-noto)]">
+              Problem / Approach
+            </p>
             <p className="mt-2 text-sm leading-relaxed [font-family:var(--font-noto)]">
               {project.visibility === "private"
                 ? "NDA等に配慮し、公開できる範囲のみ記載しています。詳細は面談で共有できます。"
@@ -92,7 +100,7 @@ export async function ProjectsSection() {
                   </dd>
                 </div>
                 <div className="flex gap-2">
-                  <dt className="w-20 text-fami-gold">Outcome</dt>
+                  <dt className="w-20 text-fami-gold">Result</dt>
                   <dd className="leading-relaxed">{project.outcomeOrLearning}</dd>
                 </div>
               </dl>

@@ -22,7 +22,6 @@ Open `http://localhost:3000` and verify:
 ## Quality gates
 
 ```bash
-pnpm format:check
 pnpm lint
 pnpm build
 ```
