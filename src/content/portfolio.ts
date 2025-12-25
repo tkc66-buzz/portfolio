@@ -63,12 +63,14 @@ export type Profile = SectionContent & { body: string };
 export type Experience = SectionContent & { highlights: ExperienceHighlight[] };
 export type Projects = SectionContent & { items: Project[] };
 export type Skills = SectionContent & { items: Skill[]; categories?: SkillCategory[] };
+export type Writing = SectionContent & { items: ExternalLink[] };
 export type Contact = SectionContent & { blurb: string; links: ExternalLink[] };
 
 export type Portfolio = {
   profile: Profile;
   experience: Experience;
   projects: Projects;
+  writing: Writing;
   skills: Skills;
   contact: Contact;
 };
@@ -175,6 +177,14 @@ export const publicPortfolio: Portfolio = {
       },
     ],
   },
+  writing: {
+    id: "writing",
+    heading: "Writing",
+    items: [
+      { label: "Tech (Medium)", href: "https://medium.com/@buzz_tkc" },
+      { label: "Casual (sizu.me)", href: "https://sizu.me/buzz" },
+    ],
+  },
   skills: {
     id: "skills",
     heading: "Skills",
@@ -259,6 +269,7 @@ function isPortfolioPatch(value: unknown): value is Partial<Portfolio> {
     "profile" in value ||
     "experience" in value ||
     "projects" in value ||
+    "writing" in value ||
     "skills" in value ||
     "contact" in value
   );
@@ -270,6 +281,7 @@ function mergePortfolio(base: Portfolio, patch: Partial<Portfolio>): Portfolio {
     profile: { ...base.profile, ...(patch.profile ?? {}) },
     experience: { ...base.experience, ...(patch.experience ?? {}) },
     projects: { ...base.projects, ...(patch.projects ?? {}) },
+    writing: { ...base.writing, ...(patch.writing ?? {}) },
     skills: { ...base.skills, ...(patch.skills ?? {}) },
     contact: { ...base.contact, ...(patch.contact ?? {}) },
   };
@@ -420,5 +432,6 @@ export async function getPortfolio(): Promise<Portfolio> {
 export const profile = publicPortfolio.profile;
 export const experience = publicPortfolio.experience;
 export const projects = publicPortfolio.projects;
+export const writing = publicPortfolio.writing;
 export const skills = publicPortfolio.skills;
 export const contact = publicPortfolio.contact;
