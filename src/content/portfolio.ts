@@ -34,6 +34,17 @@ export type Skill = {
    * Use integer or half steps (e.g. 3.5).
    */
   years: number;
+  /**
+   * First year you used this skill in practice (optional).
+   * If set, `lastUsedYear` must also be set.
+   */
+  firstUsedYear?: number;
+  /**
+   * Last year you used this skill in practice (optional).
+   * Use the current year if you still use it.
+   * If set, `firstUsedYear` must also be set.
+   */
+  lastUsedYear?: number;
 };
 
 export type SkillCategory = {
@@ -132,34 +143,32 @@ export const publicPortfolio: Portfolio = {
         items: [
           { label: "Go", years: 3 },
           { label: "TypeScript", years: 3 },
-          { label: "API Design", years: 4 },
-          { label: "SQL / Data modeling", years: 4 },
-          { label: "Performance / Profiling", years: 3 },
+          { label: "API Design", years: 7 },
+          { label: "SQL / Data modeling", years: 7 },
         ],
       },
       {
         name: "Infrastructure",
         items: [
           { label: "AWS", years: 8 },
-          { label: "GCP", years: 2 },
+          { label: "Google Cloud Platform", years: 3 },
           { label: "Terraform", years: 4 },
           { label: "Observability", years: 5 },
-          { label: "CI/CD", years: 3 },
+          { label: "CI/CD", years: 7 },
         ],
       },
       {
         name: "Data / ML",
         items: [
-          { label: "Data Analysis", years: 2 },
-          { label: "ML Engineering", years: 2 },
+          { label: "Data Analysis", years: 3 },
+          { label: "ML Engineering", years: 3 },
         ],
       },
       {
         name: "Frontend",
         items: [
           { label: "TypeScript", years: 3 },
-          { label: "React / Next.js", years: 3 },
-          { label: "Design Systems", years: 3 },
+          { label: "React", years: 3 },
         ],
       },
     ],
@@ -229,7 +238,20 @@ function validateSkills(skills: Skills): boolean {
   const isValidYears = (y: unknown) =>
     typeof y === "number" && Number.isFinite(y) && y >= 0;
 
-  const validateItems = (items: Skill[]) => items.every((s) => isValidYears(s.years));
+  const isValidUsageYear = (y: unknown) =>
+    typeof y === "number" && Number.isInteger(y) && y >= 1970 && y <= 2100;
+
+  const validateUsageRange = (s: Skill) => {
+    const hasFirst = typeof s.firstUsedYear !== "undefined";
+    const hasLast = typeof s.lastUsedYear !== "undefined";
+    if (hasFirst !== hasLast) return false;
+    if (!hasFirst) return true;
+    if (!isValidUsageYear(s.firstUsedYear) || !isValidUsageYear(s.lastUsedYear)) return false;
+    return (s.firstUsedYear as number) <= (s.lastUsedYear as number);
+  };
+
+  const validateItems = (items: Skill[]) =>
+    items.every((s) => isValidYears(s.years) && validateUsageRange(s));
 
   if (!validateItems(skills.items)) return false;
   if (!skills.categories) return true;

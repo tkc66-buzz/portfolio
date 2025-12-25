@@ -22,6 +22,7 @@ Focused tips for Anthropic Claude Code / Workbench agents interacting with this 
   - `PORTFOLIO_PRIVATE_URL` (+ optional `PORTFOLIO_PRIVATE_URL_BEARER`)
   - `PORTFOLIO_PRIVATE_REVALIDATE_SECONDS` (default 86400 = 24h cache)
   - `PORTFOLIO_PRIVATE_TIMEOUT_MS` (default 3000 = 3s timeout)
+  - Skills use `years` (required) and can optionally include `firstUsedYear` / `lastUsedYear` (numeric years) to show recency.
 - `src/app/layout.tsx` – Imports NES.css, fonts, metadata; extend when adding OG tags or global providers.
 - `tailwind.config.js` – Update `content` array if adding directories.
 - `postcss.config.js` – Standard pipeline; modify when adding plugins like `postcss-nesting`.

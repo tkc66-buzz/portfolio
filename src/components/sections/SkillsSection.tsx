@@ -5,6 +5,16 @@ function formatYears(years: number) {
   return `${years}y`;
 }
 
+function formatUsageRange(skill: { firstUsedYear?: number; lastUsedYear?: number }) {
+  if (
+    typeof skill.firstUsedYear === "number" &&
+    typeof skill.lastUsedYear === "number"
+  ) {
+    return `${skill.firstUsedYear}–${skill.lastUsedYear}`;
+  }
+  return null;
+}
+
 export async function SkillsSection() {
   const { skills } = await getPortfolio();
   const categories =
@@ -46,6 +56,7 @@ export async function SkillsSection() {
                       <span>{skill.label}</span>
                       <span className="normal-case">
                         {formatYears(skill.years)}
+                        {formatUsageRange(skill) ? ` (${formatUsageRange(skill)})` : ""}
                       </span>
                     </div>
                     <progress
@@ -67,6 +78,7 @@ export async function SkillsSection() {
                 <span>{skill.label}</span>
                 <span className="normal-case">
                   {formatYears(skill.years)}
+                  {formatUsageRange(skill) ? ` (${formatUsageRange(skill)})` : ""}
                 </span>
               </div>
               <progress
