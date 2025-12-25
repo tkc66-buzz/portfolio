@@ -116,29 +116,34 @@ export const publicPortfolio: Portfolio = {
       { label: "Go", years: 3 },
       { label: "TypeScript", years: 3 },
       { label: "AWS", years: 3 },
-      { label: "GCP", years: 2 },
+      { label: "Terraform", years: 3 },
+      { label: "Observability", years: 4 },
     ],
     categories: [
       {
-        name: "Backend",
+        name: "Backend (Go / TypeScript)",
         items: [
           { label: "Go", years: 3 },
+          { label: "TypeScript", years: 3 },
           { label: "API Design", years: 4 },
           { label: "SQL / Data modeling", years: 4 },
+          { label: "Performance / Profiling", years: 3 },
         ],
       },
       {
         name: "Infrastructure",
         items: [
           { label: "AWS", years: 3 },
+          { label: "GCP", years: 2 },
           { label: "Terraform", years: 3 },
           { label: "Observability", years: 4 },
+          { label: "CI/CD", years: 3 },
         ],
       },
       {
         name: "Data / ML",
         items: [
-          { label: "Data Science", years: 2 },
+          { label: "Data Analysis", years: 2 },
           { label: "ML Engineering", years: 2 },
         ],
       },
