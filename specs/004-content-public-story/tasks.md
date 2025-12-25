@@ -5,7 +5,7 @@ description: "Tasks for Phase 2 Content – Public Storytelling (Experience/Proj
 # Tasks: Phase 2 Content – Public Storytelling (Experience/Projects/Contact)
 
 **Input**: Design documents from `/Users/takeshiwatanabe/EureWorks/private/git/portfolio/specs/004-content-public-story/`  
-**Prerequisites**: `plan.md` (required), `spec.md` (required), `research.md`, `data-model.md`, `contracts/`, `quickstart.md`  
+**Prerequisites**: `plan.md` (required), `spec.md` (required), `research.md`, `data-model.md`, `contracts/`, `quickstart.md`
 
 **Tests**: No automated tests requested. Use manual verification in `quickstart.md`, plus `pnpm lint` and `pnpm build`.
 
@@ -154,5 +154,3 @@ Task: "Improve Experience readability in src/components/sections/ExperienceSecti
 2. Deliver US2 (privacy-safe but still compelling)
 3. Deliver US3 (CTA conversion)
 4. Finish with Polish tasks
-
-

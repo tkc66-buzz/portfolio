@@ -25,5 +25,3 @@ export const TOC_ITEMS: TocItem[] = [
 export function tocHref(id: TocItemId) {
   return `#${id}`;
 }
-
-

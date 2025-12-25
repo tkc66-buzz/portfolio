@@ -5,7 +5,7 @@ description: "Tasks for 005 – Writing / Blog Links"
 # Tasks: 005 – Writing / Blog Links
 
 **Input**: Design documents from `/Users/takeshiwatanabe/EureWorks/private/git/portfolio/specs/005-blog-links/`  
-**Prerequisites**: `plan.md` (required), `spec.md` (required), `research.md`, `data-model.md`, `contracts/`, `quickstart.md`  
+**Prerequisites**: `plan.md` (required), `spec.md` (required), `research.md`, `data-model.md`, `contracts/`, `quickstart.md`
 
 **Tests**: No automated tests requested. Verify via `quickstart.md`, plus `pnpm lint` and `pnpm build`.
 
@@ -97,5 +97,3 @@ description: "Tasks for 005 – Writing / Blog Links"
 Task: "Add writing section data to src/content/portfolio.ts"
 Task: "Render WritingSection UI in src/components/sections/WritingSection.tsx"
 ```
-
-

@@ -30,10 +30,10 @@ Represents a navigation entry pointing to a section.
 
 ## Proposed IDs (initial set)
 
-| id          | label       | owned by (planned)                     |
-|-------------|-------------|----------------------------------------|
-| profile     | Profile     | `src/components/sections/ProfileSection.tsx` |
-| experience  | Experience  | `src/components/sections/ExperienceSection.tsx` |
-| projects    | Projects    | `src/components/sections/ProjectsSection.tsx` |
-| skills      | Skills      | `src/components/sections/SkillsSection.tsx` |
-| contact     | Contact     | `src/components/sections/ContactSection.tsx` |
+| id         | label      | owned by (planned)                              |
+| ---------- | ---------- | ----------------------------------------------- |
+| profile    | Profile    | `src/components/sections/ProfileSection.tsx`    |
+| experience | Experience | `src/components/sections/ExperienceSection.tsx` |
+| projects   | Projects   | `src/components/sections/ProjectsSection.tsx`   |
+| skills     | Skills     | `src/components/sections/SkillsSection.tsx`     |
+| contact    | Contact    | `src/components/sections/ContactSection.tsx`    |

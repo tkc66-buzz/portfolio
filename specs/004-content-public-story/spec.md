@@ -5,7 +5,7 @@
 **Status**: Draft  
 **Input**: User description: "003はmergeした。次はExperience/Projects/Contactの公開向けコンテンツを完成させたい（Privateは外部データ運用）。"
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 ### User Story 1 - 初見で「何ができる人か」が2分で伝わる (Priority: P1)
 
@@ -58,7 +58,7 @@
 - private override が部分的（Experienceだけ/Projectsだけ）でも成立する
 - `visibility="private"` が多い場合でも Projects がスカスカに見えない
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 ### Functional Requirements
 
@@ -68,17 +68,16 @@
 - **FR-004**: Contact には “何を連絡してほしいか” の例が含まれなければならない
 - **FR-005**: 既存の private overrides（env/url）機構を壊さず、public-only でも壊れない
 
-### Key Entities *(include if feature involves data)*
+### Key Entities _(include if feature involves data)_
 
 - **Experience**: 見せたい責務・成果・期間感（公開用の最小単位）
 - **Project**: 公開/非公開の見せ方（redaction込み）
 - **Contact CTA**: 依頼の種類/期待値
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 ### Measurable Outcomes
 
 - **SC-001**: 初見ユーザーが2分で「強み・実績」を要約できる（第三者レビューで確認）
 - **SC-002**: public-only でも placeholder/破綻した文章が無い
 - **SC-003**: private project が混ざっても「価値が薄い」印象にならない（カード密度/説明で補完）
-

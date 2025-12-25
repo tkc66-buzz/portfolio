@@ -6,6 +6,7 @@
 ## Summary
 
 Add a new **Writing/Blog** entry point to the single-page portfolio, linking to:
+
 - Tech blog (Medium): `https://medium.com/@buzz_tkc`
 - Casual blog (しずかなインターネット): `https://sizu.me/buzz`
 
@@ -25,7 +26,7 @@ This is link-only v1 (no RSS/latest post fetching) to keep the site lightweight 
 
 ## Constitution Check
 
-*GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
+_GATE: Must pass before Phase 0 research. Re-check after Phase 1 design._
 
 - Principle compliance: Adds “writing” as a proof surface for “Personality-First Storytelling”.
 - Retro aesthetic + usability: Keep it scan-friendly; reuse existing section styling.
@@ -56,7 +57,7 @@ This is link-only v1 (no RSS/latest post fetching) to keep the site lightweight 
 ### Contracts
 
 - No new external APIs introduced.  
-**Output**: `specs/005-blog-links/contracts/README.md` (N/A)
+  **Output**: `specs/005-blog-links/contracts/README.md` (N/A)
 
 ### Quickstart
 

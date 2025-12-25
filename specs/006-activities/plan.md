@@ -6,6 +6,7 @@
 ## Summary
 
 Add an “Activities” proof surface to showcase:
+
 - Talks (登壇)
 - Books (書籍執筆)
 - Community (コミュニティ活動)
@@ -26,7 +27,7 @@ Key IA decision: keep this separate from `Writing` (blog) vs merge them into one
 
 ## Constitution Check
 
-*GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
+_GATE: Must pass before Phase 0 research. Re-check after Phase 1 design._
 
 - Principle compliance: Adds concrete evidence for “Personality-First Storytelling”.
 - Retro aesthetic + usability: Keep it scan-friendly; reuse existing section styling.
@@ -61,7 +62,7 @@ Key IA decision: keep this separate from `Writing` (blog) vs merge them into one
 
 ### Contracts
 
-- No new external APIs introduced (link-only).  
+- No new external APIs introduced (link-only).
 
 ### Quickstart
 
