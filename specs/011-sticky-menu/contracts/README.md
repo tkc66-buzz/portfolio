@@ -7,8 +7,7 @@ This feature is UI-only (in-page navigation + styling).
 - No contract tests
 
 Validation:
+
 - Manual scroll + click checks
 - `pnpm lint`
 - `pnpm build`
-
-

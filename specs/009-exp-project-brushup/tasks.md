@@ -5,7 +5,7 @@ description: "Tasks for 009 – Refine Experience vs Projects (IA + Content)"
 # Tasks: 009 – Refine Experience vs Projects (IA + Content)
 
 **Input**: Design documents from `/Users/takeshiwatanabe/EureWorks/private/git/portfolio/specs/009-exp-project-brushup/`  
-**Prerequisites**: `plan.md` (required), `spec.md` (required), `research.md`, `data-model.md`, `contracts/`, `quickstart.md`  
+**Prerequisites**: `plan.md` (required), `spec.md` (required), `research.md`, `data-model.md`, `contracts/`, `quickstart.md`
 
 **Tests**: No automated tests requested. Verify via `quickstart.md`, plus `pnpm lint` and `pnpm build`.
 
@@ -116,5 +116,3 @@ description: "Tasks for 009 – Refine Experience vs Projects (IA + Content)"
 ### Parallel Opportunities
 
 - T009 and T010 can be parallelized (different files)
-
-

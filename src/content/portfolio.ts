@@ -139,18 +139,15 @@ export const publicPortfolio: Portfolio = {
     highlights: [
       {
         year: "2025",
-        text:
-          "Backend Engineer (Go)。運用・開発体験・プロダクト価値をつなぐ改善を、設計〜実装〜運用まで一貫してリード。 / Evidence: Goによるバックエンド刷新",
+        text: "Backend Engineer (Go)。運用・開発体験・プロダクト価値をつなぐ改善を、設計〜実装〜運用まで一貫してリード。 / Evidence: Goによるバックエンド刷新",
       },
       {
         year: "2024",
-        text:
-          "信頼性と速度のトレードオフを解消するために、観測性（メトリクス/ログ/トレース）とアラート設計を整備し、障害対応の再現性を引き上げた。 / Evidence: 監視・運用改善（Datadog中心）",
+        text: "信頼性と速度のトレードオフを解消するために、観測性（メトリクス/ログ/トレース）とアラート設計を整備し、障害対応の再現性を引き上げた。 / Evidence: 監視・運用改善（Datadog中心）",
       },
       {
         year: "2019–2023",
-        text:
-          "ML/Data/Platform/Infra領域を横断。曖昧な要件を設計に落とし、運用に乗る形で仕組み化する（PoCで終わらせない）を得意領域にした。 / Evidence: ゼロからのインフラ基盤構築（副業）",
+        text: "ML/Data/Platform/Infra領域を横断。曖昧な要件を設計に落とし、運用に乗る形で仕組み化する（PoCで終わらせない）を得意領域にした。 / Evidence: ゼロからのインフラ基盤構築（副業）",
       },
     ],
   },

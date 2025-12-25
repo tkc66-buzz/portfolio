@@ -58,5 +58,3 @@ Add optional fields without breaking existing rendering:
 - Projects:
   - public items must include `role`, `tech`, and `outcomeOrLearning`
   - private items must not include sensitive details; UI will redact details
-
-

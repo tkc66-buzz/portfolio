@@ -34,7 +34,7 @@ Experience と Projects の役割分担（情報設計）を明確化し、内�
 
 ## Constitution Check
 
-*GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
+_GATE: Must pass before Phase 0 research. Re-check after Phase 1 design._
 
 Use `.specify/memory/constitution.md` as the source of truth. This repo’s default
 gates (adapt per feature) are:
@@ -46,6 +46,7 @@ gates (adapt per feature) are:
   `README.md`, `AGENTS.md`, and `CLAUDE.md` together.
 
 **Gate evaluation (pre-research)**:
+
 - Principle compliance: ✅（情報設計を明確にし、ストーリーの“証拠”を強化する）
 - Retro+Usability: ✅（テキスト階層・読みやすさを優先しつつNES.cssの枠を維持）
 - Lightweight: ✅（原則追加依存なしで改善）
@@ -66,6 +67,7 @@ specs/[###-feature]/
 ```
 
 ### Source Code (repository root)
+
 <!--
   ACTION REQUIRED: Replace the placeholder tree below with the concrete layout
   for this feature. Delete unused options and expand the chosen structure with
@@ -91,7 +93,7 @@ src/
 
 > **Fill ONLY if Constitution Check has violations that must be justified**
 
-| Violation | Why Needed | Simpler Alternative Rejected Because |
-|-----------|------------|-------------------------------------|
-| [e.g., 4th project] | [current need] | [why 3 projects insufficient] |
-| [e.g., Repository pattern] | [specific problem] | [why direct DB access insufficient] |
+| Violation                  | Why Needed         | Simpler Alternative Rejected Because |
+| -------------------------- | ------------------ | ------------------------------------ |
+| [e.g., 4th project]        | [current need]     | [why 3 projects insufficient]        |
+| [e.g., Repository pattern] | [specific problem] | [why direct DB access insufficient]  |

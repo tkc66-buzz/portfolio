@@ -25,5 +25,3 @@ Open `http://localhost:3000` and verify:
 pnpm lint
 pnpm build
 ```
-
-

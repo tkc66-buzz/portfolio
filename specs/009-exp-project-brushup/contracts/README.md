@@ -7,8 +7,7 @@ This feature is a content + UI refinement for a static Next.js portfolio page.
 - No automated contract tests
 
 Validation is done via:
+
 - `pnpm lint`
 - `pnpm build`
 - Manual verification in browser (TOC navigation + section readability)
-
-

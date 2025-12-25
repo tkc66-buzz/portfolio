@@ -12,11 +12,13 @@
   - Output form: cards/list optimized for 30–60s scanning per item
 
 **Rationale**:
+
 - Reduces repetition: Experience stays high-level; Projects carry details.
 - Increases credibility: Projects become “proof artifacts,” not a second timeline.
 - Matches the constitution: “Personality-First Storytelling” + “Content is a product surface.”
 
 **Alternatives considered**:
+
 - **Merge into one section**: simpler navigation, but tends to become a wall of text and mixes axis/evidence.
 - **Only Projects**: can work, but loses the multi-role narrative (ML/Data/Infra/Backend) you want to show.
 
@@ -32,6 +34,7 @@
   - **Result** (metric or qualitative impact) **or** **Learning** (if metrics can’t be shared)
 
 **Rationale**:
+
 - Helps avoid “project list” inside Experience and avoids “career timeline” inside Projects.
 
 ## Decision 3: Privacy + proof without leaking sensitive details
@@ -43,6 +46,7 @@
 - Hide: exact metrics, customer/company identifiers, internal architecture details, links.
 
 **Rationale**:
+
 - Keeps the section useful without putting sensitive information in the repo.
 
 ## Copy/structure suggestions (MVP)
@@ -55,6 +59,7 @@
 ### Projects (case cards)
 
 Each card should contain (public):
+
 - **Title** (specific but safe)
 - **One-line summary**
 - **Role**
@@ -66,5 +71,3 @@ Each card should contain (public):
 
 - Do we want a “Project type” label (Platform / Backend / Infra / Data) for fast scanning?
 - Do we need a “proof icon” or “badge” to visually link Experience → Projects?
-
-

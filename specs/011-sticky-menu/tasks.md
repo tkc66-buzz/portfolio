@@ -5,7 +5,7 @@ description: "Tasks for 011 – Sticky MENU (Always Visible Navigation)"
 # Tasks: 011 – Sticky MENU (Always Visible Navigation)
 
 **Input**: Design documents from `/Users/takeshiwatanabe/EureWorks/private/git/portfolio/specs/011-sticky-menu/`  
-**Prerequisites**: `plan.md` (required), `spec.md` (required), `research.md`, `data-model.md`, `contracts/`, `quickstart.md`  
+**Prerequisites**: `plan.md` (required), `spec.md` (required), `research.md`, `data-model.md`, `contracts/`, `quickstart.md`
 
 **Tests**: No automated tests requested. Verify via `quickstart.md`, plus `pnpm lint` and `pnpm build`.
 
