@@ -25,7 +25,7 @@ Unified cheat sheet so any AI agent (Claude Code, GPT, etc.) can understand the 
 ## Operational Notes
 1. **Scripts** – `pnpm dev`, `pnpm build`, `pnpm start`, `pnpm lint`.
 2. **Environment** – `.npmrc` sets `shamefully-hoist=true`, `strict-peer-dependencies=false`. npm will warn but pnpm honors them.
-3. **Assets** – NES favicon at `public/favicon.ico`; sample icons exist but page uses NES classes instead of images.
+3. **Assets** – Favicon assets live under `src/app/` (e.g. `src/app/favicon.ico`, `src/app/icon.svg`).
 4. **Styling Flow** – NES.css + Tailwind; prefer utility classes plus `.nes-*` components.
 5. **Testing** – No automated tests yet; rely on lint/build. Agents should add tests when implementing logic.
 

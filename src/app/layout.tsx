@@ -14,7 +14,13 @@ const press = Press_Start_2P({
 export const metadata: Metadata = {
   title: "Takeshi Watanabe (Buzz) – Portfolio",
   description: "Famicom-inspired NES.css portfolio powered by Next.js + TypeScript.",
-  icons: { icon: "/favicon.ico" },
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", type: "image/x-icon" },
+    ],
+    shortcut: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

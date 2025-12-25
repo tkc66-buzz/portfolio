@@ -16,6 +16,8 @@ src/
     layout.tsx      // fonts, NES import, metadata
     page.tsx        // assembles Hero → TOC → sections/*
     globals.css     // Tailwind + palette helpers
+    favicon.ico     // legacy favicon fallback
+    icon.svg        // primary tab icon (SVG)
   components/
     Hero.tsx
     TableOfContents.tsx
@@ -86,5 +88,6 @@ When a change affects dependencies or workflows, remember to update README / doc
   - `years` (hands-on years) is required; subjective scoring is intentionally not used.
   - Optionally add `firstUsedYear` / `lastUsedYear` (numeric years) to show recency vs past usage (e.g. `7y (2018–2024)`).
 - Drop a `public/og.png` and extend `src/app/layout.tsx` metadata for richer previews.
+- Customize the browser tab icon via `src/app/icon.svg` (and keep `src/app/favicon.ico` as fallback).
 - Tweak NES colors or swap the background (`src/app/globals.css`) for other retro palettes.
 - Add new sections/components under `src/components` and include them via `@/` alias.
