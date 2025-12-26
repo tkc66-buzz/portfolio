@@ -1,16 +1,17 @@
 import { getPortfolio } from "@/content/portfolio";
 
-const EVIDENCE_DELIM = " / Evidence: ";
+// Accept minor formatting variations, e.g. "/ Evidence:", " /Evidence: ", etc.
+const EVIDENCE_SPLIT_RE = /\s*\/\s*Evidence:\s*/;
 
 function normalizeEvidenceKey(text: string): string {
   return text.replace(/\s+/g, " ").trim();
 }
 
 function splitEvidence(text: string): { main: string; evidence?: string } {
-  const parts = text.split(EVIDENCE_DELIM);
+  const parts = text.split(EVIDENCE_SPLIT_RE);
   if (parts.length <= 1) return { main: text };
   const [main, ...rest] = parts;
-  const evidence = rest.join(EVIDENCE_DELIM).trim();
+  const evidence = rest.join(" / Evidence: ").trim();
   return { main: main.trim(), evidence: evidence.length > 0 ? evidence : undefined };
 }
 
