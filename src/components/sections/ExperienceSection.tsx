@@ -1,17 +1,18 @@
 import { getPortfolio } from "@/content/portfolio";
 
-// Accept minor formatting variations, e.g. "/ Evidence:", " /Evidence: ", etc.
-const EVIDENCE_SPLIT_RE = /\s*\/\s*Evidence:\s*/;
+// Prefer "Detail" in the UI, but keep backwards compatibility with existing "Evidence" authoring.
+// Accept minor formatting variations, e.g. "/ Detail:", " /Detail: ", "/ Evidence:", etc.
+const DETAIL_SPLIT_RE = /\s*\/\s*(?:Detail|Evidence):\s*/;
 
 function normalizeEvidenceKey(text: string): string {
   return text.replace(/\s+/g, " ").trim();
 }
 
 function splitEvidence(text: string): { main: string; evidence?: string } {
-  const parts = text.split(EVIDENCE_SPLIT_RE);
+  const parts = text.split(DETAIL_SPLIT_RE);
   if (parts.length <= 1) return { main: text };
   const [main, ...rest] = parts;
-  const evidence = rest.join(" / Evidence: ").trim();
+  const evidence = rest.join(" / Detail: ").trim();
   return { main: main.trim(), evidence: evidence.length > 0 ? evidence : undefined };
 }
 
@@ -62,7 +63,7 @@ export async function ExperienceSection() {
                 <p className="break-words whitespace-pre-line leading-relaxed">{main}</p>
                 {normalizedEvidence ? (
                   <p className="mt-1 text-xs text-fami-ivory/90">
-                    <span className="text-fami-gold">Evidence</span>:{" "}
+                    <span className="text-fami-gold">Detail</span>:{" "}
                     {anchor ? (
                       <a className="underline" href={`#${anchor}`}>
                         {normalizedEvidence}
