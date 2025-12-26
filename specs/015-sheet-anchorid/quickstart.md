@@ -1,10 +1,10 @@
-# Quickstart: Add `anchorId` to Projects spreadsheet and use `#anchorId` Evidence
+# Quickstart: Add `anchorId` to Projects spreadsheet and use `#anchorId` Detail
 
 ## Goal
 
-Make Experience → Projects Evidence linking stable by authoring a Project `anchorId` in the spreadsheet and referencing it from Experience as:
+Make Experience → Projects Detail linking stable by authoring a Project `anchorId` in the spreadsheet and referencing it from Experience as:
 
-- ` / Evidence: #<anchorId>`
+- ` / Detail: #<anchorId>`
 
 ## 1) Update the Google Sheet schema
 
@@ -26,15 +26,16 @@ Update `specs/002-portfolio-private-content/apps-script/Code.gs` so `normalizePr
 
 After editing Apps Script, redeploy the Web App (otherwise old code may keep serving).
 
-## 4) Author Evidence in Experience
+## 4) Author Detail in Experience
 
 In the `experience` sheet `text` cells, use:
 
 - ` / Evidence: #<anchorId>`
+- ` / Detail: #<anchorId>`
 
 Example:
 
-- `... / Evidence: #project-go-migration`
+- `... / Detail: #project-go-migration`
 
 ## 5) Verify
 

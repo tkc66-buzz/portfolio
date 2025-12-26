@@ -38,13 +38,15 @@ Notes:
 - `anchorId` is optional for backward compatibility; when missing, linking falls back to title-based Evidence (best-effort).
 - Invalid `anchorId` must not crash the site; Evidence should render as plain text.
 
-## Evidence authoring contract (Experience)
+## Detail authoring contract (Experience)
 
-Preferred Evidence format:
+Preferred Detail format:
 
+- ` / Detail: #<anchorId>`
+
+Legacy (best-effort) formats:
+
+- ` / Detail: <Project title>`
 - ` / Evidence: #<anchorId>`
-
-Legacy (best-effort) Evidence format:
-
 - ` / Evidence: <Project title>`
 

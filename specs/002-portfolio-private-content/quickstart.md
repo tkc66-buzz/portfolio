@@ -43,11 +43,11 @@ Header row:
 - Ensure uniqueness across Projects
 - Do **NOT** include a leading `#` in the `anchorId` cell (the `#` is only used in Experience Evidence)
 
-#### Evidence linking (recommended)
+#### Detail linking (recommended)
 
 In Experience `text`, prefer referencing a project by anchorId:
 
-- ` / Evidence: #<anchorId>`
+- ` / Detail: #<anchorId>`
 
 This remains stable even if the project title changes.
 
