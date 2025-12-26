@@ -2,6 +2,10 @@ import { getPortfolio } from "@/content/portfolio";
 
 const EVIDENCE_DELIM = " / Evidence: ";
 
+function normalizeEvidenceKey(text: string): string {
+  return text.replace(/\s+/g, " ").trim();
+}
+
 function splitEvidence(text: string): { main: string; evidence?: string } {
   const parts = text.split(EVIDENCE_DELIM);
   if (parts.length <= 1) return { main: text };
@@ -15,7 +19,12 @@ export async function ExperienceSection() {
   const anchorByTitle = new Map(
     projects.items
       .filter((p) => typeof p.anchorId === "string" && p.anchorId.length > 0)
-      .map((p) => [p.title, p.anchorId as string]),
+      .map((p) => [normalizeEvidenceKey(p.title), p.anchorId as string]),
+  );
+  const anchorIdSet = new Set(
+    projects.items
+      .map((p) => p.anchorId)
+      .filter((id): id is string => typeof id === "string" && id.length > 0),
   );
 
   return (
@@ -27,30 +36,38 @@ export async function ExperienceSection() {
         {experience.heading}
       </h2>
       <p className="mt-3 text-sm [font-family:var(--font-noto)]">
-        職務の軸（役割/責務/判断の癖）を時系列でまとめています。具体例は Projects に載せています。
+        経歴を時系列で簡単にまとめています。詳細は Projects に載せています。
       </p>
       <ul className="mt-4 space-y-4 text-sm [font-family:var(--font-noto)]">
         {experience.highlights.map((item) => {
           const { main, evidence } = splitEvidence(item.text);
-          const anchor = evidence ? anchorByTitle.get(evidence) : undefined;
+          const normalizedEvidence = evidence ? normalizeEvidenceKey(evidence) : undefined;
+          const anchor =
+            normalizedEvidence?.startsWith("#")
+              ? anchorIdSet.has(normalizedEvidence.slice(1))
+                ? normalizedEvidence.slice(1)
+                : undefined
+              : normalizedEvidence
+                ? anchorByTitle.get(normalizedEvidence)
+                : undefined;
           return (
             <li key={item.year} className="flex gap-3">
               <span className="shrink-0">
-                <span className="nes-badge is-warning text-[0.6rem]">
+                <span className="nes-badge is-warning text-[0.75rem] sm:text-[0.8rem]">
                   <span>{item.year}</span>
                 </span>
               </span>
               <div className="min-w-0">
-                <p className="leading-relaxed">{main}</p>
-                {evidence ? (
+                <p className="break-words whitespace-pre-line leading-relaxed">{main}</p>
+                {normalizedEvidence ? (
                   <p className="mt-1 text-xs text-fami-ivory/90">
                     <span className="text-fami-gold">Evidence</span>:{" "}
                     {anchor ? (
                       <a className="underline" href={`#${anchor}`}>
-                        {evidence}
+                        {normalizedEvidence}
                       </a>
                     ) : (
-                      <span>{evidence}</span>
+                      <span>{normalizedEvidence}</span>
                     )}
                   </p>
                 ) : null}

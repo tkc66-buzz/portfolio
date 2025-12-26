@@ -19,7 +19,8 @@ export async function ProjectsSection() {
       </header>
 
       <p className="mt-3 text-sm [font-family:var(--font-noto)]">
-        具体的な事例（証拠）をまとめています。課題→対応→結果/学びを短く読める形にしています。
+        具体的な事例をまとめています。公開が難しい情報は伏せております。
+        詳細は面談などで話せる範囲で共有できます。
       </p>
 
       <div className="mt-4 grid gap-4 md:grid-cols-2">
@@ -52,7 +53,7 @@ export async function ProjectsSection() {
             <p className="mt-3 text-xs text-fami-gold [font-family:var(--font-noto)]">
               Problem / Approach
             </p>
-            <p className="mt-2 text-sm leading-relaxed [font-family:var(--font-noto)]">
+            <p className="mt-2 break-words text-sm leading-relaxed [font-family:var(--font-noto)]">
               {project.visibility === "private"
                 ? "NDA等に配慮し、公開できる範囲のみ記載しています。詳細は面談で共有できます。"
                 : project.summary}
@@ -79,7 +80,7 @@ export async function ProjectsSection() {
               <dl className="mt-3 space-y-3 text-xs [font-family:var(--font-noto)]">
                 <div className="flex gap-2">
                   <dt className="w-20 text-fami-gold">Role</dt>
-                  <dd className="font-medium">{project.role}</dd>
+                  <dd className="break-words font-medium">{project.role}</dd>
                 </div>
                 <div className="flex gap-2">
                   <dt className="w-20 text-fami-gold">Tech</dt>
@@ -93,7 +94,7 @@ export async function ProjectsSection() {
                 </div>
                 <div className="flex gap-2">
                   <dt className="w-20 text-fami-gold">Result</dt>
-                  <dd className="leading-relaxed">{project.outcomeOrLearning}</dd>
+                  <dd className="break-words leading-relaxed">{project.outcomeOrLearning}</dd>
                 </div>
               </dl>
             )}
