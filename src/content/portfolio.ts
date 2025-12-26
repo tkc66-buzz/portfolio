@@ -413,6 +413,7 @@ async function loadPrivatePortfolioFromUrl(): Promise<Partial<Portfolio> | null>
   const url = process.env.PORTFOLIO_PRIVATE_URL;
   if (!url) return null;
 
+  const isDev = process.env.NODE_ENV === "development";
   const token = process.env.PORTFOLIO_PRIVATE_URL_BEARER;
   const revalidateSeconds = Number(process.env.PORTFOLIO_PRIVATE_REVALIDATE_SECONDS ?? "86400");
   const revalidate = Number.isFinite(revalidateSeconds) ? Math.max(0, revalidateSeconds) : 86400;
@@ -431,6 +432,7 @@ async function loadPrivatePortfolioFromUrl(): Promise<Partial<Portfolio> | null>
       // NOTE: Apps Script must implement `doPost(e)` and validate JSON body.
       redirect: "manual",
       signal,
+      ...(isDev ? ({ cache: "no-store" } as const) : {}),
     });
   };
 
@@ -439,6 +441,7 @@ async function loadPrivatePortfolioFromUrl(): Promise<Partial<Portfolio> | null>
       method: "GET",
       redirect: "manual",
       signal,
+      ...(isDev ? ({ cache: "no-store" } as const) : {}),
     });
   };
 
@@ -476,10 +479,13 @@ async function loadPrivatePortfolioFromUrl(): Promise<Partial<Portfolio> | null>
 
   // Note: Next.js fetch cache does not reliably cache non-GET requests.
   // We use unstable_cache to cache the resolved patch for the configured window.
-  const cached = unstable_cache(fetchPrivatePatch, ["portfolio-private-url", url, token ?? ""], {
-    revalidate,
-  });
+  if (isDev) {
+    // Local dev should always reflect the latest spreadsheet edits on a normal reload.
+    // Bypass unstable_cache entirely to avoid stale private patch data during development.
+    return await fetchPrivatePatch();
+  }
 
+  const cached = unstable_cache(fetchPrivatePatch, ["portfolio-private-url", url, token ?? ""], { revalidate });
   return await cached();
 }
 

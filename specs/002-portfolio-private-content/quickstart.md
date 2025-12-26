@@ -78,8 +78,10 @@ Set:
 ## 4) Verify behavior
 
 1. Open the site and confirm Experience/Projects reflect sheet values.
-2. Change a sheet row and confirm it **does not** update immediately (cache).
-3. To force fast iteration temporarily, set:
+2. Change a sheet row and confirm it updates as expected:
+   - **Local development (`pnpm dev`)**: should update on the next normal browser reload (no fetch cache in dev).
+   - **Production/Vercel**: may not update immediately (cache window).
+3. If you need faster iteration outside local dev (e.g., production-like runs), set:
    - `PORTFOLIO_PRIVATE_REVALIDATE_SECONDS=0`
 
 ### Quick API test (local)
