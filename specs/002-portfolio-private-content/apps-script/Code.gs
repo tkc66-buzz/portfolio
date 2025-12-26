@@ -7,7 +7,7 @@
 // Sheets:
 // - "experience": headers [year, text]
 // - "projects": headers:
-//   [visibility,title,summary,role,tech,outcomeOrLearning,status,linkLabel,linkHref]
+//   [visibility,anchorId,title,summary,role,tech,outcomeOrLearning,status,linkLabel,linkHref]
 
 const SHEET_EXPERIENCE = "experience";
 const SHEET_PROJECTS = "projects";
@@ -78,8 +78,11 @@ function normalizeProjects_(rows) {
     .filter((r) => r.title)
     .map((r) => {
       const visibility = r.visibility ? String(r.visibility) : "public";
+      const anchorIdRaw = r.anchorId ? String(r.anchorId) : "";
+      const anchorId = anchorIdRaw.trim();
       return {
         visibility,
+        ...(anchorId.length > 0 ? { anchorId } : {}),
         title: String(r.title),
         summary: String(r.summary || ""),
         role: String(r.role || ""),

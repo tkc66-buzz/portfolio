@@ -26,6 +26,7 @@ Example rows:
 Header row:
 
 - `visibility` (`public` or `private`; optional, defaults to `public`)
+- `anchorId` (optional but strongly recommended; **column** for stable in-page link id, e.g. `project-go-migration`)
 - `title`
 - `summary` (optional; ignored when `visibility=private`)
 - `role` (optional; ignored when `visibility=private`)
@@ -34,6 +35,21 @@ Header row:
 - `status` (optional)
 - `linkLabel` (optional; ignored when `visibility=private`)
 - `linkHref` (optional; ignored when `visibility=private`)
+
+#### anchorId rules (recommended)
+
+- Use lowercase + numbers + hyphens: `^[a-z0-9-]+$`
+- Keep it stable once published (links/Evidence depend on it)
+- Ensure uniqueness across Projects
+- Do **NOT** include a leading `#` in the `anchorId` cell (the `#` is only used in Experience Evidence)
+
+#### Evidence linking (recommended)
+
+In Experience `text`, prefer referencing a project by anchorId:
+
+- ` / Evidence: #<anchorId>`
+
+This remains stable even if the project title changes.
 
 ## 2) Create Apps Script Web App (POST body token protected JSON)
 
