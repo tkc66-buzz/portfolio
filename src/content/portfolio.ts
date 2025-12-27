@@ -274,7 +274,24 @@ export const publicPortfolio: Portfolio = {
       },
       {
         name: "Achievements",
-        items: [],
+        items: [
+          {
+            year: "2018/03",
+            title: "TOEIC 900点",
+          },
+          {
+            year: "2019/07",
+            title: "新卒のIT研修で同期で1番を取る",
+          },
+          {
+            year: "2020/03",
+            title: "第一回AWS ANGEL Dojo アライアンス賞受賞",
+          },
+          {
+            year: "2021/06",
+            title: "AWS Certified DevOps Engineer – Professional",
+          },
+        ],
       },
     ],
   },
