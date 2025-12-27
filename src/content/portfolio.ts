@@ -411,6 +411,9 @@ async function loadPrivatePortfolioFromUrl(): Promise<Partial<Portfolio> | null>
   if (!url) return null;
 
   const isDev = process.env.NODE_ENV === "development";
+  const warnDev = (msg: string) => {
+    if (isDev) console.warn(`[portfolio/private] ${msg}`);
+  };
   const token = process.env.PORTFOLIO_PRIVATE_URL_BEARER;
   const revalidateSeconds = Number(process.env.PORTFOLIO_PRIVATE_REVALIDATE_SECONDS ?? "86400");
   const revalidate = Number.isFinite(revalidateSeconds) ? Math.max(0, revalidateSeconds) : 86400;
@@ -452,6 +455,7 @@ async function loadPrivatePortfolioFromUrl(): Promise<Partial<Portfolio> | null>
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), timeout);
     let res: Response | null = null;
+    let lastUrl = url;
     try {
       // Step 1: Execute (POST)
       res = await postForExecution(url, controller.signal);
@@ -463,15 +467,38 @@ async function loadPrivatePortfolioFromUrl(): Promise<Partial<Portfolio> | null>
         const location = res.headers.get("location");
         if (!location) break;
         const nextUrl = new URL(location, url).toString();
+        lastUrl = nextUrl;
         res = await getContent(nextUrl, controller.signal);
       }
     } finally {
       clearTimeout(timer);
     }
 
-    if (!res || !res.ok) return null;
-    const parsed: unknown = await res.json();
-    return isPortfolioPatch(parsed) ? (parsed as Partial<Portfolio>) : null;
+    if (!res) {
+      warnDev(`No response (likely timeout after ${timeout}ms). Falling back to public defaults.`);
+      return null;
+    }
+    if (!res.ok) {
+      warnDev(
+        `Request failed: ${res.status} ${res.statusText} (lastUrl=${lastUrl}). Falling back to public defaults.`,
+      );
+      return null;
+    }
+
+    let parsed: unknown;
+    try {
+      parsed = await res.json();
+    } catch {
+      warnDev(`Response was not valid JSON (lastUrl=${lastUrl}). Falling back to public defaults.`);
+      return null;
+    }
+    if (!isPortfolioPatch(parsed)) {
+      warnDev(
+        `Response JSON did not match Portfolio patch contract (lastUrl=${lastUrl}). Falling back to public defaults.`,
+      );
+      return null;
+    }
+    return parsed as Partial<Portfolio>;
   };
 
   // Note: Next.js fetch cache does not reliably cache non-GET requests.
@@ -497,6 +524,7 @@ async function loadPrivatePortfolioFromUrl(): Promise<Partial<Portfolio> | null>
  */
 export async function getPortfolio(): Promise<Portfolio> {
   const source = process.env.PORTFOLIO_PRIVATE_SOURCE; // "env" | "url" | undefined
+  const isDev = process.env.NODE_ENV === "development";
   try {
     const patch =
       source === "url"
@@ -504,10 +532,22 @@ export async function getPortfolio(): Promise<Portfolio> {
         : source === "env"
           ? await loadPrivatePortfolioFromEnv()
           : await loadPrivatePortfolioFromEnv();
-    if (!patch) return mergePortfolio(publicPortfolio, {});
+    if (!patch) {
+      if (isDev && source) {
+        console.warn(
+          `[portfolio/private] Private source is set (${source}) but no patch was loaded. Showing public defaults.`,
+        );
+      }
+      return mergePortfolio(publicPortfolio, {});
+    }
     return mergePortfolio(publicPortfolio, patch);
   } catch {
     // Safety: never crash the site due to private data issues; fall back to public.
+    if (isDev && source) {
+      console.warn(
+        `[portfolio/private] Private load threw an error (source=${source}). Showing public defaults.`,
+      );
+    }
     return mergePortfolio(publicPortfolio, {});
   }
 }
