@@ -78,7 +78,7 @@ export type ActivityItem = {
 };
 
 export type ActivityGroup = {
-  name: "Talks" | "Books" | "Community";
+  name: "Talks" | "Books" | "Community" | "Achievements";
   items: ActivityItem[];
 };
 
@@ -269,6 +269,24 @@ export const publicPortfolio: Portfolio = {
             title: "Cloud Native Days Core Staff",
             context: "Cloud Native Daysの配信担当としてハイブリッドイベント開催に貢献しました。",
             link: { label: "Cloud Native Days", href: "https://cloudnativedays.jp/" },
+          },
+        ],
+      },
+      {
+        name: "Achievements",
+        items: [
+          {
+            year: "2019",
+            title: "新卒のIT研修でシステム開発演習があり、同期で1番を取る。",
+          },
+          {
+            year: "2020",
+            title: "第一回AWS ANGEL Dojo アライアンス賞受賞。",
+            link: { label: "AWS ANGEL Dojo", href: "https://aws.amazon.com/jp/blogs/psa/angel-dojo-season1/" },
+          },
+          {
+            year: "2021",
+            title: "AWS Certified DevOps Engineer Professional 取得。",
           },
         ],
       },
