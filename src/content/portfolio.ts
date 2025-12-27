@@ -78,7 +78,7 @@ export type ActivityItem = {
 };
 
 export type ActivityGroup = {
-  name: "Talks" | "Books" | "Community";
+  name: "Talks" | "Books" | "Community" | "Achievements";
   items: ActivityItem[];
 };
 
@@ -271,6 +271,10 @@ export const publicPortfolio: Portfolio = {
             link: { label: "Cloud Native Days", href: "https://cloudnativedays.jp/" },
           },
         ],
+      },
+      {
+        name: "Achievements",
+        items: [],
       },
     ],
   },

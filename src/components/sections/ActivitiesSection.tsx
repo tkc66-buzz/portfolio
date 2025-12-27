@@ -17,7 +17,7 @@ export async function ActivitiesSection() {
       </h2>
 
       <p className="mt-3 text-sm [font-family:var(--font-noto)]">
-        登壇・執筆・コミュニティ活動をまとめています。
+        登壇・執筆・コミュニティ活動・受賞/実績をまとめています。
       </p>
 
       <div className="mt-5 space-y-6">
