@@ -41,6 +41,7 @@ Unified cheat sheet so any AI agent (Claude Code, GPT, etc.) can understand the 
 - Menu is styled as a sticky “HUD” so it remains visible while scrolling.
 - Semantic sections live under `src/components/sections/*` and each owns a stable `id`
   for in-page anchor navigation.
+- Experience/Projects are currently not rendered by default (safety decision); keep sensitive details in private overrides if needed.
 - Content data is centralized in `src/content/portfolio.ts` for maintainability.
   - Private overrides can be injected via env vars (no private content committed to git).
   - Skills support categorized groups (`skills.categories`) with a backward-compatible flat list (`skills.items`) derived from categories.
