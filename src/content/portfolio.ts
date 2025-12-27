@@ -130,8 +130,8 @@ export const publicPortfolio: Portfolio = {
     id: "profile",
     heading: "Profile",
     body:
-      "Machine Learning Engineer、Data Scientist、Infrastructure Engineer、Platform Engineer などの職種を経験してきました。現在は株式会社エウレカにて Backend Engineer として、主に Go を用いた開発に携わっています。\n\n" +
-      "また、エウレカ以外では副業として、サービス立ち上げ当初からインフラ基盤をゼロから構築したり、TypeScript を用いたフルスタック開発にも取り組んでいます。",
+      "Machine Learning Engineer、Data Scientist、Infrastructure Engineer、Platform Engineer などの職種を経験してきました。現在は Backend Engineer として開発に携わっています。\n\n" +
+      "プロダクト価値・運用・開発体験をつなぐ改善を、設計〜実装〜運用まで一貫して進めるのが得意です。",
   },
   experience: {
     id: "experience",
@@ -164,23 +164,13 @@ export const publicPortfolio: Portfolio = {
         items: [
           {
             year: "2020",
-            title: "AWS Partner Summit Tokyo",
-            context:
-              "AWS Partner Summit TokyoにAWS ANGEL DOJOでアライアンス賞を受賞したプロダクトを紹介しました",
-            link: {
-              label: "開催記事",
-              href: "https://aws.amazon.com/jp/blogs/psa/aws-partner-summit-tokyo/",
-            },
+            title: "Tech Conference Talk",
+            context: "技術イベントで登壇しました（詳細は非公開）。",
           },
           {
             year: "2024",
-            title: "Developpers Summit",
-            context:
-              "Developper Summit TokyoにPlatform Engineeringについてオフラインで登壇しました",
-            link: {
-              label: "イベント詳細",
-              href: "https://event.shoeisha.jp/devsumi/20240215/session/4807",
-            },
+            title: "Tech Conference Talk",
+            context: "技術イベントで登壇しました（詳細は非公開）。",
           },
         ],
       },
@@ -189,13 +179,8 @@ export const publicPortfolio: Portfolio = {
         items: [
           {
             year: "2024",
-            title: "Real World Platform Engineering: 現場の知恵とノウハウ",
-            context:
-              "Platform Engineeringの現場でのノウハウや導入についてMeetup メンバーで書籍を執筆し、技術書典と技書博で発売しました。",
-            link: {
-              label: "技術書典",
-              href: "https://techbookfest.org/product/qunTLHG5hLbL91bBX9dqDU?productVariantID=diV811bQsBeU5YfWhtGym0",
-            },
+            title: "Technical Book (Co-author)",
+            context: "技術書の執筆に関わりました（詳細は非公開）。",
           },
         ],
       },
@@ -204,21 +189,18 @@ export const publicPortfolio: Portfolio = {
         items: [
           {
             year: "2024",
-            title: "Platform Engineering Kaigi Core Staff",
-            context: "日本初となるPlatform Engineeringに関するカンファレンス開催に貢献しました。",
-            link: { label: "Platform Engineering Kaigi", href: "https://www.cnia.io/pek2024/" },
+            title: "Tech Community Staff",
+            context: "技術コミュニティの運営に関わりました（詳細は非公開）。",
           },
           {
             year: "2019-2025",
-            title: "SRE NEXT Core Staff",
-            context: "SRE NEXT Core Staffとして、SNS、 会場、 スポンサー、 司会等を担当しました。",
-            link: { label: "SRE NEXT", href: "https://sre-next.dev/" },
+            title: "Tech Community Staff",
+            context: "技術コミュニティの運営に関わりました（詳細は非公開）。",
           },
           {
             year: "2022-2025",
-            title: "Cloud Native Days Core Staff",
-            context: "Cloud Native Daysの配信担当としてハイブリッドイベント開催に貢献しました。",
-            link: { label: "Cloud Native Days", href: "https://cloudnativedays.jp/" },
+            title: "Tech Community Staff",
+            context: "技術コミュニティの運営に関わりました（詳細は非公開）。",
           },
         ],
       },
@@ -227,16 +209,15 @@ export const publicPortfolio: Portfolio = {
         items: [
           {
             year: "2019",
-            title: "新卒のIT研修でシステム開発演習があり、同期で1番を取る。",
+            title: "新卒のIT研修で同期内トップ評価を獲得。",
           },
           {
             year: "2020",
-            title: "第一回AWS ANGEL Dojo アライアンス賞受賞。",
-            link: { label: "AWS ANGEL Dojo", href: "https://aws.amazon.com/jp/blogs/psa/angel-dojo-season1/" },
+            title: "クラウド領域のアワード受賞。",
           },
           {
             year: "2021",
-            title: "AWS Certified DevOps Engineer Professional 取得。",
+            title: "クラウド関連の上位資格を取得。",
           },
         ],
       },
@@ -263,7 +244,7 @@ export const publicPortfolio: Portfolio = {
           skillRange("AWS", 2019, CURRENT_YEAR),
           skillRange("GCP", 2022, CURRENT_YEAR),
           skillRange("Terraform", 2021, CURRENT_YEAR),
-          skillRange("Observability (Datadog)", 2019, CURRENT_YEAR),
+          skillRange("Observability", 2019, CURRENT_YEAR),
           skillRange("CI/CD", 2019, CURRENT_YEAR),
         ],
       },

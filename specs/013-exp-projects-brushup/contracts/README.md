@@ -18,7 +18,7 @@ This contract is intentionally minimal and backwards-compatible.
 
 Example:
 
-- `... / Evidence: Goによるバックエンド刷新`
+- `... / Evidence: #<anchorId>`
 
 ## Matching rules (supported)
 
