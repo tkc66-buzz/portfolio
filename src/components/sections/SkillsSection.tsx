@@ -35,6 +35,9 @@ export async function SkillsSection() {
         <PixelIcon src="/assets/pixel/icons/skills.svg" decorative size="md" />
         <span>{skills.heading}</span>
       </h2>
+      <p className="section-body-muted mt-3">
+        スキルは “経験年数” を目安に、強みの分布が伝わるように整理しています。
+      </p>
       {categories ? (
         <div className="mt-4 space-y-6">
           {categories.map((cat) => (

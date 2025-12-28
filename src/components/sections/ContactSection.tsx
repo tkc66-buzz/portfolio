@@ -35,7 +35,7 @@ export async function ContactSection() {
         <PixelIcon src="/assets/pixel/icons/contact.svg" decorative size="md" />
         <span>{contact.heading}</span>
       </h2>
-      <p className="mt-3 whitespace-pre-line text-sm [font-family:var(--font-noto)]">
+      <p className="section-body mt-3 whitespace-pre-line">
         {contact.blurb}
       </p>
       <div className="mt-6 flex flex-wrap gap-3">

@@ -1,6 +1,6 @@
+import { PixelIcon } from "@/components/PixelIcon";
 import { getPortfolio } from "@/content/portfolio";
 import Image from "next/image";
-import { PixelIcon } from "@/components/PixelIcon";
 
 function isExternalHttpHref(href: string) {
   return href.startsWith("http://") || href.startsWith("https://");
@@ -25,7 +25,7 @@ export async function WorkSection() {
         <span className="pixel-float text-xs uppercase tracking-[0.3em] text-fami-gold">WORK LOG</span>
       </header>
 
-      <p className="mt-3 text-sm [font-family:var(--font-noto)]">
+      <p className="section-body-muted mt-3">
         会社/組織ごとに1つの文章で概要をまとめ、配下に具体的な取り組み（Projects）を載せています。
       </p>
 
@@ -35,7 +35,7 @@ export async function WorkSection() {
             <div className="flex flex-wrap items-center justify-between gap-2">
               <div className="min-w-0">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="nes-badge is-primary text-[0.6rem]">
+                  <span className="nes-badge is-primary year-badge">
                     <span>{entry.period}</span>
                   </span>
                   <h3 className="truncate text-sm text-fami-gold" style={{ fontFamily: "var(--font-press)" }}>
@@ -54,7 +54,7 @@ export async function WorkSection() {
               ) : null}
             </div>
 
-            <p className="mt-3 break-words whitespace-pre-line text-sm leading-relaxed text-fami-ivory/95">
+            <p className="section-body mt-3 break-words whitespace-pre-line text-fami-ivory/95">
               {entry.summary}
             </p>
 
@@ -101,12 +101,12 @@ export async function WorkSection() {
                       </h4>
                       <div className="flex items-center gap-2">
                         {project.visibility === "private" ? (
-                          <span className="nes-badge is-error text-[0.6rem]">
+                          <span className="nes-badge is-error year-badge">
                             <span>PRIVATE</span>
                           </span>
                         ) : null}
                         {project.status ? (
-                          <span className="nes-badge is-primary text-[0.6rem]">
+                          <span className="nes-badge is-primary year-badge">
                             <span>{project.status}</span>
                           </span>
                         ) : null}
