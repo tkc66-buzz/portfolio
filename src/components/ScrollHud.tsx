@@ -52,8 +52,12 @@ export function ScrollHud() {
     const offsets = offsetsRef.current;
     if (offsets.length === 0) return (ids[0] ?? "profile") as TocItemId;
 
-    // Activate when section top passes below the sticky HUD.
-    const activationOffsetPx = 180;
+    const maxScrollY = document.documentElement.scrollHeight - window.innerHeight;
+    const atBottom = maxScrollY > 0 && window.scrollY >= maxScrollY - 2;
+    if (atBottom) return offsets[offsets.length - 1].id;
+
+    // Activate when section top passes below the sticky HUD (dynamic threshold).
+    const activationOffsetPx = Math.min(240, Math.max(140, Math.floor(window.innerHeight * 0.25)));
     const y = window.scrollY + activationOffsetPx;
 
     let active = offsets[0].id;
