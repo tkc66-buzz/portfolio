@@ -1,5 +1,6 @@
 import { TOC_ITEMS, tocHref } from "@/components/toc";
 import { PixelIcon } from "@/components/PixelIcon";
+import { ScrollHud } from "@/components/ScrollHud";
 
 function tocIconSrc(id: (typeof TOC_ITEMS)[number]["id"]) {
   switch (id) {
@@ -31,11 +32,14 @@ export function TableOfContents() {
         </h2>
       </div>
 
+      <ScrollHud />
+
       <ul className="flex gap-2 overflow-x-auto pb-1 sm:flex-wrap sm:overflow-visible sm:pb-0">
         {TOC_ITEMS.map((item) => (
           <li key={item.id}>
             <a
-              className="nes-btn is-primary is-small shrink-0 text-[0.7rem] uppercase tracking-wide focus:outline-none focus-visible:ring-4 focus-visible:ring-fami-gold focus-visible:ring-offset-4 focus-visible:ring-offset-[#111]"
+              data-toc-id={item.id}
+              className="nes-btn is-primary is-small btn-game shrink-0 text-[0.7rem] uppercase tracking-wide focus:outline-none focus-visible:ring-4 focus-visible:ring-fami-gold focus-visible:ring-offset-4 focus-visible:ring-offset-[#111]"
               href={tocHref(item.id)}
             >
               <span className="inline-flex items-center gap-2">

@@ -9,7 +9,7 @@ function isExternalHttpHref(href: string) {
 // - consistent height/typography across items
 // - never wrap (wrapping increases height and looks uneven)
 const ACTIVITIES_LINK_BTN_CLASS =
-  "nes-btn is-small shrink-0 whitespace-nowrap text-[0.7rem] leading-none focus:outline-none focus-visible:ring-4 focus-visible:ring-fami-gold focus-visible:ring-offset-4 focus-visible:ring-offset-[#111]";
+  "nes-btn is-small btn-game shrink-0 whitespace-nowrap text-[0.7rem] leading-none focus:outline-none focus-visible:ring-4 focus-visible:ring-fami-gold focus-visible:ring-offset-4 focus-visible:ring-offset-[#111]";
 
 export async function ActivitiesSection() {
   const { activities } = await getPortfolio();

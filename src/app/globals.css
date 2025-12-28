@@ -42,6 +42,60 @@ body {
   background-blend-mode: screen;
 }
 
+/* Motion polish tokens (interactive feedback) */
+.btn-game {
+  position: relative;
+  transform: translateZ(0);
+  transition:
+    transform 120ms steps(2, end),
+    filter 120ms steps(2, end),
+    box-shadow 120ms steps(2, end);
+  will-change: transform;
+}
+
+.btn-game:hover {
+  filter: brightness(1.15);
+}
+
+.btn-game:active {
+  transform: translateY(2px);
+}
+
+/* HUD progress */
+.hud-progress {
+  margin-top: 0.75rem;
+}
+
+.hud-progress__track {
+  height: 10px;
+  border: 3px solid rgba(215, 176, 91, 0.9);
+  box-shadow: 3px 3px 0 rgba(162, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.55);
+  overflow: hidden;
+}
+
+.hud-progress__fill {
+  height: 100%;
+  width: var(--hud-progress, 0%);
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      rgba(215, 176, 91, 0.95) 0px,
+      rgba(215, 176, 91, 0.95) 6px,
+      rgba(215, 176, 91, 0.55) 6px,
+      rgba(215, 176, 91, 0.55) 10px
+    );
+  background-size: 24px 10px;
+  transform: translateZ(0);
+  will-change: width;
+}
+
+/* Current section highlight (Menu) */
+.toc-active {
+  box-shadow: 0 0 0 3px rgba(215, 176, 91, 0.9), 0 0 18px rgba(215, 176, 91, 0.22);
+  filter: brightness(1.2);
+}
+
 /* Gamefeel: subtle, CSS-first motion (must respect reduced motion) */
 .pixel-float {
   animation: pixel-float 1600ms ease-in-out infinite;
@@ -72,10 +126,31 @@ body {
   }
 }
 
+@keyframes hud-stripes {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 48px 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .btn-game {
+    transition: none !important;
+  }
   .pixel-float,
   .blink-soft {
     animation: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hud-progress__fill {
+    animation: hud-stripes 700ms linear infinite;
+  }
+  .toc-active {
+    animation: blink-soft 1200ms steps(2, end) infinite;
   }
 }
 
