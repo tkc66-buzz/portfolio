@@ -133,7 +133,7 @@ export function ScrollHud() {
           style={{ ["--hud-progress" as never]: `${Math.round(state.progressRatio * 100)}%` }}
         />
       </div>
-      <p className="mt-2 text-[0.65rem] uppercase tracking-[0.25em] text-fami-gold">
+      <p className="font-display mt-2 text-[0.65rem] uppercase tracking-[0.25em] text-fami-gold">
         STAGE: {idToLabel.get(state.activeSectionId) ?? state.activeSectionId}
       </p>
     </div>

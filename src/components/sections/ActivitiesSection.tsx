@@ -20,8 +20,7 @@ export async function ActivitiesSection() {
       className="frame scroll-mt-[var(--menu-offset)] bg-[#1b1b1b] p-6 text-fami-ivory"
     >
       <h2
-        className="flex items-center gap-2 text-xl text-fami-gold"
-        style={{ fontFamily: "var(--font-press)" }}
+        className="font-display flex items-center gap-2 text-xl text-fami-gold"
       >
         <PixelIcon src="/assets/pixel/icons/activities.svg" decorative size="md" />
         <span>{activities.heading}</span>
@@ -35,16 +34,15 @@ export async function ActivitiesSection() {
         {activities.groups.map((group) => (
           <div key={group.name}>
             <h3
-              className="text-xs uppercase tracking-[0.3em] text-fami-gold"
-              style={{ fontFamily: "var(--font-press)" }}
+              className="font-display text-xs uppercase tracking-[0.3em] text-fami-gold"
             >
               {group.name}
             </h3>
 
             {group.items.length === 0 ? (
-              <p className="mt-3 text-sm [font-family:var(--font-noto)]">Coming soon</p>
+              <p className="mt-3 text-sm [font-family:var(--font-body)]">Coming soon</p>
             ) : (
-              <ul className="mt-3 space-y-3 text-sm [font-family:var(--font-noto)]">
+              <ul className="mt-3 space-y-3 text-sm [font-family:var(--font-body)]">
                 {group.items.map((item) => (
                   <li key={`${group.name}:${item.year}:${item.title}`} className="space-y-2">
                     <div className="flex items-start justify-between gap-3">

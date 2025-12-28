@@ -16,8 +16,7 @@ export async function WorkSection() {
     >
       <header className="flex items-baseline justify-between">
         <h2
-          className="flex items-center gap-2 text-xl text-fami-gold"
-          style={{ fontFamily: "var(--font-press)" }}
+          className="font-display flex items-center gap-2 text-xl text-fami-gold"
         >
           <PixelIcon src="/assets/pixel/icons/work.svg" decorative size="md" />
           <span>{work.heading}</span>
@@ -29,7 +28,7 @@ export async function WorkSection() {
         会社/組織ごとに1つの文章で概要をまとめ、配下に具体的な取り組み（Projects）を載せています。
       </p>
 
-      <div className="mt-4 space-y-6 [font-family:var(--font-noto)]">
+      <div className="mt-4 space-y-6 [font-family:var(--font-body)]">
         {work.items.map((entry) => (
           <article key={entry.key} className="frame bg-[#1b1b1b] p-4">
             <div className="flex flex-wrap items-center justify-between gap-2">
@@ -38,7 +37,7 @@ export async function WorkSection() {
                   <span className="nes-badge is-primary year-badge">
                     <span>{entry.period}</span>
                   </span>
-                  <h3 className="truncate text-sm text-fami-gold" style={{ fontFamily: "var(--font-press)" }}>
+                  <h3 className="font-display truncate text-sm text-fami-gold">
                     {entry.company}
                   </h3>
                 </div>
@@ -96,7 +95,7 @@ export async function WorkSection() {
                       </div>
                     ) : null}
                     <div className="flex items-center justify-between gap-2">
-                      <h4 className="text-sm text-fami-gold" style={{ fontFamily: "var(--font-press)" }}>
+                      <h4 className="font-display text-sm text-fami-gold">
                         {project.title}
                       </h4>
                       <div className="flex items-center gap-2">

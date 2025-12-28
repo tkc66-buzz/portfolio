@@ -52,7 +52,7 @@ Focused tips for Anthropic Claude Code / Workbench agents interacting with this 
 ## Troubleshooting
 
 - **Missing styles**: Confirm Tailwind `content` globs include new files; run `pnpm dev` again.
-- **Font issues**: Check that `var(--font-press)` / `var(--font-noto)` are used in inline styles or className as needed.
+- **Font issues**: Check that typography tokens (`--font-display` / `--font-body`) are applied (and that `--font-press` / `--font-dotgothic` / `--font-noto` are present on `<body>`).
 - **Node mismatch**: `nvm use 25.2.0`; Next.js requires >=20.9.0.
 
 ## Documentation Sync Rules (Claude)

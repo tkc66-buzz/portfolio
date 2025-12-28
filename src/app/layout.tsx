@@ -1,6 +1,6 @@
 import "nes.css/css/nes.min.css";
 import type { Metadata } from "next";
-import { Noto_Sans_JP, Press_Start_2P } from "next/font/google";
+import { DotGothic16, Noto_Sans_JP, Press_Start_2P } from "next/font/google";
 import type { ReactNode } from "react";
 import "./globals.css";
 
@@ -10,6 +10,7 @@ const press = Press_Start_2P({
   subsets: ["latin"],
   variable: "--font-press",
 });
+const dotGothic = DotGothic16({ weight: "400", subsets: ["latin"], variable: "--font-dotgothic" });
 
 export const metadata: Metadata = {
   title: "Takeshi Watanabe (Buzz) – Portfolio",
@@ -26,7 +27,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ja">
-      <body className={`${noto.variable} ${press.variable} text-white`}>{children}</body>
+      <body className={`${noto.variable} ${press.variable} ${dotGothic.variable} text-white`}>
+        {children}
+      </body>
     </html>
   );
 }

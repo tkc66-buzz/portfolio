@@ -29,8 +29,7 @@ export async function SkillsSection() {
       className="frame scroll-mt-[var(--menu-offset)] bg-[#1b1b1b] p-6 text-fami-ivory"
     >
       <h2
-        className="flex items-center gap-2 text-xl text-fami-gold"
-        style={{ fontFamily: "var(--font-press)" }}
+        className="font-display flex items-center gap-2 text-xl text-fami-gold"
       >
         <PixelIcon src="/assets/pixel/icons/skills.svg" decorative size="md" />
         <span>{skills.heading}</span>
@@ -43,8 +42,7 @@ export async function SkillsSection() {
           {categories.map((cat) => (
             <div key={cat.name}>
               <h3
-                className="text-xs uppercase tracking-[0.3em] text-fami-gold"
-                style={{ fontFamily: "var(--font-press)" }}
+                className="font-display text-xs uppercase tracking-[0.3em] text-fami-gold"
               >
                 {cat.name}
               </h3>

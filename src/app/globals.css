@@ -6,6 +6,8 @@
   color-scheme: dark;
   --menu-top: 0.75rem;
   --menu-offset: 9.5rem;
+  --font-body: var(--font-noto);
+  --font-display: var(--font-press), var(--font-dotgothic), var(--font-noto);
 }
 
 html,
@@ -157,16 +159,25 @@ body {
 /* Guardrail: avoid expensive animation patterns (keep transforms/opacity only). */
 
 /* Typography tokens */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
 .section-body {
   font-size: 1rem; /* tailwind: text-base */
   line-height: 1.75rem; /* tailwind: leading-relaxed */
-  font-family: var(--font-noto);
+  font-family: var(--font-body);
+  text-rendering: geometricPrecision;
 }
 
 .section-body-muted {
   font-size: 0.875rem; /* tailwind: text-sm */
   line-height: 1.25rem;
-  font-family: var(--font-noto);
+  font-family: var(--font-body);
   color: rgba(248, 241, 220, 0.9); /* close to text-fami-ivory/90 */
 }
 

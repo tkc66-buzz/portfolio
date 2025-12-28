@@ -5,7 +5,7 @@ Phase 1 of the Famicom-style portfolio for Takeshi Watanabe (Buzz). Built with N
 ## What's included now
 
 - Hero + Menu + Profile/Work/Writing/Activities/Skills/Contact sections (single-page) composed via `src/components/*`
-- Famicom palette (red `#a20000`, gold `#d7b05b`, background `#111`) and retro typography (Press Start 2P + Noto Sans JP)
+- Famicom palette (red `#a20000`, gold `#d7b05b`, background `#111`) and retro typography (Press Start 2P + DotGothic16 (display) + Noto Sans JP (body))
 - NES.css buttons, badges, and progress bars wired up for later polish
 - Menu is displayed directly under the Hero and provides in-page navigation
 - Menu is a **sticky HUD**: it stays visible while scrolling for fast section jumping

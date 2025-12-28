@@ -19,7 +19,7 @@ Unified cheat sheet so any AI agent (Claude Code, GPT, etc.) can understand the 
 | UI Library      | React / React DOM      | 19.2.0                                 | Concurrent React 19 APIs available.                               |
 | Styling         | Tailwind CSS           | 3.4.18                                 | Config in `tailwind.config.js`; `globals.css` imports directives. |
 | Theme           | NES.css                | 2.3.0                                  | Imported in layout for pixel-art UI.                              |
-| Fonts           | next/font (Google)     | Noto Sans JP, Press Start 2P           | Exposed as CSS variables `--font-noto`, `--font-press`.           |
+| Fonts           | next/font (Google)     | Noto Sans JP, Press Start 2P, DotGothic16 | Exposed as CSS variables `--font-noto`, `--font-press`, `--font-dotgothic`. |
 | Build Tools     | PostCSS + Autoprefixer | 8.5.6 / 10.4.22                        | `postcss.config.js` standard pipeline.                            |
 | Formatter       | Prettier               | ^3.x                                   | `prettier.config.cjs` + `prettier-plugin-tailwindcss`.            |
 | Linting         | ESLint                 | 9.x + `eslint-config-next`             | Config located at `eslint.config.mjs`.                            |
