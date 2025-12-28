@@ -11,8 +11,8 @@ export function Hero() {
         Takeshi Watanabe <span className="text-fami-gold">(Buzz)</span>
       </h1>
       <p className="mt-4 text-base [font-family:var(--font-noto)] md:text-lg">
-        Backend Engineer (Go) with a Platform/Infra mindset—shipping reliable systems,
-        observability. Also builds TypeScript full-stack and has a Data/ML background.
+        Backend Engineer with a Platform/Infra mindset—shipping reliable systems and observability.
+        Also builds TypeScript full-stack and has a Data/ML background.
       </p>
     </section>
   );

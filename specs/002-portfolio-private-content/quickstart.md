@@ -1,6 +1,10 @@
-# Quickstart: Private content via Google Sheets (POST token) + 24h cache
+# Quickstart: Private content via Google Sheets (POST token) + 24h cache *(Deprecated)*
 
-## Goal
+> **Status (2025-12-28)**: This spreadsheet-based workflow is **no longer used** for this repo.
+> Content should be managed in-repo via `src/content/portfolio.ts` and rendered via the unified **Work** section.
+> `PORTFOLIO_PRIVATE_SOURCE=url` is treated as **unsupported**.
+
+## Goal (historical)
 
 Keep Experience/Projects in Google Sheets (Drive) while keeping the GitHub repo public.
 The site loads **private overrides server-side** via a token-protected JSON endpoint,
@@ -82,9 +86,11 @@ Copy the Web App URL.
 If you change `Code.gs`, you MUST redeploy (edit deployment or create a new deployment),
 otherwise the Web App may keep serving an older version (e.g., GET-only / no doPost).
 
-## 3) Configure Vercel env vars
+## 3) Configure Vercel env vars (historical)
 
-Set:
+> NOTE: This repo currently treats `PORTFOLIO_PRIVATE_SOURCE=url` as unsupported.
+
+Set (historical):
 
 - `PORTFOLIO_PRIVATE_SOURCE=url`
 - `PORTFOLIO_PRIVATE_URL=<your web app url>`

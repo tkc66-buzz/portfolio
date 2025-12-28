@@ -1,4 +1,8 @@
-# Feature Specification: 外部データ（Google Sheets）で経験・実績を管理し、公開/非公開を制御する
+# Feature Specification: 外部データ（Google Sheets）で経験・実績を管理し、公開/非公開を制御する *(Deprecated)*
+
+> **Status (2025-12-28)**: This spreadsheet-based workflow is **no longer used** for this repo.
+> The repository moved to a unified **Work → Projects** structure authored in-repo.
+> Keep this spec as historical reference only.
 
 **Feature Branch**: `002-portfolio-private-content`  
 **Created**: 2025-12-24  

@@ -4,7 +4,7 @@ Phase 1 of the Famicom-style portfolio for Takeshi Watanabe (Buzz). Built with N
 
 ## What's included now
 
-- Hero + Menu + Profile/Experience/Projects/Writing/Activities/Skills/Contact sections (single-page) composed via `src/components/*`
+- Hero + Menu + Profile/Work/Writing/Activities/Skills/Contact sections (single-page) composed via `src/components/*`
 - Famicom palette (red `#a20000`, gold `#d7b05b`, background `#111`) and retro typography (Press Start 2P + Noto Sans JP)
 - NES.css buttons, badges, and progress bars wired up for later polish
 - Menu is displayed directly under the Hero and provides in-page navigation
@@ -26,8 +26,7 @@ src/
     toc.ts
     sections/
       ProfileSection.tsx
-      ExperienceSection.tsx
-      ProjectsSection.tsx
+      WorkSection.tsx
       WritingSection.tsx
       ActivitiesSection.tsx
       SkillsSection.tsx
@@ -77,14 +76,9 @@ When a change affects dependencies or workflows, remember to update README / doc
 
 ## Customizing next steps
 
-- Update the copy/data in `src/content/portfolio.ts` (profile/experience/projects/writing/activities/skills/contact).
+- Update the copy/data in `src/content/portfolio.ts` (profile/work/writing/activities/skills/contact).
 - If you want to keep some details off the public repo, you can provide private overrides via
-  environment variables (see `src/content/portfolio.ts`: `PORTFOLIO_PRIVATE_JSON` or
-  `PORTFOLIO_PRIVATE_URL`).
-  - For Google Sheets/Docs maintenance, a practical pattern is:
-    Google Sheet (Drive) → Google Apps Script Web App (JSON API + token) →
-    set `PORTFOLIO_PRIVATE_URL` + `PORTFOLIO_PRIVATE_URL_BEARER` +
-    `PORTFOLIO_PRIVATE_REVALIDATE_SECONDS=86400` (24h cache).
+  environment variables (see `src/content/portfolio.ts`: `PORTFOLIO_PRIVATE_JSON`).
   - Projects can include `visibility: "public" | "private"`. Private items will be redacted
     on the public page (summary/outcome/link hidden).
     - With current UI, `visibility="private"` also hides role/tech/outcome/link (title + badges only).

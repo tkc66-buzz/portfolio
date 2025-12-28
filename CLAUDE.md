@@ -21,15 +21,13 @@ Focused tips for Anthropic Claude Code / Workbench agents interacting with this 
 - `src/components/TableOfContents.tsx` – Menu UI (in-page navigation, sticky HUD).
 - `src/components/Hero.tsx` – Hero header (no buttons; Menu is directly below).
 - `src/components/sections/*` – Semantic sections; each owns a stable `id` for `#hash` navigation.
+- `src/components/sections/WorkSection.tsx` – Unified Work section (company blocks with nested Projects).
 - `src/components/sections/WritingSection.tsx` – Writing/blog links section (external links).
 - `src/components/sections/ActivitiesSection.tsx` – Activities section (Talks/Books/Community).
 - `src/app/icon.svg` – Primary browser tab icon (SVG). Keep `src/app/favicon.ico` as fallback.
 - `src/content/portfolio.ts` – Public content + optional private overrides loaded server-side via env vars:
-  - `PORTFOLIO_PRIVATE_SOURCE` = `env` or `url`
+  - `PORTFOLIO_PRIVATE_SOURCE` = `env` (url mode is deprecated/unsupported)
   - `PORTFOLIO_PRIVATE_JSON` (JSON string)
-  - `PORTFOLIO_PRIVATE_URL` (+ optional `PORTFOLIO_PRIVATE_URL_BEARER`)
-  - `PORTFOLIO_PRIVATE_REVALIDATE_SECONDS` (default 86400 = 24h cache)
-  - `PORTFOLIO_PRIVATE_TIMEOUT_MS` (default 3000 = 3s timeout)
   - Skills use `years` (required) and can optionally include `firstUsedYear` / `lastUsedYear` (numeric years) to show recency.
 - `src/app/layout.tsx` – Imports NES.css, fonts, metadata; extend when adding OG tags or global providers.
 - `tailwind.config.js` – Update `content` array if adding directories.

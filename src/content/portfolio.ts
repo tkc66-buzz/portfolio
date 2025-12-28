@@ -1,7 +1,5 @@
 import "server-only";
 
-import { unstable_cache } from "next/cache";
-
 import type { TocItemId } from "@/components/toc";
 
 const CURRENT_YEAR = new Date().getFullYear();
@@ -27,11 +25,6 @@ export type Project = {
   outcomeOrLearning: string;
   link?: ExternalLink;
   status?: string;
-};
-
-export type ExperienceHighlight = {
-  year: string;
-  text: string;
 };
 
 export type Skill = {
@@ -65,8 +58,25 @@ export type SectionContent = {
 };
 
 export type Profile = SectionContent & { body: string };
-export type Experience = SectionContent & { highlights: ExperienceHighlight[] };
-export type Projects = SectionContent & { items: Project[] };
+export type WorkEntry = {
+  /**
+   * Stable key for React lists.
+   * Use something public-safe (avoid sensitive internal IDs).
+   */
+  key: string;
+  period: string; // display-only (e.g. "2019–2025")
+  company: string; // public-safe label
+  /**
+   * Exactly one paragraph for the company/organization.
+   * (Can include line breaks if needed; UI may render with whitespace-pre-line.)
+   */
+  summary: string;
+  projects: Project[]; // nested projects under this company
+  tech?: string[]; // optional company-level tags
+  links?: ExternalLink[]; // optional company-level links
+};
+
+export type Work = SectionContent & { items: WorkEntry[] };
 export type Skills = SectionContent & { items: Skill[]; categories?: SkillCategory[] };
 export type Writing = SectionContent & { items: ExternalLink[] };
 
@@ -87,8 +97,7 @@ export type Contact = SectionContent & { blurb: string; links: ExternalLink[] };
 
 export type Portfolio = {
   profile: Profile;
-  experience: Experience;
-  projects: Projects;
+  work: Work;
   writing: Writing;
   activities: Activities;
   skills: Skills;
@@ -133,67 +142,63 @@ export const publicPortfolio: Portfolio = {
       "Machine Learning Engineer、Data Scientist、Infrastructure Engineer、Platform Engineer などの職種を経験してきました。現在は株式会社エウレカにて Backend Engineer として、主に Go を用いた開発に携わっています。\n\n" +
       "また、エウレカ以外では副業として、サービス立ち上げ当初からインフラ基盤をゼロから構築したり、TypeScript を用いたフルスタック開発にも取り組んでいます。",
   },
-  experience: {
-    id: "experience",
-    heading: "Experience",
-    highlights: [
-      {
-        year: "2025",
-        text: "Backend Engineer (Go)。運用・開発体験・プロダクト価値をつなぐ改善を、設計〜実装〜運用まで一貫してリード。 / Evidence: Goによるバックエンド刷新",
-      },
-      {
-        year: "2024",
-        text: "信頼性と速度のトレードオフを解消するために、観測性（メトリクス/ログ/トレース）とアラート設計を整備し、障害対応の再現性を引き上げた。 / Evidence: 監視・運用改善（Datadog中心）",
-      },
-      {
-        year: "2019–2023",
-        text: "ML/Data/Platform/Infra領域を横断。曖昧な要件を設計に落とし、運用に乗る形で仕組み化する（PoCで終わらせない）を得意領域にした。 / Evidence: ゼロからのインフラ基盤構築（副業）",
-      },
-    ],
-  },
-  projects: {
-    id: "projects",
-    heading: "Projects",
-    // Copy checklist (public):
-    // - Problem: why it mattered
-    // - Action: what you did (and key tradeoffs)
-    // - Result/Learning: what changed (or what you learned if metrics can't be shared)
+  work: {
+    id: "work",
+    heading: "Work",
     items: [
       {
-        visibility: "public",
-        anchorId: "project-go-migration",
-        title: "Goによるバックエンド刷新",
+        key: "company-main",
+        period: "2019–2025",
+        company: "Company (Public)",
         summary:
-          "課題: 既存システムの制約下での刷新。対応: 段階移行（切替/ロールバック前提）でリスクを抑えつつ置き換えを推進。",
-        role: "Tech Lead / Backend",
-        tech: ["Go", "AWS", "SQL", "Observability"],
-        outcomeOrLearning:
-          "結果/学び: 分割・切替・ロールバックを含む移行設計と、運用まで含めた品質担保の型を作れた。",
-        status: "2024–2025",
+          "Backend/Platform領域を中心に、設計〜実装〜運用まで一貫して改善を推進。信頼性と開発速度の両立を目的に、移行・運用設計・観測性の整備などに取り組んできました。",
+        projects: [
+          {
+            visibility: "public",
+            anchorId: "project-go-migration",
+            title: "Goによるバックエンド刷新",
+            summary:
+              "課題: 既存システムの制約下での刷新。対応: 段階移行（切替/ロールバック前提）でリスクを抑えつつ置き換えを推進。",
+            role: "Tech Lead / Backend",
+            tech: ["Go", "AWS", "SQL", "Observability"],
+            outcomeOrLearning:
+              "結果/学び: 分割・切替・ロールバックを含む移行設計と、運用まで含めた品質担保の型を作れた。",
+            status: "2024–2025",
+          },
+          {
+            visibility: "public",
+            anchorId: "project-observability",
+            title: "監視・運用改善（Datadog中心）",
+            summary:
+              "課題: 障害対応の属人性と検知ノイズ。対応: 観測性の底上げとアラート設計の見直しで、アクションに繋がる運用へ。",
+            role: "Infrastructure / Platform",
+            tech: ["Datadog", "AWS", "SLO", "Incident Response"],
+            outcomeOrLearning:
+              "結果/学び: “見える化”で終わらせず、意思決定と行動に繋がるメトリクス/アラートへ落とす重要性を再確認。",
+            status: "2019–2025",
+          },
+        ],
       },
       {
-        visibility: "public",
-        anchorId: "project-observability",
-        title: "監視・運用改善（Datadog中心）",
+        key: "company-side",
+        period: "2021–2025",
+        company: "Side Work",
         summary:
-          "課題: 障害対応の属人性と検知ノイズ。対応: 観測性の底上げとアラート設計の見直しで、アクションに繋がる運用へ。",
-        role: "Infrastructure / Platform",
-        tech: ["Datadog", "AWS", "SLO", "Incident Response"],
-        outcomeOrLearning:
-          "結果/学び: “見える化”で終わらせず、意思決定と行動に繋がるメトリクス/アラートへ落とす重要性を再確認。",
-        status: "2019–2025",
-      },
-      {
-        visibility: "public",
-        anchorId: "project-greenfield-infra",
-        title: "ゼロからのインフラ基盤構築（副業）",
-        summary:
-          "課題: 立ち上げ初期に“運用前提の土台”がない。対応: 環境分離/CI/CD/IaCを揃え、継続運用できる基盤を構築。",
-        role: "Infra / Full-stack (TypeScript)",
-        tech: ["AWS", "Terraform", "CI/CD", "TypeScript"],
-        outcomeOrLearning:
-          "結果/学び: 最初に“運用の標準”を置くことで、後からの速度と安全性が両立できると実感。",
-        status: "2021–2025",
+          "サービス立ち上げ初期の不確実性が高い環境で、運用に耐える土台（環境分離、CI/CD、IaCなど）を整えつつ、必要に応じてフルスタックで実装も担当しました。",
+        projects: [
+          {
+            visibility: "public",
+            anchorId: "project-greenfield-infra",
+            title: "ゼロからのインフラ基盤構築（副業）",
+            summary:
+              "課題: 立ち上げ初期に“運用前提の土台”がない。対応: 環境分離/CI/CD/IaCを揃え、継続運用できる基盤を構築。",
+            role: "Infra / Full-stack (TypeScript)",
+            tech: ["AWS", "Terraform", "CI/CD", "TypeScript"],
+            outcomeOrLearning:
+              "結果/学び: 最初に“運用の標準”を置くことで、後からの速度と安全性が両立できると実感。",
+            status: "2021–2025",
+          },
+        ],
       },
     ],
   },
@@ -362,8 +367,7 @@ function isPortfolioPatch(value: unknown): value is Partial<Portfolio> {
   // This prevents accidentally merging error payloads like { error: "Unauthorized" }.
   return (
     "profile" in value ||
-    "experience" in value ||
-    "projects" in value ||
+    "work" in value ||
     "writing" in value ||
     "activities" in value ||
     "skills" in value ||
@@ -375,8 +379,7 @@ function mergePortfolio(base: Portfolio, patch: Partial<Portfolio>): Portfolio {
   // Only merge known keys; do not spread arbitrary top-level keys onto Portfolio.
   const mergedCandidate: Portfolio = {
     profile: { ...base.profile, ...(patch.profile ?? {}) },
-    experience: { ...base.experience, ...(patch.experience ?? {}) },
-    projects: { ...base.projects, ...(patch.projects ?? {}) },
+    work: { ...base.work, ...(patch.work ?? {}) },
     writing: { ...base.writing, ...(patch.writing ?? {}) },
     activities: { ...base.activities, ...(patch.activities ?? {}) },
     skills: { ...base.skills, ...(patch.skills ?? {}) },
@@ -424,134 +427,27 @@ async function loadPrivatePortfolioFromEnv(): Promise<Partial<Portfolio> | null>
   return isPortfolioPatch(parsed) ? (parsed as Partial<Portfolio>) : null;
 }
 
-async function loadPrivatePortfolioFromUrl(): Promise<Partial<Portfolio> | null> {
-  const url = process.env.PORTFOLIO_PRIVATE_URL;
-  if (!url) return null;
-
-  const isDev = process.env.NODE_ENV === "development";
-  const warnDev = (msg: string) => {
-    if (isDev) console.warn(`[portfolio/private] ${msg}`);
-  };
-  const token = process.env.PORTFOLIO_PRIVATE_URL_BEARER;
-  const revalidateSeconds = Number(process.env.PORTFOLIO_PRIVATE_REVALIDATE_SECONDS ?? "86400");
-  const revalidate = Number.isFinite(revalidateSeconds) ? Math.max(0, revalidateSeconds) : 86400;
-  const timeoutMs = Number(process.env.PORTFOLIO_PRIVATE_TIMEOUT_MS ?? "3000");
-  const timeout = Number.isFinite(timeoutMs) ? Math.max(0, timeoutMs) : 3000;
-
-  const postForExecution = async (targetUrl: string, signal: AbortSignal) => {
-    const headers: Record<string, string> = { "Content-Type": "application/json" };
-    if (token) headers.Authorization = `Bearer ${token}`;
-    return await fetch(targetUrl, {
-      headers,
-      method: "POST",
-      body: token ? JSON.stringify({ token }) : JSON.stringify({}),
-      // Apps Script Web Apps don't reliably expose Authorization headers to `doGet(e)`.
-      // We avoid query params (leaky) and instead send the token in POST body.
-      // NOTE: Apps Script must implement `doPost(e)` and validate JSON body.
-      redirect: "manual",
-      signal,
-      ...(isDev ? ({ cache: "no-store" } as const) : {}),
-    });
-  };
-
-  const getContent = async (targetUrl: string, signal: AbortSignal) => {
-    return await fetch(targetUrl, {
-      method: "GET",
-      redirect: "manual",
-      signal,
-      ...(isDev ? ({ cache: "no-store" } as const) : {}),
-    });
-  };
-
-  const fetchPrivatePatch = async () => {
-    // Apps Script Web Apps typically respond with a 302 to a content URL on
-    // `script.googleusercontent.com`. That content URL only supports GET/HEAD.
-    //
-    // So we:
-    // 1) POST to the /exec URL (execute script + auth)
-    // 2) Follow redirects with GET to retrieve the actual JSON content
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), timeout);
-    let res: Response | null = null;
-    let lastUrl = url;
-    try {
-      // Step 1: Execute (POST)
-      res = await postForExecution(url, controller.signal);
-
-      // Step 2: Follow redirects with GET
-      for (let i = 0; i < 5 && res; i++) {
-        const isRedirect = res.status >= 300 && res.status < 400;
-        if (!isRedirect) break;
-        const location = res.headers.get("location");
-        if (!location) break;
-        const nextUrl = new URL(location, url).toString();
-        lastUrl = nextUrl;
-        res = await getContent(nextUrl, controller.signal);
-      }
-    } finally {
-      clearTimeout(timer);
-    }
-
-    if (!res) {
-      warnDev(`No response (likely timeout after ${timeout}ms). Falling back to public defaults.`);
-      return null;
-    }
-    if (!res.ok) {
-      warnDev(
-        `Request failed: ${res.status} ${res.statusText} (lastUrl=${lastUrl}). Falling back to public defaults.`,
-      );
-      return null;
-    }
-
-    let parsed: unknown;
-    try {
-      parsed = await res.json();
-    } catch {
-      warnDev(`Response was not valid JSON (lastUrl=${lastUrl}). Falling back to public defaults.`);
-      return null;
-    }
-    if (!isPortfolioPatch(parsed)) {
-      warnDev(
-        `Response JSON did not match Portfolio patch contract (lastUrl=${lastUrl}). Falling back to public defaults.`,
-      );
-      return null;
-    }
-    return parsed as Partial<Portfolio>;
-  };
-
-  // Note: Next.js fetch cache does not reliably cache non-GET requests.
-  // We use unstable_cache to cache the resolved patch for the configured window.
-  if (isDev) {
-    // Local dev should always reflect the latest spreadsheet edits on a normal reload.
-    // Bypass unstable_cache entirely to avoid stale private patch data during development.
-    return await fetchPrivatePatch();
-  }
-
-  const cached = unstable_cache(fetchPrivatePatch, ["portfolio-private-url", url, token ?? ""], { revalidate });
-  return await cached();
-}
-
 /**
  * Returns portfolio data with optional private overrides.
  *
  * Private data MUST NOT be committed to the repo. Provide it via either:
  * - PORTFOLIO_PRIVATE_JSON (JSON string)
- * - PORTFOLIO_PRIVATE_URL (+ optional PORTFOLIO_PRIVATE_URL_BEARER)
- * - PORTFOLIO_PRIVATE_REVALIDATE_SECONDS (default: 86400)
- * - PORTFOLIO_PRIVATE_TIMEOUT_MS (default: 3000)
  */
 export async function getPortfolio(): Promise<Portfolio> {
   const source = process.env.PORTFOLIO_PRIVATE_SOURCE; // "env" | "url" | undefined
   const isDev = process.env.NODE_ENV === "development";
   try {
     const patch =
-      source === "url"
-        ? await loadPrivatePortfolioFromUrl()
-        : source === "env"
+      source === "env"
           ? await loadPrivatePortfolioFromEnv()
           : await loadPrivatePortfolioFromEnv();
     if (!patch) {
       if (isDev && source) {
+        if (source === "url") {
+          console.warn(
+            `[portfolio/private] Private source "url" is currently unsupported (spreadsheet運用停止). Showing public defaults.`,
+          );
+        }
         console.warn(
           `[portfolio/private] Private source is set (${source}) but no patch was loaded. Showing public defaults.`,
         );
@@ -572,8 +468,7 @@ export async function getPortfolio(): Promise<Portfolio> {
 
 // Backwards-compatible named exports (public-only). Prefer getPortfolio().
 export const profile = publicPortfolio.profile;
-export const experience = publicPortfolio.experience;
-export const projects = publicPortfolio.projects;
+export const work = publicPortfolio.work;
 export const writing = publicPortfolio.writing;
 export const activities = publicPortfolio.activities;
 export const skills = publicPortfolio.skills;
