@@ -21,7 +21,9 @@ Focused tips for Anthropic Claude Code / Workbench agents interacting with this 
 - `src/components/TableOfContents.tsx` – Menu UI (in-page navigation, sticky HUD).
 - `src/components/Hero.tsx` – Hero header (no buttons; Menu is directly below).
 - `src/components/sections/*` – Semantic sections; each owns a stable `id` for `#hash` navigation.
-- `src/components/sections/WorkSection.tsx` – Unified Work section (company blocks with nested Projects).
+- `src/components/sections/WorkSection.tsx` – Unified Work section (company blocks with nested Projects). Work is rendered as a deliberately “unique screen” (RPG-like STATUS / QUEST LOG / DETAIL).
+- `src/components/sections/WorkQuestLog.tsx` – Client component that handles quest selection state + detail swapping (kept small on purpose).
+- `src/components/sections/workRpgVm.ts` / `src/components/sections/workRpgId.ts` – Derived view models and stable quest id generation (deterministic + de-dup suffix).
 - `src/components/sections/WritingSection.tsx` – Writing/blog links section (external links).
 - `src/components/sections/ActivitiesSection.tsx` – Activities section (Talks/Books/Community).
 - `src/app/icon.svg` – Primary browser tab icon (SVG). Keep `src/app/favicon.ico` as fallback.

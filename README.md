@@ -1,14 +1,15 @@
 # Portfolio
 
-Phase 1 of the Famicom-style portfolio for Takeshi Watanabe (Buzz). Built with Next.js 16 + TypeScript + Tailwind CSS + NES.css. This commit focuses on the "frame" only—each section ships with placeholder copy so real content can slide in during Phase 2.
+Famicom-style portfolio for Takeshi Watanabe (Buzz). Built with Next.js 16 + TypeScript + Tailwind CSS + NES.css. The site ships real content via `src/content/portfolio.ts`, and selectively adds “game UI” touches (HUD, pixel motion, and an RPG-style Work screen) without breaking readability.
 
 ## What's included now
 
 - Hero + Menu + Profile/Work/Writing/Activities/Skills/Contact sections (single-page) composed via `src/components/*`
 - Famicom palette (red `#a20000`, gold `#d7b05b`, background `#111`) and retro typography (Press Start 2P + Noto Sans JP)
-- NES.css buttons, badges, and progress bars wired up for later polish
+- NES.css buttons, badges, and progress bars (plus a few CSS-only motion tokens, reduced-motion aware)
 - Menu is displayed directly under the Hero and provides in-page navigation
 - Menu is a **sticky HUD**: it stays visible while scrolling for fast section jumping
+- Work is intentionally “different”: an RPG-style **STATUS / QUEST LOG / DETAIL** layout with keyboard-friendly quest selection
 
 ## Project layout
 
@@ -42,7 +43,7 @@ pnpm install
 pnpm dev
 ```
 
-Visit <http://localhost:3000> and you'll see the empty frames ready for content.
+Visit <http://localhost:3000> and scroll through each section to see the retro layout and interactions.
 
 ## Scripts
 
