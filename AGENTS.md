@@ -53,6 +53,9 @@ Unified cheat sheet so any AI agent (Claude Code, GPT, etc.) can understand the 
   - Optional visuals:
     - Static assets live under `public/assets/`
     - Projects can optionally specify `project.asset` to render a diagram/thumbnail in Work
+  - Optional icons:
+    - Pixel-style icons live under `public/assets/pixel/icons/`
+    - Use `src/components/PixelIcon.tsx` for consistent sizing + decorative a11y defaults
   - Motion:
     - CSS-only motion utilities live in `src/app/globals.css` (e.g. reduced-motion aware helpers)
 

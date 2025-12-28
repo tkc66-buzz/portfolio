@@ -1,4 +1,5 @@
 import { getPortfolio } from "@/content/portfolio";
+import { PixelIcon } from "@/components/PixelIcon";
 
 function isExternalHttpHref(href: string) {
   return href.startsWith("http://") || href.startsWith("https://");
@@ -12,8 +13,12 @@ export async function ActivitiesSection() {
       id={activities.id}
       className="frame scroll-mt-[var(--menu-offset)] bg-[#1b1b1b] p-6 text-fami-ivory"
     >
-      <h2 className="text-xl text-fami-gold" style={{ fontFamily: "var(--font-press)" }}>
-        {activities.heading}
+      <h2
+        className="flex items-center gap-2 text-xl text-fami-gold"
+        style={{ fontFamily: "var(--font-press)" }}
+      >
+        <PixelIcon src="/assets/pixel/icons/activities.svg" decorative size="md" />
+        <span>{activities.heading}</span>
       </h2>
 
       <p className="mt-3 text-sm [font-family:var(--font-noto)]">
