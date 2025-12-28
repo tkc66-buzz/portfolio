@@ -5,6 +5,12 @@ function isExternalHttpHref(href: string) {
   return href.startsWith("http://") || href.startsWith("https://");
 }
 
+// Activities link button invariant:
+// - consistent height/typography across items
+// - never wrap (wrapping increases height and looks uneven)
+const ACTIVITIES_LINK_BTN_CLASS =
+  "nes-btn is-small shrink-0 whitespace-nowrap text-[0.7rem] leading-none focus:outline-none focus-visible:ring-4 focus-visible:ring-fami-gold focus-visible:ring-offset-4 focus-visible:ring-offset-[#111]";
+
 export async function ActivitiesSection() {
   const { activities } = await getPortfolio();
 
@@ -56,7 +62,7 @@ export async function ActivitiesSection() {
 
                       {item.link ? (
                         <a
-                          className="nes-btn is-small shrink-0"
+                          className={ACTIVITIES_LINK_BTN_CLASS}
                           href={item.link.href}
                           target={isExternalHttpHref(item.link.href) ? "_blank" : undefined}
                           rel={isExternalHttpHref(item.link.href) ? "noreferrer" : undefined}
