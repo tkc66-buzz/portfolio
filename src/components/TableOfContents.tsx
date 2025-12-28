@@ -1,4 +1,22 @@
 import { TOC_ITEMS, tocHref } from "@/components/toc";
+import { PixelIcon } from "@/components/PixelIcon";
+
+function tocIconSrc(id: (typeof TOC_ITEMS)[number]["id"]) {
+  switch (id) {
+    case "profile":
+      return "/assets/pixel/icons/profile.svg";
+    case "work":
+      return "/assets/pixel/icons/work.svg";
+    case "writing":
+      return "/assets/pixel/icons/writing.svg";
+    case "activities":
+      return "/assets/pixel/icons/activities.svg";
+    case "skills":
+      return "/assets/pixel/icons/skills.svg";
+    case "contact":
+      return "/assets/pixel/icons/contact.svg";
+  }
+}
 
 export function TableOfContents() {
   return (
@@ -20,7 +38,10 @@ export function TableOfContents() {
               className="nes-btn is-primary is-small shrink-0 text-[0.7rem] uppercase tracking-wide focus:outline-none focus-visible:ring-4 focus-visible:ring-fami-gold focus-visible:ring-offset-4 focus-visible:ring-offset-[#111]"
               href={tocHref(item.id)}
             >
-              {item.label}
+              <span className="inline-flex items-center gap-2">
+                <PixelIcon src={tocIconSrc(item.id)} decorative size="sm" />
+                <span>{item.label}</span>
+              </span>
             </a>
           </li>
         ))}
