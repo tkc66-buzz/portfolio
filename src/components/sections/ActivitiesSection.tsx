@@ -50,7 +50,7 @@ export async function ActivitiesSection() {
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
                         <div className="flex flex-wrap items-center gap-2">
-                          <span className="nes-badge is-warning text-[0.6rem]">
+                          <span className="nes-badge is-warning year-badge">
                             <span>{item.year}</span>
                           </span>
                           <span className="truncate">{item.title}</span>

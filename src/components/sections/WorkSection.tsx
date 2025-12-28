@@ -35,7 +35,7 @@ export async function WorkSection() {
             <div className="flex flex-wrap items-center justify-between gap-2">
               <div className="min-w-0">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="nes-badge is-primary text-[0.6rem]">
+                  <span className="nes-badge is-primary year-badge">
                     <span>{entry.period}</span>
                   </span>
                   <h3 className="truncate text-sm text-fami-gold" style={{ fontFamily: "var(--font-press)" }}>
@@ -101,12 +101,12 @@ export async function WorkSection() {
                       </h4>
                       <div className="flex items-center gap-2">
                         {project.visibility === "private" ? (
-                          <span className="nes-badge is-error text-[0.6rem]">
+                          <span className="nes-badge is-error year-badge">
                             <span>PRIVATE</span>
                           </span>
                         ) : null}
                         {project.status ? (
-                          <span className="nes-badge is-primary text-[0.6rem]">
+                          <span className="nes-badge is-primary year-badge">
                             <span>{project.status}</span>
                           </span>
                         ) : null}
