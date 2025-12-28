@@ -1,5 +1,5 @@
-import { getPortfolio } from "@/content/portfolio";
 import { PixelIcon } from "@/components/PixelIcon";
+import { getPortfolio } from "@/content/portfolio";
 
 function isExternalHttpHref(href: string) {
   return href.startsWith("http://") || href.startsWith("https://");
@@ -46,7 +46,7 @@ export async function ContactSection() {
             <a
               key={link.href}
               className={
-                link.label === "Email" ? "nes-btn is-error btn-game" : "nes-btn is-primary btn-game"
+                link.label === "X" ? "nes-btn is-error btn-game" : "nes-btn is-primary btn-game"
               }
               href={link.href}
               target={isExternal ? "_blank" : undefined}

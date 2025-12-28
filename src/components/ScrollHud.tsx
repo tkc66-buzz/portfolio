@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
 import { TOC_ITEMS, type TocItemId } from "@/components/toc";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 type ScrollHudState = {
   activeSectionId: TocItemId;

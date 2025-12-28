@@ -354,8 +354,8 @@ export const publicPortfolio: Portfolio = {
     heading: "Contact",
     blurb: "副業・技術相談など、お気軽にご連絡ください。",
     links: [
+      { label: "X", href: "https://x.com/buzz_tkc" },
       { label: "Email", href: "worktkc2018@gmail.com" },
-      { label: "X / Twitter", href: "https://x.com/buzz_tkc" },
       { label: "GitHub", href: "https://github.com/tkc66-buzz" },
       { label: "LinkedIn", href: "https://www.linkedin.com/in/takeshi-watananbe-4736a8285/" },
     ],
