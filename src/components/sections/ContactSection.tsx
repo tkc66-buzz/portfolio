@@ -45,7 +45,9 @@ export async function ContactSection() {
           return (
             <a
               key={link.href}
-              className={link.label === "Email" ? "nes-btn is-error" : "nes-btn is-primary"}
+              className={
+                link.label === "Email" ? "nes-btn is-error btn-game" : "nes-btn is-primary btn-game"
+              }
               href={link.href}
               target={isExternal ? "_blank" : undefined}
               rel={isExternal ? "noreferrer" : undefined}

@@ -145,7 +145,7 @@ export async function WorkSection() {
 
                     {project.visibility === "private" ? null : project.link ? (
                       <a
-                        className="nes-btn mt-4 w-full text-center"
+                        className="nes-btn btn-game mt-4 w-full text-center"
                         href={project.link.href}
                         target={isExternalHttpHref(project.link.href) ? "_blank" : undefined}
                         rel={isExternalHttpHref(project.link.href) ? "noreferrer" : undefined}

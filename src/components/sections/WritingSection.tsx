@@ -30,7 +30,7 @@ export async function WritingSection() {
           return (
             <a
               key={link.href}
-              className="nes-btn is-primary"
+                    className="nes-btn is-primary btn-game"
               href={link.href}
               target={isExternal ? "_blank" : undefined}
               rel={isExternal ? "noreferrer" : undefined}
