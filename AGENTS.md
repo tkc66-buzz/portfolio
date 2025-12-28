@@ -49,6 +49,7 @@ Unified cheat sheet so any AI agent (Claude Code, GPT, etc.) can understand the 
     - Skills use `years` (required) and can optionally include `firstUsedYear` / `lastUsedYear` to show recency.
   - Writing/Blog links live in `portfolio.writing` and are rendered in `src/components/sections/WritingSection.tsx`.
   - Activities (Talks/Books/Community) live in `portfolio.activities` and are rendered in `src/components/sections/ActivitiesSection.tsx`.
+    - Activities includes a one-time “Achievement Unlocked” toast (`src/components/AchievementToast.tsx`) shown when the section first enters view (session-scoped, dismissible, reduced-motion aware).
   - Work (company/organization blocks with nested Projects) lives in `portfolio.work` and is rendered in `src/components/sections/WorkSection.tsx`.
     - Work includes a deliberately “unique screen” RPG-style layout driven by a small client component (`src/components/sections/WorkQuestLog.tsx`) plus derived view models (`workRpgVm.ts`).
   - Optional visuals:

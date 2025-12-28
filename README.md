@@ -10,6 +10,7 @@ Famicom-style portfolio for Takeshi Watanabe (Buzz). Built with Next.js 16 + Typ
 - Menu is displayed directly under the Hero and provides in-page navigation
 - Menu is a **sticky HUD**: it stays visible while scrolling for fast section jumping
 - Work is intentionally “different”: an RPG-style **STATUS / QUEST LOG / DETAIL** layout with keyboard-friendly quest selection
+- Activities gets a one-time **“Achievement Unlocked”** toast when first reached (dismissible; reduced-motion safe)
 
 ## Project layout
 

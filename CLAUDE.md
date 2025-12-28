@@ -26,6 +26,7 @@ Focused tips for Anthropic Claude Code / Workbench agents interacting with this 
 - `src/components/sections/workRpgVm.ts` / `src/components/sections/workRpgId.ts` – Derived view models and stable quest id generation (deterministic + de-dup suffix).
 - `src/components/sections/WritingSection.tsx` – Writing/blog links section (external links).
 - `src/components/sections/ActivitiesSection.tsx` – Activities section (Talks/Books/Community).
+- `src/components/AchievementToast.tsx` – Client-only “Achievement Unlocked” toast (session-scoped: shown once on first in-view, dismissible, reduced-motion aware).
 - `src/app/icon.svg` – Primary browser tab icon (SVG). Keep `src/app/favicon.ico` as fallback.
 - `src/content/portfolio.ts` – Public content + optional private overrides loaded server-side via env vars:
   - `PORTFOLIO_PRIVATE_SOURCE` = `env` (url mode is deprecated/unsupported)

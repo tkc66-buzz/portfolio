@@ -1,5 +1,6 @@
 import { getPortfolio } from "@/content/portfolio";
 import { PixelIcon } from "@/components/PixelIcon";
+import { AchievementToast } from "@/components/AchievementToast";
 
 function isExternalHttpHref(href: string) {
   return href.startsWith("http://") || href.startsWith("https://");
@@ -17,7 +18,7 @@ export async function ActivitiesSection() {
   return (
     <section
       id={activities.id}
-      className="frame scroll-mt-[var(--menu-offset)] bg-[#1b1b1b] p-6 text-fami-ivory"
+      className="frame activities-toast scroll-mt-[var(--menu-offset)] bg-[#1b1b1b] p-6 text-fami-ivory"
     >
       <h2
         className="flex items-center gap-2 text-xl text-fami-gold"
@@ -26,6 +27,10 @@ export async function ActivitiesSection() {
         <PixelIcon src="/assets/pixel/icons/activities.svg" decorative size="md" />
         <span>{activities.heading}</span>
       </h2>
+
+      <div className="mt-3">
+        <AchievementToast targetSectionId={activities.id} />
+      </div>
 
       <p className="section-body-muted mt-3">
         登壇・執筆・コミュニティ活動・受賞/実績をまとめています。
