@@ -2,7 +2,7 @@ export function Hero() {
   return (
     <section className="frame bg-[#1b1b1b] p-8 text-center text-fami-ivory">
       <p
-        className="mb-3 text-xs uppercase tracking-[0.3em] text-fami-gold"
+        className="blink-soft mb-3 text-xs uppercase tracking-[0.3em] text-fami-gold"
         style={{ fontFamily: "var(--font-press)" }}
       >
         PRESS START

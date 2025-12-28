@@ -77,6 +77,9 @@ When a change affects dependencies or workflows, remember to update README / doc
 ## Customizing next steps
 
 - Update the copy/data in `src/content/portfolio.ts` (profile/work/writing/activities/skills/contact).
+- Add optional visuals to Projects:
+  - Put diagrams/screenshots under `public/assets/`
+  - Set `project.asset` in `src/content/portfolio.ts` to render a thumbnail/diagram in Work
 - If you want to keep some details off the public repo, you can provide private overrides via
   environment variables (see `src/content/portfolio.ts`: `PORTFOLIO_PRIVATE_JSON`).
   - Projects can include `visibility: "public" | "private"`. Private items will be redacted

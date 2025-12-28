@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-label="段階移行（切替/ロールバック前提）の概念図">
+  <defs>
+    <style>
+      .bg { fill: #1b1b1b; }
+      .box { fill: #212529; stroke: #d7b05b; stroke-width: 6; }
+      .txt { fill: #f8f1dc; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 22px; }
+      .sub { fill: rgba(248,241,220,0.85); font-size: 18px; }
+      .accent { fill: #d7b05b; }
+      .arrow { stroke: #a20000; stroke-width: 10; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .dash { stroke-dasharray: 14 10; }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="960" height="540" rx="18" />
+
+  <text class="txt accent" x="40" y="60">Go migration: safe cutover with rollback</text>
+  <text class="sub" x="40" y="92">段階移行 / 切替 / ロールバックを“最初から設計に入れる”</text>
+
+  <rect class="box" x="60" y="130" width="260" height="120" rx="14" />
+  <text class="txt" x="90" y="180">Legacy</text>
+  <text class="sub" x="90" y="210">既存システム</text>
+
+  <rect class="box" x="350" y="130" width="260" height="120" rx="14" />
+  <text class="txt" x="380" y="180">Gateway</text>
+  <text class="sub" x="380" y="210">ルーティング/切替</text>
+
+  <rect class="box" x="640" y="130" width="260" height="120" rx="14" />
+  <text class="txt" x="670" y="180">Go Service</text>
+  <text class="sub" x="670" y="210">新実装</text>
+
+  <path class="arrow" d="M 320 190 L 350 190" />
+  <path class="arrow" d="M 610 190 L 640 190" />
+
+  <rect class="box" x="60" y="300" width="840" height="170" rx="14" />
+  <text class="txt" x="90" y="350">Observability + Safe ops</text>
+  <text class="sub" x="90" y="382">metrics / logs / traces  +  feature flag  +  rollback switch</text>
+  <text class="sub" x="90" y="414">段階移行を“運用に載せる”ための可観測性と切替手順</text>
+
+  <path class="arrow dash" d="M 190 250 L 190 300" />
+  <path class="arrow dash" d="M 480 250 L 480 300" />
+  <path class="arrow dash" d="M 770 250 L 770 300" />
+</svg>
+
+

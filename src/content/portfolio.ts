@@ -11,6 +11,14 @@ export type ExternalLink = {
 
 export type Visibility = "public" | "private";
 
+export type Asset = {
+  src: string; // path under /public, e.g. "/assets/diagrams/go-migration.svg"
+  alt: string;
+  kind: "diagram" | "screenshot" | "pixel-art";
+  width?: number;
+  height?: number;
+};
+
 export type Project = {
   visibility?: Visibility; // default: "public"
   /**
@@ -23,6 +31,7 @@ export type Project = {
   role: string;
   tech: string[];
   outcomeOrLearning: string;
+  asset?: Asset;
   link?: ExternalLink;
   status?: string;
 };
@@ -157,6 +166,11 @@ export const publicPortfolio: Portfolio = {
             visibility: "public",
             anchorId: "project-go-migration",
             title: "Goによるバックエンド刷新",
+            asset: {
+              kind: "diagram",
+              src: "/assets/diagrams/go-migration.svg",
+              alt: "段階移行（切替/ロールバック前提）の概念図",
+            },
             summary:
               "課題: 既存システムの制約下での刷新。対応: 段階移行（切替/ロールバック前提）でリスクを抑えつつ置き換えを推進。",
             role: "Tech Lead / Backend",
