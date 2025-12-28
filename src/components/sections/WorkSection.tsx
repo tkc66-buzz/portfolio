@@ -1,4 +1,5 @@
 import { getPortfolio } from "@/content/portfolio";
+import Image from "next/image";
 
 function isExternalHttpHref(href: string) {
   return href.startsWith("http://") || href.startsWith("https://");
@@ -16,7 +17,7 @@ export async function WorkSection() {
         <h2 className="text-xl text-fami-gold" style={{ fontFamily: "var(--font-press)" }}>
           {work.heading}
         </h2>
-        <span className="text-xs uppercase tracking-[0.3em] text-fami-gold">WORK LOG</span>
+        <span className="pixel-float text-xs uppercase tracking-[0.3em] text-fami-gold">WORK LOG</span>
       </header>
 
       <p className="mt-3 text-sm [font-family:var(--font-noto)]">
@@ -77,6 +78,18 @@ export async function WorkSection() {
                     id={project.anchorId}
                     className="frame scroll-mt-[var(--menu-offset)] bg-[#1b1b1b] p-4"
                   >
+                    {project.asset ? (
+                      <div className="mb-3 overflow-hidden rounded-sm border-2 border-fami-gold/60 bg-[#111]">
+                        {/* Use next/image for optimization (even for SVG) */}
+                        <Image
+                          src={project.asset.src}
+                          alt={project.asset.alt}
+                          width={960}
+                          height={540}
+                          className="h-auto w-full object-contain"
+                        />
+                      </div>
+                    ) : null}
                     <div className="flex items-center justify-between gap-2">
                       <h4 className="text-sm text-fami-gold" style={{ fontFamily: "var(--font-press)" }}>
                         {project.title}

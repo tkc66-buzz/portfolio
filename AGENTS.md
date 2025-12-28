@@ -50,6 +50,11 @@ Unified cheat sheet so any AI agent (Claude Code, GPT, etc.) can understand the 
   - Writing/Blog links live in `portfolio.writing` and are rendered in `src/components/sections/WritingSection.tsx`.
   - Activities (Talks/Books/Community) live in `portfolio.activities` and are rendered in `src/components/sections/ActivitiesSection.tsx`.
   - Work (company/organization blocks with nested Projects) lives in `portfolio.work` and is rendered in `src/components/sections/WorkSection.tsx`.
+  - Optional visuals:
+    - Static assets live under `public/assets/`
+    - Projects can optionally specify `project.asset` to render a diagram/thumbnail in Work
+  - Motion:
+    - CSS-only motion utilities live in `src/app/globals.css` (e.g. reduced-motion aware helpers)
 
 ## Workflow Expectations
 

@@ -29,6 +29,8 @@ Focused tips for Anthropic Claude Code / Workbench agents interacting with this 
   - `PORTFOLIO_PRIVATE_SOURCE` = `env` (url mode is deprecated/unsupported)
   - `PORTFOLIO_PRIVATE_JSON` (JSON string)
   - Skills use `years` (required) and can optionally include `firstUsedYear` / `lastUsedYear` (numeric years) to show recency.
+- `public/assets/` – Static diagrams/screenshots (optional); Projects can specify `project.asset` to render visuals.
+- `src/app/globals.css` – Global palette + small CSS-only motion utilities (reduced-motion aware).
 - `src/app/layout.tsx` – Imports NES.css, fonts, metadata; extend when adding OG tags or global providers.
 - `tailwind.config.js` – Update `content` array if adding directories.
 - `postcss.config.js` – Standard pipeline; modify when adding plugins like `postcss-nesting`.
