@@ -20,7 +20,7 @@ export async function WritingSection() {
         <span>{writing.heading}</span>
       </h2>
 
-      <p className="mt-3 text-sm [font-family:var(--font-noto)]">
+      <p className="section-body-muted mt-3">
         記事（Writing）は文章のまとめ。登壇/書籍/コミュニティは Activities に分けています。
       </p>
 

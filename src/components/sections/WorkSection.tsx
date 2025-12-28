@@ -25,7 +25,7 @@ export async function WorkSection() {
         <span className="pixel-float text-xs uppercase tracking-[0.3em] text-fami-gold">WORK LOG</span>
       </header>
 
-      <p className="mt-3 text-sm [font-family:var(--font-noto)]">
+      <p className="section-body-muted mt-3">
         会社/組織ごとに1つの文章で概要をまとめ、配下に具体的な取り組み（Projects）を載せています。
       </p>
 
@@ -54,7 +54,7 @@ export async function WorkSection() {
               ) : null}
             </div>
 
-            <p className="mt-3 break-words whitespace-pre-line text-sm leading-relaxed text-fami-ivory/95">
+            <p className="section-body mt-3 break-words whitespace-pre-line text-fami-ivory/95">
               {entry.summary}
             </p>
 

@@ -27,7 +27,7 @@ export async function ActivitiesSection() {
         <span>{activities.heading}</span>
       </h2>
 
-      <p className="mt-3 text-sm [font-family:var(--font-noto)]">
+      <p className="section-body-muted mt-3">
         登壇・執筆・コミュニティ活動・受賞/実績をまとめています。
       </p>
 
@@ -56,7 +56,7 @@ export async function ActivitiesSection() {
                           <span className="truncate">{item.title}</span>
                         </div>
                         {item.context ? (
-                          <p className="mt-1 text-xs text-fami-ivory/90">{item.context}</p>
+                          <p className="section-body-muted mt-1 text-fami-ivory/90">{item.context}</p>
                         ) : null}
                       </div>
 
