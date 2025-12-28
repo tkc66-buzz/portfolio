@@ -41,3 +41,62 @@ body {
     );
   background-blend-mode: screen;
 }
+
+/* Gamefeel: subtle, CSS-first motion (must respect reduced motion) */
+.pixel-float {
+  animation: pixel-float 1600ms ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes pixel-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.blink-soft {
+  animation: blink-soft 2200ms steps(2, end) infinite;
+}
+
+@keyframes blink-soft {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pixel-float,
+  .blink-soft {
+    animation: none !important;
+  }
+}
+
+/* Guardrail: avoid expensive animation patterns (keep transforms/opacity only). */
+
+/* Typography tokens */
+.section-body {
+  font-size: 1rem; /* tailwind: text-base */
+  line-height: 1.75rem; /* tailwind: leading-relaxed */
+  font-family: var(--font-noto);
+}
+
+.section-body-muted {
+  font-size: 0.875rem; /* tailwind: text-sm */
+  line-height: 1.25rem;
+  font-family: var(--font-noto);
+  color: rgba(248, 241, 220, 0.9); /* close to text-fami-ivory/90 */
+}
+
+/* Badge tokens */
+.year-badge {
+  font-size: 1rem;
+  line-height: 1.25rem;
+}

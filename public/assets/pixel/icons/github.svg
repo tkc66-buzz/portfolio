@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" shape-rendering="crispEdges" role="img" aria-label="GitHub icon">
+  <g fill="#d7b05b">
+    <!-- simple pixel cat head -->
+    <rect x="7" y="7" width="2" height="2" />
+    <rect x="15" y="7" width="2" height="2" />
+    <rect x="6" y="9" width="12" height="2" />
+    <rect x="5" y="11" width="14" height="6" />
+    <!-- eyes -->
+    <rect x="8" y="13" width="2" height="2" />
+    <rect x="14" y="13" width="2" height="2" />
+    <!-- mouth -->
+    <rect x="11" y="15" width="2" height="2" />
+  </g>
+</svg>
+
+

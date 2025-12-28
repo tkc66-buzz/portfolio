@@ -1,4 +1,7 @@
-# Feature Specification: Spreadsheet-managed Project Anchor IDs
+# Feature Specification: Spreadsheet-managed Project Anchor IDs *(Deprecated)*
+
+> **Status (2025-12-28)**: Spreadsheet-based authoring is **no longer used** for this repo.
+> Work/Projects are authored in-repo; keep this document as historical reference only.
 
 **Feature Branch**: `015-sheet-anchorid`  
 **Created**: 2025-12-26  

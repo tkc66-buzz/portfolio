@@ -1,7 +1,6 @@
 export type TocItemId =
   | "profile"
-  | "experience"
-  | "projects"
+  | "work"
   | "writing"
   | "activities"
   | "skills"
@@ -14,6 +13,7 @@ export type TocItem = {
 
 export const TOC_ITEMS: TocItem[] = [
   { id: "profile", label: "Profile" },
+  { id: "work", label: "Work" },
   { id: "writing", label: "Writing" },
   { id: "activities", label: "Activities" },
   { id: "skills", label: "Skills" },

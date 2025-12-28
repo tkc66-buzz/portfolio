@@ -1,4 +1,5 @@
 import { getPortfolio } from "@/content/portfolio";
+import { PixelIcon } from "@/components/PixelIcon";
 
 function isExternalHttpHref(href: string) {
   return href.startsWith("http://") || href.startsWith("https://");
@@ -11,11 +12,15 @@ export async function WritingSection() {
       id={writing.id}
       className="frame scroll-mt-[var(--menu-offset)] bg-[#1b1b1b] p-6 text-fami-ivory"
     >
-      <h2 className="text-xl text-fami-gold" style={{ fontFamily: "var(--font-press)" }}>
-        {writing.heading}
+      <h2
+        className="flex items-center gap-2 text-xl text-fami-gold"
+        style={{ fontFamily: "var(--font-press)" }}
+      >
+        <PixelIcon src="/assets/pixel/icons/writing.svg" decorative size="md" />
+        <span>{writing.heading}</span>
       </h2>
 
-      <p className="mt-3 text-sm [font-family:var(--font-noto)]">
+      <p className="section-body-muted mt-3">
         記事（Writing）は文章のまとめ。登壇/書籍/コミュニティは Activities に分けています。
       </p>
 

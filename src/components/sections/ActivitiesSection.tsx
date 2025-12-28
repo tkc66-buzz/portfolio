@@ -1,8 +1,15 @@
 import { getPortfolio } from "@/content/portfolio";
+import { PixelIcon } from "@/components/PixelIcon";
 
 function isExternalHttpHref(href: string) {
   return href.startsWith("http://") || href.startsWith("https://");
 }
+
+// Activities link button invariant:
+// - consistent height/typography across items
+// - never wrap (wrapping increases height and looks uneven)
+const ACTIVITIES_LINK_BTN_CLASS =
+  "nes-btn is-small shrink-0 whitespace-nowrap text-[0.7rem] leading-none focus:outline-none focus-visible:ring-4 focus-visible:ring-fami-gold focus-visible:ring-offset-4 focus-visible:ring-offset-[#111]";
 
 export async function ActivitiesSection() {
   const { activities } = await getPortfolio();
@@ -12,11 +19,15 @@ export async function ActivitiesSection() {
       id={activities.id}
       className="frame scroll-mt-[var(--menu-offset)] bg-[#1b1b1b] p-6 text-fami-ivory"
     >
-      <h2 className="text-xl text-fami-gold" style={{ fontFamily: "var(--font-press)" }}>
-        {activities.heading}
+      <h2
+        className="flex items-center gap-2 text-xl text-fami-gold"
+        style={{ fontFamily: "var(--font-press)" }}
+      >
+        <PixelIcon src="/assets/pixel/icons/activities.svg" decorative size="md" />
+        <span>{activities.heading}</span>
       </h2>
 
-      <p className="mt-3 text-sm [font-family:var(--font-noto)]">
+      <p className="section-body-muted mt-3">
         登壇・執筆・コミュニティ活動・受賞/実績をまとめています。
       </p>
 
@@ -39,19 +50,19 @@ export async function ActivitiesSection() {
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
                         <div className="flex flex-wrap items-center gap-2">
-                          <span className="nes-badge is-warning text-[0.6rem]">
+                          <span className="nes-badge is-warning year-badge">
                             <span>{item.year}</span>
                           </span>
                           <span className="truncate">{item.title}</span>
                         </div>
                         {item.context ? (
-                          <p className="mt-1 text-xs text-fami-ivory/90">{item.context}</p>
+                          <p className="section-body-muted mt-1 text-fami-ivory/90">{item.context}</p>
                         ) : null}
                       </div>
 
                       {item.link ? (
                         <a
-                          className="nes-btn is-small shrink-0"
+                          className={ACTIVITIES_LINK_BTN_CLASS}
                           href={item.link.href}
                           target={isExternalHttpHref(item.link.href) ? "_blank" : undefined}
                           rel={isExternalHttpHref(item.link.href) ? "noreferrer" : undefined}

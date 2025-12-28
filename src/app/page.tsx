@@ -3,6 +3,7 @@ import { TableOfContents } from "@/components/TableOfContents";
 import { ActivitiesSection } from "@/components/sections/ActivitiesSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { ProfileSection } from "@/components/sections/ProfileSection";
+import { WorkSection } from "@/components/sections/WorkSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
 import { WritingSection } from "@/components/sections/WritingSection";
 
@@ -13,6 +14,7 @@ export default function Home() {
         <Hero />
         <TableOfContents />
         <ProfileSection />
+        <WorkSection />
         <WritingSection />
         <ActivitiesSection />
         <SkillsSection />

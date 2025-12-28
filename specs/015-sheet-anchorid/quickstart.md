@@ -1,4 +1,7 @@
-# Quickstart: Add `anchorId` to Projects spreadsheet and use `#anchorId` Detail
+# Quickstart: Add `anchorId` to Projects spreadsheet and use `#anchorId` Detail *(Deprecated)*
+
+> **Status (2025-12-28)**: Spreadsheet-based authoring is **no longer used** for this repo.
+> Keep this quickstart as historical reference only.
 
 ## Goal
 
