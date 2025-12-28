@@ -247,7 +247,7 @@ export const publicPortfolio: Portfolio = {
             context:
               "Developper Summit TokyoにPlatform Engineeringについてオフラインで登壇しました",
             link: {
-              label: "イベント詳細",
+              label: "DS2024",
               href: "https://event.shoeisha.jp/devsumi/20240215/session/4807",
             },
           },
@@ -275,7 +275,7 @@ export const publicPortfolio: Portfolio = {
             year: "2024",
             title: "Platform Engineering Kaigi Core Staff",
             context: "日本初となるPlatform Engineeringに関するカンファレンス開催に貢献しました。",
-            link: { label: "Platform Engineering Kaigi", href: "https://www.cnia.io/pek2024/" },
+            link: { label: "PEK2024", href: "https://www.cnia.io/pek2024/" },
           },
           {
             year: "2019-2025",
@@ -287,7 +287,7 @@ export const publicPortfolio: Portfolio = {
             year: "2022-2025",
             title: "Cloud Native Days Core Staff",
             context: "Cloud Native Daysの配信担当としてハイブリッドイベント開催に貢献しました。",
-            link: { label: "Cloud Native Days", href: "https://cloudnativedays.jp/" },
+            link: { label: "CND Home", href: "https://cloudnativedays.jp/" },
           },
         ],
       },
@@ -301,7 +301,7 @@ export const publicPortfolio: Portfolio = {
           {
             year: "2020",
             title: "第一回AWS ANGEL Dojo アライアンス賞受賞。",
-            link: { label: "AWS ANGEL Dojo", href: "https://aws.amazon.com/jp/blogs/psa/angel-dojo-season1/" },
+            link: { label: "ANGEL Dojo", href: "https://aws.amazon.com/jp/blogs/psa/angel-dojo-season1/" },
           },
           {
             year: "2021",

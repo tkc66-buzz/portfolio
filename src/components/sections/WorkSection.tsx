@@ -1,6 +1,6 @@
+import { PixelIcon } from "@/components/PixelIcon";
 import { getPortfolio } from "@/content/portfolio";
 import Image from "next/image";
-import { PixelIcon } from "@/components/PixelIcon";
 
 function isExternalHttpHref(href: string) {
   return href.startsWith("http://") || href.startsWith("https://");
