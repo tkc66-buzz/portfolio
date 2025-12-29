@@ -10,8 +10,8 @@ description: "Tasks for implementing Skills brushup (content-first)"
 
 ## Phase 1: Setup (Shared Infrastructure)
 
-- [ ] T001 Identify current Skills categories/items and duplicate labels in `src/content/portfolio.ts`
-- [ ] T002 Confirm current Skills render path in `src/components/sections/SkillsSection.tsx` (categories → progress bars)
+- [x] T001 Identify current Skills categories/items and duplicate labels in `src/content/portfolio.ts`
+- [x] T002 Confirm current Skills render path in `src/components/sections/SkillsSection.tsx` (categories → progress bars)
 
 ---
 
@@ -19,8 +19,8 @@ description: "Tasks for implementing Skills brushup (content-first)"
 
 **Checkpoint**: Editing strategy for Skills content is clear (ordering, naming conventions, duplication rules).
 
-- [ ] T003 Decide top-3 “strengths” ordering to reflect in `src/content/portfolio.ts` (category order + within-category order)
-- [ ] T004 Define a dedupe policy for repeated labels across categories (prefer single category; if repeated, make it intentional and non-confusing) in `src/content/portfolio.ts`
+- [x] T003 Decide top-3 “strengths” ordering to reflect in `src/content/portfolio.ts` (category order + within-category order)
+- [x] T004 Define a dedupe policy for repeated labels across categories (prefer single category; if repeated, make it intentional and non-confusing) in `src/content/portfolio.ts`
 
 ---
 
@@ -30,9 +30,9 @@ description: "Tasks for implementing Skills brushup (content-first)"
 
 **Independent Test**: Follow `specs/034-skills-brushup/quickstart.md` → “P1 — Strengths at a glance”.
 
-- [ ] T005 [US1] Re-order categories and items in `src/content/portfolio.ts` so strongest skills appear first
-- [ ] T006 [US1] Refine skill labels for clarity and consistency (avoid overly broad labels like “RDB / NoSQL” if it hides specifics) in `src/content/portfolio.ts`
-- [ ] T007 [US1] Remove or restructure confusing duplicates across categories (e.g., TypeScript) in `src/content/portfolio.ts`
+- [x] T005 [US1] Re-order categories and items in `src/content/portfolio.ts` so strongest skills appear first
+- [x] T006 [US1] Refine skill labels for clarity and consistency (avoid overly broad labels like “RDB / NoSQL” if it hides specifics) in `src/content/portfolio.ts`
+- [x] T007 [US1] Remove or restructure confusing duplicates across categories (e.g., TypeScript) in `src/content/portfolio.ts`
 
 **Checkpoint**: Top strengths are obvious in a quick scan.
 
@@ -44,8 +44,8 @@ description: "Tasks for implementing Skills brushup (content-first)"
 
 **Independent Test**: Make a small edit to Skills content and confirm the render remains consistent (manual).
 
-- [ ] T008 [US2] Ensure each displayed skill has a consistent experience signal (`years` always present; usage range consistent when shown) in `src/content/portfolio.ts`
-- [ ] T009 [US2] Ensure `skills.items` (flattened list) remains coherent after category edits (no duplicates / unexpected omissions) in `src/content/portfolio.ts`
+- [x] T008 [US2] Ensure each displayed skill has a consistent experience signal (`years` always present; usage range consistent when shown) in `src/content/portfolio.ts`
+- [x] T009 [US2] Ensure `skills.items` (flattened list) remains coherent after category edits (no duplicates / unexpected omissions) in `src/content/portfolio.ts`
 
 ---
 
@@ -55,16 +55,16 @@ description: "Tasks for implementing Skills brushup (content-first)"
 
 **Independent Test**: Follow `specs/034-skills-brushup/quickstart.md` → “Readability”.
 
-- [ ] T010 [US3] Validate the Skills section remains scannable (no “wall of bars”); tighten content if needed in `src/content/portfolio.ts`
-- [ ] T011 [US3] (If needed) Minor copy tweak in `src/components/sections/SkillsSection.tsx` to clarify what “years” represents, without changing the UI structure
+- [x] T010 [US3] Validate the Skills section remains scannable (no “wall of bars”); tighten content if needed in `src/content/portfolio.ts`
+- [x] T011 [US3] (If needed) Minor copy tweak in `src/components/sections/SkillsSection.tsx` to clarify what “years” represents, without changing the UI structure
 
 ---
 
 ## Phase 6: Polish & Cross-Cutting Concerns
 
-- [ ] T012 Run validation steps in `specs/034-skills-brushup/quickstart.md`
-- [ ] T013 Run `pnpm lint` in `/Users/takeshiwatanabe/EureWorks/private/git/portfolio`
-- [ ] T014 Run `pnpm build` in `/Users/takeshiwatanabe/EureWorks/private/git/portfolio`
+- [x] T012 Run validation steps in `specs/034-skills-brushup/quickstart.md`
+- [x] T013 Run `pnpm lint` in `/Users/takeshiwatanabe/EureWorks/private/git/portfolio`
+- [x] T014 Run `pnpm build` in `/Users/takeshiwatanabe/EureWorks/private/git/portfolio`
 
 ---
 
