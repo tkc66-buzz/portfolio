@@ -109,6 +109,28 @@ export function ActivitiesCollectGate({ children }: { children: ReactNode }) {
     );
   }
 
+  const summary = collected ? (
+    <span
+      className={[
+        "achievement-toast-indicator",
+        indicatorFx ? "achievement-toast-indicator--fx" : "",
+      ]
+        .filter(Boolean)
+        .join(" ")}
+      aria-hidden="true"
+    >
+      <span className="nes-badge is-success achievement-toast-indicator__badge">
+        <span>COLLECTED</span>
+      </span>
+      <span className="achievement-toast-indicator__text">Activities</span>
+    </span>
+  ) : (
+    <span className="achievement-toast-indicator achievement-toast-indicator--pending" aria-hidden="true">
+      <span className="nes-btn is-small achievement-toast-collect">COLLECT</span>
+      <span className="achievement-toast-indicator__text">Activities</span>
+    </span>
+  );
+
   return (
     <details
       className="activities-gate mt-3"
@@ -118,10 +140,7 @@ export function ActivitiesCollectGate({ children }: { children: ReactNode }) {
       }}
     >
       <summary className="activities-gate__summary">
-        <span className="achievement-toast-indicator achievement-toast-indicator--pending">
-          <span className="nes-btn is-small achievement-toast-collect">COLLECT</span>
-          <span className="achievement-toast-indicator__text">Activities</span>
-        </span>
+        {summary}
       </summary>
 
       <div className="activities-gate__body">{children}</div>
