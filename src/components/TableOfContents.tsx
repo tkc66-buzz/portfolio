@@ -24,6 +24,7 @@ export function TableOfContents() {
     <nav
       id="menu"
       aria-label="Menu"
+      tabIndex={-1}
       className="hud frame sticky top-[var(--menu-top)] z-50 bg-[#1b1b1b]/90 p-4 text-fami-ivory backdrop-blur supports-[backdrop-filter]:bg-[#1b1b1b]/70"
     >
       <div className="mb-3 flex items-baseline justify-between">
