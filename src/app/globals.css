@@ -424,7 +424,6 @@ html.is-starting body::after {
 
 /* Achievement Unlocked "collection" indicator (Activities only) */
 .activities-toast .achievement-toast-indicator {
-  margin-top: 0.75rem;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
