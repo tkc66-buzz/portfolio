@@ -1,16 +1,10 @@
 "use client";
 
-import type { WorkRpgEntryVM, WorkRpgQuestVM } from "@/components/sections/workRpgVm";
+import type { WorkRpgEntryVM } from "@/components/sections/workRpgVm";
 import { useCallback, useMemo, useState } from "react";
-import Image from "next/image";
 
 function isExternalHttpHref(href: string) {
   return href.startsWith("http://") || href.startsWith("https://");
-}
-
-function questLabel(q: WorkRpgQuestVM) {
-  if (q.visibility === "private") return "PRIVATE";
-  return q.statusBadge ?? null;
 }
 
 export function WorkQuestLog({ entry }: { entry: WorkRpgEntryVM }) {
@@ -110,14 +104,6 @@ export function WorkQuestLog({ entry }: { entry: WorkRpgEntryVM }) {
             <span className="work-rpg__statKey">TECH</span>
             <span className="work-rpg__statVal">{entry.stats.uniqueTechCount}</span>
           </div>
-          <div className="work-rpg__stat">
-            <span className="work-rpg__statKey">ASSETS</span>
-            <span className="work-rpg__statVal">{entry.stats.assetsCount}</span>
-          </div>
-          <div className="work-rpg__stat">
-            <span className="work-rpg__statKey">LINKS</span>
-            <span className="work-rpg__statVal">{entry.stats.linksCount}</span>
-          </div>
         </div>
       </div>
 
@@ -130,7 +116,6 @@ export function WorkQuestLog({ entry }: { entry: WorkRpgEntryVM }) {
           <div className="mt-2" role="tablist" aria-label="Quest log">
             {entry.quests.map((q) => {
               const isSelected = selected?.id === q.id;
-              const label = questLabel(q);
 
               return (
                 <div
@@ -148,11 +133,6 @@ export function WorkQuestLog({ entry }: { entry: WorkRpgEntryVM }) {
                     onClick={() => select(q.id)}
                   >
                     <span className="work-rpg__questTitle">{q.title}</span>
-                    {label ? (
-                      <span className="nes-badge is-primary year-badge">
-                        <span>{label}</span>
-                      </span>
-                    ) : null}
                   </button>
                 </div>
               );
@@ -173,69 +153,33 @@ export function WorkQuestLog({ entry }: { entry: WorkRpgEntryVM }) {
           <p className="section-body-muted mt-3">No quest selected</p>
         ) : (
           <div className="mt-2">
-            {selected.asset ? (
-              <div className="mb-3 overflow-hidden rounded-sm border-2 border-fami-gold/60 bg-[#111]">
-                <Image
-                  src={selected.asset.src}
-                  alt={selected.asset.alt}
-                  width={960}
-                  height={540}
-                  className="h-auto w-full object-contain"
-                />
-              </div>
-            ) : null}
-
             <div className="flex items-start justify-between gap-2">
               <h4 className="text-sm text-fami-gold" style={{ fontFamily: "var(--font-press)" }}>
                 {selected.title}
               </h4>
-              {selected.visibility === "private" ? (
-                <span className="nes-badge is-error year-badge">
-                  <span>PRIVATE</span>
-                </span>
-              ) : null}
             </div>
 
             <p className="mt-3 text-xs text-fami-gold">Problem / Approach</p>
             <p className="mt-2 break-words whitespace-pre-line text-sm leading-relaxed text-fami-ivory/95">
-              {selected.visibility === "private"
-                ? "NDA等に配慮し、公開できる範囲のみ記載しています。詳細は面談で共有できます。"
-                : selected.summary}
+              {selected.summary}
             </p>
 
-            {selected.visibility === "private" ? null : (
-              <dl className="mt-3 space-y-3 text-xs">
-                <div className="flex gap-2">
-                  <dt className="w-20 shrink-0 text-fami-gold">Role</dt>
-                  <dd className="break-words font-medium">{selected.role}</dd>
-                </div>
-                <div className="flex gap-2">
-                  <dt className="w-20 shrink-0 text-fami-gold">Tech</dt>
-                  <dd className="flex flex-wrap gap-1">
-                    {selected.tech.map((t) => (
-                      <span key={t} className="nes-badge is-warning text-[0.55rem]">
-                        <span>{t}</span>
-                      </span>
-                    ))}
-                  </dd>
-                </div>
-                <div className="flex gap-2">
-                  <dt className="w-20 shrink-0 text-fami-gold">Result</dt>
-                  <dd className="break-words whitespace-pre-line leading-relaxed">{selected.outcomeOrLearning}</dd>
-                </div>
-              </dl>
-            )}
-
-            {selected.visibility === "private" ? null : selected.link ? (
-              <a
-                className="nes-btn btn-game mt-4 w-full text-center"
-                href={selected.link.href}
-                target={isExternalHttpHref(selected.link.href) ? "_blank" : undefined}
-                rel={isExternalHttpHref(selected.link.href) ? "noreferrer" : undefined}
-              >
-                {selected.link.label}
-              </a>
-            ) : null}
+            <dl className="mt-3 space-y-3 text-xs">
+              <div className="flex gap-2">
+                <dt className="w-20 shrink-0 text-fami-gold">Role</dt>
+                <dd className="break-words font-medium">{selected.role}</dd>
+              </div>
+              <div className="flex gap-2">
+                <dt className="w-20 shrink-0 text-fami-gold">Tech</dt>
+                <dd className="flex flex-wrap gap-1">
+                  {selected.tech.map((t) => (
+                    <span key={t} className="nes-badge is-warning text-[0.55rem]">
+                      <span>{t}</span>
+                    </span>
+                  ))}
+                </dd>
+              </div>
+            </dl>
           </div>
         )}
       </div>

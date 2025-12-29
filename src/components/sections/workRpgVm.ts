@@ -1,25 +1,18 @@
-import type { ExternalLink, Project, WorkEntry } from "@/content/portfolio";
+import type { ExternalLink, WorkEntry } from "@/content/portfolio";
 import { createWorkRpgQuestId } from "@/components/sections/workRpgId";
 
 export type WorkRpgQuestVM = {
   id: string;
   anchorId?: string;
   title: string;
-  visibility: "public" | "private";
-  statusBadge?: string;
   summary: string;
   role: string;
   tech: string[];
-  outcomeOrLearning: string;
-  link?: ExternalLink;
-  asset?: Project["asset"];
 };
 
 export type WorkRpgStats = {
   projectsCount: number;
   uniqueTechCount: number;
-  assetsCount: number;
-  linksCount: number;
 };
 
 export type WorkRpgEntryVM = {
@@ -40,20 +33,14 @@ export function buildWorkRpgEntryVm(entry: WorkEntry): WorkRpgEntryVM {
 
   const quests: WorkRpgQuestVM[] = entry.projects.map((p) => {
     const id = createWorkRpgQuestId({ anchorId: p.anchorId, title: p.title, used: usedIds });
-    const visibility = p.visibility ?? "public";
 
     return {
       id,
       anchorId: p.anchorId,
       title: p.title,
-      visibility,
-      statusBadge: p.status,
       summary: p.summary,
       role: p.role,
       tech: p.tech,
-      outcomeOrLearning: p.outcomeOrLearning,
-      link: p.link,
-      asset: p.asset,
     };
   });
 
@@ -63,14 +50,9 @@ export function buildWorkRpgEntryVm(entry: WorkEntry): WorkRpgEntryVM {
     ...quests.flatMap((q) => q.tech),
   ];
 
-  const linksCount =
-    (entry.links?.length ?? 0) + quests.reduce((acc, q) => acc + (q.link ? 1 : 0), 0);
-
   const stats: WorkRpgStats = {
     projectsCount: quests.length,
     uniqueTechCount: uniqueCount(allTech),
-    assetsCount: quests.reduce((acc, q) => acc + (q.asset ? 1 : 0), 0),
-    linksCount,
   };
 
   return {

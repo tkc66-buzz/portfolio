@@ -9,18 +9,7 @@ export type ExternalLink = {
   href: string;
 };
 
-export type Visibility = "public" | "private";
-
-export type Asset = {
-  src: string; // path under /public, e.g. "/assets/diagrams/go-migration.svg"
-  alt: string;
-  kind: "diagram" | "screenshot" | "pixel-art";
-  width?: number;
-  height?: number;
-};
-
 export type Project = {
-  visibility?: Visibility; // default: "public"
   /**
    * Optional in-page anchor id for direct linking (e.g. from Experience evidence hints).
    * Keep stable once published.
@@ -30,10 +19,6 @@ export type Project = {
   summary: string;
   role: string;
   tech: string[];
-  outcomeOrLearning: string;
-  asset?: Asset;
-  link?: ExternalLink;
-  status?: string;
 };
 
 export type Skill = {
@@ -77,7 +62,7 @@ export type WorkEntry = {
   company: string; // public-safe label
   /**
    * Exactly one paragraph for the company/organization.
-   * (Can include line breaks if needed; UI may render with whitespace-pre-line.)
+   * Keep it as a single paragraph (avoid line breaks).
    */
   summary: string;
   projects: Project[]; // nested projects under this company
@@ -143,6 +128,14 @@ function normalizeSkills(skills: Skills): Skills {
   return skills;
 }
 
+// Work label conventions:
+// - `primary` is the set of public labels for main career entries (render as separate WorkEntry blocks).
+// - `side` is the public label for side work (render as its own WorkEntry block).
+const WORK_LABELS = {
+  primary: ["大手金融系SIer", "独立系SIer", "株式会社Eureka"],
+  side: "Startup",
+} as const;
+
 export const publicPortfolio: Portfolio = {
   profile: {
     id: "profile",
@@ -156,61 +149,86 @@ export const publicPortfolio: Portfolio = {
     heading: "Work",
     items: [
       {
-        key: "company-main",
-        period: "2019–2025",
-        company: "Company (Public)",
+        key: "company-sier-finance",
+        period: "2018-2019",
+        company: WORK_LABELS.primary[0],
         summary:
-          "Backend/Platform領域を中心に、設計〜実装〜運用まで一貫して改善を推進。信頼性と開発速度の両立を目的に、移行・運用設計・観測性の整備などに取り組んできました。",
+          "3カ月間のIT研修で、最優秀システム開発賞を受賞。第一希望である国際システム部に配属。銀行海外支部のための、業務アプリ開発に携わる。",
         projects: [
           {
-            visibility: "public",
-            anchorId: "project-go-migration",
-            title: "Goによるバックエンド刷新",
-            asset: {
-              kind: "diagram",
-              src: "/assets/diagrams/go-migration.svg",
-              alt: "段階移行（切替/ロールバック前提）の概念図",
-            },
+            anchorId: "project-bank-business-app-development",
+            title: "海外銀行業務アプリ開発",
             summary:
-              "課題: 既存システムの制約下での刷新。対応: 段階移行（切替/ロールバック前提）でリスクを抑えつつ置き換えを推進。",
-            role: "Tech Lead / Backend",
-            tech: ["Go", "AWS", "SQL", "Observability"],
-            outcomeOrLearning:
-              "結果/学び: 分割・切替・ロールバックを含む移行設計と、運用まで含めた品質担保の型を作れた。",
-            status: "2024–2025",
+              "3カ月間のIT研修で、最優秀システム開発賞を受賞。第一希望である国際システム部に配属。銀行海外支部のための、業務アプリ開発に携わる。",
+            role: "developer",
+            tech: ["Java", "MySQL", "HTML/CSS/JavaScript"],
+          },
+        ],
+      },
+      {
+        key: "company-sier-independent",
+        period: "2019-2022",
+        company: WORK_LABELS.primary[1],
+        summary:
+          "独立系SIerで、複数領域（アプリ/データ/基盤）を横断しながら、現場の制約下での改善や意思決定を経験。仕様・運用・体制の“現実”に合わせて最適解を作る力を鍛えました。",
+        projects: [
+          {
+            anchorId: "project-mlops-infra-and-api-development",
+            title: "画像認識システムをサーバーレスで実現し、SageMakerを使用したMLOps基盤を構築",
+            summary:
+              "主にCI/CDパイプラインの構築、API開発、MLOps基盤並びに独自モデルの生成、モニタリング基盤の構築を行いました。",
+            role: "developer",
+            tech: ["Python", "AWS(Lambda StepFunction DynaboDB SageMaker)"],
           },
           {
-            visibility: "public",
-            anchorId: "project-observability",
-            title: "監視・運用改善（Datadog中心）",
+            anchorId: "project-next-generation-core-network-development",
+            title: "OpenShiftを活用した大規模ネットワークの構築",
             summary:
-              "課題: 障害対応の属人性と検知ノイズ。対応: 観測性の底上げとアラート設計の見直しで、アクションに繋がる運用へ。",
-            role: "Infrastructure / Platform",
-            tech: ["Datadog", "AWS", "SLO", "Incident Response"],
-            outcomeOrLearning:
-              "結果/学び: “見える化”で終わらせず、意思決定と行動に繋がるメトリクス/アラートへ落とす重要性を再確認。",
-            status: "2019–2025",
+              "大規模ネットワークの提供を行いました。従来のネットワークとは異なり、柔軟性・拡張性・自動化をKubernetesを使用することで実現しています。それらのInfra部分をOpenShiftとAnsibleで実現しました。",
+            role: "developer",
+            tech: ["OpenShift", "Python", "Elastic Stack", "Ansible"],
+          },
+          {
+            anchorId: "project-next-generation-core-network-development",
+            title: "KeycloatとCognitoを使用したハイブリットSSO認証基盤の構築",
+            summary:
+              "各サービスで登録とログインが必要という課題がありました。そこで、KeycloakをECSに立てスケールできる横断認証基盤として構築導入を行いました。",
+            role: "developer",
+            tech: ["Keycloak", "Java", "Node.js", "AWS（Lambda、Cognito、ECSなど）"],
+          },
+        ],
+      },
+      {
+        key: "company-eureka",
+        period: "2022-現在",
+        company: WORK_LABELS.primary[2],
+        summary:
+          "大規模サービスのBackend領域で、Global Application基盤の開発を担当しています。",
+        projects: [
+          {
+            anchorId: "project-global-application-backend-kr-development",
+            title: "Global Application Backend KRの開発",
+            summary:
+              "Pairs韓国展開のBackend APIの開発を行いました。",
+            role: "developer",
+            tech: ["Go", "AWS", "MySQL", "Observability"],
           },
         ],
       },
       {
         key: "company-side",
-        period: "2021–2025",
-        company: "Side Work",
+        period: "2023-現在",
+        company: WORK_LABELS.side,
         summary:
-          "サービス立ち上げ初期の不確実性が高い環境で、運用に耐える土台（環境分離、CI/CD、IaCなど）を整えつつ、必要に応じてフルスタックで実装も担当しました。",
+          "サービス立ち上げ初期から技術選定インフラ基盤の構築、フルスタックのアプリケーション開発を担当しています。",
         projects: [
           {
-            visibility: "public",
-            anchorId: "project-greenfield-infra",
-            title: "ゼロからのインフラ基盤構築（副業）",
+            anchorId: "project-greenfield-infra-and-full-stack-application-development",
+            title: "ゼロからのインフラ基盤構築とフルスタックのアプリケーション開発",
             summary:
-              "課題: 立ち上げ初期に“運用前提の土台”がない。対応: 環境分離/CI/CD/IaCを揃え、継続運用できる基盤を構築。",
-            role: "Infra / Full-stack (TypeScript)",
-            tech: ["AWS", "Terraform", "CI/CD", "TypeScript"],
-            outcomeOrLearning:
-              "結果/学び: 最初に“運用の標準”を置くことで、後からの速度と安全性が両立できると実感。",
-            status: "2021–2025",
+              "立ち上げ初期に環境分離と自動化を整え、継続運用できるインフラ基盤をゼロから構築しました。また、フルスタックのアプリケーション開発を担当しています。",
+            role: "developer",
+            tech: ["AWS", "Google Cloud","Terraform", "TypeScript"],
           },
         ],
       },
@@ -306,6 +324,10 @@ export const publicPortfolio: Portfolio = {
           {
             year: "2021",
             title: "AWS Certified DevOps Engineer Professional 取得。",
+          },
+          {
+            year: "2025",
+            title: "4半期MVPを受賞しました。",
           },
         ],
       },
