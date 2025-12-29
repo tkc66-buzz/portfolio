@@ -440,6 +440,26 @@ html.is-starting body::after {
   line-height: 1;
 }
 
+.activities-toast .activities-gate {
+  margin-top: 0.75rem;
+}
+
+.activities-toast .activities-gate__summary {
+  list-style: none;
+}
+
+.activities-toast .activities-gate__summary::-webkit-details-marker {
+  display: none;
+}
+
+.activities-toast .activities-gate__summary:focus-visible {
+  outline: none;
+}
+
+.activities-toast .activities-gate__body {
+  margin-top: 0.75rem;
+}
+
 .activities-toast .achievement-toast-indicator__badge > span {
   font-size: 0.65rem;
   letter-spacing: 0.15em;
