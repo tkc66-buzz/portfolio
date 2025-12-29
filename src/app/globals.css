@@ -431,6 +431,15 @@ html.is-starting body::after {
   font-family: var(--font-press);
 }
 
+.activities-toast .achievement-toast-indicator--pending {
+  align-items: baseline;
+}
+
+.activities-toast .achievement-toast-collect {
+  padding: 0.25rem 0.5rem;
+  line-height: 1;
+}
+
 .activities-toast .achievement-toast-indicator__badge > span {
   font-size: 0.65rem;
   letter-spacing: 0.15em;
