@@ -343,8 +343,7 @@ export const publicPortfolio: Portfolio = {
         items: [
           skillRange("Go", 2022, CURRENT_YEAR),
           skillRange("API Design", 2019, CURRENT_YEAR),
-          skillRange("MySQL", 2018, CURRENT_YEAR),
-          skillRange("Distributed Systems", 2019, CURRENT_YEAR),
+          skillRange("MySQL/PostgreSQL/NoSQL", 2018, CURRENT_YEAR),
           skillRange("Python", 2019, 2022),
         ],
       },
@@ -353,21 +352,22 @@ export const publicPortfolio: Portfolio = {
         items: [
           skillRange("AWS", 2019, CURRENT_YEAR),
           skillRange("Terraform", 2021, CURRENT_YEAR),
-          skillRange("Observability (Datadog)", 2019, CURRENT_YEAR),
+          skillRange("Observability", 2019, CURRENT_YEAR),
           skillRange("CI/CD", 2019, CURRENT_YEAR),
           skillRange("GCP", 2022, CURRENT_YEAR),
         ],
       },
       {
         name: "Data / ML",
-        items: [skillRange("Data Analysis", 2019, 2022), skillRange("ML Engineering", 2019, 2022)],
+        items: [
+          skillRange("Data Analysis", 2019, 2022),
+          skillRange("ML Engineer", 2019, 2022),
+        ],
       },
       {
-        name: "Frontend / Full-stack",
+        name: "Frontend",
         items: [
           skillRange("TypeScript", 2023, CURRENT_YEAR),
-          skillRange("React", 2023, CURRENT_YEAR),
-          skillRange("Node.js", 2023, CURRENT_YEAR),
         ],
       },
     ],
