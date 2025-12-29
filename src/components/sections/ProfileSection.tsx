@@ -1,5 +1,5 @@
-import { getPortfolio } from "@/content/portfolio";
 import { PixelIcon } from "@/components/PixelIcon";
+import { getPortfolio } from "@/content/portfolio";
 
 export async function ProfileSection() {
   const { profile } = await getPortfolio();
@@ -15,7 +15,7 @@ export async function ProfileSection() {
         <PixelIcon src="/assets/pixel/icons/profile.svg" decorative size="md" />
         <span>{profile.heading}</span>
       </h2>
-      <p className="section-body mt-3">{profile.body}</p>
+      <p className="section-body mt-4 whitespace-pre-line">{profile.body}</p>
     </section>
   );
 }
