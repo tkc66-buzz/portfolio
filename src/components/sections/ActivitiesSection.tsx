@@ -1,18 +1,10 @@
 import { getPortfolio } from "@/content/portfolio";
 import { PixelIcon } from "@/components/PixelIcon";
 import { ActivitiesCollectGate } from "@/components/sections/ActivitiesCollectGate";
-import Image from "next/image";
+import { TalkLinkPreview } from "@/components/TalkLinkPreview";
 
 function isExternalHttpHref(href: string) {
   return href.startsWith("http://") || href.startsWith("https://");
-}
-
-function getLinkHost(href: string): string | null {
-  try {
-    return new URL(href).host;
-  } catch {
-    return null;
-  }
 }
 
 // Activities link button invariant:
@@ -66,7 +58,6 @@ export async function ActivitiesSection() {
                 >
                   {group.items.map((item) => {
                     const isTalk = group.name === "Talks";
-                    const host = item.link ? getLinkHost(item.link.href) : null;
 
                     if (!isTalk) {
                       return (
@@ -116,36 +107,7 @@ export async function ActivitiesSection() {
                         </div>
 
                         {item.link ? (
-                          <a
-                            className="mt-3 block rounded border border-fami-gold/20 bg-black/30 p-3 text-xs text-fami-ivory/90 transition-colors hover:bg-black/40 focus:outline-none focus-visible:ring-4 focus-visible:ring-fami-gold focus-visible:ring-offset-4 focus-visible:ring-offset-[#111]"
-                            href={item.link.href}
-                            target={isExternalHttpHref(item.link.href) ? "_blank" : undefined}
-                            rel={isExternalHttpHref(item.link.href) ? "noreferrer" : undefined}
-                          >
-                            {item.link.previewImageSrc ? (
-                              <Image
-                                className="mb-3 w-full rounded border border-fami-gold/20 bg-black/20"
-                                src={item.link.previewImageSrc}
-                                alt={item.link.previewImageAlt ?? ""}
-                                width={1200}
-                                height={675}
-                                sizes="(min-width: 768px) 50vw, 100vw"
-                              />
-                            ) : null}
-                            <div className="flex items-center justify-between gap-3">
-                              <div className="min-w-0">
-                                <div className="truncate text-[0.75rem] leading-none text-fami-gold">
-                                  {item.link.label}
-                                </div>
-                                {host ? (
-                                  <div className="mt-1 truncate text-[0.7rem] leading-none text-fami-ivory/70">
-                                    {host}
-                                  </div>
-                                ) : null}
-                              </div>
-                              <span className="shrink-0 text-[0.7rem] text-fami-ivory/70">↗</span>
-                            </div>
-                          </a>
+                          <TalkLinkPreview href={item.link.href} label={item.link.label} />
                         ) : null}
                       </li>
                     );

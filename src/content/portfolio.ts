@@ -7,13 +7,6 @@ const CURRENT_YEAR = new Date().getFullYear();
 export type ExternalLink = {
   label: string;
   href: string;
-  /**
-   * Optional preview image shown in card-style UIs (e.g., Talks link previews).
-   * Must be a public path (e.g. "/assets/previews/foo.svg") so it works offline.
-   */
-  previewImageSrc?: string;
-  /** Optional alt text for the preview image. */
-  previewImageAlt?: string;
 };
 
 export type Project = {
@@ -264,8 +257,6 @@ export const publicPortfolio: Portfolio = {
             link: {
               label: "開催記事",
               href: "https://aws.amazon.com/jp/blogs/psa/aws-partner-summit-tokyo/",
-              previewImageSrc: "/assets/previews/talk-aws-partner-summit-tokyo.svg",
-              previewImageAlt: "AWS Partner Summit Tokyo preview",
             },
           },
           {
@@ -276,8 +267,6 @@ export const publicPortfolio: Portfolio = {
             link: {
               label: "DS2024",
               href: "https://event.shoeisha.jp/devsumi/20240215/session/4807",
-              previewImageSrc: "/assets/previews/talk-devsumi-2024.svg",
-              previewImageAlt: "Developers Summit 2024 preview",
             },
           },
         ],
