@@ -28,7 +28,7 @@ export async function ActivitiesSection() {
         <span>{activities.heading}</span>
       </h2>
 
-      <div className="mt-3">
+      <div className="activities-toast__slot">
         <AchievementToast targetSectionId={activities.id} />
       </div>
 

@@ -56,6 +56,7 @@ export function AchievementToast({
     if (typeof window === "undefined") return false;
     return safeSessionGet(STORAGE_DISMISSED_KEY) === "1";
   });
+  const [indicatorFx, setIndicatorFx] = useState(false);
 
   const hasEverShown = useMemo(() => {
     if (typeof window === "undefined") return false;
@@ -63,7 +64,9 @@ export function AchievementToast({
   }, []);
 
   const startedRef = useRef(false);
+  const rafRef = useRef<number | null>(null);
   const closeTimeoutRef = useRef<number | null>(null);
+  const indicatorTimeoutRef = useRef<number | null>(null);
 
   useEffect(() => {
     if (startedRef.current) return;
@@ -88,7 +91,10 @@ export function AchievementToast({
 
         setState("showing");
         // allow CSS to pick up the initial state first
-        window.requestAnimationFrame(() => setState("visible"));
+        rafRef.current = window.requestAnimationFrame(() => {
+          setState((prev) => (prev === "showing" ? "visible" : prev));
+          rafRef.current = null;
+        });
         observer.disconnect();
       },
       {
@@ -102,19 +108,52 @@ export function AchievementToast({
 
   useEffect(() => {
     return () => {
+      if (rafRef.current != null) {
+        window.cancelAnimationFrame(rafRef.current);
+        rafRef.current = null;
+      }
       if (closeTimeoutRef.current != null) {
         window.clearTimeout(closeTimeoutRef.current);
         closeTimeoutRef.current = null;
       }
+      if (indicatorTimeoutRef.current != null) {
+        window.clearTimeout(indicatorTimeoutRef.current);
+        indicatorTimeoutRef.current = null;
+      }
     };
   }, []);
 
-  if (dismissed) return null;
+  if (dismissed) {
+    return (
+      <div
+        className={[
+          "achievement-toast-indicator",
+          indicatorFx ? "achievement-toast-indicator--fx" : "",
+        ]
+          .filter(Boolean)
+          .join(" ")}
+        aria-hidden="true"
+      >
+        <span className="nes-badge is-success achievement-toast-indicator__badge">
+          <span>COLLECTED</span>
+        </span>
+        <span className="achievement-toast-indicator__text">Activities</span>
+      </div>
+    );
+  }
   if (state === "hidden") return null;
 
   const onClose = () => {
+    if (dismissed) return;
+    if (state === "closing") return;
+
     safeSessionSet(STORAGE_DISMISSED_KEY, "1");
     setState("closing");
+
+    if (rafRef.current != null) {
+      window.cancelAnimationFrame(rafRef.current);
+      rafRef.current = null;
+    }
 
     if (reducedMotion) {
       setDismissed(true);
@@ -123,6 +162,11 @@ export function AchievementToast({
 
     closeTimeoutRef.current = window.setTimeout(() => {
       setDismissed(true);
+      setIndicatorFx(true);
+      indicatorTimeoutRef.current = window.setTimeout(() => {
+        setIndicatorFx(false);
+        indicatorTimeoutRef.current = null;
+      }, 360);
     }, 220);
   };
 

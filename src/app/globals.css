@@ -424,6 +424,7 @@ html.is-starting body::after {
 
 /* Achievement Unlocked toast (Activities only) */
 .activities-toast .achievement-toast {
+  margin-top: 0.75rem;
   border: 3px solid rgba(215, 176, 91, 0.9);
   box-shadow: 3px 3px 0 rgba(162, 0, 0, 0.9);
   background: rgba(0, 0, 0, 0.5);
@@ -495,6 +496,44 @@ html.is-starting body::after {
 
   .activities-toast .achievement-toast--closing {
     animation: achievement-toast-out 220ms steps(3, end) both;
+    will-change: opacity, transform;
+  }
+}
+
+.activities-toast .achievement-toast-indicator {
+  margin-top: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-press);
+}
+
+.activities-toast .achievement-toast-indicator__badge > span {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+}
+
+.activities-toast .achievement-toast-indicator__text {
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(248, 241, 220, 0.7);
+}
+
+@keyframes achievement-collected-pop {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -4px, 0) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .activities-toast .achievement-toast-indicator--fx {
+    animation: achievement-collected-pop 220ms steps(2, end) both;
     will-change: opacity, transform;
   }
 }

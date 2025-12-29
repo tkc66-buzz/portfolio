@@ -10,9 +10,9 @@ description: "Tasks for implementing Achievement toast close polish"
 
 ## Phase 1: Setup (Shared Infrastructure)
 
-- [ ] T001 Confirm current toast behavior and close flow in `src/components/AchievementToast.tsx` (state machine + session storage)
-- [ ] T002 Confirm Activities layout currently reserves spacer height in `src/components/sections/ActivitiesSection.tsx` (toast wrapper spacing)
-- [ ] T003 Confirm existing toast CSS animations and reduced-motion behavior in `src/app/globals.css`
+- [x] T001 Confirm current toast behavior and close flow in `src/components/AchievementToast.tsx` (state machine + session storage)
+- [x] T002 Confirm Activities layout currently reserves spacer height in `src/components/sections/ActivitiesSection.tsx` (toast wrapper spacing)
+- [x] T003 Confirm existing toast CSS animations and reduced-motion behavior in `src/app/globals.css`
 
 ---
 
@@ -20,8 +20,8 @@ description: "Tasks for implementing Achievement toast close polish"
 
 **Checkpoint**: Decide how to eliminate the “empty gap” and where the post-close indicator should live.
 
-- [ ] T004 Remove permanent spacer wrapper around the toast in `src/components/sections/ActivitiesSection.tsx` (avoid empty `mt-3` when toast is null)
-- [ ] T005 Add a dedicated container class or structure for toast/indicator placement in `src/components/sections/ActivitiesSection.tsx` (so spacing is applied only when something is rendered)
+- [x] T004 Remove permanent spacer wrapper around the toast in `src/components/sections/ActivitiesSection.tsx` (avoid empty `mt-3` when toast is null)
+- [x] T005 Add a dedicated container class or structure for toast/indicator placement in `src/components/sections/ActivitiesSection.tsx` (so spacing is applied only when something is rendered)
 
 ---
 
@@ -31,9 +31,9 @@ description: "Tasks for implementing Achievement toast close polish"
 
 **Independent Test**: Follow `specs/035-achievement-toast-polish/quickstart.md` → “Close behavior”.
 
-- [ ] T006 [US1] Adjust `AchievementToast` close behavior so it exits cleanly and does not leave layout artifacts in `src/components/AchievementToast.tsx`
-- [ ] T007 [US1] Ensure close still works when clicked immediately after show (no stuck intermediate state) in `src/components/AchievementToast.tsx`
-- [ ] T008 [US1] Ensure the Activities section layout remains stable after close in `src/components/sections/ActivitiesSection.tsx`
+- [x] T006 [US1] Adjust `AchievementToast` close behavior so it exits cleanly and does not leave layout artifacts in `src/components/AchievementToast.tsx`
+- [x] T007 [US1] Ensure close still works when clicked immediately after show (no stuck intermediate state) in `src/components/AchievementToast.tsx`
+- [x] T008 [US1] Ensure the Activities section layout remains stable after close in `src/components/sections/ActivitiesSection.tsx`
 
 **Checkpoint**: No weird gap remains after close.
 
@@ -45,8 +45,8 @@ description: "Tasks for implementing Achievement toast close polish"
 
 **Independent Test**: Follow `specs/035-achievement-toast-polish/quickstart.md` → “Post-close indicator”.
 
-- [ ] T009 [US2] Extend `AchievementToast` to render a minimal post-close indicator instead of returning `null` forever in `src/components/AchievementToast.tsx`
-- [ ] T010 [US2] Add styling for the indicator in `src/app/globals.css` (keep it subtle; avoid attention-stealing motion)
+- [x] T009 [US2] Extend `AchievementToast` to render a minimal post-close indicator instead of returning `null` forever in `src/components/AchievementToast.tsx`
+- [x] T010 [US2] Add styling for the indicator in `src/app/globals.css` (keep it subtle; avoid attention-stealing motion)
 
 ---
 
@@ -56,16 +56,16 @@ description: "Tasks for implementing Achievement toast close polish"
 
 **Independent Test**: Follow `specs/035-achievement-toast-polish/quickstart.md` → “Reduced motion”.
 
-- [ ] T011 [US3] Ensure reduced-motion mode dismisses without animation-heavy transitions in `src/components/AchievementToast.tsx` and `src/app/globals.css`
-- [ ] T012 [US3] Ensure indicator does not spam announcements (ARIA) and focus behavior remains predictable in `src/components/AchievementToast.tsx`
+- [x] T011 [US3] Ensure reduced-motion mode dismisses without animation-heavy transitions in `src/components/AchievementToast.tsx` and `src/app/globals.css`
+- [x] T012 [US3] Ensure indicator does not spam announcements (ARIA) and focus behavior remains predictable in `src/components/AchievementToast.tsx`
 
 ---
 
 ## Phase 6: Polish & Cross-Cutting Concerns
 
-- [ ] T013 Run validation steps in `specs/035-achievement-toast-polish/quickstart.md`
-- [ ] T014 Run `pnpm lint` in `/Users/takeshiwatanabe/EureWorks/private/git/portfolio`
-- [ ] T015 Run `pnpm build` in `/Users/takeshiwatanabe/EureWorks/private/git/portfolio`
+- [x] T013 Run validation steps in `specs/035-achievement-toast-polish/quickstart.md`
+- [x] T014 Run `pnpm lint` in `/Users/takeshiwatanabe/EureWorks/private/git/portfolio`
+- [x] T015 Run `pnpm build` in `/Users/takeshiwatanabe/EureWorks/private/git/portfolio`
 
 ---
 
@@ -80,6 +80,6 @@ description: "Tasks for implementing Achievement toast close polish"
 
 ### Parallel Opportunities
 
-- [ ] T016 [P] (Optional) Implement indicator CSS in `src/app/globals.css` in parallel with the component changes once the indicator markup is decided
+- [x] T016 [P] (Optional) Implement indicator CSS in `src/app/globals.css` in parallel with the component changes once the indicator markup is decided
 
 
