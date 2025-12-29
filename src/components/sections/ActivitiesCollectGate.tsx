@@ -86,22 +86,31 @@ export function ActivitiesCollectGate({ children }: { children: ReactNode }) {
     }
   };
 
-  const summary = collected ? (
-    <span
-      className={[
-        "achievement-toast-indicator",
-        indicatorFx ? "achievement-toast-indicator--fx" : "",
-      ]
-        .filter(Boolean)
-        .join(" ")}
-      aria-hidden="true"
-    >
-      <span className="nes-badge is-success achievement-toast-indicator__badge">
-        <span>COLLECTED</span>
-      </span>
-      <span className="achievement-toast-indicator__text">Activities</span>
-    </span>
-  ) : (
+  // Once collected, keep the content permanently revealed (no close).
+  if (collected) {
+    return (
+      <div className="mt-3">
+        <div
+          className={[
+            "achievement-toast-indicator",
+            indicatorFx ? "achievement-toast-indicator--fx" : "",
+          ]
+            .filter(Boolean)
+            .join(" ")}
+          aria-hidden="true"
+        >
+          <span className="nes-badge is-success achievement-toast-indicator__badge">
+            <span>COLLECTED</span>
+          </span>
+          <span className="achievement-toast-indicator__text">Activities</span>
+        </div>
+
+        <div className="activities-gate__body">{children}</div>
+      </div>
+    );
+  }
+
+  const summary = (
     <span className="achievement-toast-indicator achievement-toast-indicator--pending" aria-hidden="true">
       <span className="nes-btn is-small achievement-toast-collect">COLLECT</span>
       <span className="achievement-toast-indicator__text">Activities</span>
