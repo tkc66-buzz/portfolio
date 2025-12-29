@@ -10,8 +10,8 @@ description: "Tasks for implementing Speaker Deck URL placement in Activities"
 
 ## Phase 1: Setup (Shared Infrastructure)
 
-- [ ] T001 Confirm current Activities → Talks content structure in `src/content/portfolio.ts`
-- [ ] T002 Confirm current Activities rendering and external-link behavior in `src/components/sections/ActivitiesSection.tsx`
+- [x] T001 Confirm current Activities → Talks content structure in `src/content/portfolio.ts`
+- [x] T002 Confirm current Activities rendering and external-link behavior in `src/components/sections/ActivitiesSection.tsx`
 
 ---
 
@@ -19,7 +19,7 @@ description: "Tasks for implementing Speaker Deck URL placement in Activities"
 
 **Checkpoint**: Decide the exact “slides hub” entry format (year/title/link label) per `specs/036-speakerdeck-url/plan.md`.
 
-- [ ] T003 Choose the final Speaker Deck entry text (year/title/link label) in `specs/036-speakerdeck-url/plan.md` (no code change)
+- [x] T003 Choose the final Speaker Deck entry text (year/title/link label) in `specs/036-speakerdeck-url/plan.md` (no code change)
 
 ---
 
@@ -29,8 +29,8 @@ description: "Tasks for implementing Speaker Deck URL placement in Activities"
 
 **Independent Test**: Follow `specs/036-speakerdeck-url/quickstart.md` manual checks.
 
-- [ ] T004 [US1] Add the Speaker Deck “slides hub” item under `activities.groups[name="Talks"].items` in `src/content/portfolio.ts`
-- [ ] T005 [US1] Verify the new item renders under Talks and is visually unambiguous in `src/components/sections/ActivitiesSection.tsx` (adjust copy/layout only if needed)
+- [x] T004 [US1] Add the Speaker Deck “slides hub” item under `activities.groups[name="Talks"].items` in `src/content/portfolio.ts`
+- [x] T005 [US1] Verify the new item renders under Talks and is visually unambiguous in `src/components/sections/ActivitiesSection.tsx` (adjust copy/layout only if needed)
 
 **Checkpoint**: Speaker Deck is reachable from Activities → Talks in ≤ 2 clicks.
 
@@ -42,16 +42,16 @@ description: "Tasks for implementing Speaker Deck URL placement in Activities"
 
 **Independent Test**: Confirm it opens as an external destination and the portfolio remains usable.
 
-- [ ] T006 [US2] Verify Speaker Deck link uses safe external link behavior in `src/components/sections/ActivitiesSection.tsx` (target/rel policy)
-- [ ] T007 [US2] Ensure link label includes “Speaker Deck” (unambiguous) in `src/content/portfolio.ts`
+- [x] T006 [US2] Verify Speaker Deck link uses safe external link behavior in `src/components/sections/ActivitiesSection.tsx` (target/rel policy)
+- [x] T007 [US2] Ensure link label includes “Speaker Deck” (unambiguous) in `src/content/portfolio.ts`
 
 ---
 
 ## Phase 5: Polish & Cross-Cutting Concerns
 
-- [ ] T008 Run validation steps in `specs/036-speakerdeck-url/quickstart.md`
-- [ ] T009 Run `pnpm lint` in `/Users/takeshiwatanabe/EureWorks/private/git/portfolio`
-- [ ] T010 Run `pnpm build` in `/Users/takeshiwatanabe/EureWorks/private/git/portfolio`
+- [x] T008 Run validation steps in `specs/036-speakerdeck-url/quickstart.md`
+- [x] T009 Run `pnpm lint` in `/Users/takeshiwatanabe/EureWorks/private/git/portfolio`
+- [x] T010 Run `pnpm build` in `/Users/takeshiwatanabe/EureWorks/private/git/portfolio`
 
 ---
 
@@ -65,6 +65,6 @@ description: "Tasks for implementing Speaker Deck URL placement in Activities"
 
 ### Parallel Opportunities
 
-- [ ] T011 [P] Draft final copy (year/title/link label) for the Speaker Deck entry while reviewing current Talks items in `src/content/portfolio.ts`
+- [x] T011 [P] Draft final copy (year/title/link label) for the Speaker Deck entry while reviewing current Talks items in `src/content/portfolio.ts`
 
 

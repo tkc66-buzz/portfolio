@@ -250,6 +250,12 @@ export const publicPortfolio: Portfolio = {
         name: "Talks",
         items: [
           {
+            year: "—",
+            title: "Speaker Deck（登壇資料）",
+            context: "登壇スライドの一覧はこちら。",
+            link: { label: "Speaker Deck", href: "https://speakerdeck.com/tkc66buzz" },
+          },
+          {
             year: "2020",
             title: "AWS Partner Summit Tokyo",
             context:

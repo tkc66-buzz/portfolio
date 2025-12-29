@@ -78,8 +78,8 @@ src/
 ### Placement choice (default)
 
 Add a dedicated “slides hub” entry under `Activities → Talks`:
-- Year: a neutral label (e.g., `"—"` or `"All"`)
-- Title: clear label (e.g., `"Speaker Deck (Slides)"`)
+- Year: `"—"`
+- Title: `"Speaker Deck（登壇資料）"`
 - Link: label `"Speaker Deck"`, href `https://speakerdeck.com/tkc66buzz`
 
 This keeps the repo’s “single source of truth” for content (`src/content/portfolio.ts`) and uses the existing external-link behavior in `ActivitiesSection`.
