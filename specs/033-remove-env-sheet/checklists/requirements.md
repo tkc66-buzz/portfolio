@@ -1,8 +1,8 @@
-# Specification Quality Checklist: Spreadsheet-managed Project Anchor IDs
+# Specification Quality Checklist: Remove Env/Spreadsheet Private Content
 
 **Purpose**: Validate specification completeness and quality before proceeding to planning  
-**Created**: 2025-12-26  
-**Feature**: `specs/015-sheet-anchorid/spec.md`
+**Created**: 2025-12-29  
+**Feature**: `specs/033-remove-env-sheet/spec.md`
 
 ## Content Quality
 
@@ -31,5 +31,6 @@
 
 ## Notes
 
-- The contract assumes stable `anchorId` values are authored in the spreadsheet and carried through the private content export into `projects.items[].anchorId`.
+- Assumption: “環境変数” refers specifically to the private portfolio override mechanism (not unrelated env usage).
+- Assumption: “スプレッドシート” refers to the spreadsheet-based private content sourcing and related Apps Script tooling.
 

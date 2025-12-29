@@ -28,9 +28,7 @@ Focused tips for Anthropic Claude Code / Workbench agents interacting with this 
 - `src/components/sections/ActivitiesSection.tsx` – Activities section (Talks/Books/Community).
 - `src/components/AchievementToast.tsx` – Client-only “Achievement Unlocked” toast (session-scoped: shown once on first in-view, dismissible, reduced-motion aware).
 - `src/app/icon.svg` – Primary browser tab icon (SVG). Keep `src/app/favicon.ico` as fallback.
-- `src/content/portfolio.ts` – Public content + optional private overrides loaded server-side via env vars:
-  - `PORTFOLIO_PRIVATE_SOURCE` = `env` (url mode is deprecated/unsupported)
-  - `PORTFOLIO_PRIVATE_JSON` (JSON string)
+- `src/content/portfolio.ts` – Public content (committed in repo).  
   - Skills use `years` (required) and can optionally include `firstUsedYear` / `lastUsedYear` (numeric years) to show recency.
 - `public/assets/` – Static diagrams/screenshots (optional); Projects can specify `project.asset` to render visuals.
 - `public/assets/pixel/icons/` – Pixel-style icon set (optional); use `src/components/PixelIcon.tsx`.

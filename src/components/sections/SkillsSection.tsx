@@ -36,7 +36,7 @@ export async function SkillsSection() {
         <span>{skills.heading}</span>
       </h2>
       <p className="section-body-muted mt-3">
-        スキルは “経験年数” を目安に、強みの分布が伝わるように整理しています。
+        スキルは “経験年数（実務で触った目安）” を軸に、強みの分布が伝わるように整理しています。
       </p>
       {categories ? (
         <div className="mt-4 space-y-6">

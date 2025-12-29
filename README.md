@@ -79,17 +79,9 @@ When a change affects dependencies or workflows, remember to update README / doc
 ## Customizing next steps
 
 - Update the copy/data in `src/content/portfolio.ts` (profile/work/writing/activities/skills/contact).
-- Add optional visuals to Projects:
-  - Put diagrams/screenshots under `public/assets/`
-  - Set `project.asset` in `src/content/portfolio.ts` to render a thumbnail/diagram in Work
 - Add optional retro icons:
   - Put pixel-style icons under `public/assets/pixel/icons/`
   - Use `src/components/PixelIcon.tsx` in headings/links (decorative by default; reduced a11y noise)
-- If you want to keep some details off the public repo, you can provide private overrides via
-  environment variables (see `src/content/portfolio.ts`: `PORTFOLIO_PRIVATE_JSON`).
-  - Projects can include `visibility: "public" | "private"`. Private items will be redacted
-    on the public page (summary/outcome/link hidden).
-    - With current UI, `visibility="private"` also hides role/tech/outcome/link (title + badges only).
 - Skills can be maintained either as a flat list (`skills.items`) or grouped by category
   (`skills.categories`) for clearer storytelling.
   - `years` (hands-on years) is required; subjective scoring is intentionally not used.
