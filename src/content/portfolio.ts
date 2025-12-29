@@ -148,8 +148,8 @@ export const publicPortfolio: Portfolio = {
     id: "profile",
     heading: "Profile",
     body:
-      "Machine Learning Engineer、Data Scientist、Infrastructure Engineer、Platform Engineer などの職種を経験してきました。現在は株式会社エウレカにて Backend Engineer として、主に Go を用いた開発に携わっています。\n\n" +
-      "また、エウレカ以外では副業として、サービス立ち上げ当初からインフラ基盤をゼロから構築したり、TypeScript を用いたフルスタック開発にも取り組んでいます。",
+      "Machine Learning Engineer、Data Scientist、Infrastructure Engineer、Platform Engineer などの職種を経験してきました。現在は株式会社エウレカで、Go を中心にバックエンド開発に携わっています。" +
+      "副業では、サービス立ち上げ初期からインフラ基盤をゼロから構築したり、TypeScript を用いたフルスタック開発にも取り組んでいます",
   },
   work: {
     id: "work",

@@ -1,6 +1,5 @@
 "use client";
 
-import { useRef, useSyncExternalStore } from "react";
 import {
   START_GATE_CLASS_NOT_STARTED,
   START_GATE_CLASS_STARTED,
@@ -8,6 +7,7 @@ import {
   START_GATE_EVENT,
   START_GATE_STORAGE_KEY,
 } from "@/components/startGate";
+import { useRef, useSyncExternalStore } from "react";
 
 function isReducedMotionPreferred() {
   if (typeof window === "undefined") return false;
@@ -102,8 +102,7 @@ export function Hero() {
         Takeshi Watanabe <span className="text-fami-gold">(Buzz)</span>
       </h1>
       <p className="mt-4 text-base [font-family:var(--font-noto)] md:text-lg">
-        Backend Engineer with a Platform/Infra mindset—shipping reliable systems and observability.
-        Also builds TypeScript full-stack and has a Data/ML background.
+      Software Engineer @ eureka_inc | Match Group | Go | TypeScript | Terraform | AWS | Google Cloud | strong interest in system reliability and architecture
       </p>
 
       {!started ? (
