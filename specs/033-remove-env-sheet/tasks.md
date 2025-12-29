@@ -10,8 +10,8 @@ description: "Tasks for implementing removal of env/spreadsheet private content 
 
 ## Phase 1: Setup (Shared Infrastructure)
 
-- [ ] T001 Capture current references (baseline) by searching for identifiers in repo (PORTFOLIO_PRIVATE_SOURCE / PORTFOLIO_PRIVATE_JSON / spreadsheet / Apps Script)
-- [ ] T002 Confirm current content loader uses env vars in `src/content/portfolio.ts` (private override code path)
+- [x] T001 Capture current references (baseline) by searching for identifiers in repo (PORTFOLIO_PRIVATE_SOURCE / PORTFOLIO_PRIVATE_JSON / spreadsheet / Apps Script)
+- [x] T002 Confirm current content loader uses env vars in `src/content/portfolio.ts` (private override code path)
 
 ---
 
@@ -19,8 +19,8 @@ description: "Tasks for implementing removal of env/spreadsheet private content 
 
 **Checkpoint**: Clear list of files/dirs to edit/remove is known before making changes.
 
-- [ ] T003 Enumerate doc references to private overrides in `README.md`, `AGENTS.md`, `CLAUDE.md` (prepare for Docs synced update)
-- [ ] T004 Enumerate legacy spec/tooling directories to remove (start from `specs/002-portfolio-private-content/` and any spreadsheet/App Script artifacts)
+- [x] T003 Enumerate doc references to private overrides in `README.md`, `AGENTS.md`, `CLAUDE.md` (prepare for Docs synced update)
+- [x] T004 Enumerate legacy spec/tooling directories to remove (start from `specs/002-portfolio-private-content/` and any spreadsheet/App Script artifacts)
 
 ---
 
@@ -30,9 +30,9 @@ description: "Tasks for implementing removal of env/spreadsheet private content 
 
 **Independent Test**: Run `pnpm dev` with no special env configuration and confirm the site renders normally (per `specs/033-remove-env-sheet/quickstart.md`).
 
-- [ ] T005 [US1] Remove env-var “private override” support from `src/content/portfolio.ts` while keeping `getPortfolio(): Promise<Portfolio>` stable
-- [ ] T006 [US1] Remove `PORTFOLIO_PRIVATE_SOURCE` / `PORTFOLIO_PRIVATE_JSON` related warnings/comments from `src/content/portfolio.ts`
-- [ ] T007 [US1] Verify no behavior change when old env vars are set (they should be ignored because code path is removed)
+- [x] T005 [US1] Remove env-var “private override” support from `src/content/portfolio.ts` while keeping `getPortfolio(): Promise<Portfolio>` stable
+- [x] T006 [US1] Remove `PORTFOLIO_PRIVATE_SOURCE` / `PORTFOLIO_PRIVATE_JSON` related warnings/comments from `src/content/portfolio.ts`
+- [x] T007 [US1] Verify no behavior change when old env vars are set (they should be ignored because code path is removed)
 
 **Checkpoint**: Site renders from committed content only.
 
@@ -44,10 +44,10 @@ description: "Tasks for implementing removal of env/spreadsheet private content 
 
 **Independent Test**: Repo search for removed identifiers returns no hits; docs no longer mention the workflow.
 
-- [ ] T008 [US2] Remove private override guidance from `README.md` (no env-var private content mention)
-- [ ] T009 [US2] Remove private override + spreadsheet notes from `AGENTS.md` (remove `PORTFOLIO_PRIVATE_*` bullets and spreadsheet deprecation note)
-- [ ] T010 [US2] Remove private override notes from `CLAUDE.md` (remove env-var private content section)
-- [ ] T011 [US2] Remove any remaining code references to `PORTFOLIO_PRIVATE_SOURCE` / `PORTFOLIO_PRIVATE_JSON` outside `src/content/portfolio.ts` (if any are found)
+- [x] T008 [US2] Remove private override guidance from `README.md` (no env-var private content mention)
+- [x] T009 [US2] Remove private override + spreadsheet notes from `AGENTS.md` (remove `PORTFOLIO_PRIVATE_*` bullets and spreadsheet deprecation note)
+- [x] T010 [US2] Remove private override notes from `CLAUDE.md` (remove env-var private content section)
+- [x] T011 [US2] Remove any remaining code references to `PORTFOLIO_PRIVATE_SOURCE` / `PORTFOLIO_PRIVATE_JSON` outside `src/content/portfolio.ts` (if any are found)
 
 ---
 
@@ -57,17 +57,17 @@ description: "Tasks for implementing removal of env/spreadsheet private content 
 
 **Independent Test**: `pnpm lint` / `pnpm build` pass; spreadsheet/App Script artifacts are removed.
 
-- [ ] T012 [US3] Delete spreadsheet/App Script artifacts used for the removed workflow (at minimum `specs/002-portfolio-private-content/apps-script/Code.gs`; prefer deleting the whole `specs/002-portfolio-private-content/` directory if it’s now obsolete)
-- [ ] T013 [US3] Delete other spreadsheet-specific legacy spec directories if they exist solely for the removed workflow (e.g. `specs/015-sheet-anchorid/`)
+- [x] T012 [US3] Delete spreadsheet/App Script artifacts used for the removed workflow (at minimum `specs/002-portfolio-private-content/apps-script/Code.gs`; prefer deleting the whole `specs/002-portfolio-private-content/` directory if it’s now obsolete)
+- [x] T013 [US3] Delete other spreadsheet-specific legacy spec directories if they exist solely for the removed workflow (e.g. `specs/015-sheet-anchorid/`)
 
 ---
 
 ## Phase 6: Polish & Cross-Cutting Concerns
 
-- [ ] T014 Run verification steps in `specs/033-remove-env-sheet/quickstart.md` (dev run + repo search)
-- [ ] T015 Run `pnpm lint` in `/Users/takeshiwatanabe/EureWorks/private/git/portfolio`
-- [ ] T016 Run `pnpm build` in `/Users/takeshiwatanabe/EureWorks/private/git/portfolio`
-- [ ] T017 Ensure Docs synced: re-scan `README.md`, `AGENTS.md`, `CLAUDE.md` for removed identifiers and consistency
+- [x] T014 Run verification steps in `specs/033-remove-env-sheet/quickstart.md` (dev run + search in `src/` + top-level docs)
+- [x] T015 Run `pnpm lint` in `/Users/takeshiwatanabe/EureWorks/private/git/portfolio`
+- [x] T016 Run `pnpm build` in `/Users/takeshiwatanabe/EureWorks/private/git/portfolio`
+- [x] T017 Ensure Docs synced: re-scan `README.md`, `AGENTS.md`, `CLAUDE.md` for removed identifiers and consistency
 
 ---
 

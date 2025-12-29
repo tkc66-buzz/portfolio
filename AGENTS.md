@@ -42,9 +42,6 @@ Unified cheat sheet so any AI agent (Claude Code, GPT, etc.) can understand the 
 - Semantic sections live under `src/components/sections/*` and each owns a stable `id`
   for in-page anchor navigation.
 - Content data is centralized in `src/content/portfolio.ts` for maintainability.
-  - Private overrides can be injected via env vars (no private content committed to git).
-    - Supported: `PORTFOLIO_PRIVATE_SOURCE=env` + `PORTFOLIO_PRIVATE_JSON`
-    - Unsupported (deprecated): `PORTFOLIO_PRIVATE_SOURCE=url` (spreadsheet運用は停止)
   - Skills support categorized groups (`skills.categories`) with a backward-compatible flat list (`skills.items`) derived from categories.
     - Skills use `years` (required) and can optionally include `firstUsedYear` / `lastUsedYear` to show recency.
   - Writing/Blog links live in `portfolio.writing` and are rendered in `src/components/sections/WritingSection.tsx`.

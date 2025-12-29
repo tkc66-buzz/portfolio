@@ -393,119 +393,21 @@ function normalizeLinks(links: ExternalLink[]): ExternalLink[] {
   });
 }
 
-function isRecord(value: unknown): value is Record<string, unknown> {
-  return typeof value === "object" && value !== null;
-}
+const normalizedPublicPortfolio: Portfolio = {
+  ...publicPortfolio,
+  skills: normalizeSkills(publicPortfolio.skills),
+  contact: { ...publicPortfolio.contact, links: normalizeLinks(publicPortfolio.contact.links) },
+};
 
-function isPortfolioPatch(value: unknown): value is Partial<Portfolio> {
-  if (!isRecord(value)) return false;
-  // Accept only objects that contain at least one known top-level key.
-  // This prevents accidentally merging error payloads like { error: "Unauthorized" }.
-  return (
-    "profile" in value ||
-    "work" in value ||
-    "writing" in value ||
-    "activities" in value ||
-    "skills" in value ||
-    "contact" in value
-  );
-}
-
-function mergePortfolio(base: Portfolio, patch: Partial<Portfolio>): Portfolio {
-  // Only merge known keys; do not spread arbitrary top-level keys onto Portfolio.
-  const mergedCandidate: Portfolio = {
-    profile: { ...base.profile, ...(patch.profile ?? {}) },
-    work: { ...base.work, ...(patch.work ?? {}) },
-    writing: { ...base.writing, ...(patch.writing ?? {}) },
-    activities: { ...base.activities, ...(patch.activities ?? {}) },
-    skills: { ...base.skills, ...(patch.skills ?? {}) },
-    contact: { ...base.contact, ...(patch.contact ?? {}) },
-  };
-
-  // Strictness: Skills MUST have exact years. If a private override provides invalid skills,
-  // ignore only the skills override (keep the rest).
-  const normalizedSkills = normalizeSkills(mergedCandidate.skills);
-  const skillsValid = validateSkills(normalizedSkills);
-  const merged: Portfolio = skillsValid
-    ? { ...mergedCandidate, skills: normalizedSkills }
-    : { ...mergedCandidate, skills: normalizeSkills(base.skills) };
-
-  merged.contact.links = normalizeLinks(merged.contact.links);
-  return merged;
-}
-
-function validateSkills(skills: Skills): boolean {
-  const isValidYears = (y: unknown) => typeof y === "number" && Number.isFinite(y) && y >= 0;
-
-  const isValidUsageYear = (y: unknown) =>
-    typeof y === "number" && Number.isInteger(y) && y >= 1970 && y <= 2100;
-
-  const validateUsageRange = (s: Skill) => {
-    const hasFirst = typeof s.firstUsedYear !== "undefined";
-    const hasLast = typeof s.lastUsedYear !== "undefined";
-    if (hasFirst !== hasLast) return false;
-    if (!hasFirst) return true;
-    if (!isValidUsageYear(s.firstUsedYear) || !isValidUsageYear(s.lastUsedYear)) return false;
-    return (s.firstUsedYear as number) <= (s.lastUsedYear as number);
-  };
-
-  const validateItems = (items: Skill[]) =>
-    items.every((s) => isValidYears(s.years) && validateUsageRange(s));
-
-  if (!validateItems(skills.items)) return false;
-  if (!skills.categories) return true;
-  return skills.categories.every((c) => validateItems(c.items));
-}
-async function loadPrivatePortfolioFromEnv(): Promise<Partial<Portfolio> | null> {
-  const raw = process.env.PORTFOLIO_PRIVATE_JSON;
-  if (!raw) return null;
-  const parsed: unknown = JSON.parse(raw);
-  return isPortfolioPatch(parsed) ? (parsed as Partial<Portfolio>) : null;
-}
-
-/**
- * Returns portfolio data with optional private overrides.
- *
- * Private data MUST NOT be committed to the repo. Provide it via either:
- * - PORTFOLIO_PRIVATE_JSON (JSON string)
- */
+/** Returns portfolio data sourced from committed content only. */
 export async function getPortfolio(): Promise<Portfolio> {
-  const source = process.env.PORTFOLIO_PRIVATE_SOURCE; // "env" | "url" | undefined
-  const isDev = process.env.NODE_ENV === "development";
-  try {
-    const patch =
-      source === "env"
-          ? await loadPrivatePortfolioFromEnv()
-          : await loadPrivatePortfolioFromEnv();
-    if (!patch) {
-      if (isDev && source) {
-        if (source === "url") {
-          console.warn(
-            `[portfolio/private] Private source "url" is currently unsupported (spreadsheet運用停止). Showing public defaults.`,
-          );
-        }
-        console.warn(
-          `[portfolio/private] Private source is set (${source}) but no patch was loaded. Showing public defaults.`,
-        );
-      }
-      return mergePortfolio(publicPortfolio, {});
-    }
-    return mergePortfolio(publicPortfolio, patch);
-  } catch {
-    // Safety: never crash the site due to private data issues; fall back to public.
-    if (isDev && source) {
-      console.warn(
-        `[portfolio/private] Private load threw an error (source=${source}). Showing public defaults.`,
-      );
-    }
-    return mergePortfolio(publicPortfolio, {});
-  }
+  return normalizedPublicPortfolio;
 }
 
 // Backwards-compatible named exports (public-only). Prefer getPortfolio().
-export const profile = publicPortfolio.profile;
-export const work = publicPortfolio.work;
-export const writing = publicPortfolio.writing;
-export const activities = publicPortfolio.activities;
-export const skills = publicPortfolio.skills;
-export const contact = publicPortfolio.contact;
+export const profile = normalizedPublicPortfolio.profile;
+export const work = normalizedPublicPortfolio.work;
+export const writing = normalizedPublicPortfolio.writing;
+export const activities = normalizedPublicPortfolio.activities;
+export const skills = normalizedPublicPortfolio.skills;
+export const contact = normalizedPublicPortfolio.contact;

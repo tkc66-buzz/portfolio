@@ -23,7 +23,7 @@ Open the site and confirm all sections render normally.
 - Ensure the site renders without setting any private/spreadsheet env vars.
 - (Optional) Set old variables (if present on your machine) and confirm behavior is unchanged.
 
-### Repo search (must be empty)
+### Search (code + primary docs)
 
 Search for:
 
@@ -31,6 +31,13 @@ Search for:
 - `PORTFOLIO_PRIVATE_JSON`
 - `spreadsheet`
 - `Apps Script`
+
+Scope:
+
+- `src/`
+- `README.md`
+- `AGENTS.md`
+- `CLAUDE.md`
 
 ### Quality gates
 
