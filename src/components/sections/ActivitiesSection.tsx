@@ -1,6 +1,7 @@
 import { getPortfolio } from "@/content/portfolio";
 import { PixelIcon } from "@/components/PixelIcon";
 import { ActivitiesCollectGate } from "@/components/sections/ActivitiesCollectGate";
+import Image from "next/image";
 
 function isExternalHttpHref(href: string) {
   return href.startsWith("http://") || href.startsWith("https://");
@@ -121,6 +122,16 @@ export async function ActivitiesSection() {
                             target={isExternalHttpHref(item.link.href) ? "_blank" : undefined}
                             rel={isExternalHttpHref(item.link.href) ? "noreferrer" : undefined}
                           >
+                            {item.link.previewImageSrc ? (
+                              <Image
+                                className="mb-3 w-full rounded border border-fami-gold/20 bg-black/20"
+                                src={item.link.previewImageSrc}
+                                alt={item.link.previewImageAlt ?? ""}
+                                width={1200}
+                                height={675}
+                                sizes="(min-width: 768px) 50vw, 100vw"
+                              />
+                            ) : null}
                             <div className="flex items-center justify-between gap-3">
                               <div className="min-w-0">
                                 <div className="truncate text-[0.75rem] leading-none text-fami-gold">
