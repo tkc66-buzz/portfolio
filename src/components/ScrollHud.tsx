@@ -1,6 +1,7 @@
 "use client";
 
 import { TOC_ITEMS, type TocItemId } from "@/components/toc";
+import { START_GATE_EVENT } from "@/components/startGate";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 type ScrollHudState = {
@@ -106,6 +107,14 @@ export function ScrollHud() {
       });
     };
 
+    const onStartGate = () => {
+      // When gated content becomes visible, offsets must be recomputed.
+      window.requestAnimationFrame(() => {
+        computeOffsets();
+        update();
+      });
+    };
+
     const onResize = () => {
       computeOffsets();
       onScroll();
@@ -113,6 +122,7 @@ export function ScrollHud() {
 
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onResize);
+    window.addEventListener(START_GATE_EVENT, onStartGate);
 
     return () => {
       if (rafRef.current != null) {
@@ -121,6 +131,7 @@ export function ScrollHud() {
       }
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onResize);
+      window.removeEventListener(START_GATE_EVENT, onStartGate);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

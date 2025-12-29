@@ -17,6 +17,92 @@ body {
   background: #111;
 }
 
+/* Start gate (PRESS START reveal)
+   Progressive enhancement: content is visible by default and only gated when JS
+   adds `html.not-started` / `html.is-starting`. */
+html.not-started .start-gated,
+html.is-starting .start-gated {
+  display: none;
+}
+
+html.is-starting body::before,
+html.is-starting body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: auto;
+}
+
+/* Scanlines + subtle phosphor tint */
+html.is-starting body::before {
+  background-image:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.0) 0px,
+      rgba(0, 0, 0, 0.0) 2px,
+      rgba(0, 0, 0, 0.18) 3px,
+      rgba(0, 0, 0, 0.18) 4px
+    ),
+    linear-gradient(180deg, rgba(215, 176, 91, 0.10), rgba(0, 0, 0, 0));
+  mix-blend-mode: multiply;
+  opacity: 0.9;
+}
+
+/* Boot flash + vignette */
+html.is-starting body::after {
+  background:
+    radial-gradient(circle at 50% 40%, rgba(255, 255, 255, 0.20), rgba(0, 0, 0, 0) 55%),
+    radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.65) 100%);
+  opacity: 0.0;
+}
+
+@keyframes start-gate-flash {
+  0% {
+    opacity: 0.0;
+  }
+  30% {
+    opacity: 0.95;
+  }
+  100% {
+    opacity: 0.0;
+  }
+}
+
+@keyframes start-gate-jitter {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  25% {
+    transform: translate3d(0, -1px, 0);
+  }
+  55% {
+    transform: translate3d(0, 1px, 0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html.is-starting body::before {
+    animation: start-gate-jitter 220ms steps(2, end) infinite;
+    will-change: transform;
+  }
+  html.is-starting body::after {
+    animation: start-gate-flash 520ms steps(3, end) both;
+    will-change: opacity;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.is-starting body::before,
+  html.is-starting body::after {
+    animation: none !important;
+  }
+  html.is-starting body::after {
+    opacity: 0.15;
+  }
+}
+
 .frame {
   border: 4px solid #d7b05b;
   box-shadow: 4px 4px 0 #a20000;

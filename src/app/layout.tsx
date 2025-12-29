@@ -1,8 +1,14 @@
 import "nes.css/css/nes.min.css";
 import type { Metadata } from "next";
 import { Noto_Sans_JP, Press_Start_2P } from "next/font/google";
+import Script from "next/script";
 import type { ReactNode } from "react";
 import "./globals.css";
+import {
+  START_GATE_CLASS_NOT_STARTED,
+  START_GATE_CLASS_STARTED,
+  START_GATE_STORAGE_KEY,
+} from "@/components/startGate";
 
 const noto = Noto_Sans_JP({ subsets: ["latin"], variable: "--font-noto" });
 const press = Press_Start_2P({
@@ -25,8 +31,23 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="ja">
-      <body className={`${noto.variable} ${press.variable} text-white`}>{children}</body>
+    <html lang="ja" suppressHydrationWarning>
+      <body className={`${noto.variable} ${press.variable} text-white`}>
+        <Script id="start-gate-init" strategy="beforeInteractive">{`
+(function () {
+  try {
+    var key = ${JSON.stringify(START_GATE_STORAGE_KEY)};
+    var started = sessionStorage.getItem(key) === "1";
+    var root = document.documentElement;
+    if (started) root.classList.add(${JSON.stringify(START_GATE_CLASS_STARTED)});
+    else root.classList.add(${JSON.stringify(START_GATE_CLASS_NOT_STARTED)});
+  } catch (e) {
+    document.documentElement.classList.add(${JSON.stringify(START_GATE_CLASS_NOT_STARTED)});
+  }
+})();
+        `}</Script>
+        {children}
+      </body>
     </html>
   );
 }

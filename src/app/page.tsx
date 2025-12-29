@@ -12,13 +12,15 @@ export default function Home() {
     <div className="min-h-screen bg-[#111] px-4 py-10 [--menu-offset:9.5rem] [--menu-top:0.75rem] md:px-8 md:[--menu-offset:8rem] md:[--menu-top:1rem]">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-10">
         <Hero />
-        <TableOfContents />
-        <ProfileSection />
-        <WorkSection />
-        <WritingSection />
-        <ActivitiesSection />
-        <SkillsSection />
-        <ContactSection />
+        <div className="start-gated flex flex-col gap-10">
+          <TableOfContents />
+          <ProfileSection />
+          <WorkSection />
+          <WritingSection />
+          <ActivitiesSection />
+          <SkillsSection />
+          <ContactSection />
+        </div>
       </div>
     </div>
   );

@@ -19,7 +19,7 @@ Focused tips for Anthropic Claude Code / Workbench agents interacting with this 
 
 - `src/app/page.tsx` – Landing page composition (Hero → Menu → sections). Keep it thin; put content in sections and data in `src/content/portfolio.ts`.
 - `src/components/TableOfContents.tsx` – Menu UI (in-page navigation, sticky HUD).
-- `src/components/Hero.tsx` – Hero header (no buttons; Menu is directly below).
+- `src/components/Hero.tsx` – Hero header (includes **PRESS START** interaction that reveals the Menu; session-scoped).
 - `src/components/sections/*` – Semantic sections; each owns a stable `id` for `#hash` navigation.
 - `src/components/sections/WorkSection.tsx` – Unified Work section (company blocks with nested Projects). Work is rendered as a deliberately “unique screen” (RPG-like STATUS / QUEST LOG / DETAIL).
 - `src/components/sections/WorkQuestLog.tsx` – Client component that handles quest selection state + detail swapping (kept small on purpose).
