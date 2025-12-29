@@ -229,8 +229,27 @@ html.is-starting body::after {
 
 @media (min-width: 768px) {
   .work-rpg .work-rpg__layout {
-    grid-template-columns: 1.1fr 0.9fr 1.2fr;
+    /* Max 2 columns on desktop:
+       Left: STATUS + QUEST LOG (stacked)
+       Right: DETAIL (spans rows) */
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
     align-items: start;
+  }
+
+  .work-rpg .work-rpg__panel--status {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .work-rpg .work-rpg__panel--log {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .work-rpg .work-rpg__panel--detail {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: stretch;
   }
 }
 
@@ -241,6 +260,12 @@ html.is-starting body::after {
   background: rgba(0, 0, 0, 0.35);
   padding: 0.75rem;
   overflow: hidden;
+  /* Guardrail: allow grid children to shrink to avoid horizontal overflow */
+  min-width: 0;
+}
+
+.work-rpg .work-rpg__panel--detail dd {
+  min-width: 0;
 }
 
 .work-rpg .work-rpg__panel::before {
@@ -343,6 +368,15 @@ html.is-starting body::after {
 
 .work-rpg .work-rpg__questRow.is-selected .work-rpg__questBtn {
   border-color: rgba(215, 176, 91, 0.95);
+}
+
+@media (min-width: 768px) {
+  /* Optional: keep the list scannable without making the whole Work card excessively tall */
+  .work-rpg .work-rpg__panel--log [role="tablist"] {
+    max-height: min(22rem, calc(100vh - 18rem));
+    overflow: auto;
+    padding-right: 0.25rem;
+  }
 }
 
 @keyframes work-rpg-shimmer {
