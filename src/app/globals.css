@@ -511,6 +511,12 @@ html.is-starting body::after {
 
 /* Mobile Menu (hamburger + overlay) */
 .mobile-menu-btn {
+  /* Force fixed positioning */
+  position: fixed !important;
+  top: 1rem !important;
+  right: 1rem !important;
+  z-index: 99999 !important;
+  /* Layout */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -519,14 +525,10 @@ html.is-starting body::after {
   width: 44px;
   height: 44px;
   padding: 8px;
+  /* Styling */
   border: 3px solid rgba(215, 176, 91, 0.9);
   box-shadow: 3px 3px 0 rgba(162, 0, 0, 0.9);
   background: rgba(0, 0, 0, 0.95);
-  /* iOS Safari fix for position: fixed */
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
 }
 
 .mobile-menu-btn__line {

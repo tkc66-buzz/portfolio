@@ -7,6 +7,7 @@ import {
   START_GATE_EVENT,
 } from "@/components/startGate";
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { createPortal } from "react-dom";
 
 // Subscribe/snapshot pattern to detect client-side mount without triggering lint warnings
 function subscribeNoop() {
@@ -166,17 +167,11 @@ export function MobileMenu() {
 
   const content = (
     <>
-      {/* Hamburger button - rendered via portal to body for proper fixed positioning */}
+      {/* Hamburger button - fixed position at top right (position enforced via CSS) */}
       <button
         ref={triggerRef}
         type="button"
         className={`mobile-menu-btn sm:hidden ${isOpen ? "mobile-menu-btn--open" : ""}`}
-        style={{
-          position: "fixed",
-          top: "1rem",
-          right: "1rem",
-          zIndex: 99999,
-        }}
         onClick={open}
         aria-expanded={isOpen}
         aria-controls="mobile-menu-overlay"
@@ -233,6 +228,6 @@ export function MobileMenu() {
     </>
   );
 
-  // Render directly without portal - iOS Safari has issues with fixed positioning in portals
-  return content;
+  // Use portal to render directly into document.body for proper fixed positioning
+  return createPortal(content, document.body);
 }
