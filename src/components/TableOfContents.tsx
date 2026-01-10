@@ -19,13 +19,14 @@ function tocIconSrc(id: (typeof TOC_ITEMS)[number]["id"]) {
   }
 }
 
+/** Desktop sticky menu - only visible on sm and larger screens */
 export function TableOfContents() {
   return (
     <nav
       id="menu"
       aria-label="Menu"
       tabIndex={-1}
-      className="hud frame sticky top-[var(--menu-top)] z-50 bg-[#1b1b1b]/90 p-4 text-fami-ivory backdrop-blur supports-[backdrop-filter]:bg-[#1b1b1b]/70"
+      className="hud frame sticky top-[var(--menu-top)] z-50 hidden bg-[#1b1b1b]/90 p-4 text-fami-ivory backdrop-blur sm:block supports-[backdrop-filter]:bg-[#1b1b1b]/70"
     >
       <div className="mb-3 flex items-baseline justify-between">
         <h2 className="text-sm text-fami-gold" style={{ fontFamily: "var(--font-press)" }}>
@@ -35,7 +36,7 @@ export function TableOfContents() {
 
       <ScrollHud />
 
-      <ul className="flex gap-2 overflow-x-auto pb-1 sm:flex-wrap sm:overflow-visible sm:pb-0">
+      <ul className="flex flex-wrap gap-2">
         {TOC_ITEMS.map((item) => (
           <li key={item.id}>
             <a

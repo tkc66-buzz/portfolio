@@ -80,6 +80,8 @@ pnpm format:check && pnpm lint && pnpm build
 ## Active Technologies
 - TypeScript 5.x with Next.js 16.0.7 + Next.js (next/image for optimization), React 19.2.1, Tailwind CSS 3.4.18, NES.css 2.3.0 (037-hero-image)
 - Static file in `public/assets/` directory (no database) (037-hero-image)
+- TypeScript 5.x + Next.js 16.0.7, React 19.2.1, Tailwind CSS 3.4.18, NES.css 2.3.0 (038-mobile-menu-fix)
+- N/A (静的サイト) (038-mobile-menu-fix)
 
 ## Recent Changes
 - 037-hero-image: Added TypeScript 5.x with Next.js 16.0.7 + Next.js (next/image for optimization), React 19.2.1, Tailwind CSS 3.4.18, NES.css 2.3.0
