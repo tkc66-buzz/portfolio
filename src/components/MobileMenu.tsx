@@ -2,8 +2,42 @@
 
 import { TOC_ITEMS, tocHref, type TocItemId } from "@/components/toc";
 import { PixelIcon } from "@/components/PixelIcon";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { createPortal } from "react-dom";
+import {
+  START_GATE_CLASS_STARTED,
+  START_GATE_EVENT,
+} from "@/components/startGate";
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
+
+// Subscribe/snapshot pattern to detect client-side mount without triggering lint warnings
+function subscribeNoop() {
+  return () => {};
+}
+function getClientSnapshot() {
+  return true;
+}
+function getServerSnapshot() {
+  return false;
+}
+function useHasMounted() {
+  return useSyncExternalStore(subscribeNoop, getClientSnapshot, getServerSnapshot);
+}
+
+// Check if START button has been pressed
+function subscribeStartGate(onStoreChange: () => void) {
+  if (typeof window === "undefined") return () => {};
+  window.addEventListener(START_GATE_EVENT, onStoreChange);
+  return () => window.removeEventListener(START_GATE_EVENT, onStoreChange);
+}
+function getStartGateSnapshot() {
+  if (typeof document === "undefined") return false;
+  return document.documentElement.classList.contains(START_GATE_CLASS_STARTED);
+}
+function getStartGateServerSnapshot() {
+  return false;
+}
+function useStartGateStarted() {
+  return useSyncExternalStore(subscribeStartGate, getStartGateSnapshot, getStartGateServerSnapshot);
+}
 
 function tocIconSrc(id: TocItemId) {
   switch (id) {
@@ -23,6 +57,8 @@ function tocIconSrc(id: TocItemId) {
 }
 
 export function MobileMenu() {
+  const mounted = useHasMounted();
+  const started = useStartGateStarted();
   const [isOpen, setIsOpen] = useState(false);
   const overlayRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
@@ -123,8 +159,8 @@ export function MobileMenu() {
     close();
   };
 
-  // Don't render anything on server (SSR)
-  if (typeof window === "undefined") {
+  // Don't render until mounted (hydration) and started (START button pressed)
+  if (!mounted || !started) {
     return null;
   }
 
@@ -134,7 +170,13 @@ export function MobileMenu() {
       <button
         ref={triggerRef}
         type="button"
-        className={`mobile-menu-btn fixed right-4 top-4 z-[9999] sm:hidden ${isOpen ? "mobile-menu-btn--open" : ""}`}
+        className={`mobile-menu-btn sm:hidden ${isOpen ? "mobile-menu-btn--open" : ""}`}
+        style={{
+          position: "fixed",
+          top: "1rem",
+          right: "1rem",
+          zIndex: 99999,
+        }}
         onClick={open}
         aria-expanded={isOpen}
         aria-controls="mobile-menu-overlay"
@@ -191,6 +233,6 @@ export function MobileMenu() {
     </>
   );
 
-  // Use portal to render directly into document.body
-  return createPortal(content, document.body);
+  // Render directly without portal - iOS Safari has issues with fixed positioning in portals
+  return content;
 }
