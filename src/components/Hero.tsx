@@ -92,7 +92,7 @@ export function Hero() {
   }
 
   return (
-    <section className="frame bg-[#1b1b1b] p-8 text-center text-fami-ivory">
+    <section className="frame bg-[#1b1b1b] p-4 text-center text-fami-ivory sm:p-6 md:p-8">
       <div className="flex flex-col items-center gap-6 md:flex-row md:justify-center md:gap-8">
         {/* Profile Image */}
         <div className="flex-shrink-0">
@@ -102,7 +102,7 @@ export function Hero() {
             width={200}
             height={200}
             priority
-            className="aspect-square w-32 border-4 border-fami-gold md:w-48 lg:w-56"
+            className="aspect-square w-28 border-4 border-fami-gold sm:w-32 md:w-48 lg:w-56"
           />
         </div>
 
@@ -114,10 +114,10 @@ export function Hero() {
           >
             {started ? "READY" : "PRESS START"}
           </p>
-          <h1 className="text-2xl md:text-3xl" style={{ fontFamily: "var(--font-press)" }}>
+          <h1 className="text-xl sm:text-2xl md:text-3xl" style={{ fontFamily: "var(--font-press)" }}>
             Takeshi Watanabe <span className="text-fami-gold">(Buzz)</span>
           </h1>
-          <p className="mt-4 text-base [font-family:var(--font-noto)] md:text-lg">
+          <p className="mt-4 text-sm [font-family:var(--font-noto)] sm:text-base md:text-lg">
             Software Engineer @ eureka_inc | Match Group | Go | TypeScript | Terraform | AWS | Google Cloud | strong interest in system reliability and architecture
           </p>
 

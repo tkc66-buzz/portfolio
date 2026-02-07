@@ -61,7 +61,7 @@ export async function ActivitiesSection() {
 
                     if (!isTalk) {
                       return (
-                        <li key={`${group.name}:${item.year}:${item.title}`} className="space-y-2">
+                        <li key={`${group.name}:${item.year}:${item.title}`} className="min-w-0 space-y-2">
                           <div className="flex items-start justify-between gap-3">
                             <div className="min-w-0">
                               <div className="flex flex-wrap items-center gap-2">

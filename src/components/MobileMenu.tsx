@@ -172,7 +172,7 @@ export function MobileMenu() {
         ref={triggerRef}
         type="button"
         className={`mobile-menu-btn sm:hidden ${isOpen ? "mobile-menu-btn--open" : ""}`}
-        onClick={open}
+        onClick={isOpen ? close : open}
         aria-expanded={isOpen}
         aria-controls="mobile-menu-overlay"
         aria-label={isOpen ? "Close menu" : "Open menu"}

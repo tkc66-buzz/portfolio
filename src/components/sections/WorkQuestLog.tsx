@@ -58,7 +58,7 @@ export function WorkQuestLog({ entry }: { entry: WorkRpgEntryVM }) {
       <div className="work-rpg__panel work-rpg__panel--status">
         <p className="work-rpg__label">STATUS</p>
 
-        <div className="mt-2 flex flex-wrap items-center gap-2">
+        <div className="mt-2 flex min-w-0 flex-wrap items-center gap-2">
           <span className="nes-badge is-primary year-badge">
             <span>{entry.header.period}</span>
           </span>

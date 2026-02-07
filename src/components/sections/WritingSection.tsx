@@ -24,13 +24,13 @@ export async function WritingSection() {
         記事（Writing）は文章のまとめ。登壇/書籍/コミュニティは Activities に分けています。
       </p>
 
-      <div className="mt-6 flex flex-wrap gap-3">
+      <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-3">
         {writing.items.map((link) => {
           const isExternal = isExternalHttpHref(link.href);
           return (
             <a
               key={link.href}
-                    className="nes-btn is-primary btn-game"
+                    className="w-full sm:w-auto nes-btn is-primary btn-game"
               href={link.href}
               target={isExternal ? "_blank" : undefined}
               rel={isExternal ? "noreferrer" : undefined}
