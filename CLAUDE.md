@@ -32,7 +32,7 @@ Focused tips for Anthropic Claude Code / Workbench agents interacting with this 
   - Skills use `years` (required) and can optionally include `firstUsedYear` / `lastUsedYear` (numeric years) to show recency.
 - `public/assets/` – Static diagrams/screenshots (optional); Projects can specify `project.asset` to render visuals.
 - `public/assets/pixel/icons/` – Pixel-style icon set (optional); use `src/components/PixelIcon.tsx`.
-- `src/app/globals.css` – Global palette + small CSS-only motion utilities (reduced-motion aware).
+- `src/app/globals.css` – Global palette + small CSS-only motion utilities (reduced-motion aware) + NES.css mobile overrides (`max-width: 639px`).
 - `src/app/layout.tsx` – Imports NES.css, fonts, metadata; extend when adding OG tags or global providers.
 - `tailwind.config.js` – Update `content` array if adding directories.
 - `postcss.config.js` – Standard pipeline; modify when adding plugins like `postcss-nesting`.
@@ -41,6 +41,7 @@ Focused tips for Anthropic Claude Code / Workbench agents interacting with this 
 
 - Use TypeScript with strict mode on; favor functional components + server components unless interactivity is required.
 - Prefer Tailwind utilities; fallback to NES.css classes for retro widgets.
+- Use mobile-first responsive approach: default styles for 320px+, then `sm:` (640px), `md:` (768px), `lg:` (1024px). NES.css overrides for mobile live in `globals.css` at `max-width: 639px`.
 - Keep metadata in `layout.tsx` accurate whenever you add new assets (`public/og.png`, etc.).
 
 ## Deployment Checklist for Claude

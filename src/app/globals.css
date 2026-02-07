@@ -639,3 +639,33 @@ body.mobile-menu-open {
     animation: none !important;
   }
 }
+
+/* ── Responsive: NES.css mobile overrides (< sm breakpoint) ── */
+@media (max-width: 639px) {
+  .nes-btn {
+    padding: 2px 6px;
+    font-size: 0.75rem;
+  }
+
+  .nes-badge > span {
+    font-size: 0.625rem;
+  }
+
+  .nes-container {
+    padding: 0.75rem;
+  }
+
+  .mobile-menu-overlay {
+    padding: 0.75rem;
+  }
+}
+
+/* NES.css progress bars: always respect parent width */
+.nes-progress {
+  max-width: 100%;
+}
+
+/* Global text overflow safety */
+body {
+  overflow-wrap: break-word;
+}

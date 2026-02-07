@@ -38,16 +38,16 @@ export async function ContactSection() {
       <p className="section-body mt-3 whitespace-pre-line">
         {contact.blurb}
       </p>
-      <div className="mt-6 flex flex-wrap gap-3">
+      <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-3">
         {contact.links.map((link) => {
           const isExternal = isExternalHttpHref(link.href);
           const iconSrc = iconSrcForLabel(link.label);
           return (
             <a
               key={link.href}
-              className={
+              className={`w-full sm:w-auto ${
                 link.label === "X" ? "nes-btn is-error btn-game" : "nes-btn is-primary btn-game"
-              }
+              }`}
               href={link.href}
               target={isExternal ? "_blank" : undefined}
               rel={isExternal ? "noreferrer" : undefined}

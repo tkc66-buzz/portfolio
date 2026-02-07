@@ -51,8 +51,8 @@ export async function SkillsSection() {
               <div className="mt-3 space-y-4">
                 {cat.items.map((skill) => (
                   <div key={`${cat.name}:${skill.label}`}>
-                    <div className="flex items-center justify-between text-xs uppercase tracking-[0.2em] text-fami-gold">
-                      <span>{skill.label}</span>
+                    <div className="flex flex-wrap items-center justify-between gap-1 text-xs uppercase tracking-[0.2em] text-fami-gold">
+                      <span className="min-w-0">{skill.label}</span>
                       <span className="normal-case">
                         {formatYears(skill.years)}
                         {formatUsageRange(skill) ? ` (${formatUsageRange(skill)})` : ""}
@@ -73,8 +73,8 @@ export async function SkillsSection() {
         <div className="mt-3 space-y-4">
           {skills.items.map((skill) => (
             <div key={skill.label}>
-              <div className="flex items-center justify-between text-xs uppercase tracking-[0.2em] text-fami-gold">
-                <span>{skill.label}</span>
+              <div className="flex flex-wrap items-center justify-between gap-1 text-xs uppercase tracking-[0.2em] text-fami-gold">
+                <span className="min-w-0">{skill.label}</span>
                 <span className="normal-case">
                   {formatYears(skill.years)}
                   {formatUsageRange(skill) ? ` (${formatUsageRange(skill)})` : ""}
