@@ -85,6 +85,8 @@ pnpm format:check && pnpm lint && pnpm build
 - N/A (静的サイト) (038-mobile-menu-fix)
 - TypeScript 5.x, Node.js 25.2.0 + Next.js 16.0.7, React 19.2.1, Tailwind CSS 3.4.18, NES.css 2.3.0 (039-fix-hydration-error)
 - sessionStorage (browser-side, for START gate persistence across page reloads) (039-fix-hydration-error)
+- TypeScript 5.x + Next.js 16.0.7, React 19.2.1 + Tailwind CSS 3.4.18, NES.css 2.3.0 (041-add-codezine-series)
+- Static file (`src/content/portfolio.ts`) — no database (041-add-codezine-series)
 
 ## Recent Changes
 - 037-hero-image: Added TypeScript 5.x with Next.js 16.0.7 + Next.js (next/image for optimization), React 19.2.1, Tailwind CSS 3.4.18, NES.css 2.3.0

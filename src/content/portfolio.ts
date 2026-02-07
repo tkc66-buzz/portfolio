@@ -82,7 +82,7 @@ export type ActivityItem = {
 };
 
 export type ActivityGroup = {
-  name: "Talks" | "Books" | "Community" | "Achievements";
+  name: "Talks" | "Books" | "Articles" | "Community" | "Achievements";
   items: ActivityItem[];
 };
 
@@ -282,6 +282,21 @@ export const publicPortfolio: Portfolio = {
             link: {
               label: "技術書典",
               href: "https://techbookfest.org/product/qunTLHG5hLbL91bBX9dqDU?productVariantID=diV811bQsBeU5YfWhtGym0",
+            },
+          },
+        ],
+      },
+      {
+        name: "Articles",
+        items: [
+          {
+            year: "2024",
+            title: "CodeZine連載：Platform Engineering入門",
+            context:
+              "CodeZine（翔泳社）でPlatform Engineeringの入門連載を執筆しました。",
+            link: {
+              label: "CodeZine",
+              href: "https://codezine.jp/article/detail/18856",
             },
           },
         ],

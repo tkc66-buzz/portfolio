@@ -76,3 +76,10 @@ Use the following checklist whenever you modify code, dependencies, or build/dep
    - `CLAUDE.md`: Claude-specific boot/deploy guidance.
 4. After editing, scan the trio again for stale references (versions, commands, features) and fix discrepancies.
 5. In your task summary, mention “Docs synced” to confirm you enforced these rules.
+
+## Active Technologies
+- TypeScript 5.x + Next.js 16.0.7, React 19.2.1 + Tailwind CSS 3.4.18, NES.css 2.3.0 (041-add-codezine-series)
+- Static file (`src/content/portfolio.ts`) — no database (041-add-codezine-series)
+
+## Recent Changes
+- 041-add-codezine-series: Added TypeScript 5.x + Next.js 16.0.7, React 19.2.1 + Tailwind CSS 3.4.18, NES.css 2.3.0
