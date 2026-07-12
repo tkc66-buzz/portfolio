@@ -1,7 +1,7 @@
 # Quickstart: Achievement Toast Close Polish
 
 **Feature**: `035-achievement-toast-polish`  
-**Date**: 2025-12-29  
+**Date**: 2025-12-29
 
 ## Goal
 
@@ -38,4 +38,3 @@ Scroll to **Activities** and watch for the toast.
 pnpm lint
 pnpm build
 ```
-

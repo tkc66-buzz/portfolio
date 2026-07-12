@@ -49,5 +49,3 @@ Reduced motion:
 - Toast MUST not render more than once per session after `shown=true`.
 - Toast MUST not re-render after user dismisses (`dismissed=true`).
 - Trigger wiring MUST avoid multiple observers/listeners.
-
-

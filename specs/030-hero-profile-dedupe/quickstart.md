@@ -19,5 +19,3 @@ pnpm dev
 3. Run verification:
    - `pnpm lint`
    - `pnpm build`
-
-

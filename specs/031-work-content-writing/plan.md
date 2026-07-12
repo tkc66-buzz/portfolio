@@ -29,7 +29,7 @@ Write and refine the Work section copy (company summaries + project summaries/ou
 
 ## Constitution Check
 
-*GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
+_GATE: Must pass before Phase 0 research. Re-check after Phase 1 design._
 
 Use `.specify/memory/constitution.md` as the source of truth. This repo’s default
 gates (adapt per feature) are:
@@ -41,6 +41,7 @@ gates (adapt per feature) are:
   `README.md`, `AGENTS.md`, and `CLAUDE.md` together.
 
 **Pass/Fail (expected)**:
+
 - Principle compliance: PASS (improves “Proof surface” quality and storytelling)
 - Quality gates: MUST PASS before merge (`pnpm lint`, `pnpm build`)
 - Docs sync: Not expected (no dependency/workflow/top-level UX change)
@@ -60,6 +61,7 @@ specs/031-work-content-writing/
 ```
 
 ### Source Code (repository root)
+
 <!--
   ACTION REQUIRED: Replace the placeholder tree below with the concrete layout
   for this feature. Delete unused options and expand the chosen structure with
@@ -82,7 +84,7 @@ src/
 
 > **Fill ONLY if Constitution Check has violations that must be justified**
 
-| Violation | Why Needed | Simpler Alternative Rejected Because |
-|-----------|------------|-------------------------------------|
-| [e.g., 4th project] | [current need] | [why 3 projects insufficient] |
-| [e.g., Repository pattern] | [specific problem] | [why direct DB access insufficient] |
+| Violation                  | Why Needed         | Simpler Alternative Rejected Because |
+| -------------------------- | ------------------ | ------------------------------------ |
+| [e.g., 4th project]        | [current need]     | [why 3 projects insufficient]        |
+| [e.g., Repository pattern] | [specific problem] | [why direct DB access insufficient]  |

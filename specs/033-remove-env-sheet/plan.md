@@ -29,7 +29,7 @@ Remove the now-unused portfolio “private override” feature and spreadsheet/A
 
 ## Constitution Check
 
-*GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
+_GATE: Must pass before Phase 0 research. Re-check after Phase 1 design._
 
 Use `.specify/memory/constitution.md` as the source of truth. This repo’s default
 gates (adapt per feature) are:
@@ -41,6 +41,7 @@ gates (adapt per feature) are:
   `README.md`, `AGENTS.md`, and `CLAUDE.md` together.
 
 **Gate evaluation (pre-research)**:
+
 - Principle compliance: PASS (removes confusion and strengthens durability)
 - Quality gates: REQUIRED (`pnpm lint` / `pnpm build`)
 - Docs sync: REQUIRED (docs currently mention env-var/spreadsheet paths)
@@ -60,6 +61,7 @@ specs/[###-feature]/
 ```
 
 ### Source Code (repository root)
+
 ```text
 src/
 ├── content/
@@ -116,7 +118,7 @@ CLAUDE.md
 
 > **Fill ONLY if Constitution Check has violations that must be justified**
 
-| Violation | Why Needed | Simpler Alternative Rejected Because |
-|-----------|------------|-------------------------------------|
-| [e.g., 4th project] | [current need] | [why 3 projects insufficient] |
-| [e.g., Repository pattern] | [specific problem] | [why direct DB access insufficient] |
+| Violation                  | Why Needed         | Simpler Alternative Rejected Because |
+| -------------------------- | ------------------ | ------------------------------------ |
+| [e.g., 4th project]        | [current need]     | [why 3 projects insufficient]        |
+| [e.g., Repository pattern] | [specific problem] | [why direct DB access insufficient]  |

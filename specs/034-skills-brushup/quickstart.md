@@ -1,7 +1,7 @@
 # Quickstart: Skills Brushup
 
 **Feature**: `034-skills-brushup`  
-**Date**: 2025-12-29  
+**Date**: 2025-12-29
 
 ## Goal
 
@@ -39,4 +39,3 @@ Open the site and scroll to **Skills** (or use the menu after **PRESS START**).
 pnpm lint
 pnpm build
 ```
-

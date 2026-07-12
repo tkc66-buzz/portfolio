@@ -1,7 +1,7 @@
 # Data Model: Achievement Toast Close Polish
 
 **Feature**: `035-achievement-toast-polish`  
-**Date**: 2025-12-29  
+**Date**: 2025-12-29
 
 ## Summary
 
@@ -20,4 +20,3 @@ No new entities. This is a UI/interaction refinement on top of the existing sess
 
 - Reduced motion users should not receive animation-heavy transitions.
 - The Activities layout should not have an empty spacer when toast is absent.
-

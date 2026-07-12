@@ -33,4 +33,3 @@ Confirm the three known issues are fixed while you enrich Experience and Project
    - `pnpm build`
    - `pnpm start`
 2. Confirm the page renders and anchors still work.
-

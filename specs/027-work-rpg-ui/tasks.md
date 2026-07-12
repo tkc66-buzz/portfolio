@@ -7,8 +7,8 @@
 
 ## Phase 1: Setup (Shared Infrastructure)
 
-- [X] T001 Create Work RPG deterministic quest id helper in `src/components/sections/workRpgId.ts` (includes de-dup suffix rule)
-- [X] T002 [P] Add Work RPG CSS tokens + animations scaffold in `src/app/globals.css` (scoped under a Work-only root class)
+- [x] T001 Create Work RPG deterministic quest id helper in `src/components/sections/workRpgId.ts` (includes de-dup suffix rule)
+- [x] T002 [P] Add Work RPG CSS tokens + animations scaffold in `src/app/globals.css` (scoped under a Work-only root class)
 
 ---
 
@@ -16,9 +16,9 @@
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [X] T003 Define Work RPG view-model builder (derive stats + quest VMs, use id de-dup) in `src/components/sections/workRpgVm.ts`
-- [X] T004 [P] Add a dedicated client component for quest selection state in `src/components/sections/WorkQuestLog.tsx`
-- [X] T005 Wire new imports directly in `src/components/sections/WorkSection.tsx` (import VM builder + `WorkQuestLog`)
+- [x] T003 Define Work RPG view-model builder (derive stats + quest VMs, use id de-dup) in `src/components/sections/workRpgVm.ts`
+- [x] T004 [P] Add a dedicated client component for quest selection state in `src/components/sections/WorkQuestLog.tsx`
+- [x] T005 Wire new imports directly in `src/components/sections/WorkSection.tsx` (import VM builder + `WorkQuestLog`)
 
 **Checkpoint**: VM + selection component skeleton exists; WorkSection can consume it
 
@@ -30,12 +30,12 @@
 
 **Independent Test**: `pnpm dev` でトップページを開き Work へスクロールすると、Work が 3ペイン（status/log/detail）風に見え、情報が読める。
 
-- [X] T006 [US1] Refactor `src/components/sections/WorkSection.tsx` to render an RPG layout shell (status panel + quest log slot + detail slot)
-- [X] T007 [US1] Implement derived “status stats” rendering in `src/components/sections/WorkSection.tsx` (projectsCount/uniqueTechCount/assetsCount/linksCount)
-- [X] T008 [US1] Add “Quest Log” list container (non-interactive placeholder) in `src/components/sections/WorkSection.tsx` using the VM output
-- [X] T009 [US1] Ensure mobile layout stacks panels safely (no overflow) in `src/components/sections/WorkSection.tsx`
-- [X] T010 [US1] Ensure long text wraps and preserves newlines where appropriate in `src/components/sections/WorkSection.tsx`
-- [X] T011 [US1] Add Work-only “RPG frame” styles (panels, scanlines/shine, headings) in `src/app/globals.css`
+- [x] T006 [US1] Refactor `src/components/sections/WorkSection.tsx` to render an RPG layout shell (status panel + quest log slot + detail slot)
+- [x] T007 [US1] Implement derived “status stats” rendering in `src/components/sections/WorkSection.tsx` (projectsCount/uniqueTechCount/assetsCount/linksCount)
+- [x] T008 [US1] Add “Quest Log” list container (non-interactive placeholder) in `src/components/sections/WorkSection.tsx` using the VM output
+- [x] T009 [US1] Ensure mobile layout stacks panels safely (no overflow) in `src/components/sections/WorkSection.tsx`
+- [x] T010 [US1] Ensure long text wraps and preserves newlines where appropriate in `src/components/sections/WorkSection.tsx`
+- [x] T011 [US1] Add Work-only “RPG frame” styles (panels, scanlines/shine, headings) in `src/app/globals.css`
 
 **Checkpoint**: Work だけ別画面に見える + 破綻しない（まだ選択できなくてもOK）
 
@@ -47,12 +47,12 @@
 
 **Independent Test**: Work 内でクエストをクリック/タップすると detail が切り替わり、キーボードでも選択できる。
 
-- [X] T012 [US2] Implement quest selection state + rendering in `src/components/sections/WorkQuestLog.tsx` (selectedQuestId, initial selection)
-- [X] T013 [US2] Add accessible semantics for selection in `src/components/sections/WorkQuestLog.tsx` (buttons, aria-selected, aria-controls)
-- [X] T014 [US2] Render quest detail panel in `src/components/sections/WorkQuestLog.tsx` (role/tech/outcome/link/asset)
-- [X] T015 [US2] Integrate `WorkQuestLog` into `src/components/sections/WorkSection.tsx` (Server fetch + pass VM to Client component)
-- [X] T016 [US2] Add selected-state visuals (highlight, cursor, subtle ping) in `src/app/globals.css`
-- [X] T017 [US2] Ensure focus visibility is strong and consistent (keyboard) in `src/app/globals.css`
+- [x] T012 [US2] Implement quest selection state + rendering in `src/components/sections/WorkQuestLog.tsx` (selectedQuestId, initial selection)
+- [x] T013 [US2] Add accessible semantics for selection in `src/components/sections/WorkQuestLog.tsx` (buttons, aria-selected, aria-controls)
+- [x] T014 [US2] Render quest detail panel in `src/components/sections/WorkQuestLog.tsx` (role/tech/outcome/link/asset)
+- [x] T015 [US2] Integrate `WorkQuestLog` into `src/components/sections/WorkSection.tsx` (Server fetch + pass VM to Client component)
+- [x] T016 [US2] Add selected-state visuals (highlight, cursor, subtle ping) in `src/app/globals.css`
+- [x] T017 [US2] Ensure focus visibility is strong and consistent (keyboard) in `src/app/globals.css`
 
 **Checkpoint**: 一覧→詳細の導線が自然で、操作していて気持ちいい
 
@@ -64,18 +64,18 @@
 
 **Independent Test**: reduced-motion を有効にして reload しても Work が成立し、目立つアニメーションが止まる。
 
-- [X] T018 [US3] Gate Work RPG animations behind `prefers-reduced-motion` in `src/app/globals.css`
-- [X] T019 [US3] Ensure Work RPG motion uses only transform/opacity (no layout thrash) in `src/app/globals.css`
-- [X] T020 [US3] Confirm “Work-only” scope (no class leakage to other sections) in `src/components/sections/WorkSection.tsx`
+- [x] T018 [US3] Gate Work RPG animations behind `prefers-reduced-motion` in `src/app/globals.css`
+- [x] T019 [US3] Ensure Work RPG motion uses only transform/opacity (no layout thrash) in `src/app/globals.css`
+- [x] T020 [US3] Confirm “Work-only” scope (no class leakage to other sections) in `src/components/sections/WorkSection.tsx`
 
 ---
 
 ## Phase 6: Polish & Cross-Cutting Concerns
 
-- [X] T021 [P] Add small copy labels (“STATUS”, “QUEST LOG”, “DETAIL”) and align typography in `src/components/sections/WorkSection.tsx`
-- [X] T022 [P] Add empty-state handling for no projects (“No quests yet”) in `src/components/sections/WorkQuestLog.tsx`
-- [X] T023 Ensure no new dependencies were introduced (verify `package.json` unchanged) and note in `specs/027-work-rpg-ui/contracts/README.md` if needed
-- [X] T024 Validate manual QA steps in `specs/027-work-rpg-ui/quickstart.md` (run lint/build, check reduced-motion, check no palette regressions)
+- [x] T021 [P] Add small copy labels (“STATUS”, “QUEST LOG”, “DETAIL”) and align typography in `src/components/sections/WorkSection.tsx`
+- [x] T022 [P] Add empty-state handling for no projects (“No quests yet”) in `src/components/sections/WorkQuestLog.tsx`
+- [x] T023 Ensure no new dependencies were introduced (verify `package.json` unchanged) and note in `specs/027-work-rpg-ui/contracts/README.md` if needed
+- [x] T024 Validate manual QA steps in `specs/027-work-rpg-ui/quickstart.md` (run lint/build, check reduced-motion, check no palette regressions)
 
 ---
 
@@ -119,5 +119,3 @@ Task: "Add selected-state visuals in src/app/globals.css"
 
 - Add selection + detail swapping (US2)
 - Add motion safety gates + scope audit (US3)
-
-

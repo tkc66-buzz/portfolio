@@ -26,18 +26,16 @@ export async function ContactSection() {
   return (
     <section
       id={contact.id}
-      className="frame scroll-mt-[var(--menu-offset)] bg-[#1b1b1b] p-6 text-fami-ivory"
+      className="frame text-fami-ivory scroll-mt-[var(--menu-offset)] bg-[#1b1b1b] p-6"
     >
       <h2
-        className="flex items-center gap-2 text-xl text-fami-gold"
+        className="text-fami-gold flex items-center gap-2 text-xl"
         style={{ fontFamily: "var(--font-press)" }}
       >
         <PixelIcon src="/assets/pixel/icons/contact.svg" decorative size="md" />
         <span>{contact.heading}</span>
       </h2>
-      <p className="section-body mt-3 whitespace-pre-line">
-        {contact.blurb}
-      </p>
+      <p className="section-body mt-3 whitespace-pre-line">{contact.blurb}</p>
       <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-3">
         {contact.links.map((link) => {
           const isExternal = isExternalHttpHref(link.href);

@@ -25,5 +25,3 @@ This feature adds optional retro icon assets and uses them in headings and link 
 
 - Decorative icons MUST NOT be read by screen readers (`aria-hidden="true"` and `alt=""`).
 - Icons MUST have consistent sizing and alignment to avoid layout jitter on mobile.
-
-

@@ -1,7 +1,7 @@
 # Contracts: Work Two-Column Layout
 
 **Feature**: `032-work-two-column-layout`  
-**Date**: 2025-12-29  
+**Date**: 2025-12-29
 
 This feature has **no backend/API contracts**. These are UI/layout contracts.
 
@@ -22,4 +22,3 @@ This feature has **no backend/API contracts**. These are UI/layout contracts.
 - ARIA roles remain:
   - Quest list: `role="tablist"` with quest buttons `role="tab"`
   - Detail: `role="tabpanel"`
-

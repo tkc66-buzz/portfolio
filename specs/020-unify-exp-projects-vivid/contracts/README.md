@@ -37,5 +37,3 @@ If `projects` is present, each project:
 
 - No Spreadsheet/Apps Script schema
 - No URL-based private patch contract for this feature
-
-

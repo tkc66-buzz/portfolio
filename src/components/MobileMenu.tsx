@@ -2,10 +2,7 @@
 
 import { TOC_ITEMS, tocHref, type TocItemId } from "@/components/toc";
 import { PixelIcon } from "@/components/PixelIcon";
-import {
-  START_GATE_CLASS_STARTED,
-  START_GATE_EVENT,
-} from "@/components/startGate";
+import { START_GATE_CLASS_STARTED, START_GATE_EVENT } from "@/components/startGate";
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 
@@ -126,7 +123,7 @@ export function MobileMenu() {
 
     const overlay = overlayRef.current;
     const focusableElements = overlay.querySelectorAll<HTMLElement>(
-      'button, a[href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      'button, a[href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
     );
 
     if (focusableElements.length === 0) return;
@@ -193,10 +190,7 @@ export function MobileMenu() {
           aria-label="Navigation menu"
         >
           <div className="mobile-menu-overlay__header">
-            <h2
-              className="text-sm text-fami-gold"
-              style={{ fontFamily: "var(--font-press)" }}
-            >
+            <h2 className="text-fami-gold text-sm" style={{ fontFamily: "var(--font-press)" }}>
               MENU
             </h2>
             <button

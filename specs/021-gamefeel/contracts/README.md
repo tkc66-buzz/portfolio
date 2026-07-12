@@ -27,5 +27,3 @@ If `project.asset` is present:
 ## Reduced motion contract
 
 - Any animation MUST be disabled or reduced when `prefers-reduced-motion: reduce` is active.
-
-

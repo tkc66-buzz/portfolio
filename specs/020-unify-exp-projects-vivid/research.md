@@ -46,5 +46,3 @@
 - “Experience と Projects を一つにする” → new single section `work` (TOC item `Work`)
 - “一社毎に1つの文章” → per-company item has exactly one main paragraph field; optional metadata (period/tech/links) allowed but not required
 - “見た目を鮮やかに” → palette/accents and hierarchy improvements while keeping text readability and retro framing
-
-

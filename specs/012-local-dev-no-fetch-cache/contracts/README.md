@@ -8,7 +8,7 @@
 Define the expectations for the external “Experience data source” endpoint used to load private
 portfolio overrides (including Experience and Projects) without committing private content.
 
-This contract is intentionally lightweight: it documents *what* the endpoint must do, not the
+This contract is intentionally lightweight: it documents _what_ the endpoint must do, not the
 implementation.
 
 ## Endpoint behavior
@@ -36,4 +36,3 @@ implementation.
 
 - This contract does not define cache headers.
 - This contract does not require a particular hosting provider or spreadsheet mechanism.
-

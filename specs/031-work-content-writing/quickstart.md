@@ -24,5 +24,3 @@ pnpm dev
 4. Quality gates:
    - `pnpm lint`
    - `pnpm build`
-
-

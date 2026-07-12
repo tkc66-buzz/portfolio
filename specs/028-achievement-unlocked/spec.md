@@ -5,13 +5,13 @@
 **Status**: Draft  
 **Input**: User description: "Activitiesセクションに『Achievement Unlocked』風のトースト演出を追加したい。初回だけ表示（初回スクロールでActivitiesが画面内に入ったタイミングで1回）、閉じる操作も可能、reduced-motionでは演出を無効化して静的表示/非表示にする。"
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 <!--
   IMPORTANT: User stories should be PRIORITIZED as user journeys ordered by importance.
   Each user story/journey must be INDEPENDENTLY TESTABLE - meaning if you implement just ONE of them,
   you should still have a viable MVP (Minimum Viable Product) that delivers value.
-  
+
   Assign priorities (P1, P2, P3, etc.) to each story, where P1 is the most critical.
   Think of each story as a standalone slice of functionality that can be:
   - Developed independently
@@ -78,7 +78,7 @@
 - JSが無効/遅延しても本文が読める（トーストは任意）
 - 連打/多重表示が起きない（Observer/scroll handlerの多重登録）
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 <!--
   ACTION REQUIRED: The content in this section represents placeholders.
@@ -94,12 +94,12 @@
 - **FR-005**: システム MUST Activitiesの本文可読性を損なわない（被り/レイアウト崩れを防ぐ）
 - **FR-006**: システム SHOULD トースト表示状態をセッション内で記録し、リロード/戻るでも過剰再表示を避ける
 
-### Key Entities *(include if feature involves data)*
+### Key Entities _(include if feature involves data)_
 
 - **Toast state**: shown/dismissed flags（session-scoped）
 - **Trigger**: Activities section in-view detection
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 <!--
   ACTION REQUIRED: Define measurable success criteria.

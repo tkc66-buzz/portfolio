@@ -25,5 +25,3 @@
 
 - Skills is explicitly out-of-scope; do not change Skills year sizing.
 - Prefer minimal layout impact: avoid changing badge padding/margins unless necessary.
-
-

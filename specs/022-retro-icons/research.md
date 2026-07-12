@@ -34,5 +34,3 @@
 
 - Exact icon list/visual language (16px vs 24px grid, outline thickness)
 - License/source policy if any non-handmade icon is used
-
-

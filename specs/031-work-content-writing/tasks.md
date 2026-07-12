@@ -1,5 +1,4 @@
 ---
-
 description: "Actionable task list for Work content writing"
 ---
 
@@ -13,9 +12,9 @@ description: "Actionable task list for Work content writing"
 
 **Purpose**: Locate current Work content and establish editing rules (public-safe + no metrics).
 
-- [X] T001 Confirm current WorkEntry + Project copy locations in `src/content/portfolio.ts`
-- [X] T002 [P] Inventory current WorkEntry summaries for one-paragraph constraint in `src/content/portfolio.ts`
-- [X] T003 [P] Inventory current Project summaries/outcomes for concreteness + no-metrics policy in `src/content/portfolio.ts`
+- [x] T001 Confirm current WorkEntry + Project copy locations in `src/content/portfolio.ts`
+- [x] T002 [P] Inventory current WorkEntry summaries for one-paragraph constraint in `src/content/portfolio.ts`
+- [x] T003 [P] Inventory current Project summaries/outcomes for concreteness + no-metrics policy in `src/content/portfolio.ts`
 
 ---
 
@@ -23,8 +22,8 @@ description: "Actionable task list for Work content writing"
 
 **Purpose**: Set consistent copy rules so later edits are predictable and safe.
 
-- [X] T004 Define anonymized label conventions (e.g., “Company A”, “Side Work”) in `src/content/portfolio.ts`
-- [X] T005 Define “no numerical metrics” guardrail examples (what to avoid) in `specs/031-work-content-writing/contracts/README.md`
+- [x] T004 Define anonymized label conventions (e.g., “Company A”, “Side Work”) in `src/content/portfolio.ts`
+- [x] T005 Define “no numerical metrics” guardrail examples (what to avoid) in `specs/031-work-content-writing/contracts/README.md`
 
 **Checkpoint**: Editing policy is clear: anonymized labels, no metrics, no confidential identifiers.
 
@@ -38,9 +37,9 @@ description: "Actionable task list for Work content writing"
 
 ### Implementation
 
-- [X] T006 [US1] Rewrite each WorkEntry `summary` into exactly one paragraph (role/context + outcome/learning) in `src/content/portfolio.ts`
-- [X] T007 [US1] Rewrite each Project `summary` to be concrete and one-line in `src/content/portfolio.ts`
-- [X] T008 [US1] Rewrite each Project `outcomeOrLearning` to be concrete and qualitative (no metrics) in `src/content/portfolio.ts`
+- [x] T006 [US1] Rewrite each WorkEntry `summary` into exactly one paragraph (role/context + outcome/learning) in `src/content/portfolio.ts`
+- [x] T007 [US1] Rewrite each Project `summary` to be concrete and one-line in `src/content/portfolio.ts`
+- [x] T008 [US1] Rewrite each Project `outcomeOrLearning` to be concrete and qualitative (no metrics) in `src/content/portfolio.ts`
 
 **Checkpoint**: Work section is understandable without external context, and no entry is missing required content.
 
@@ -54,9 +53,9 @@ description: "Actionable task list for Work content writing"
 
 ### Implementation
 
-- [X] T009 [US2] Replace real company/product names with anonymized labels in `src/content/portfolio.ts`
-- [X] T010 [US2] Remove/replace any internal identifiers, private URLs, or customer names in `src/content/portfolio.ts`
-- [X] T011 [US2] Remove/replace any numerical impact metrics (including approximate/rounded) in `src/content/portfolio.ts`
+- [x] T009 [US2] Replace real company/product names with anonymized labels in `src/content/portfolio.ts`
+- [x] T010 [US2] Remove/replace any internal identifiers, private URLs, or customer names in `src/content/portfolio.ts`
+- [x] T011 [US2] Remove/replace any numerical impact metrics (including approximate/rounded) in `src/content/portfolio.ts`
 
 ---
 
@@ -68,8 +67,8 @@ description: "Actionable task list for Work content writing"
 
 ### Implementation
 
-- [X] T012 [US3] Add short editing guidance (what goes in WorkEntry vs Project fields) in `specs/031-work-content-writing/contracts/README.md`
-- [X] T013 [US3] Ensure Work entries remain structured and readable after edits (no missing fields) in `src/content/portfolio.ts`
+- [x] T012 [US3] Add short editing guidance (what goes in WorkEntry vs Project fields) in `specs/031-work-content-writing/contracts/README.md`
+- [x] T013 [US3] Ensure Work entries remain structured and readable after edits (no missing fields) in `src/content/portfolio.ts`
 
 ---
 
@@ -77,9 +76,9 @@ description: "Actionable task list for Work content writing"
 
 **Purpose**: Validate the content and run quality gates.
 
-- [X] T014 Run manual verification checklist in `specs/031-work-content-writing/quickstart.md`
-- [X] T015 Run `pnpm lint` and fix any issues in `src/content/portfolio.ts`
-- [X] T016 Run `pnpm build` and fix any issues in `src/content/portfolio.ts`
+- [x] T014 Run manual verification checklist in `specs/031-work-content-writing/quickstart.md`
+- [x] T015 Run `pnpm lint` and fix any issues in `src/content/portfolio.ts`
+- [x] T016 Run `pnpm build` and fix any issues in `src/content/portfolio.ts`
 
 ---
 
@@ -117,5 +116,3 @@ Task: "Inventory Project summaries/outcomes for concreteness + no-metrics policy
 1. Phase 1–2 (setup + conventions)
 2. US1 (proof copy)
 3. Validate manually + run `pnpm lint`/`pnpm build`
-
-

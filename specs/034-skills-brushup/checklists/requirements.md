@@ -31,5 +31,4 @@
 
 ## Notes
 
-- This spec intentionally does not prescribe *how* Skills is rendered; it focuses on content quality and clarity.
-
+- This spec intentionally does not prescribe _how_ Skills is rendered; it focuses on content quality and clarity.

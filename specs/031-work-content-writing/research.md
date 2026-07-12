@@ -18,5 +18,3 @@
 
 - **Decision**: Communicate impact via concrete actions, constraints, tradeoffs, and outcomes/learning stated qualitatively.
 - **Rationale**: Maintains credibility while honoring the no-metrics policy.
-
-

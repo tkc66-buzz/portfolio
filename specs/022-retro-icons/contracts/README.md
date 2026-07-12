@@ -19,5 +19,3 @@ Define internal conventions for icon assets and rendering.
   - `alt=""`
   - `aria-hidden="true"`
 - If an icon conveys meaning not present in adjacent text, it MUST have meaningful `alt`.
-
-

@@ -21,5 +21,3 @@ Edit `src/content/portfolio.ts` and add an `Achievements` group (or items within
 ## 3) Optional: private override
 
 If you want to keep achievements private, override via `PORTFOLIO_PRIVATE_JSON` / `PORTFOLIO_PRIVATE_URL` using the contract in `specs/018-activities-achievements/contracts/README.md`.
-
-

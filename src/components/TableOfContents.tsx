@@ -26,10 +26,10 @@ export function TableOfContents() {
       id="menu"
       aria-label="Menu"
       tabIndex={-1}
-      className="hud frame sticky top-[var(--menu-top)] z-50 hidden bg-[#1b1b1b]/90 p-4 text-fami-ivory backdrop-blur sm:block supports-[backdrop-filter]:bg-[#1b1b1b]/70"
+      className="hud frame text-fami-ivory sticky top-[var(--menu-top)] z-50 hidden bg-[#1b1b1b]/90 p-4 backdrop-blur supports-[backdrop-filter]:bg-[#1b1b1b]/70 sm:block"
     >
       <div className="mb-3 flex items-baseline justify-between">
-        <h2 className="text-sm text-fami-gold" style={{ fontFamily: "var(--font-press)" }}>
+        <h2 className="text-fami-gold text-sm" style={{ fontFamily: "var(--font-press)" }}>
           MENU
         </h2>
       </div>
@@ -41,7 +41,7 @@ export function TableOfContents() {
           <li key={item.id}>
             <a
               data-toc-id={item.id}
-              className="nes-btn is-primary is-small btn-game shrink-0 text-[0.7rem] uppercase tracking-wide focus:outline-none focus-visible:ring-4 focus-visible:ring-fami-gold focus-visible:ring-offset-4 focus-visible:ring-offset-[#111]"
+              className="nes-btn is-primary is-small btn-game focus-visible:ring-fami-gold shrink-0 text-[0.7rem] tracking-wide uppercase focus:outline-none focus-visible:ring-4 focus-visible:ring-offset-4 focus-visible:ring-offset-[#111]"
               href={tocHref(item.id)}
             >
               <span className="inline-flex items-center gap-2">

@@ -32,5 +32,3 @@ Open `http://localhost:3000` and scroll to **Work**.
 pnpm lint
 pnpm build
 ```
-
-

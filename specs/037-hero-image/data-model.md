@@ -16,13 +16,13 @@ This feature requires minimal data modeling as it involves a single static asset
 
 **Attributes**:
 
-| Attribute | Type | Description | Required | Default |
-|-----------|------|-------------|----------|---------|
-| filePath | string | Relative path from public directory | Yes | "/assets/profile.jpg" |
-| alt | string | Descriptive alternative text for accessibility | Yes | "Profile photo of Takeshi Watanabe" |
-| width | number | Display width in pixels (source should be 2x for Retina) | Yes | 200 |
-| height | number | Display height in pixels (1:1 aspect ratio) | Yes | 200 |
-| priority | boolean | Whether to disable lazy loading (above-the-fold) | Yes | true |
+| Attribute | Type    | Description                                              | Required | Default                             |
+| --------- | ------- | -------------------------------------------------------- | -------- | ----------------------------------- |
+| filePath  | string  | Relative path from public directory                      | Yes      | "/assets/profile.jpg"               |
+| alt       | string  | Descriptive alternative text for accessibility           | Yes      | "Profile photo of Takeshi Watanabe" |
+| width     | number  | Display width in pixels (source should be 2x for Retina) | Yes      | 200                                 |
+| height    | number  | Display height in pixels (1:1 aspect ratio)              | Yes      | 200                                 |
+| priority  | boolean | Whether to disable lazy loading (above-the-fold)         | Yes      | true                                |
 
 **File Specifications**:
 
@@ -53,12 +53,12 @@ This feature requires minimal data modeling as it involves a single static asset
 // Image configuration is hardcoded within component
 
 interface HeroImageConfig {
-  src: string;           // "/assets/profile.jpg"
-  alt: string;           // "Profile photo of Takeshi Watanabe"
-  width: number;         // 200
-  height: number;        // 200
-  priority: boolean;     // true
-  className?: string;    // Tailwind responsive classes
+  src: string; // "/assets/profile.jpg"
+  alt: string; // "Profile photo of Takeshi Watanabe"
+  width: number; // 200
+  height: number; // 200
+  priority: boolean; // true
+  className?: string; // Tailwind responsive classes
 }
 ```
 
@@ -175,11 +175,11 @@ Format variants (automatic):
 
 ### Size Breakdown
 
-| Viewport | Display Size | Source Request | Optimized Size (WebP) |
-|----------|--------------|----------------|----------------------|
-| Mobile (<768px) | 128×128px | w=128 | ~8-12KB |
-| Tablet (768-1024px) | 192×192px | w=192 | ~15-20KB |
-| Desktop (>1024px) | 224×224px | w=224 | ~20-30KB |
+| Viewport            | Display Size | Source Request | Optimized Size (WebP) |
+| ------------------- | ------------ | -------------- | --------------------- |
+| Mobile (<768px)     | 128×128px    | w=128          | ~8-12KB               |
+| Tablet (768-1024px) | 192×192px    | w=192          | ~15-20KB              |
+| Desktop (>1024px)   | 224×224px    | w=224          | ~20-30KB              |
 
 ## Contracts
 

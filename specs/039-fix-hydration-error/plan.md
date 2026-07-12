@@ -21,19 +21,20 @@ Fix hydration mismatch errors and ensure the mobile hamburger menu is hidden beh
 
 ## Constitution Check
 
-*GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
+_GATE: Must pass before Phase 0 research. Re-check after Phase 1 design._
 
 ### Pre-Design Check (PASSED)
 
-| Principle | Status | Rationale |
-|-----------|--------|-----------|
-| **I. Personality-First Storytelling** | PASS | The "PRESS START" gate is a core personality element; fixing its reliability strengthens the storytelling |
-| **II. Retro Aesthetic, Modern Usability** | PASS | Fixes a UX regression (menu leaking through gate) while preserving retro boot animation |
-| **III. Content Is a Product Surface** | PASS | No content changes; structural fix only |
-| **IV. Lightweight, Fast, and Durable** | PASS | No new dependencies; uses built-in React APIs (`useSyncExternalStore`) |
-| **V. One Source of Truth, Kept in Sync** | PASS | No dependency/runtime changes; docs sync not required for this fix |
+| Principle                                 | Status | Rationale                                                                                                 |
+| ----------------------------------------- | ------ | --------------------------------------------------------------------------------------------------------- |
+| **I. Personality-First Storytelling**     | PASS   | The "PRESS START" gate is a core personality element; fixing its reliability strengthens the storytelling |
+| **II. Retro Aesthetic, Modern Usability** | PASS   | Fixes a UX regression (menu leaking through gate) while preserving retro boot animation                   |
+| **III. Content Is a Product Surface**     | PASS   | No content changes; structural fix only                                                                   |
+| **IV. Lightweight, Fast, and Durable**    | PASS   | No new dependencies; uses built-in React APIs (`useSyncExternalStore`)                                    |
+| **V. One Source of Truth, Kept in Sync**  | PASS   | No dependency/runtime changes; docs sync not required for this fix                                        |
 
 **Quality Gates**:
+
 - `pnpm lint`: Must pass
 - `pnpm build`: Must pass
 
@@ -79,5 +80,5 @@ src/
 > No constitution violations. The implementation uses only built-in React APIs and existing project patterns.
 
 | Violation | Why Needed | Simpler Alternative Rejected Because |
-|-----------|------------|-------------------------------------|
-| (none)    | —          | —                                   |
+| --------- | ---------- | ------------------------------------ |
+| (none)    | —          | —                                    |

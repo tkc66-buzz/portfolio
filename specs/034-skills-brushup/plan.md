@@ -29,7 +29,7 @@ Improve the Skills section content so strengths are obvious at a glance, experie
 
 ## Constitution Check
 
-*GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
+_GATE: Must pass before Phase 0 research. Re-check after Phase 1 design._
 
 Use `.specify/memory/constitution.md` as the source of truth. This repo’s default
 gates (adapt per feature) are:
@@ -41,6 +41,7 @@ gates (adapt per feature) are:
   `README.md`, `AGENTS.md`, and `CLAUDE.md` together.
 
 **Gate evaluation (pre-research)**:
+
 - Principle compliance: PASS (strengthens “Proof surface” and usability)
 - Quality gates: REQUIRED (`pnpm lint` / `pnpm build`)
 - Docs sync: N/A (no tooling/runtime/deploy change; content/UI-only)
@@ -60,6 +61,7 @@ specs/[###-feature]/
 ```
 
 ### Source Code (repository root)
+
 ```text
 src/
 ├── content/
@@ -110,7 +112,7 @@ specs/034-skills-brushup/
 
 > **Fill ONLY if Constitution Check has violations that must be justified**
 
-| Violation | Why Needed | Simpler Alternative Rejected Because |
-|-----------|------------|-------------------------------------|
-| [e.g., 4th project] | [current need] | [why 3 projects insufficient] |
-| [e.g., Repository pattern] | [specific problem] | [why direct DB access insufficient] |
+| Violation                  | Why Needed         | Simpler Alternative Rejected Because |
+| -------------------------- | ------------------ | ------------------------------------ |
+| [e.g., 4th project]        | [current need]     | [why 3 projects insufficient]        |
+| [e.g., Repository pattern] | [specific problem] | [why direct DB access insufficient]  |

@@ -5,13 +5,13 @@
 **Status**: Draft  
 **Input**: User description: "skills以外のsectionのyearが小さすぎて見えないので大きくして統一したい"
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 <!--
   IMPORTANT: User stories should be PRIORITIZED as user journeys ordered by importance.
   Each user story/journey must be INDEPENDENTLY TESTABLE - meaning if you implement just ONE of them,
   you should still have a viable MVP (Minimum Viable Product) that delivers value.
-  
+
   Assign priorities (P1, P2, P3, etc.) to each story, where P1 is the most critical.
   Think of each story as a standalone slice of functionality that can be:
   - Developed independently
@@ -76,7 +76,7 @@
 - モバイル幅で詰まる場合の折返し/省略の扱い
 - Skillsは対象外（既存の見た目を維持）
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 <!--
   ACTION REQUIRED: The content in this section represents placeholders.
@@ -91,11 +91,11 @@
 - **FR-004**: システム SHOULD year/period バッジのスタイルを一箇所に集約する（共通クラス）
 - **FR-005**: システム MUST Skillsセクションのyear表示は変更しない（対象外）
 
-### Key Entities *(include if feature involves data)*
+### Key Entities _(include if feature involves data)_
 
 - N/A (UI-only)
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 <!--
   ACTION REQUIRED: Define measurable success criteria.

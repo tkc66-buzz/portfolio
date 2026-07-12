@@ -5,6 +5,7 @@
 ## Type Change
 
 ### Before
+
 ```typescript
 // src/content/portfolio.ts
 export type ActivityGroup = {
@@ -14,6 +15,7 @@ export type ActivityGroup = {
 ```
 
 ### After
+
 ```typescript
 export type ActivityGroup = {
   name: "Talks" | "Books" | "Articles" | "Community" | "Achievements";
@@ -45,6 +47,6 @@ export type ActivityGroup = {
 
 ## Affected Files
 
-| File | Change |
-|------|--------|
+| File                       | Change                                         |
+| -------------------------- | ---------------------------------------------- |
 | `src/content/portfolio.ts` | Extend union type + add Articles group to data |

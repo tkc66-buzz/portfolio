@@ -46,5 +46,3 @@
 
 - Exact asset list: which projects get which diagrams/screenshots first?
 - Asset format preference: SVG-only vs mix of SVG + WebP.
-
-

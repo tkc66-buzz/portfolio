@@ -21,17 +21,18 @@
 
 ## Constitution Check
 
-*GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
+_GATE: Must pass before Phase 0 research. Re-check after Phase 1 design._
 
-| Principle | Status | Notes |
-|-----------|--------|-------|
-| I. Personality-First Storytelling | PASS | ナビゲーション改善でコンテンツへのアクセス向上 |
-| II. Retro Aesthetic, Modern Usability | PASS | NES.cssスタイルを維持しつつモバイルUXを改善 |
-| III. Content Is a Product Surface | PASS | 既存コンテンツへのアクセス改善のみ |
-| IV. Lightweight, Fast, and Durable | PASS | 新規依存なし、CSS + minimal JS |
-| V. One Source of Truth, Kept in Sync | PASS | UI変更のみ、ドキュメント更新不要 |
+| Principle                             | Status | Notes                                          |
+| ------------------------------------- | ------ | ---------------------------------------------- |
+| I. Personality-First Storytelling     | PASS   | ナビゲーション改善でコンテンツへのアクセス向上 |
+| II. Retro Aesthetic, Modern Usability | PASS   | NES.cssスタイルを維持しつつモバイルUXを改善    |
+| III. Content Is a Product Surface     | PASS   | 既存コンテンツへのアクセス改善のみ             |
+| IV. Lightweight, Fast, and Durable    | PASS   | 新規依存なし、CSS + minimal JS                 |
+| V. One Source of Truth, Kept in Sync  | PASS   | UI変更のみ、ドキュメント更新不要               |
 
 **Quality Gates**:
+
 - `pnpm lint`: 実装後に実行
 - `pnpm build`: 実装後に実行
 
@@ -70,5 +71,5 @@ src/
 > 違反なし - シンプルな実装アプローチ
 
 | Violation | Why Needed | Simpler Alternative Rejected Because |
-|-----------|------------|-------------------------------------|
-| N/A | N/A | N/A |
+| --------- | ---------- | ------------------------------------ |
+| N/A       | N/A        | N/A                                  |

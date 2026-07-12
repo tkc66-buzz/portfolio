@@ -6,7 +6,7 @@ description: "Tasks for implementing Speaker Deck URL placement in Activities"
 
 **Input**: Design documents from `specs/036-speakerdeck-url/`  
 **Prerequisites**: `specs/036-speakerdeck-url/plan.md` (required), `specs/036-speakerdeck-url/spec.md` (required)  
-**Tests**: Not requested (manual verification via `specs/036-speakerdeck-url/quickstart.md`)  
+**Tests**: Not requested (manual verification via `specs/036-speakerdeck-url/quickstart.md`)
 
 ## Phase 1: Setup (Shared Infrastructure)
 
@@ -66,5 +66,3 @@ description: "Tasks for implementing Speaker Deck URL placement in Activities"
 ### Parallel Opportunities
 
 - [x] T011 [P] Draft final copy (year/title/link label) for the Speaker Deck entry while reviewing current Talks items in `src/content/portfolio.ts`
-
-

@@ -5,13 +5,13 @@
 **Status**: Draft  
 **Input**: User description: "workの部分横３列だと見にくいのでmax横2列までにしたい。画面構成から見直してほしい。"
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 <!--
   IMPORTANT: User stories should be PRIORITIZED as user journeys ordered by importance.
   Each user story/journey must be INDEPENDENTLY TESTABLE - meaning if you implement just ONE of them,
   you should still have a viable MVP (Minimum Viable Product) that delivers value.
-  
+
   Assign priorities (P1, P2, P3, etc.) to each story, where P1 is the most critical.
   Think of each story as a standalone slice of functionality that can be:
   - Developed independently
@@ -77,7 +77,7 @@ As a visitor on mobile/tablet or using assistive tech, the Work layout remains r
 - What happens when quest titles are long? The list should remain usable without breaking layout.
 - What happens when the browser width is between tablet and desktop? The max-2-column rule should still hold.
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 <!--
   ACTION REQUIRED: The content in this section represents placeholders.
@@ -92,12 +92,13 @@ As a visitor on mobile/tablet or using assistive tech, the Work layout remains r
 - **FR-004**: The “No quests yet” state MUST remain readable and visually coherent in the new layout.
 - **FR-005**: The redesign MUST preserve retro theme styling and readable typography hierarchy.
 
-*No [NEEDS CLARIFICATION] items for this feature.*
+_No [NEEDS CLARIFICATION] items for this feature._
 
-### Key Entities *(include if feature involves data)*
-*(No new data entities; layout-only change.)*
+### Key Entities _(include if feature involves data)_
 
-## Success Criteria *(mandatory)*
+_(No new data entities; layout-only change.)_
+
+## Success Criteria _(mandatory)_
 
 <!--
   ACTION REQUIRED: Define measurable success criteria.

@@ -1,7 +1,7 @@
 # Research: Skills Brushup
 
 **Feature**: `034-skills-brushup`  
-**Date**: 2025-12-29  
+**Date**: 2025-12-29
 
 ## Decision: Content-first (no new UI mechanics)
 
@@ -24,4 +24,3 @@
 
 - **Decision**: Ensure the most important skills appear first (both in category ordering and within-category ordering).
 - **Rationale**: Visitors scan top-to-bottom; ordering is the simplest way to highlight strengths without additional UI.
-

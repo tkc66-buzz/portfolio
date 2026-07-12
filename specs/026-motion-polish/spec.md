@@ -5,7 +5,7 @@
 **Status**: Draft  
 **Input**: User description: "もっとデザイン性上げたいね。サイト内の動きが欲しいんだけど、何かブラッシュアップのいいアイディアないかな"
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 ### User Story 1 - Interactions feel “alive” (Priority: P1)
 
@@ -57,7 +57,7 @@
 - 低速端末/省電力モードでも“重い”体験にならない
 - 既存のレトロ雰囲気（NES.css + Famicom palette）を壊さない
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 ### Functional Requirements
 
@@ -70,12 +70,12 @@
 - **FR-006**: システム MUST 全体の動きの方向性を「派手」寄りにする（レトロな“ゲームっぽさ”を体感できる範囲で強める）
 - **FR-007**: システム MUST スクロール時のフィードバックとして「進捗バー」と「現在のセクション強調」の両方を提供する（両立させる）
 
-### Key Entities *(include if feature involves data)*
+### Key Entities _(include if feature involves data)_
 
 - **Motion feedback**: クリック/タップ/フォーカス/スクロールの操作に対する視覚的な反応
 - **Scroll feedback**: 「現在地」または「進捗」を示すUI要素
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 ### Measurable Outcomes
 

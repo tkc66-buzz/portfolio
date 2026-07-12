@@ -20,5 +20,3 @@
 - **Rationale**: 既存で hydration mismatch を経験済み。コピー変更でも再発し得る。
 - **Alternatives considered**:
   - `typeof window` でレンダー分岐: mismatch の温床になりやすい。
-
-

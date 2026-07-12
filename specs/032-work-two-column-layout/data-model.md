@@ -1,7 +1,7 @@
 # Data Model: Work Two-Column Layout
 
 **Feature**: `032-work-two-column-layout`  
-**Date**: 2025-12-29  
+**Date**: 2025-12-29
 
 ## Summary
 
@@ -18,4 +18,3 @@ This feature is **layout-only**. No new entities, fields, or persistence are int
 ## Validation Rules
 
 - N/A (no new data inputs)
-

@@ -66,14 +66,14 @@ pnpm build         # Next.js production build passes
 
 ## Key Files
 
-| File | Role |
-|------|------|
-| `src/components/startGate.ts` | Constants for gate state management |
-| `src/app/layout.tsx` | Server layout + inline session restore script |
-| `src/app/globals.css` | CSS rules for `.start-gated` visibility |
-| `src/components/Hero.tsx` | START button + `useStartGateStarted` hook |
-| `src/components/MobileMenu.tsx` | Dual-gate rendering + Portal |
-| `src/app/page.tsx` | Page composition with `start-gated` wrapper |
+| File                            | Role                                          |
+| ------------------------------- | --------------------------------------------- |
+| `src/components/startGate.ts`   | Constants for gate state management           |
+| `src/app/layout.tsx`            | Server layout + inline session restore script |
+| `src/app/globals.css`           | CSS rules for `.start-gated` visibility       |
+| `src/components/Hero.tsx`       | START button + `useStartGateStarted` hook     |
+| `src/components/MobileMenu.tsx` | Dual-gate rendering + Portal                  |
+| `src/app/page.tsx`              | Page composition with `start-gated` wrapper   |
 
 ## Architecture Overview
 

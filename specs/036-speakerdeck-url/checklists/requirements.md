@@ -32,5 +32,3 @@
 ## Notes
 
 - Placement decision: Add the Speaker Deck profile link under Activities → Talks, since slide decks are the natural follow-up to talk entries.
-
-

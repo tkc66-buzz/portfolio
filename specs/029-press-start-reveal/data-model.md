@@ -20,5 +20,3 @@ Represents whether the visitor has “started” for the current browsing sessio
 - **Initial**: `started = false` (fresh load)
 - **On START**: `started = true`
 - **On reload (same session)**: `started = true` (if previously started)
-
-

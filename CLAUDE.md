@@ -4,7 +4,7 @@ Focused tips for Anthropic Claude Code / Workbench agents interacting with this 
 
 ## Quick Facts
 
-- **Framework**: Next.js 16 (App Router, TypeScript, Tailwind 3, NES.css theme).
+- **Framework**: Next.js 16 (App Router, TypeScript 7, Tailwind 4, NES.css theme).
 - **Runtime**: Node.js v25.2.0 via `nvm` (see `~/.nvm/versions/node/v25.2.0`). Ensure `source ~/.nvm/nvm.sh` before running commands.
 - **Package Manager**: pnpm 10.13.1. Prefer `pnpm install` over npm/yarn to keep lockfile consistent.
 
@@ -28,14 +28,14 @@ Focused tips for Anthropic Claude Code / Workbench agents interacting with this 
 - `src/components/sections/ActivitiesSection.tsx` – Activities section (Talks/Books/Community).
 - `src/components/AchievementToast.tsx` – Client-only “Achievement Unlocked” toast (session-scoped: shown once on first in-view, dismissible, reduced-motion aware).
 - `src/app/icon.svg` – Primary browser tab icon (SVG). Keep `src/app/favicon.ico` as fallback.
-- `src/content/portfolio.ts` – Public content (committed in repo).  
+- `src/content/portfolio.ts` – Public content (committed in repo).
   - Skills use `years` (required) and can optionally include `firstUsedYear` / `lastUsedYear` (numeric years) to show recency.
 - `public/assets/` – Static diagrams/screenshots (optional); Projects can specify `project.asset` to render visuals.
 - `public/assets/pixel/icons/` – Pixel-style icon set (optional); use `src/components/PixelIcon.tsx`.
 - `src/app/globals.css` – Global palette + small CSS-only motion utilities (reduced-motion aware) + NES.css mobile overrides (`max-width: 639px`).
 - `src/app/layout.tsx` – Imports NES.css, fonts, metadata; extend when adding OG tags or global providers.
-- `tailwind.config.js` – Update `content` array if adding directories.
-- `postcss.config.js` – Standard pipeline; modify when adding plugins like `postcss-nesting`.
+- `postcss.config.js` – Uses `@tailwindcss/postcss` (Tailwind v4); modify when adding PostCSS plugins.
+- `src/app/globals.css` – Tailwind v4 entry (`@import "tailwindcss"`) + `@theme` for custom colors (fami-*). No `tailwind.config.js` needed.
 
 ## Coding Conventions
 
@@ -46,14 +46,14 @@ Focused tips for Anthropic Claude Code / Workbench agents interacting with this 
 
 ## Deployment Checklist for Claude
 
-1. Bump `package.json` version if the change is user-facing (current version: `1.0.0`).
+1. Bump `package.json` version if the change is user-facing (current version: `1.1.0`).
 2. Run `pnpm build` to catch Next.js warnings before pushing.
 3. Ensure docs (`README.md`, `AGENTS.md`, `CLAUDE.md`) mention new dependencies or workflows.
 4. Merge to `main` and push to trigger Vercel.
 
 ## Troubleshooting
 
-- **Missing styles**: Confirm Tailwind `content` globs include new files; run `pnpm dev` again.
+- **Missing styles**: Tailwind v4 auto-detects content; if classes are missing check `@theme` in `globals.css` for custom tokens. Run `pnpm dev` again.
 - **Font issues**: Check that `var(--font-press)` / `var(--font-noto)` are used in inline styles or className as needed.
 - **Node mismatch**: `nvm use 25.2.0`; Next.js requires >=20.9.0.
 
@@ -78,15 +78,24 @@ pnpm install
 pnpm format:check && pnpm lint && pnpm build
 ```
 
+## TypeScript 7 Notes
+
+TypeScript 7 is the Go-based rewrite. Key differences from TS5:
+
+- `require('typescript')` only exports `{version, versionMajorMinor}` — full API is under `typescript/unstable/*`
+- `typescript-eslint` does not support TS7; replaced by `@babel/eslint-parser` + `@babel/preset-typescript`
+- Next.js build uses `@typescript/native-preview` (Go compiler) detected automatically; JS-API-based build-time type checking is skipped
+- Type checking: run `pnpm typecheck` (`tsc --noEmit` via `typescript/lib/tsc.js`)
+- ESLint: `@next/eslint-plugin-next` + `eslint-plugin-react*` + `@babel/eslint-parser` (no typescript-eslint)
+
 ## Active Technologies
-- TypeScript 5.x with Next.js 16.0.7 + Next.js (next/image for optimization), React 19.2.1, Tailwind CSS 3.4.18, NES.css 2.3.0 (037-hero-image)
-- Static file in `public/assets/` directory (no database) (037-hero-image)
-- TypeScript 5.x + Next.js 16.0.7, React 19.2.1, Tailwind CSS 3.4.18, NES.css 2.3.0 (038-mobile-menu-fix)
-- N/A (静的サイト) (038-mobile-menu-fix)
-- TypeScript 5.x, Node.js 25.2.0 + Next.js 16.0.7, React 19.2.1, Tailwind CSS 3.4.18, NES.css 2.3.0 (039-fix-hydration-error)
-- sessionStorage (browser-side, for START gate persistence across page reloads) (039-fix-hydration-error)
-- TypeScript 5.x + Next.js 16.0.7, React 19.2.1 + Tailwind CSS 3.4.18, NES.css 2.3.0 (041-add-codezine-series)
-- Static file (`src/content/portfolio.ts`) — no database (041-add-codezine-series)
+
+- TypeScript 7.0.2 + Next.js 16.3.0-preview.5 (Turbopack), React 19.2.1, Tailwind CSS 4.3.2, NES.css 2.3.0
+- `@typescript/native-preview` (Go-based TS compiler, for Next.js build detection)
+- `@babel/eslint-parser` + `@babel/preset-typescript` + `@babel/preset-react` (replaces typescript-eslint)
+- `@tailwindcss/postcss` v4 (replaces `tailwindcss` PostCSS plugin)
+- Static file (`src/content/portfolio.ts`) — no database
 
 ## Recent Changes
-- 037-hero-image: Added TypeScript 5.x with Next.js 16.0.7 + Next.js (next/image for optimization), React 19.2.1, Tailwind CSS 3.4.18, NES.css 2.3.0
+
+- 042-ts7-upgrade: TypeScript 7 + Tailwind v4 + Next.js 16.3.0-preview.5; ESLint migrated to @babel/eslint-parser

@@ -33,4 +33,3 @@
 
 - Assumption: “環境変数” refers specifically to the private portfolio override mechanism (not unrelated env usage).
 - Assumption: “スプレッドシート” refers to the spreadsheet-based private content sourcing and related Apps Script tooling.
-

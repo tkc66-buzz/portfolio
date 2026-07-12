@@ -31,5 +31,3 @@ No new top-level sections are introduced.
 - `items=[]` is allowed; UI must show an explicit empty state (“Coming soon”).
 - External links (`href` starting with `http://` or `https://`) must open in a new tab and include `rel="noreferrer"`.
 - Group ordering is determined by content order in `portfolio.activities.groups` (no sorting).
-
-

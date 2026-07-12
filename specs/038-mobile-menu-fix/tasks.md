@@ -15,10 +15,10 @@
 
 ## User Stories Summary
 
-| Story | Priority | Description |
-|-------|----------|-------------|
-| US1 | P1 | Mobile User Views Page - ハンバーガーメニュー実装 |
-| US2 | P2 | Desktop User Experience Unchanged - 既存動作維持 |
+| Story | Priority | Description                                       |
+| ----- | -------- | ------------------------------------------------- |
+| US1   | P1       | Mobile User Views Page - ハンバーガーメニュー実装 |
+| US2   | P2       | Desktop User Experience Unchanged - 既存動作維持  |
 
 ---
 
@@ -26,7 +26,7 @@
 
 **Purpose**: CSS基盤の準備（共有インフラ）
 
-- [X] T001 Add mobile menu CSS styles (hamburger icon, overlay) in `src/app/globals.css`
+- [x] T001 Add mobile menu CSS styles (hamburger icon, overlay) in `src/app/globals.css`
 
 ---
 
@@ -46,22 +46,22 @@
 
 ### Implementation for User Story 1
 
-- [X] T002 [US1] Create MobileMenu Client Component with hamburger button and overlay in `src/components/MobileMenu.tsx`
+- [x] T002 [US1] Create MobileMenu Client Component with hamburger button and overlay in `src/components/MobileMenu.tsx`
   - `"use client"` 宣言
   - useState for `isOpen` state
   - ハンバーガーボタン（3本線、タップで×に変形）
   - フルスクリーンオーバーレイ（`.frame` + `.hud` クラス使用）
   - TOC_ITEMSを使用したナビゲーションリンク
   - 閉じるボタン（×）
-- [X] T003 [US1] Add accessibility features to MobileMenu in `src/components/MobileMenu.tsx`
+- [x] T003 [US1] Add accessibility features to MobileMenu in `src/components/MobileMenu.tsx`
   - aria-expanded, aria-controls, aria-label属性
   - role="dialog", aria-modal="true"
   - Escapeキーでメニュー閉じる
   - フォーカストラップ（メニュー内でTabループ）
-- [X] T004 [US1] Add scroll lock and resize handling to MobileMenu in `src/components/MobileMenu.tsx`
+- [x] T004 [US1] Add scroll lock and resize handling to MobileMenu in `src/components/MobileMenu.tsx`
   - メニュー展開時にbodyへoverflow:hidden適用
   - 画面幅640px以上になったら自動でメニューを閉じる（matchMedia）
-- [X] T005 [US1] Add reduced-motion support in `src/app/globals.css`
+- [x] T005 [US1] Add reduced-motion support in `src/app/globals.css`
   - `@media (prefers-reduced-motion: reduce)` でアニメーション無効化
 
 **Checkpoint**: モバイルでハンバーガーメニューが完全に動作する
@@ -82,11 +82,11 @@
 
 ### Implementation for User Story 2
 
-- [X] T006 [US2] Update TableOfContents with responsive layout in `src/components/TableOfContents.tsx`
+- [x] T006 [US2] Update TableOfContents with responsive layout in `src/components/TableOfContents.tsx`
   - デスクトップ用既存UIに `hidden sm:block` を適用
   - MobileMenuコンポーネントをインポート
   - MobileMenuに `sm:hidden` を適用
-- [X] T007 [US2] Verify desktop menu unchanged in `src/components/TableOfContents.tsx`
+- [x] T007 [US2] Verify desktop menu unchanged in `src/components/TableOfContents.tsx`
   - 既存のnav#menu構造を維持
   - ScrollHudコンポーネントはデスクトップのみ表示
 
@@ -98,8 +98,8 @@
 
 **Purpose**: 品質確認と最終調整
 
-- [X] T008 Run pnpm lint and fix any errors
-- [X] T009 Run pnpm build and verify no build errors
+- [x] T008 Run pnpm lint and fix any errors
+- [x] T009 Run pnpm build and verify no build errors
 - [ ] T010 Manual testing per quickstart.md checklist
   - モバイル表示確認（DevTools）
   - デスクトップ表示確認
@@ -180,11 +180,11 @@ pnpm build &
 
 ## Files Changed Summary
 
-| File | Change Type | User Story |
-|------|-------------|------------|
-| `src/app/globals.css` | MODIFY | US1 |
-| `src/components/MobileMenu.tsx` | NEW | US1 |
-| `src/components/TableOfContents.tsx` | MODIFY | US2 |
+| File                                 | Change Type | User Story |
+| ------------------------------------ | ----------- | ---------- |
+| `src/app/globals.css`                | MODIFY      | US1        |
+| `src/components/MobileMenu.tsx`      | NEW         | US1        |
+| `src/components/TableOfContents.tsx` | MODIFY      | US2        |
 
 ---
 

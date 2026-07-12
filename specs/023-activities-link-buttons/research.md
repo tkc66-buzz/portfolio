@@ -22,5 +22,3 @@
 ## Notes
 
 If any label still wraps on narrow screens, prefer allowing horizontal scroll or reducing letter spacing rather than increasing button height.
-
-

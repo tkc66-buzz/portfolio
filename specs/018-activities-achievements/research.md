@@ -29,5 +29,3 @@
 - **Rationale**: Current Apps Script / spreadsheet exporter supports only `experience` + `projects`. Extending spreadsheet schema is a separate scope increase and can be added later if desired.
 - **Alternatives considered**:
   - Extend Apps Script with an `activities` sheet → nice workflow parity, but requires new sheet schema + docs + migration support.
-
-

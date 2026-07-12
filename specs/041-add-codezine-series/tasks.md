@@ -84,14 +84,14 @@
 
 ### Summary
 
-| Metric | Value |
-|--------|-------|
-| Total tasks | 4 |
-| US1 tasks | 2 |
-| Polish tasks | 2 |
-| Files modified | 1 (`src/content/portfolio.ts`) |
-| Parallel opportunities | None (single file) |
-| MVP scope | US1 (all tasks) |
+| Metric                 | Value                          |
+| ---------------------- | ------------------------------ |
+| Total tasks            | 4                              |
+| US1 tasks              | 2                              |
+| Polish tasks           | 2                              |
+| Files modified         | 1 (`src/content/portfolio.ts`) |
+| Parallel opportunities | None (single file)             |
+| MVP scope              | US1 (all tasks)                |
 
 ---
 

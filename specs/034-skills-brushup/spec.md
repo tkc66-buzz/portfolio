@@ -5,13 +5,13 @@
 **Status**: Draft  
 **Input**: User description: "skillsをもっとブラッシュアップしたい"
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 <!--
   IMPORTANT: User stories should be PRIORITIZED as user journeys ordered by importance.
   Each user story/journey must be INDEPENDENTLY TESTABLE - meaning if you implement just ONE of them,
   you should still have a viable MVP (Minimum Viable Product) that delivers value.
-  
+
   Assign priorities (P1, P2, P3, etc.) to each story, where P1 is the most critical.
   Think of each story as a standalone slice of functionality that can be:
   - Developed independently
@@ -76,7 +76,7 @@ As a visitor (including on mobile), the Skills section remains readable, and the
 - Some skills have old usage only: recency should be communicated clearly (if usage range is shown).
 - Skills list becomes longer: it should remain scannable (no “wall of badges” feeling).
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 <!--
   ACTION REQUIRED: The content in this section represents placeholders.
@@ -91,14 +91,14 @@ As a visitor (including on mobile), the Skills section remains readable, and the
 - **FR-004**: Updating Skills MUST be possible by editing the content source of truth (no manual duplication across multiple files).
 - **FR-005**: The repo MUST remain buildable and deployable using the standard workflow.
 
-*No [NEEDS CLARIFICATION] items for this feature.*
+_No [NEEDS CLARIFICATION] items for this feature._
 
-### Key Entities *(include if feature involves data)*
+### Key Entities _(include if feature involves data)_
 
 - **Skill**: label, years, optional usage range
 - **SkillCategory**: name, list of skills
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 <!--
   ACTION REQUIRED: Define measurable success criteria.

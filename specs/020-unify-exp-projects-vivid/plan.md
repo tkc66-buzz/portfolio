@@ -31,7 +31,7 @@ NES.css のレトロ感は維持しつつ、背景/枠/アクセント/リンク
 
 ## Constitution Check
 
-*GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
+_GATE: Must pass before Phase 0 research. Re-check after Phase 1 design._
 
 Use `.specify/memory/constitution.md` as the source of truth. This repo’s default
 gates (adapt per feature) are:
@@ -43,6 +43,7 @@ gates (adapt per feature) are:
   `README.md`, `AGENTS.md`, and `CLAUDE.md` together.
 
 **Gate Evaluation (pre-research)**:
+
 - Principle compliance: OK (統合で “Proof” の到達性が上がる。鮮やか化も usability を前提に実施)
 - Quality gates: MUST remain green (`pnpm lint`, `pnpm build`)
 - Docs sync: REQUIRED (TOC/section構成の変更は top-level UX)
@@ -62,6 +63,7 @@ specs/[###-feature]/
 ```
 
 ### Source Code (repository root)
+
 ```text
 src/
 ├── app/
@@ -89,7 +91,7 @@ src/
 
 > **Fill ONLY if Constitution Check has violations that must be justified**
 
-| Violation | Why Needed | Simpler Alternative Rejected Because |
-|-----------|------------|-------------------------------------|
-| [e.g., 4th project] | [current need] | [why 3 projects insufficient] |
-| [e.g., Repository pattern] | [specific problem] | [why direct DB access insufficient] |
+| Violation                  | Why Needed         | Simpler Alternative Rejected Because |
+| -------------------------- | ------------------ | ------------------------------------ |
+| [e.g., 4th project]        | [current need]     | [why 3 projects insufficient]        |
+| [e.g., Repository pattern] | [specific problem] | [why direct DB access insufficient]  |

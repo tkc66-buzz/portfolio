@@ -43,4 +43,3 @@ Public Portfolio (committed)
 
 - The private patch endpoint returns a JSON object that can partially override portfolio fields (e.g., Experience and Projects).
 - The patch is validated before merging; invalid patches are ignored and the site falls back to public content.
-

@@ -5,13 +5,13 @@
 **Status**: Draft  
 **Input**: User description: "Hero.tsx と ProfileSection.tsx の内容がかなり被っている気がするので変えたい。"
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 <!--
   IMPORTANT: User stories should be PRIORITIZED as user journeys ordered by importance.
   Each user story/journey must be INDEPENDENTLY TESTABLE - meaning if you implement just ONE of them,
   you should still have a viable MVP (Minimum Viable Product) that delivers value.
-  
+
   Assign priorities (P1, P2, P3, etc.) to each story, where P1 is the most critical.
   Think of each story as a standalone slice of functionality that can be:
   - Developed independently
@@ -75,7 +75,7 @@ As a visitor, the adjusted copy still feels consistent with the retro theme, and
 - What happens when Profile content is edited in the content source—does Hero remain distinct without manual double-updating?
 - What happens when text length grows (Japanese/English mix)—does the Hero remain scannable?
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 <!--
   ACTION REQUIRED: The content in this section represents placeholders.
@@ -90,13 +90,13 @@ As a visitor, the adjusted copy still feels consistent with the retro theme, and
 - **FR-004**: The change MUST NOT remove or reduce the existing “PRESS START” interaction’s clarity.
 - **FR-005**: Copy updates MUST preserve readability and accessibility (clear hierarchy, readable line lengths).
 
-*No [NEEDS CLARIFICATION] items for this feature.*
+_No [NEEDS CLARIFICATION] items for this feature._
 
-### Key Entities *(include if feature involves data)*
+### Key Entities _(include if feature involves data)_
 
-*(No new data entities; this feature is copy/structure only.)*
+_(No new data entities; this feature is copy/structure only.)_
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 <!--
   ACTION REQUIRED: Define measurable success criteria.

@@ -32,4 +32,3 @@
 ## Notes
 
 - Assumption: “閉じる後の挙動が微妙” is primarily about the visual/interaction feel (transition + post-close state), not the trigger condition itself.
-

@@ -5,7 +5,7 @@
 **Status**: Draft
 **Input**: User description: "portfolioサイトに自分のトップ画を1枚配置したいです。"
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 ### User Story 1 - First Impression Visual Identity (Priority: P1)
 
@@ -62,7 +62,7 @@ Screen reader users and visitors using assistive technologies can understand wha
 - What happens if the image has unusual aspect ratios (very wide or very tall)? (Image should be cropped or constrained to maintain layout integrity)
 - How does the layout behave during slow network connections? (Progressive loading or blur-up technique to prevent jarring visual changes)
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 ### Functional Requirements
 
@@ -81,7 +81,7 @@ Screen reader users and visitors using assistive technologies can understand wha
 
 - **Hero Image Asset**: The profile photo file stored in the project's public assets directory, with metadata including dimensions, format, and alternative text description
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 ### Measurable Outcomes
 

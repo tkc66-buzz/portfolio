@@ -1,5 +1,4 @@
 ---
-
 description: "Actionable task list for Press Start Reveal"
 ---
 
@@ -13,9 +12,9 @@ description: "Actionable task list for Press Start Reveal"
 
 **Purpose**: Ensure the feature spec/contract is reflected in code structure and naming.
 
-- [X] T001 Align start-gate constants with contract in `src/components/startGate.ts`
-- [X] T002 [P] Add/confirm `.start-gated` wrapper around post-Hero content in `src/app/page.tsx`
-- [X] T003 [P] Add pre-hydration start-gate initialization (html class + session check) in `src/app/layout.tsx`
+- [x] T001 Align start-gate constants with contract in `src/components/startGate.ts`
+- [x] T002 [P] Add/confirm `.start-gated` wrapper around post-Hero content in `src/app/page.tsx`
+- [x] T003 [P] Add pre-hydration start-gate initialization (html class + session check) in `src/app/layout.tsx`
 
 ---
 
@@ -25,9 +24,9 @@ description: "Actionable task list for Press Start Reveal"
 
 **⚠️ CRITICAL**: No user story work should be considered complete until gating CSS exists (prevents accidental interaction).
 
-- [X] T004 Implement locked-state hiding + non-interactive behavior for `.start-gated` in `src/app/globals.css`
-- [X] T005 Implement transition overlay primitives (CRT/scanline look) in `src/app/globals.css`
-- [X] T006 Implement reduced-motion-safe fallbacks for the transition in `src/app/globals.css`
+- [x] T004 Implement locked-state hiding + non-interactive behavior for `.start-gated` in `src/app/globals.css`
+- [x] T005 Implement transition overlay primitives (CRT/scanline look) in `src/app/globals.css`
+- [x] T006 Implement reduced-motion-safe fallbacks for the transition in `src/app/globals.css`
 
 **Checkpoint**: With JS enabled and `html.not-started`, the Menu/sections are hidden and not focusable/clickable.
 
@@ -41,11 +40,11 @@ description: "Actionable task list for Press Start Reveal"
 
 ### Implementation
 
-- [X] T007 [US1] Convert Hero to an interactive client component and add a visible START button in `src/components/Hero.tsx`
-- [X] T008 [US1] On START, set document state to “starting” then “started” via html classes in `src/components/Hero.tsx`
-- [X] T009 [US1] After unlock, move focus to the Menu container (or first Menu item) in `src/components/Hero.tsx`
-- [X] T010 [US1] Ensure the Menu container remains a stable focus target (id/aria) in `src/components/TableOfContents.tsx`
-- [X] T011 [US1] Guard against double-activation (rapid clicks) in `src/components/Hero.tsx`
+- [x] T007 [US1] Convert Hero to an interactive client component and add a visible START button in `src/components/Hero.tsx`
+- [x] T008 [US1] On START, set document state to “starting” then “started” via html classes in `src/components/Hero.tsx`
+- [x] T009 [US1] After unlock, move focus to the Menu container (or first Menu item) in `src/components/Hero.tsx`
+- [x] T010 [US1] Ensure the Menu container remains a stable focus target (id/aria) in `src/components/TableOfContents.tsx`
+- [x] T011 [US1] Guard against double-activation (rapid clicks) in `src/components/Hero.tsx`
 
 **Checkpoint**: User Story 1 is fully usable without relying on session persistence.
 
@@ -59,9 +58,9 @@ description: "Actionable task list for Press Start Reveal"
 
 ### Implementation
 
-- [X] T012 [US2] Persist started flag to session storage on unlock in `src/components/Hero.tsx`
-- [X] T013 [US2] Ensure layout pre-hydration script reads the same key and sets html class accordingly in `src/app/layout.tsx`
-- [X] T014 [US2] Handle storage failures gracefully (unlock still works for this view) in `src/components/Hero.tsx`
+- [x] T012 [US2] Persist started flag to session storage on unlock in `src/components/Hero.tsx`
+- [x] T013 [US2] Ensure layout pre-hydration script reads the same key and sets html class accordingly in `src/app/layout.tsx`
+- [x] T014 [US2] Handle storage failures gracefully (unlock still works for this view) in `src/components/Hero.tsx`
 
 **Checkpoint**: User Story 2 works even if storage is blocked (may not persist, but unlock works).
 
@@ -75,8 +74,8 @@ description: "Actionable task list for Press Start Reveal"
 
 ### Implementation
 
-- [X] T015 [US3] Ensure transition timing/effects are minimal under reduced motion in `src/app/globals.css`
-- [X] T016 [US3] Ensure START still unlocks instantly (or near-instant) under reduced motion in `src/components/Hero.tsx`
+- [x] T015 [US3] Ensure transition timing/effects are minimal under reduced motion in `src/app/globals.css`
+- [x] T016 [US3] Ensure START still unlocks instantly (or near-instant) under reduced motion in `src/components/Hero.tsx`
 
 ---
 
@@ -84,11 +83,11 @@ description: "Actionable task list for Press Start Reveal"
 
 **Purpose**: Documentation sync + quality gates + small UX details.
 
-- [X] T017 [P] Sync top-level UX docs for “PRESS START reveals Menu” in `README.md`
-- [X] T018 [P] Sync agent playbook notes for the new UX/gating behavior in `AGENTS.md`
-- [X] T019 [P] Sync Claude boot/dev guidance if needed for the new UX behavior in `CLAUDE.md`
-- [X] T020 Add a quick manual verification note (what to look for) in `specs/029-press-start-reveal/quickstart.md`
-- [X] T021 Validate quality gates locally (`pnpm lint`, `pnpm build`) and fix issues in `package.json`
+- [x] T017 [P] Sync top-level UX docs for “PRESS START reveals Menu” in `README.md`
+- [x] T018 [P] Sync agent playbook notes for the new UX/gating behavior in `AGENTS.md`
+- [x] T019 [P] Sync Claude boot/dev guidance if needed for the new UX behavior in `CLAUDE.md`
+- [x] T020 Add a quick manual verification note (what to look for) in `specs/029-press-start-reveal/quickstart.md`
+- [x] T021 Validate quality gates locally (`pnpm lint`, `pnpm build`) and fix issues in `package.json`
 
 ---
 
@@ -133,5 +132,3 @@ Task: "Convert Hero to an interactive client component and add a visible START b
 1. Add **US2** (session persistence) and validate step 4
 2. Add **US3** (reduced motion) and validate step 5
 3. Finish docs + `pnpm lint`/`pnpm build` before merge
-
-

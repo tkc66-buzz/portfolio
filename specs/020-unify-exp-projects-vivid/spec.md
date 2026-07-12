@@ -5,14 +5,14 @@
 **Status**: Draft  
 **Input**: User description: "1.まずはスプレッドシートの運用は無しにする。 2. ExperienceとProjectsは一つにする。一社毎に1つの文章を用意する。 3. 見た目を鮮やかにしたい。"
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 ### User Story 1 - Unified “Work” section (Priority: P1)
 
 訪問者として、経歴と実績を別々に探さずに「会社ごとの文章」を読み、その会社の中の具体的な取り組み（Projects）まで一続きで把握したい。これにより短時間で人物像と実績の要点を理解できる。
 
 **Why this priority**: 主要情報（何をやってきたか＋具体例）の到達性が最重要。  
-**Independent Test**: ローカルで `pnpm dev` → トップページで Work セクションが1つになり、会社ごとに1文章 + 会社配下の Projects が表示されることを確認できる。  
+**Independent Test**: ローカルで `pnpm dev` → トップページで Work セクションが1つになり、会社ごとに1文章 + 会社配下の Projects が表示されることを確認できる。
 
 **Acceptance Scenarios**:
 
@@ -27,7 +27,7 @@
 運用者として、Google Spreadsheet / Apps Script を使わず、リポジトリ内の `src/content/portfolio.ts` 編集だけで内容を管理したい。
 
 **Why this priority**: 運用の複雑さ/事故リスクを下げるため。  
-**Independent Test**: `.env.local` を作らなくても（または private URL を設定しなくても）`pnpm dev` が動き、公開内容が表示される。  
+**Independent Test**: `.env.local` を作らなくても（または private URL を設定しなくても）`pnpm dev` が動き、公開内容が表示される。
 
 **Acceptance Scenarios**:
 
@@ -41,7 +41,7 @@
 訪問者として、全体が少し暗く地味に見えるので、レトロ感は保ちつつも鮮やかで楽しい見た目にしたい。
 
 **Why this priority**: 第一印象（テンション/記憶）に効く。  
-**Independent Test**: 変更前と比較して、背景/枠/見出し/リンクなどのアクセントが増え、かつ文字の可読性が落ちていないことを確認できる。  
+**Independent Test**: 変更前と比較して、背景/枠/見出し/リンクなどのアクセントが増え、かつ文字の可読性が落ちていないことを確認できる。
 
 **Acceptance Scenarios**:
 
@@ -56,7 +56,7 @@
 - 会社数が 0 / 1 の場合でも、セクションが破綻しないか？
 - リンク（Writing/Contact など）を鮮やかにしても、視認性とアクセシビリティを満たすか？
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 ### Functional Requirements
 
@@ -67,13 +67,13 @@
 - **FR-005**: システム MUST レトロ aesthetic を維持しつつ、色のアクセントを増やして“鮮やかさ”を改善する
 - **FR-006**: システム MUST 会社（work entry）配下に Projects を持てるようにし、各 Project は title/summary/role/tech/outcome(or learning) を提供する
 
-### Key Entities *(include if feature involves data)*
+### Key Entities _(include if feature involves data)_
 
 - **WorkEntry (Company)**: 会社（または組織）単位のブロック。期間（year range）と本文（1文章）を持ち、配下に Projects を持てる
 - **WorkProject**: 会社配下の具体的な取り組み（title/summary/role/tech/outcome）
 - **Portfolio**: `work` セクションを含む全体モデル
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 ### Measurable Outcomes
 
@@ -82,5 +82,3 @@
 - **SC-003**: `.env.local` 未設定でも `pnpm dev` が動き、ページが表示できる
 - **SC-004**: 見出し/リンク/アクセントの視認性が向上し、モバイルでも読みやすい（目視確認）
 - **SC-005**: Work 内で Projects まで辿れ、各 Project が required fields を満たして表示される
-
-

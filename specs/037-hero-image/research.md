@@ -62,7 +62,7 @@ import Image from "next/image";
   height={200}
   priority
   className="..."
-/>
+/>;
 ```
 
 **Key considerations**:
@@ -152,7 +152,7 @@ import Image from "next/image";
     width={200}
     height={200}
     priority
-    className="border-4 border-fami-gold"
+    className="border-fami-gold border-4"
   />
 </div>
 ```
@@ -232,15 +232,15 @@ import Image from "next/image";
 
 ## Summary of Key Decisions
 
-| Aspect | Decision | Key Benefit |
-|--------|----------|-------------|
-| Layout | Flexbox with responsive direction (column → row) | Maintains existing structure, responsive without complexity |
-| Image Component | Next.js Image with priority prop | Automatic optimization, CLS prevention, no new dependencies |
-| Sizing | Tailwind responsive classes (w-32 → w-48 → w-56) | Clean responsive behavior, maintains visual balance |
-| Accessibility | Descriptive alt text, semantic HTML | Screen reader friendly, keyboard navigable |
-| Aesthetic | Square with NES.css-style border | Retro flavor without sacrificing professionalism |
-| Performance | Default Next.js optimization (quality=85, auto formats) | Meets <500ms load increase, <2s total requirement |
-| CLS Prevention | Explicit width/height on Image component | Prevents layout shift, achieves CLS <0.1 |
+| Aspect          | Decision                                                | Key Benefit                                                 |
+| --------------- | ------------------------------------------------------- | ----------------------------------------------------------- |
+| Layout          | Flexbox with responsive direction (column → row)        | Maintains existing structure, responsive without complexity |
+| Image Component | Next.js Image with priority prop                        | Automatic optimization, CLS prevention, no new dependencies |
+| Sizing          | Tailwind responsive classes (w-32 → w-48 → w-56)        | Clean responsive behavior, maintains visual balance         |
+| Accessibility   | Descriptive alt text, semantic HTML                     | Screen reader friendly, keyboard navigable                  |
+| Aesthetic       | Square with NES.css-style border                        | Retro flavor without sacrificing professionalism            |
+| Performance     | Default Next.js optimization (quality=85, auto formats) | Meets <500ms load increase, <2s total requirement           |
+| CLS Prevention  | Explicit width/height on Image component                | Prevents layout shift, achieves CLS <0.1                    |
 
 ## Next Steps
 

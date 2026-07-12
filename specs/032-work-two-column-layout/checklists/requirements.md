@@ -1,7 +1,7 @@
 # Requirements Checklist: Work Two-Column Layout
 
 **Feature**: `032-work-two-column-layout`  
-**Date**: 2025-12-29  
+**Date**: 2025-12-29
 
 ## UX / UI
 
@@ -24,4 +24,3 @@
 ## Docs / Spec Hygiene
 
 - [x] `spec.md`, `plan.md`, `research.md`, `data-model.md`, `contracts/`, `quickstart.md` exist and are consistent.
-

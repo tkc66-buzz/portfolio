@@ -5,7 +5,7 @@
 **Status**: Draft  
 **Input**: User description: "ローカル開発だけ変更をすぐに確認したいので、fetchのcacheはなしにしてほしい。"
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 ### User Story 1 - See Experience updates immediately in local dev (Priority: P1)
 
@@ -63,7 +63,7 @@ to observe the updated Experience content in local development.
 - **Data source returns invalid/unexpected data**: the site should not crash; Experience should fail gracefully.
 - **Rapid consecutive edits**: repeated reloads should always reflect the latest available data in local development mode.
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 ### Functional Requirements
 
@@ -72,13 +72,13 @@ to observe the updated Experience content in local development.
 - **FR-003**: In production mode, the system MUST preserve the existing Experience freshness/caching behavior (this feature MUST be scoped to local development only).
 - **FR-004**: This feature MUST NOT change the visual layout, information architecture, or public content structure; it only affects local development freshness.
 
-### Key Entities *(include if feature involves data)*
+### Key Entities _(include if feature involves data)_
 
 - **Experience Data Source**: A canonical external source of Experience entries (currently edited outside the repo).
 - **Experience Entry**: A single record rendered in the Experience section (e.g., role, company/project, dates, summary).
 - **Runtime Mode**: Whether the site is running in local development mode or production mode.
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 ### Measurable Outcomes
 

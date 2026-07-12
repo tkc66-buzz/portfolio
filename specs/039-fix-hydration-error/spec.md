@@ -10,11 +10,12 @@
 ポートフォリオサイトでは「PRESS START」ボタンを押すまでコンテンツが非表示になるゲーム風の演出がある。しかし、モバイルメニュー（ハンバーガーメニュー）がSTARTボタンを押す前に表示されてしまい、演出が壊れていた。
 
 ### 原因
+
 - MobileMenuコンポーネントがReact Portalを使用してdocument.bodyに直接レンダリングされていた
 - Portalでレンダリングされた要素は`start-gated`クラスの制御外にあった
 - ハイドレーション時にサーバーとクライアントの状態が一致せずエラーが発生
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 ### User Story 1 - Initial Page Load Experience (Priority: P1)
 
@@ -53,7 +54,7 @@
 - JavaScriptが無効の場合：コンテンツは表示される（プログレッシブエンハンスメント）
 - ハイドレーション中：サーバーとクライアントの状態が一致するまでメニューを非表示
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 ### Functional Requirements
 
@@ -74,7 +75,7 @@
 
 3. **Portal廃止**: iOS Safariでのfixed positioning問題のため、Portalを使用せず直接レンダリング
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 ### Measurable Outcomes
 

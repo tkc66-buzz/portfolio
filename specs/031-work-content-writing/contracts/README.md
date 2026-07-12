@@ -45,5 +45,3 @@ Allowed:
   - “What you did” in concrete terms
 - **Project.outcomeOrLearning** (1–2 sentences, no numbers):
   - Tradeoffs, constraints, what improved, what you learned
-
-

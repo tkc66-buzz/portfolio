@@ -21,19 +21,20 @@
 
 ## Constitution Check
 
-*GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
+_GATE: Must pass before Phase 0 research. Re-check after Phase 1 design._
 
 ### Pre-Design Check (PASSED)
 
-| Principle | Status | Rationale |
-|-----------|--------|-----------|
-| **I. Personality-First Storytelling** | PASS | モバイルでもストーリーが正しく伝わるようにする改善 |
-| **II. Retro Aesthetic, Modern Usability** | PASS | まさにこの原則の実現：レトロ見た目 + モダンなレスポンシブUX。憲法で「"Retro" MUST NOT be used as an excuse for poor usability」と明記 |
-| **III. Content Is a Product Surface** | PASS | コンテンツ変更なし。表示改善のみ |
-| **IV. Lightweight, Fast, and Durable** | PASS | 新規依存なし。CSSユーティリティクラスの変更のみ。「Performance regressions MUST be treated as user-facing bugs (especially for mobile)」 |
-| **V. One Source of Truth, Kept in Sync** | PASS | UXに影響する変更のため、README/AGENTS/CLAUDE.mdの更新が必要 |
+| Principle                                 | Status | Rationale                                                                                                                                |
+| ----------------------------------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| **I. Personality-First Storytelling**     | PASS   | モバイルでもストーリーが正しく伝わるようにする改善                                                                                       |
+| **II. Retro Aesthetic, Modern Usability** | PASS   | まさにこの原則の実現：レトロ見た目 + モダンなレスポンシブUX。憲法で「"Retro" MUST NOT be used as an excuse for poor usability」と明記    |
+| **III. Content Is a Product Surface**     | PASS   | コンテンツ変更なし。表示改善のみ                                                                                                         |
+| **IV. Lightweight, Fast, and Durable**    | PASS   | 新規依存なし。CSSユーティリティクラスの変更のみ。「Performance regressions MUST be treated as user-facing bugs (especially for mobile)」 |
+| **V. One Source of Truth, Kept in Sync**  | PASS   | UXに影響する変更のため、README/AGENTS/CLAUDE.mdの更新が必要                                                                              |
 
 **Quality Gates**:
+
 - `pnpm lint`: Must pass
 - `pnpm build`: Must pass
 
@@ -85,5 +86,5 @@ src/
 > No constitution violations.
 
 | Violation | Why Needed | Simpler Alternative Rejected Because |
-|-----------|------------|-------------------------------------|
-| (none)    | —          | —                                   |
+| --------- | ---------- | ------------------------------------ |
+| (none)    | —          | —                                    |

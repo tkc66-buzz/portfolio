@@ -1,5 +1,4 @@
 ---
-
 description: "Actionable task list for Hero/Profile de-duplication"
 ---
 
@@ -13,9 +12,9 @@ description: "Actionable task list for Hero/Profile de-duplication"
 
 **Purpose**: Establish a safe workflow for copy changes without reintroducing hydration issues.
 
-- [X] T001 Add a short “copy ownership” note in `specs/030-hero-profile-dedupe/contracts/README.md`
-- [X] T002 [P] Identify duplicated sentences between Hero and Profile (current baseline) in `src/components/Hero.tsx`
-- [X] T003 [P] Identify duplicated sentences between Hero and Profile (current baseline) in `src/components/sections/ProfileSection.tsx`
+- [x] T001 Add a short “copy ownership” note in `specs/030-hero-profile-dedupe/contracts/README.md`
+- [x] T002 [P] Identify duplicated sentences between Hero and Profile (current baseline) in `src/components/Hero.tsx`
+- [x] T003 [P] Identify duplicated sentences between Hero and Profile (current baseline) in `src/components/sections/ProfileSection.tsx`
 
 ---
 
@@ -23,8 +22,8 @@ description: "Actionable task list for Hero/Profile de-duplication"
 
 **Purpose**: Ensure copy updates won’t create SSR/hydration mismatch regressions.
 
-- [X] T004 Confirm Hero text rendered during SSR is stable (no server/client divergent copy) in `src/components/Hero.tsx`
-- [X] T005 Confirm Profile remains server-rendered and stable (no client-only variation) in `src/components/sections/ProfileSection.tsx`
+- [x] T004 Confirm Hero text rendered during SSR is stable (no server/client divergent copy) in `src/components/Hero.tsx`
+- [x] T005 Confirm Profile remains server-rendered and stable (no client-only variation) in `src/components/sections/ProfileSection.tsx`
 
 **Checkpoint**: Hero/Profile copy can be changed without introducing hydration mismatch warnings.
 
@@ -38,9 +37,9 @@ description: "Actionable task list for Hero/Profile de-duplication"
 
 ### Implementation
 
-- [X] T006 [US1] Rewrite Hero body copy to be a concise identity/role statement (no Profile repetition) in `src/components/Hero.tsx`
-- [X] T007 [US1] Rewrite Profile body copy to add new context beyond Hero (no repetition) in `src/components/sections/ProfileSection.tsx`
-- [X] T008 [US1] Ensure “0 verbatim repeated sentences” success criterion is met (manual check) in `specs/030-hero-profile-dedupe/quickstart.md`
+- [x] T006 [US1] Rewrite Hero body copy to be a concise identity/role statement (no Profile repetition) in `src/components/Hero.tsx`
+- [x] T007 [US1] Rewrite Profile body copy to add new context beyond Hero (no repetition) in `src/components/sections/ProfileSection.tsx`
+- [x] T008 [US1] Ensure “0 verbatim repeated sentences” success criterion is met (manual check) in `specs/030-hero-profile-dedupe/quickstart.md`
 
 **Checkpoint**: US1 complete; duplication removed.
 
@@ -54,8 +53,8 @@ description: "Actionable task list for Hero/Profile de-duplication"
 
 ### Implementation
 
-- [X] T009 [US2] Ensure Hero copy stays short (no dense paragraph) and CTA prominence is preserved in `src/components/Hero.tsx`
-- [X] T010 [US2] Adjust spacing/typography if needed to avoid pushing START below fold on mobile in `src/components/Hero.tsx`
+- [x] T009 [US2] Ensure Hero copy stays short (no dense paragraph) and CTA prominence is preserved in `src/components/Hero.tsx`
+- [x] T010 [US2] Adjust spacing/typography if needed to avoid pushing START below fold on mobile in `src/components/Hero.tsx`
 
 ---
 
@@ -67,8 +66,8 @@ description: "Actionable task list for Hero/Profile de-duplication"
 
 ### Implementation
 
-- [X] T011 [US3] Review updated copy for tone consistency and readability in `src/components/Hero.tsx`
-- [X] T012 [US3] Review updated copy for tone consistency and readability in `src/components/sections/ProfileSection.tsx`
+- [x] T011 [US3] Review updated copy for tone consistency and readability in `src/components/Hero.tsx`
+- [x] T012 [US3] Review updated copy for tone consistency and readability in `src/components/sections/ProfileSection.tsx`
 
 ---
 
@@ -76,9 +75,9 @@ description: "Actionable task list for Hero/Profile de-duplication"
 
 **Purpose**: Validation gates.
 
-- [X] T013 Run manual verification steps in `specs/030-hero-profile-dedupe/quickstart.md`
-- [X] T014 Run `pnpm lint` and fix any issues in `src/components/Hero.tsx` and `src/components/sections/ProfileSection.tsx`
-- [X] T015 Run `pnpm build` and fix any issues in `src/components/Hero.tsx` and `src/components/sections/ProfileSection.tsx`
+- [x] T013 Run manual verification steps in `specs/030-hero-profile-dedupe/quickstart.md`
+- [x] T014 Run `pnpm lint` and fix any issues in `src/components/Hero.tsx` and `src/components/sections/ProfileSection.tsx`
+- [x] T015 Run `pnpm build` and fix any issues in `src/components/Hero.tsx` and `src/components/sections/ProfileSection.tsx`
 
 ---
 
@@ -115,5 +114,3 @@ Task: "Identify duplicated sentences in src/components/sections/ProfileSection.t
 1. Complete Phase 1–2
 2. Complete US1
 3. Validate manually + run `pnpm lint`/`pnpm build`
-
-

@@ -2,7 +2,7 @@
 
 ## Decision 1: Trigger with IntersectionObserver on Activities section root
 
-- **Decision**: Activities セクションが *初めて* viewport に入った瞬間を、IntersectionObserver で検知する。
+- **Decision**: Activities セクションが _初めて_ viewport に入った瞬間を、IntersectionObserver で検知する。
 - **Rationale**:
   - scroll handler 連打より軽い（憲法IV）
   - “初めて入った” のイベントを取りやすい

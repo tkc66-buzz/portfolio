@@ -22,10 +22,10 @@ export async function ActivitiesSection() {
   return (
     <section
       id={activities.id}
-      className="frame activities-toast scroll-mt-[var(--menu-offset)] bg-[#1b1b1b] p-6 text-fami-ivory"
+      className="frame activities-toast text-fami-ivory scroll-mt-[var(--menu-offset)] bg-[#1b1b1b] p-6"
     >
       <h2
-        className="flex items-center gap-2 text-xl text-fami-gold"
+        className="text-fami-gold flex items-center gap-2 text-xl"
         style={{ fontFamily: "var(--font-press)" }}
       >
         <PixelIcon src="/assets/pixel/icons/activities.svg" decorative size="md" />
@@ -41,18 +41,18 @@ export async function ActivitiesSection() {
           {activities.groups.map((group) => (
             <div key={group.name}>
               <h3
-                className="text-xs uppercase tracking-[0.3em] text-fami-gold"
+                className="text-fami-gold text-xs tracking-[0.3em] uppercase"
                 style={{ fontFamily: "var(--font-press)" }}
               >
                 {group.name}
               </h3>
 
               {group.items.length === 0 ? (
-                <p className="mt-3 text-sm [font-family:var(--font-noto)]">Coming soon</p>
+                <p className="mt-3 [font-family:var(--font-noto)] text-sm">Coming soon</p>
               ) : (
                 <ul
                   className={[
-                    "mt-3 text-sm [font-family:var(--font-noto)]",
+                    "mt-3 [font-family:var(--font-noto)] text-sm",
                     group.name === "Talks" ? "grid grid-cols-1 gap-3 md:grid-cols-2" : "space-y-3",
                   ].join(" ")}
                 >
@@ -61,7 +61,10 @@ export async function ActivitiesSection() {
 
                     if (!isTalk) {
                       return (
-                        <li key={`${group.name}:${item.year}:${item.title}`} className="min-w-0 space-y-2">
+                        <li
+                          key={`${group.name}:${item.year}:${item.title}`}
+                          className="min-w-0 space-y-2"
+                        >
                           <div className="flex items-start justify-between gap-3">
                             <div className="min-w-0">
                               <div className="flex flex-wrap items-center gap-2">
@@ -71,7 +74,9 @@ export async function ActivitiesSection() {
                                 <span className="truncate">{item.title}</span>
                               </div>
                               {item.context ? (
-                                <p className="section-body-muted mt-1 text-fami-ivory/90">{item.context}</p>
+                                <p className="section-body-muted text-fami-ivory/90 mt-1">
+                                  {item.context}
+                                </p>
                               ) : null}
                             </div>
 
@@ -91,7 +96,10 @@ export async function ActivitiesSection() {
                     }
 
                     return (
-                      <li key={`${group.name}:${item.year}:${item.title}`} className={TALK_CARD_CLASS}>
+                      <li
+                        key={`${group.name}:${item.year}:${item.title}`}
+                        className={TALK_CARD_CLASS}
+                      >
                         <div className="flex items-start justify-between gap-3">
                           <div className="min-w-0">
                             <div className="flex flex-wrap items-center gap-2">
@@ -101,7 +109,9 @@ export async function ActivitiesSection() {
                               <span className="truncate">{item.title}</span>
                             </div>
                             {item.context ? (
-                              <p className="section-body-muted mt-2 text-fami-ivory/90">{item.context}</p>
+                              <p className="section-body-muted text-fami-ivory/90 mt-2">
+                                {item.context}
+                              </p>
                             ) : null}
                           </div>
                         </div>

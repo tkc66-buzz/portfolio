@@ -95,21 +95,30 @@ Overrides apply ONLY at `max-width: 639px` (below `sm:` breakpoint) to avoid aff
 ```css
 /* Contract: NES.css buttons reduce padding on mobile */
 @media (max-width: 639px) {
-  .nes-btn { padding: 2px 6px; font-size: 0.75rem; }
+  .nes-btn {
+    padding: 2px 6px;
+    font-size: 0.75rem;
+  }
 }
 
 /* Contract: NES.css badges reduce size on mobile */
 @media (max-width: 639px) {
-  .nes-badge { font-size: 0.625rem; }
+  .nes-badge {
+    font-size: 0.625rem;
+  }
 }
 
 /* Contract: NES.css containers reduce padding on mobile */
 @media (max-width: 639px) {
-  .nes-container { padding: 0.75rem; }
+  .nes-container {
+    padding: 0.75rem;
+  }
 }
 
 /* Contract: NES.css progress bars respect parent width */
-.nes-progress { max-width: 100%; }
+.nes-progress {
+  max-width: 100%;
+}
 ```
 
 ### Guarantee

@@ -1,7 +1,7 @@
 # Quickstart: Remove Env/Spreadsheet Private Content
 
 **Feature**: `033-remove-env-sheet`  
-**Date**: 2025-12-29  
+**Date**: 2025-12-29
 
 ## Goal
 
@@ -45,4 +45,3 @@ Scope:
 pnpm lint
 pnpm build
 ```
-

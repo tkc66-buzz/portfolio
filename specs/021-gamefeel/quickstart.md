@@ -30,5 +30,3 @@ pnpm dev
 pnpm lint
 pnpm build
 ```
-
-

@@ -29,7 +29,7 @@ Polish the Activities “ACHIEVEMENT UNLOCKED” toast close behavior so it does
 
 ## Constitution Check
 
-*GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
+_GATE: Must pass before Phase 0 research. Re-check after Phase 1 design._
 
 Use `.specify/memory/constitution.md` as the source of truth. This repo’s default
 gates (adapt per feature) are:
@@ -41,6 +41,7 @@ gates (adapt per feature) are:
   `README.md`, `AGENTS.md`, and `CLAUDE.md` together.
 
 **Gate evaluation (pre-research)**:
+
 - Principle compliance: PASS (improves usability and “gamefeel” without adding bloat)
 - Quality gates: REQUIRED (`pnpm lint` / `pnpm build`)
 - Docs sync: N/A (no tooling/runtime/deploy change; minor UI polish)
@@ -60,6 +61,7 @@ specs/[###-feature]/
 ```
 
 ### Source Code (repository root)
+
 ```text
 src/
 ├── app/
@@ -72,6 +74,7 @@ src/
 ```
 
 **Structure Decision**: Fix the gap at the source and keep the component small:
+
 - Remove unconditional wrapper spacing in `ActivitiesSection` (avoid empty `mt-3` when toast is null).
 - Extend `AchievementToast` to render a small “collected” indicator after close instead of returning `null`.
 
@@ -114,7 +117,7 @@ After close, render a small non-intrusive indicator in the same slot (so layout 
 
 > **Fill ONLY if Constitution Check has violations that must be justified**
 
-| Violation | Why Needed | Simpler Alternative Rejected Because |
-|-----------|------------|-------------------------------------|
-| [e.g., 4th project] | [current need] | [why 3 projects insufficient] |
-| [e.g., Repository pattern] | [specific problem] | [why direct DB access insufficient] |
+| Violation                  | Why Needed         | Simpler Alternative Rejected Because |
+| -------------------------- | ------------------ | ------------------------------------ |
+| [e.g., 4th project]        | [current need]     | [why 3 projects insufficient]        |
+| [e.g., Repository pattern] | [specific problem] | [why direct DB access insufficient]  |
