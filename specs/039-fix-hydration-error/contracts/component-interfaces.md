@@ -16,10 +16,11 @@ This feature has no REST/GraphQL API. The "contracts" are internal component int
  * Server snapshot always returns false.
  * Used to prevent rendering client-only content during SSR.
  */
-function useHasMounted(): boolean
+function useHasMounted(): boolean;
 ```
 
 **Contract**:
+
 - Server: always returns `false`
 - Client (first render): returns `true`
 - Never reverts to `false`
@@ -33,10 +34,11 @@ function useHasMounted(): boolean
  * Subscribes to START_GATE_EVENT for reactive updates.
  * Server snapshot always returns false.
  */
-function useStartGateStarted(): boolean
+function useStartGateStarted(): boolean;
 ```
 
 **Contract**:
+
 - Server: always returns `false`
 - Client: reads `document.documentElement.classList.contains('is-started')`
 - Subscribes to `START_GATE_EVENT` on `document`
@@ -52,6 +54,7 @@ document.dispatchEvent(new Event("start-gate-change"));
 ```
 
 **Contract**:
+
 - Dispatched by: `Hero.tsx` after `is-started` class is applied
 - Consumed by: `useStartGateStarted()` subscribe callback
 - Payload: none (consumers check classList directly)
@@ -69,6 +72,7 @@ html.is-starting .start-gated {
 ```
 
 **Contract**:
+
 - Any element with `className="start-gated"` is hidden before START
 - Elements become visible when `<html>` has `is-started` class
 - Works for server-rendered content without JavaScript
@@ -78,8 +82,8 @@ html.is-starting .start-gated {
 
 ### portfolio.started.v1
 
-| Operation | When | Value |
-|-----------|------|-------|
-| Read | Page load (inline script in layout.tsx) | `"1"` if exists |
-| Write | User clicks PRESS START (Hero.tsx) | `"1"` |
-| Clear | Never (session ends when tab closes) | — |
+| Operation | When                                    | Value           |
+| --------- | --------------------------------------- | --------------- |
+| Read      | Page load (inline script in layout.tsx) | `"1"` if exists |
+| Write     | User clicks PRESS START (Hero.tsx)      | `"1"`           |
+| Clear     | Never (session ends when tab closes)    | —               |

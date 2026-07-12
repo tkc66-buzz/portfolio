@@ -25,7 +25,7 @@ Brush up Experience/Projects content rendering and cross-linking:
 
 ## Constitution Check
 
-*GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
+_GATE: Must pass before Phase 0 research. Re-check after Phase 1 design._
 
 - **I. Personality-First Storytelling**: Improves claim→evidence linkage and readability (supports principle).
 - **II. Retro Aesthetic, Modern Usability**: Improves legibility and formatting without changing the retro style.

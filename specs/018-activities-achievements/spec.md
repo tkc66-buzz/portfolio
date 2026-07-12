@@ -5,7 +5,7 @@
 **Status**: Draft  
 **Input**: User description: "Activityに賞の受賞とかAchivementを入れたい。"
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 ### User Story 1 - Achievements are visible under Activities (Priority: P1)
 
@@ -41,7 +41,7 @@ As the site owner, I want a clear empty state so the UI never looks broken even 
 - Achievements item has no `context` and no `link` → still renders cleanly (year + title).
 - Many items in a group → still readable and scannable (wrapping, no layout break).
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 ### Functional Requirements
 
@@ -56,12 +56,10 @@ As the site owner, I want a clear empty state so the UI never looks broken even 
 - **ActivityGroup**: `{ name, items[] }` where `name` includes `Achievements`.
 - **ActivityItem**: `{ year, title, context?, link? }`.
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 ### Measurable Outcomes
 
 - **SC-001**: Achievements can be added without introducing a new section or new data shape (minimal maintenance).
 - **SC-002**: The page remains scannable; Achievements items are readable on mobile and desktop.
 - **SC-003**: `pnpm lint` and `pnpm build` pass.
-
-

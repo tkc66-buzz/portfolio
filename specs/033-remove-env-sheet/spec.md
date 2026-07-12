@@ -5,13 +5,13 @@
 **Status**: Draft  
 **Input**: User description: "環境変数とスプレッドシートを使用しなくなったので参照とそれに該当するコードを全部削除してほしい"
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 <!--
   IMPORTANT: User stories should be PRIORITIZED as user journeys ordered by importance.
   Each user story/journey must be INDEPENDENTLY TESTABLE - meaning if you implement just ONE of them,
   you should still have a viable MVP (Minimum Viable Product) that delivers value.
-  
+
   Assign priorities (P1, P2, P3, etc.) to each story, where P1 is the most critical.
   Think of each story as a standalone slice of functionality that can be:
   - Developed independently
@@ -77,7 +77,7 @@ As a maintainer, I can remove spreadsheet/App Script tooling and any related gui
 - Old documentation or spec folders still exist: they should be removed or updated so there is no suggestion that the feature is supported.
 - Local `.env.local` exists with unrelated variables: no behavior change.
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 <!--
   ACTION REQUIRED: The content in this section represents placeholders.
@@ -92,12 +92,13 @@ As a maintainer, I can remove spreadsheet/App Script tooling and any related gui
 - **FR-004**: The repo MUST remain buildable and deployable using the standard workflow.
 - **FR-005**: Documentation MUST not instruct users to configure private content via environment variables or spreadsheets.
 
-*No [NEEDS CLARIFICATION] items for this feature.*
+_No [NEEDS CLARIFICATION] items for this feature._
 
-### Key Entities *(include if feature involves data)*
-*(No new data entities; removal/refactor only.)*
+### Key Entities _(include if feature involves data)_
 
-## Success Criteria *(mandatory)*
+_(No new data entities; removal/refactor only.)_
+
+## Success Criteria _(mandatory)_
 
 <!--
   ACTION REQUIRED: Define measurable success criteria.

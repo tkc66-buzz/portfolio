@@ -29,7 +29,7 @@ Redesign the Work section “RPG” layout to **never exceed two columns** on de
 
 ## Constitution Check
 
-*GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
+_GATE: Must pass before Phase 0 research. Re-check after Phase 1 design._
 
 Use `.specify/memory/constitution.md` as the source of truth. This repo’s default
 gates (adapt per feature) are:
@@ -41,6 +41,7 @@ gates (adapt per feature) are:
   `README.md`, `AGENTS.md`, and `CLAUDE.md` together.
 
 **Gate evaluation (pre-research)**:
+
 - Principle compliance: PASS (improves usability/readability without diluting retro style)
 - Quality gates: REQUIRED (must keep `pnpm lint` / `pnpm build` green)
 - Docs sync: N/A (no top-level UX change; Work section layout only; no tooling changes)
@@ -60,6 +61,7 @@ specs/[###-feature]/
 ```
 
 ### Source Code (repository root)
+
 ```text
 src/
 ├── app/
@@ -119,7 +121,7 @@ src/
 
 > **Fill ONLY if Constitution Check has violations that must be justified**
 
-| Violation | Why Needed | Simpler Alternative Rejected Because |
-|-----------|------------|-------------------------------------|
-| [e.g., 4th project] | [current need] | [why 3 projects insufficient] |
-| [e.g., Repository pattern] | [specific problem] | [why direct DB access insufficient] |
+| Violation                  | Why Needed         | Simpler Alternative Rejected Because |
+| -------------------------- | ------------------ | ------------------------------------ |
+| [e.g., 4th project]        | [current need]     | [why 3 projects insufficient]        |
+| [e.g., Repository pattern] | [specific problem] | [why direct DB access insufficient]  |

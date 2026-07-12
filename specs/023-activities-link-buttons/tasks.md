@@ -13,7 +13,7 @@ description: "Tasks for 023-activities-link-buttons"
 
 **Purpose**: Confirm baseline build health before UI tweaks.
 
-- [X] T001 Confirm baseline quality gates: run `pnpm lint` and `pnpm build` in `/Users/takeshiwatanabe/EureWorks/private/git/portfolio/`
+- [x] T001 Confirm baseline quality gates: run `pnpm lint` and `pnpm build` in `/Users/takeshiwatanabe/EureWorks/private/git/portfolio/`
 
 ---
 
@@ -21,8 +21,8 @@ description: "Tasks for 023-activities-link-buttons"
 
 **Purpose**: Identify the current source of inconsistent sizing and choose the single source of truth for the className.
 
-- [X] T002 Inspect current Activities link button rendering in `src/components/sections/ActivitiesSection.tsx` and list all button variants found
-- [X] T003 Define a single reusable className constant (e.g., `ACTIVITIES_LINK_BTN_CLASS`) in `src/components/sections/ActivitiesSection.tsx`
+- [x] T002 Inspect current Activities link button rendering in `src/components/sections/ActivitiesSection.tsx` and list all button variants found
+- [x] T003 Define a single reusable className constant (e.g., `ACTIVITIES_LINK_BTN_CLASS`) in `src/components/sections/ActivitiesSection.tsx`
 
 **Checkpoint**: There is exactly one place defining the Activities link button style.
 
@@ -34,9 +34,9 @@ description: "Tasks for 023-activities-link-buttons"
 
 **Independent Test**: `pnpm dev` → Activities の複数リンクボタンが同じ高さで表示され、長いラベルでも折り返さない。
 
-- [X] T004 [US1] Update Activities link `<a>` button className in `src/components/sections/ActivitiesSection.tsx` to use the shared constant
-- [X] T005 [US1] Add minimal utilities to prevent wrap and normalize size in `src/components/sections/ActivitiesSection.tsx` (per research): `whitespace-nowrap`, `text-[0.7rem]`, `leading-none`, `shrink-0`
-- [X] T006 [US1] Ensure button remains aligned and does not distort layout on mobile (adjust container or add `max-w`/`truncate` on label only if necessary) in `src/components/sections/ActivitiesSection.tsx`
+- [x] T004 [US1] Update Activities link `<a>` button className in `src/components/sections/ActivitiesSection.tsx` to use the shared constant
+- [x] T005 [US1] Add minimal utilities to prevent wrap and normalize size in `src/components/sections/ActivitiesSection.tsx` (per research): `whitespace-nowrap`, `text-[0.7rem]`, `leading-none`, `shrink-0`
+- [x] T006 [US1] Ensure button remains aligned and does not distort layout on mobile (adjust container or add `max-w`/`truncate` on label only if necessary) in `src/components/sections/ActivitiesSection.tsx`
 
 ---
 
@@ -46,7 +46,7 @@ description: "Tasks for 023-activities-link-buttons"
 
 **Independent Test**: Tab で Activities のリンクボタンを辿ってもフォーカスが見える（NES.cssの見た目を維持）。
 
-- [X] T007 [US2] Verify focus visibility for Activities link buttons; if needed, add `focus-visible:*` utilities in `src/components/sections/ActivitiesSection.tsx`
+- [x] T007 [US2] Verify focus visibility for Activities link buttons; if needed, add `focus-visible:*` utilities in `src/components/sections/ActivitiesSection.tsx`
 
 ---
 
@@ -56,7 +56,7 @@ description: "Tasks for 023-activities-link-buttons"
 
 **Independent Test**: The button style is defined once, easy to adjust, and documented in-code.
 
-- [X] T008 [US3] Add a short comment above the shared className constant in `src/components/sections/ActivitiesSection.tsx` describing the invariants (no wrap, consistent height)
+- [x] T008 [US3] Add a short comment above the shared className constant in `src/components/sections/ActivitiesSection.tsx` describing the invariants (no wrap, consistent height)
 
 ---
 
@@ -64,9 +64,9 @@ description: "Tasks for 023-activities-link-buttons"
 
 **Purpose**: Quality gates + quickstart validation. Docs sync is not required (no top-level UX change).
 
-- [X] T009 Run `pnpm lint` and fix any issues
-- [X] T010 Run `pnpm build` and fix any issues
-- [X] T011 Validate `specs/023-activities-link-buttons/quickstart.md` steps end-to-end
+- [x] T009 Run `pnpm lint` and fix any issues
+- [x] T010 Run `pnpm build` and fix any issues
+- [x] T011 Validate `specs/023-activities-link-buttons/quickstart.md` steps end-to-end
 
 ---
 
@@ -79,5 +79,3 @@ description: "Tasks for 023-activities-link-buttons"
 ## Parallel Example: (limited)
 
 This feature is mostly single-file (`ActivitiesSection.tsx`) work, so parallelism is limited.
-
-

@@ -45,10 +45,7 @@ export function buildWorkRpgEntryVm(entry: WorkEntry): WorkRpgEntryVM {
   });
 
   const techTags = entry.tech ?? [];
-  const allTech = [
-    ...techTags,
-    ...quests.flatMap((q) => q.tech),
-  ];
+  const allTech = [...techTags, ...quests.flatMap((q) => q.tech)];
 
   const stats: WorkRpgStats = {
     projectsCount: quests.length,
@@ -64,5 +61,3 @@ export function buildWorkRpgEntryVm(entry: WorkEntry): WorkRpgEntryVM {
     initialSelectedQuestId: quests[0]?.id ?? null,
   };
 }
-
-

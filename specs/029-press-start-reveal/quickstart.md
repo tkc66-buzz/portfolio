@@ -33,5 +33,3 @@ pnpm dev
 
 6. **JS disabled (progressive enhancement)**
    - With JavaScript disabled, confirm the Menu remains visible so the portfolio is still navigable.
-
-

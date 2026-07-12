@@ -1,7 +1,7 @@
 # Research: Work Two-Column Layout
 
 **Feature**: `032-work-two-column-layout`  
-**Date**: 2025-12-29  
+**Date**: 2025-12-29
 
 ## Decision: CSS-first 2-column grid (detail spans rows)
 
@@ -24,4 +24,3 @@
 
 - **Decision**: If horizontal overflow appears after the grid change, add targeted CSS (e.g., `min-width: 0` for grid items, `overflow-wrap: anywhere` for long tokens).
 - **Rationale**: Prevents accidental horizontal scroll without changing content.
-

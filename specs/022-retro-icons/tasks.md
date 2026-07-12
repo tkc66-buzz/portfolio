@@ -13,8 +13,8 @@ description: "Tasks for 022-retro-icons"
 
 **Purpose**: Confirm baseline build health and create icon directories.
 
-- [X] T001 Confirm baseline quality gates: run `pnpm lint` and `pnpm build` in `/Users/takeshiwatanabe/EureWorks/private/git/portfolio/`
-- [X] T002 Create icon asset directory `public/assets/pixel/icons/` in `/Users/takeshiwatanabe/EureWorks/private/git/portfolio/public/`
+- [x] T001 Confirm baseline quality gates: run `pnpm lint` and `pnpm build` in `/Users/takeshiwatanabe/EureWorks/private/git/portfolio/`
+- [x] T002 Create icon asset directory `public/assets/pixel/icons/` in `/Users/takeshiwatanabe/EureWorks/private/git/portfolio/public/`
 
 ---
 
@@ -22,8 +22,8 @@ description: "Tasks for 022-retro-icons"
 
 **Purpose**: Add a small reusable icon component with accessibility defaults.
 
-- [X] T003 Add `src/components/PixelIcon.tsx` (renders SVG from `/public`, supports `decorative`/`alt`, size `sm|md`)
-- [X] T004 Add optional sizing helpers in `src/app/globals.css` (e.g. `.pixel-icon-sm`, `.pixel-icon-md`) OR use Tailwind classes consistently (choose one)
+- [x] T003 Add `src/components/PixelIcon.tsx` (renders SVG from `/public`, supports `decorative`/`alt`, size `sm|md`)
+- [x] T004 Add optional sizing helpers in `src/app/globals.css` (e.g. `.pixel-icon-sm`, `.pixel-icon-md`) OR use Tailwind classes consistently (choose one)
 
 **Checkpoint**: `PixelIcon` can be used in any section without layout shift and without screen reader noise.
 
@@ -35,15 +35,15 @@ description: "Tasks for 022-retro-icons"
 
 **Independent Test**: `pnpm dev` → Profile/Work/Writing/Activities/Skills/Contact headings show a pixel icon left of the heading and remain readable on mobile.
 
-- [X] T005 [P] [US1] Add heading icon SVGs under `public/assets/pixel/icons/`: `profile.svg`, `work.svg`, `writing.svg`, `activities.svg`, `skills.svg`, `contact.svg`
-- [X] T006 [US1] Add icons to section headings by updating these files to render `PixelIcon` next to the `<h2>`:
+- [x] T005 [P] [US1] Add heading icon SVGs under `public/assets/pixel/icons/`: `profile.svg`, `work.svg`, `writing.svg`, `activities.svg`, `skills.svg`, `contact.svg`
+- [x] T006 [US1] Add icons to section headings by updating these files to render `PixelIcon` next to the `<h2>`:
   - `src/components/sections/ProfileSection.tsx`
   - `src/components/sections/WorkSection.tsx`
   - `src/components/sections/WritingSection.tsx`
   - `src/components/sections/ActivitiesSection.tsx`
   - `src/components/sections/SkillsSection.tsx`
   - `src/components/sections/ContactSection.tsx`
-- [X] T007 [US1] Ensure icons are decorative (no SR noise): set `decorative` or `alt=""` + `aria-hidden` via `PixelIcon`
+- [x] T007 [US1] Ensure icons are decorative (no SR noise): set `decorative` or `alt=""` + `aria-hidden` via `PixelIcon`
 
 **Checkpoint**: SC-001 satisfied.
 
@@ -55,9 +55,9 @@ description: "Tasks for 022-retro-icons"
 
 **Independent Test**: `pnpm dev` → Contact link list shows icons for Email/GitHub/X/LinkedIn; keyboard focus order remains sensible.
 
-- [X] T008 [P] [US2] Add link icon SVGs under `public/assets/pixel/icons/`: `email.svg`, `github.svg`, `x.svg`, `linkedin.svg`
-- [X] T009 [US2] Update `src/components/sections/ContactSection.tsx` to render `PixelIcon` in each link row (icon + label)
-- [X] T010 [US2] Ensure link icons are decorative and do not change link accessible name
+- [x] T008 [P] [US2] Add link icon SVGs under `public/assets/pixel/icons/`: `email.svg`, `github.svg`, `x.svg`, `linkedin.svg`
+- [x] T009 [US2] Update `src/components/sections/ContactSection.tsx` to render `PixelIcon` in each link row (icon + label)
+- [x] T010 [US2] Ensure link icons are decorative and do not change link accessible name
 
 **Checkpoint**: SC-002 satisfied.
 
@@ -69,8 +69,8 @@ description: "Tasks for 022-retro-icons"
 
 **Independent Test**: `pnpm lint`/`pnpm build` pass; icons missing do not crash layout; docs/contracts clearly describe rules.
 
-- [X] T011 [US3] Enforce a safe fallback in `PixelIcon` when icon file is missing (e.g., render nothing but keep spacing stable)
-- [X] T012 [US3] Document naming + a11y rules in `specs/022-retro-icons/contracts/README.md` (confirm it matches actual implementation)
+- [x] T011 [US3] Enforce a safe fallback in `PixelIcon` when icon file is missing (e.g., render nothing but keep spacing stable)
+- [x] T012 [US3] Document naming + a11y rules in `specs/022-retro-icons/contracts/README.md` (confirm it matches actual implementation)
 
 **Checkpoint**: SC-003 satisfied.
 
@@ -80,10 +80,10 @@ description: "Tasks for 022-retro-icons"
 
 **Purpose**: Final verification + docs sync (top-level UX change).
 
-- [X] T013 Run `pnpm lint` and fix any issues
-- [X] T014 Run `pnpm build` and fix any issues
-- [X] T015 Validate `specs/022-retro-icons/quickstart.md` steps end-to-end
-- [X] T016 Docs sync: update `README.md`, `AGENTS.md`, and `CLAUDE.md` to mention icon assets location + `PixelIcon` usage
+- [x] T013 Run `pnpm lint` and fix any issues
+- [x] T014 Run `pnpm build` and fix any issues
+- [x] T015 Validate `specs/022-retro-icons/quickstart.md` steps end-to-end
+- [x] T016 Docs sync: update `README.md`, `AGENTS.md`, and `CLAUDE.md` to mention icon assets location + `PixelIcon` usage
 
 ---
 
@@ -106,5 +106,3 @@ description: "Tasks for 022-retro-icons"
 Task: T005 [P] [US1] Add section heading icon SVGs under public/assets/pixel/icons/
 Task: T006 [US1] Add icons to section headings in src/components/sections/*.tsx
 ```
-
-

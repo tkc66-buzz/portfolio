@@ -5,13 +5,13 @@
 **Status**: Draft  
 **Input**: User description: "雰囲気を残しつつ、図や画像やゲームらしい動きを入れてクオリティを上げたい。"
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 <!--
   IMPORTANT: User stories should be PRIORITIZED as user journeys ordered by importance.
   Each user story/journey must be INDEPENDENTLY TESTABLE - meaning if you implement just ONE of them,
   you should still have a viable MVP (Minimum Viable Product) that delivers value.
-  
+
   Assign priorities (P1, P2, P3, etc.) to each story, where P1 is the most critical.
   Think of each story as a standalone slice of functionality that can be:
   - Developed independently
@@ -80,7 +80,7 @@
 - モバイル（低スペック）での描画負荷（アニメの多用/影/ぼかし）
 - 外部リンクの安全性（target/rel）
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 <!--
   ACTION REQUIRED: The content in this section represents placeholders.
@@ -95,12 +95,12 @@
 - **FR-004**: システム MUST `prefers-reduced-motion` に従いモーションを抑制できる
 - **FR-005**: システム MUST パフォーマンスを悪化させない（大きなJS追加・重いアニメを避ける）
 
-### Key Entities *(include if feature involves data)*
+### Key Entities _(include if feature involves data)_
 
 - **Asset**: 画像/図のメタ（src, alt, kind）
 - **MotionPreset**: UIで使うモーション（name, duration, reducedMotionBehavior）
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 <!--
   ACTION REQUIRED: Define measurable success criteria.

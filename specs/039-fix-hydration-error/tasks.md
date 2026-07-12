@@ -160,14 +160,14 @@ Task: "Add reduced-motion media query in src/app/globals.css"
 
 ### File Impact Summary
 
-| File | Tasks | Changes |
-|------|-------|---------|
-| `src/components/startGate.ts` | T001 | New: constants module |
-| `src/app/globals.css` | T002, T010, T011 | Add: gate CSS + boot animation + reduced-motion |
-| `src/app/layout.tsx` | T003, T004 | Modify: add class, inline script, suppressHydrationWarning |
-| `src/app/page.tsx` | T005 | Modify: wrap content in `start-gated` div |
-| `src/components/Hero.tsx` | T007, T009 | Modify: add hook + update onStart handler |
-| `src/components/MobileMenu.tsx` | T006, T008, T013, T014 | Modify: add hooks + dual-gate rendering |
+| File                            | Tasks                  | Changes                                                    |
+| ------------------------------- | ---------------------- | ---------------------------------------------------------- |
+| `src/components/startGate.ts`   | T001                   | New: constants module                                      |
+| `src/app/globals.css`           | T002, T010, T011       | Add: gate CSS + boot animation + reduced-motion            |
+| `src/app/layout.tsx`            | T003, T004             | Modify: add class, inline script, suppressHydrationWarning |
+| `src/app/page.tsx`              | T005                   | Modify: wrap content in `start-gated` div                  |
+| `src/components/Hero.tsx`       | T007, T009             | Modify: add hook + update onStart handler                  |
+| `src/components/MobileMenu.tsx` | T006, T008, T013, T014 | Modify: add hooks + dual-gate rendering                    |
 
 ---
 

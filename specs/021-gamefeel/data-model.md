@@ -39,5 +39,3 @@ Not stored as data initially; represented by CSS classes:
   - UI MUST include `alt` text
 - If the asset path is invalid/missing, UI MUST fall back gracefully (placeholder area or hide asset region without layout break).
 - Motion MUST be subtle and MUST respect reduced motion preference.
-
-

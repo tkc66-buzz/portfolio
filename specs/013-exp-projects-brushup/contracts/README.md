@@ -13,7 +13,7 @@ This contract is intentionally minimal and backwards-compatible.
 ## Current format (supported)
 
 - Experience item text may include an Evidence suffix using the delimiter:
-  - ` / Evidence: `
+  - `/ Evidence:`
 - Everything after the delimiter is treated as the Evidence reference string.
 
 Example:
@@ -39,4 +39,3 @@ When resolving Evidence to a Project:
 
 - No HTML parsing of spreadsheet content
 - No changes to the underlying private content endpoint contract in this feature
-

@@ -29,7 +29,7 @@
 - `src/app/globals.css` — モバイルメニュースタイル、Work RPGレイアウト
 - `tailwind.config.js` — ブレイクポイント設定
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 ### User Story 1 — Mobile Phone Layout (Priority: P1)
 
@@ -71,7 +71,7 @@
 - NES.cssコンポーネント: 固定パディングによるオーバーフローがないこと
 - 長いテキストコンテンツ: word-breakで折り返されること
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 ### Functional Requirements
 
@@ -88,7 +88,7 @@
 - **NFR-002**: 新しい依存関係を追加しないこと
 - **NFR-003**: `pnpm lint` と `pnpm build` がパスすること
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 ### Measurable Outcomes
 

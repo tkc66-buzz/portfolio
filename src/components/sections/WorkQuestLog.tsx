@@ -8,7 +8,9 @@ function isExternalHttpHref(href: string) {
 }
 
 export function WorkQuestLog({ entry }: { entry: WorkRpgEntryVM }) {
-  const [selectedQuestId, setSelectedQuestId] = useState<string | null>(entry.initialSelectedQuestId);
+  const [selectedQuestId, setSelectedQuestId] = useState<string | null>(
+    entry.initialSelectedQuestId,
+  );
 
   const byId = useMemo(() => new Map(entry.quests.map((q) => [q.id, q] as const)), [entry.quests]);
   const selected = (selectedQuestId && byId.get(selectedQuestId)) || entry.quests[0] || null;
@@ -62,12 +64,17 @@ export function WorkQuestLog({ entry }: { entry: WorkRpgEntryVM }) {
           <span className="nes-badge is-primary year-badge">
             <span>{entry.header.period}</span>
           </span>
-          <h3 className="min-w-0 truncate text-sm text-fami-gold" style={{ fontFamily: "var(--font-press)" }}>
+          <h3
+            className="text-fami-gold min-w-0 truncate text-sm"
+            style={{ fontFamily: "var(--font-press)" }}
+          >
             {entry.header.company}
           </h3>
         </div>
 
-        <p className="section-body mt-3 break-words whitespace-pre-line text-fami-ivory/95">{entry.body.summary}</p>
+        <p className="section-body text-fami-ivory/95 mt-3 break-words whitespace-pre-line">
+          {entry.body.summary}
+        </p>
 
         {entry.body.techTags.length > 0 ? (
           <div className="mt-3 flex flex-wrap gap-1 text-xs">
@@ -84,7 +91,7 @@ export function WorkQuestLog({ entry }: { entry: WorkRpgEntryVM }) {
             {entry.body.links.map((l) => (
               <a
                 key={`${l.label}:${l.href}`}
-                className="underline decoration-fami-gold/60 underline-offset-4"
+                className="decoration-fami-gold/60 underline underline-offset-4"
                 href={l.href}
                 target={isExternalHttpHref(l.href) ? "_blank" : undefined}
                 rel={isExternalHttpHref(l.href) ? "noreferrer" : undefined}
@@ -129,7 +136,7 @@ export function WorkQuestLog({ entry }: { entry: WorkRpgEntryVM }) {
                     role="tab"
                     aria-selected={isSelected}
                     aria-controls={`work-quest-panel-${q.id}`}
-                    className="work-rpg__questBtn focus:outline-none focus-visible:ring-4 focus-visible:ring-fami-gold focus-visible:ring-offset-4 focus-visible:ring-offset-[#111]"
+                    className="work-rpg__questBtn focus-visible:ring-fami-gold focus:outline-none focus-visible:ring-4 focus-visible:ring-offset-4 focus-visible:ring-offset-[#111]"
                     onClick={() => select(q.id)}
                   >
                     <span className="work-rpg__questTitle">{q.title}</span>
@@ -154,23 +161,23 @@ export function WorkQuestLog({ entry }: { entry: WorkRpgEntryVM }) {
         ) : (
           <div className="mt-2">
             <div className="flex items-start justify-between gap-2">
-              <h4 className="text-sm text-fami-gold" style={{ fontFamily: "var(--font-press)" }}>
+              <h4 className="text-fami-gold text-sm" style={{ fontFamily: "var(--font-press)" }}>
                 {selected.title}
               </h4>
             </div>
 
-            <p className="mt-3 text-xs text-fami-gold">Problem / Approach</p>
-            <p className="mt-2 break-words whitespace-pre-line text-sm leading-relaxed text-fami-ivory/95">
+            <p className="text-fami-gold mt-3 text-xs">Problem / Approach</p>
+            <p className="text-fami-ivory/95 mt-2 text-sm leading-relaxed break-words whitespace-pre-line">
               {selected.summary}
             </p>
 
             <dl className="mt-3 space-y-3 text-xs">
               <div className="flex gap-2">
-                <dt className="w-20 shrink-0 text-fami-gold">Role</dt>
-                <dd className="break-words font-medium">{selected.role}</dd>
+                <dt className="text-fami-gold w-20 shrink-0">Role</dt>
+                <dd className="font-medium break-words">{selected.role}</dd>
               </div>
               <div className="flex gap-2">
-                <dt className="w-20 shrink-0 text-fami-gold">Tech</dt>
+                <dt className="text-fami-gold w-20 shrink-0">Tech</dt>
                 <dd className="flex flex-wrap gap-1">
                   {selected.tech.map((t) => (
                     <span key={t} className="nes-badge is-warning text-[0.55rem]">
@@ -186,5 +193,3 @@ export function WorkQuestLog({ entry }: { entry: WorkRpgEntryVM }) {
     </div>
   );
 }
-
-

@@ -11,10 +11,10 @@ This feature has no persistent data model (no database, no API). It manages ephe
 
 Represents the current state of the "PRESS START" gate.
 
-| Field | Type | Storage | Description |
-|-------|------|---------|-------------|
-| `gateClass` | `"not-started" \| "is-starting" \| "is-started"` | `document.documentElement.classList` | Current gate phase |
-| `persisted` | `"1" \| null` | `sessionStorage["portfolio.started.v1"]` | Whether START was pressed this session |
+| Field       | Type                                             | Storage                                  | Description                            |
+| ----------- | ------------------------------------------------ | ---------------------------------------- | -------------------------------------- |
+| `gateClass` | `"not-started" \| "is-starting" \| "is-started"` | `document.documentElement.classList`     | Current gate phase                     |
+| `persisted` | `"1" \| null`                                    | `sessionStorage["portfolio.started.v1"]` | Whether START was pressed this session |
 
 ### State Transitions
 
@@ -54,11 +54,11 @@ Represents the current state of the "PRESS START" gate.
 
 Derived state controlling whether MobileMenu renders.
 
-| Field | Type | Source | Description |
-|-------|------|--------|-------------|
-| `mounted` | `boolean` | `useSyncExternalStore` (client snapshot: `true`, server: `false`) | React hydration complete |
-| `started` | `boolean` | `useSyncExternalStore` (reads `is-started` class) | Gate is open |
-| `visible` | `boolean` | `mounted && started` | Whether to render Portal content |
+| Field     | Type      | Source                                                            | Description                      |
+| --------- | --------- | ----------------------------------------------------------------- | -------------------------------- |
+| `mounted` | `boolean` | `useSyncExternalStore` (client snapshot: `true`, server: `false`) | React hydration complete         |
+| `started` | `boolean` | `useSyncExternalStore` (reads `is-started` class)                 | Gate is open                     |
+| `visible` | `boolean` | `mounted && started`                                              | Whether to render Portal content |
 
 ### Relationships
 
@@ -78,10 +78,10 @@ MobileMenuVisibility.visible ──controls──▶ Portal rendering
 
 ## Constants (startGate.ts)
 
-| Constant | Value | Usage |
-|----------|-------|-------|
-| `START_GATE_STORAGE_KEY` | `"portfolio.started.v1"` | sessionStorage key |
-| `START_GATE_CLASS_NOT_STARTED` | `"not-started"` | Initial HTML class |
-| `START_GATE_CLASS_STARTING` | `"is-starting"` | Animation phase class |
-| `START_GATE_CLASS_STARTED` | `"is-started"` | Final active class |
-| `START_GATE_EVENT` | `"start-gate-change"` | Custom event name |
+| Constant                       | Value                    | Usage                 |
+| ------------------------------ | ------------------------ | --------------------- |
+| `START_GATE_STORAGE_KEY`       | `"portfolio.started.v1"` | sessionStorage key    |
+| `START_GATE_CLASS_NOT_STARTED` | `"not-started"`          | Initial HTML class    |
+| `START_GATE_CLASS_STARTING`    | `"is-starting"`          | Animation phase class |
+| `START_GATE_CLASS_STARTED`     | `"is-started"`           | Final active class    |
+| `START_GATE_EVENT`             | `"start-gate-change"`    | Custom event name     |

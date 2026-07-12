@@ -6,10 +6,10 @@ export async function ProfileSection() {
   return (
     <section
       id={profile.id}
-      className="frame scroll-mt-[var(--menu-offset)] bg-[#1b1b1b] p-6 text-fami-ivory"
+      className="frame text-fami-ivory scroll-mt-[var(--menu-offset)] bg-[#1b1b1b] p-6"
     >
       <h2
-        className="flex items-center gap-2 text-xl text-fami-gold"
+        className="text-fami-gold flex items-center gap-2 text-xl"
         style={{ fontFamily: "var(--font-press)" }}
       >
         <PixelIcon src="/assets/pixel/icons/profile.svg" decorative size="md" />

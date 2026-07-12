@@ -5,13 +5,13 @@
 **Status**: Draft  
 **Input**: User description: "workの中身のcontentsの文章を作っていきたい。"
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 <!--
   IMPORTANT: User stories should be PRIORITIZED as user journeys ordered by importance.
   Each user story/journey must be INDEPENDENTLY TESTABLE - meaning if you implement just ONE of them,
   you should still have a viable MVP (Minimum Viable Product) that delivers value.
-  
+
   Assign priorities (P1, P2, P3, etc.) to each story, where P1 is the most critical.
   Think of each story as a standalone slice of functionality that can be:
   - Developed independently
@@ -77,7 +77,7 @@ As the site owner, I can iteratively improve Work copy without breaking structur
 - What happens when a project is private—should it be omitted, redacted, or kept as a minimal “shape” entry?
 - What happens when numbers/metrics cannot be shared—how do we still communicate impact?
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 <!--
   ACTION REQUIRED: The content in this section represents placeholders.
@@ -92,13 +92,14 @@ As the site owner, I can iteratively improve Work copy without breaking structur
 - **FR-004**: Work content MUST avoid confidential identifiers (internal system names, private URLs, customer names) and MUST NOT include numerical impact metrics (even approximate/rounded).
 - **FR-005**: The Work content MUST be consistent in tone and readable (short paragraphs, clear phrasing, minimal jargon or explained jargon).
 
-*No [NEEDS CLARIFICATION] items for this feature.*
+_No [NEEDS CLARIFICATION] items for this feature._
 
-### Key Entities *(include if feature involves data)*
+### Key Entities _(include if feature involves data)_
+
 - **WorkEntry**: A company/organization block (public-safe label, period, one-paragraph summary, optional tags/links) with nested projects.
 - **Project**: A proof item under a WorkEntry (title, summary, role, tech, outcome/learning; optional public-safe asset/link).
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 <!--
   ACTION REQUIRED: Define measurable success criteria.

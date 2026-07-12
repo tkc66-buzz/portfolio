@@ -25,5 +25,3 @@ Represents a nested proof item under a WorkEntry.
 - **tech**: list of strings
 - **outcomeOrLearning**: string (concrete, qualitative; no numeric metrics)
 - **asset/link**: optional (public-safe)
-
-

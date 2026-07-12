@@ -1,7 +1,7 @@
 # Research: Achievement Toast Close Polish
 
 **Feature**: `035-achievement-toast-polish`  
-**Date**: 2025-12-29  
+**Date**: 2025-12-29
 
 ## Finding: The “empty gap” is structural
 
@@ -20,4 +20,3 @@
 
 - **Decision**: Use lightweight CSS transitions/animations (opacity/transform) and respect reduced motion by disabling or shortening animations.
 - **Rationale**: Matches the repo’s motion style and avoids adding dependencies.
-

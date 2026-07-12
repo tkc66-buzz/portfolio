@@ -35,5 +35,3 @@ export function createWorkRpgQuestId(opts: {
   opts.used.set(base, nextCount);
   return nextCount === 1 ? base : `${base}-${nextCount}`;
 }
-
-

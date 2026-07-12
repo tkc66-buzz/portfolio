@@ -122,4 +122,3 @@
 1. Add US1 → validate readability + line breaks
 2. Add US2 → validate Evidence linking + mismatch handling
 3. Add US3 → validate content enrichment without layout break
-

@@ -202,14 +202,12 @@ export const publicPortfolio: Portfolio = {
         key: "company-eureka",
         period: "2022-現在",
         company: WORK_LABELS.primary[2],
-        summary:
-          "大規模サービスのBackend領域で、Global Application基盤の開発を担当しています。",
+        summary: "大規模サービスのBackend領域で、Global Application基盤の開発を担当しています。",
         projects: [
           {
             anchorId: "project-global-application-backend-kr-development",
             title: "Global Application Backend KRの開発",
-            summary:
-              "Pairs韓国展開のBackend APIの開発を行いました。",
+            summary: "Pairs韓国展開のBackend APIの開発を行いました。",
             role: "developer",
             tech: ["Go", "AWS", "MySQL", "Observability"],
           },
@@ -228,7 +226,7 @@ export const publicPortfolio: Portfolio = {
             summary:
               "立ち上げ初期に環境分離と自動化を整え、継続運用できるインフラ基盤をゼロから構築しました。また、フルスタックのアプリケーション開発を担当しています。",
             role: "developer",
-            tech: ["AWS", "Google Cloud","Terraform", "TypeScript"],
+            tech: ["AWS", "Google Cloud", "Terraform", "TypeScript"],
           },
         ],
       },
@@ -292,8 +290,7 @@ export const publicPortfolio: Portfolio = {
           {
             year: "2024",
             title: "CodeZine連載：Platform Engineering入門",
-            context:
-              "CodeZine（翔泳社）でPlatform Engineeringの入門連載を執筆しました。",
+            context: "CodeZine（翔泳社）でPlatform Engineeringの入門連載を執筆しました。",
             link: {
               label: "CodeZine",
               href: "https://codezine.jp/article/detail/18856",
@@ -334,7 +331,10 @@ export const publicPortfolio: Portfolio = {
           {
             year: "2020",
             title: "第一回AWS ANGEL Dojo アライアンス賞受賞。",
-            link: { label: "ANGEL Dojo", href: "https://aws.amazon.com/jp/blogs/psa/angel-dojo-season1/" },
+            link: {
+              label: "ANGEL Dojo",
+              href: "https://aws.amazon.com/jp/blogs/psa/angel-dojo-season1/",
+            },
           },
           {
             year: "2021",
@@ -374,16 +374,11 @@ export const publicPortfolio: Portfolio = {
       },
       {
         name: "Data / ML",
-        items: [
-          skillRange("Data Analysis", 2019, 2022),
-          skillRange("ML Engineer", 2019, 2022),
-        ],
+        items: [skillRange("Data Analysis", 2019, 2022), skillRange("ML Engineer", 2019, 2022)],
       },
       {
         name: "Frontend",
-        items: [
-          skillRange("TypeScript", 2023, CURRENT_YEAR),
-        ],
+        items: [skillRange("TypeScript", 2023, CURRENT_YEAR)],
       },
     ],
   },

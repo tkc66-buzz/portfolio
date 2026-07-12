@@ -21,5 +21,3 @@
 
 - `progressRatio` は 0.0〜1.0 にクランプされる
 - `activeSectionId` は `toc.ts` の定義（Menu項目）に含まれる値のみ
-
-

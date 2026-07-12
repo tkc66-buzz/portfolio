@@ -1,7 +1,7 @@
 # Quickstart: Speaker Deck URL
 
 **Feature**: `036-speakerdeck-url`  
-**Date**: 2025-12-29  
+**Date**: 2025-12-29
 
 ## Goal
 
@@ -28,4 +28,3 @@ pnpm dev
 pnpm lint
 pnpm build
 ```
-

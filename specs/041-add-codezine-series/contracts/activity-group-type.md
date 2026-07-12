@@ -21,11 +21,11 @@ export type ActivityGroup = {
 
 ## Consumers
 
-| Consumer | How it uses `name` |
-|----------|-------------------|
-| `ActivitiesSection.tsx` | `group.name === "Talks"` for card layout branch |
-| `ActivitiesSection.tsx` | `group.name` rendered as `<h3>` heading |
-| `ActivitiesCollectGate.tsx` | Wraps all groups (no name-dependent logic) |
+| Consumer                    | How it uses `name`                              |
+| --------------------------- | ----------------------------------------------- |
+| `ActivitiesSection.tsx`     | `group.name === "Talks"` for card layout branch |
+| `ActivitiesSection.tsx`     | `group.name` rendered as `<h3>` heading         |
+| `ActivitiesCollectGate.tsx` | Wraps all groups (no name-dependent logic)      |
 
 ## Migration
 

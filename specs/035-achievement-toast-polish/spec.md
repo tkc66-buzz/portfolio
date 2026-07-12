@@ -5,13 +5,13 @@
 **Status**: Draft  
 **Input**: User description: "ACHIEVEMENT UNLOCKED / Activities を発見した！ で閉じるを押した後の挙動が微妙。もっといい演出ない？"
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 <!--
   IMPORTANT: User stories should be PRIORITIZED as user journeys ordered by importance.
   Each user story/journey must be INDEPENDENTLY TESTABLE - meaning if you implement just ONE of them,
   you should still have a viable MVP (Minimum Viable Product) that delivers value.
-  
+
   Assign priorities (P1, P2, P3, etc.) to each story, where P1 is the most critical.
   Think of each story as a standalone slice of functionality that can be:
   - Developed independently
@@ -77,7 +77,7 @@ As a visitor who prefers reduced motion or uses assistive tech, the improved clo
 - User closes the toast and then scrolls away/returns: behavior remains consistent within the browsing session.
 - Storage is unavailable (blocked session storage): toast behavior should still degrade gracefully.
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 <!--
   ACTION REQUIRED: The content in this section represents placeholders.
@@ -92,12 +92,13 @@ As a visitor who prefers reduced motion or uses assistive tech, the improved clo
 - **FR-004**: The improved behavior MUST respect reduced-motion preferences.
 - **FR-005**: The repo MUST remain buildable and deployable using the standard workflow.
 
-*No [NEEDS CLARIFICATION] items for this feature.*
+_No [NEEDS CLARIFICATION] items for this feature._
 
-### Key Entities *(include if feature involves data)*
-*(No new data entities required; behavior/presentation only.)*
+### Key Entities _(include if feature involves data)_
 
-## Success Criteria *(mandatory)*
+_(No new data entities required; behavior/presentation only.)_
+
+## Success Criteria _(mandatory)_
 
 <!--
   ACTION REQUIRED: Define measurable success criteria.

@@ -38,4 +38,3 @@ Production behavior must remain unchanged.
 ## Troubleshooting
 
 - If you edit Apps Script code (not the spreadsheet data), ensure the Web App is redeployed; otherwise it may serve older code.
-

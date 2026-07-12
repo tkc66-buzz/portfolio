@@ -15,7 +15,7 @@ The content is authored in-repo (no Spreadsheet operation).
 - **Change**: Add `work` and remove/stop using `experience` and `projects` in the public UI.
 - **Relevant fields** (conceptual):
   - `profile`
-  - `work` *(new)*
+  - `work` _(new)_
   - `writing`
   - `activities`
   - `skills`
@@ -60,5 +60,3 @@ Represents one project under a company/organization.
 - Each `WorkProject` MUST render the required fields (title/summary/role/tech/outcomeOrLearning).
 - Text MUST wrap safely on mobile (`break-words`, `whitespace-pre-line` if we allow newlines).
 - `id="work"` MUST remain stable to avoid breaking in-page navigation.
-
-

@@ -26,10 +26,10 @@ export async function SkillsSection() {
   return (
     <section
       id={skills.id}
-      className="frame scroll-mt-[var(--menu-offset)] bg-[#1b1b1b] p-6 text-fami-ivory"
+      className="frame text-fami-ivory scroll-mt-[var(--menu-offset)] bg-[#1b1b1b] p-6"
     >
       <h2
-        className="flex items-center gap-2 text-xl text-fami-gold"
+        className="text-fami-gold flex items-center gap-2 text-xl"
         style={{ fontFamily: "var(--font-press)" }}
       >
         <PixelIcon src="/assets/pixel/icons/skills.svg" decorative size="md" />
@@ -43,7 +43,7 @@ export async function SkillsSection() {
           {categories.map((cat) => (
             <div key={cat.name}>
               <h3
-                className="text-xs uppercase tracking-[0.3em] text-fami-gold"
+                className="text-fami-gold text-xs tracking-[0.3em] uppercase"
                 style={{ fontFamily: "var(--font-press)" }}
               >
                 {cat.name}
@@ -51,7 +51,7 @@ export async function SkillsSection() {
               <div className="mt-3 space-y-4">
                 {cat.items.map((skill) => (
                   <div key={`${cat.name}:${skill.label}`}>
-                    <div className="flex flex-wrap items-center justify-between gap-1 text-xs uppercase tracking-[0.2em] text-fami-gold">
+                    <div className="text-fami-gold flex flex-wrap items-center justify-between gap-1 text-xs tracking-[0.2em] uppercase">
                       <span className="min-w-0">{skill.label}</span>
                       <span className="normal-case">
                         {formatYears(skill.years)}
@@ -73,7 +73,7 @@ export async function SkillsSection() {
         <div className="mt-3 space-y-4">
           {skills.items.map((skill) => (
             <div key={skill.label}>
-              <div className="flex flex-wrap items-center justify-between gap-1 text-xs uppercase tracking-[0.2em] text-fami-gold">
+              <div className="text-fami-gold flex flex-wrap items-center justify-between gap-1 text-xs tracking-[0.2em] uppercase">
                 <span className="min-w-0">{skill.label}</span>
                 <span className="normal-case">
                   {formatYears(skill.years)}

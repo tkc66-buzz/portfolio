@@ -9,17 +9,19 @@ export async function WorkSection() {
   return (
     <section
       id={work.id}
-      className="frame work-rpg scroll-mt-[var(--menu-offset)] bg-[#1b1b1b] p-6 text-fami-ivory"
+      className="frame work-rpg text-fami-ivory scroll-mt-[var(--menu-offset)] bg-[#1b1b1b] p-6"
     >
       <header className="flex items-baseline justify-between">
         <h2
-          className="flex items-center gap-2 text-xl text-fami-gold"
+          className="text-fami-gold flex items-center gap-2 text-xl"
           style={{ fontFamily: "var(--font-press)" }}
         >
           <PixelIcon src="/assets/pixel/icons/work.svg" decorative size="md" />
           <span>{work.heading}</span>
         </h2>
-        <span className="pixel-float text-xs uppercase tracking-[0.3em] text-fami-gold">WORK LOG</span>
+        <span className="pixel-float text-fami-gold text-xs tracking-[0.3em] uppercase">
+          WORK LOG
+        </span>
       </header>
 
       <p className="section-body-muted mt-3">
@@ -39,5 +41,3 @@ export async function WorkSection() {
     </section>
   );
 }
-
-

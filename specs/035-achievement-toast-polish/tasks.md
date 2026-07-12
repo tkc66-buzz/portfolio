@@ -6,7 +6,7 @@ description: "Tasks for implementing Achievement toast close polish"
 
 **Input**: Design documents from `specs/035-achievement-toast-polish/`  
 **Prerequisites**: `specs/035-achievement-toast-polish/plan.md` (required), `specs/035-achievement-toast-polish/spec.md` (required)  
-**Tests**: Not requested (manual verification via `specs/035-achievement-toast-polish/quickstart.md`)  
+**Tests**: Not requested (manual verification via `specs/035-achievement-toast-polish/quickstart.md`)
 
 ## Phase 1: Setup (Shared Infrastructure)
 
@@ -81,5 +81,3 @@ description: "Tasks for implementing Achievement toast close polish"
 ### Parallel Opportunities
 
 - [x] T016 [P] (Optional) Implement indicator CSS in `src/app/globals.css` in parallel with the component changes once the indicator markup is decided
-
-

@@ -111,7 +111,10 @@ export function ActivitiesCollectGate({ children }: { children: ReactNode }) {
   }
 
   const summary = (
-    <span className="achievement-toast-indicator achievement-toast-indicator--pending" aria-hidden="true">
+    <span
+      className="achievement-toast-indicator achievement-toast-indicator--pending"
+      aria-hidden="true"
+    >
       <span className="nes-btn is-small achievement-toast-collect">COLLECT</span>
       <span className="achievement-toast-indicator__text">Activities</span>
     </span>
@@ -125,13 +128,9 @@ export function ActivitiesCollectGate({ children }: { children: ReactNode }) {
         if (el.open) collect();
       }}
     >
-      <summary className="activities-gate__summary">
-        {summary}
-      </summary>
+      <summary className="activities-gate__summary">{summary}</summary>
 
       <div className="activities-gate__body">{children}</div>
     </details>
   );
 }
-
-

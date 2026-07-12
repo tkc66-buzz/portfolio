@@ -5,7 +5,7 @@
 **Status**: Draft  
 **Input**: User description: "013でExperienceとProjectsのContentsを充実させるためのブラッシュアップ。既知課題: (1) Experienceのyear表示が小さい (2) spreadsheet上の改行がWebで改行されない (3) Evidenceとの紐付けができていない。"
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 ### User Story 1 - Experience timeline is readable and matches spreadsheet formatting (Priority: P1)
 
@@ -63,7 +63,7 @@ the layout readable and consistent with the retro-but-modern UX.
 - **Mixed newline types**: Spreadsheet may contain `\r\n` or `\n` line breaks (should render consistently).
 - **Very long entries**: Ensure long text doesn’t overflow or degrade readability.
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 ### Functional Requirements
 
@@ -74,13 +74,13 @@ the layout readable and consistent with the retro-but-modern UX.
 - **FR-005**: If Evidence cannot be resolved to a Project, the system MUST render Evidence as non-clickable text (no broken links).
 - **FR-006**: Changes MUST NOT add new runtime dependencies and MUST keep the site deployable on Vercel.
 
-### Key Entities *(include if feature involves data)*
+### Key Entities _(include if feature involves data)_
 
 - **Experience Highlight**: `{ year, text }` rendered in Experience; may include an Evidence hint.
 - **Project**: `{ title, anchorId, ... }` rendered in Projects; can be a target of Evidence linking.
 - **Evidence Reference**: A string embedded in Experience text that should resolve to a Project (by title or anchor id).
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 ### Measurable Outcomes
 

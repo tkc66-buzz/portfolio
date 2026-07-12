@@ -6,7 +6,7 @@ description: "Tasks for implementing Work Two-Column Layout"
 
 **Input**: Design documents from `specs/032-work-two-column-layout/`  
 **Prerequisites**: `specs/032-work-two-column-layout/plan.md` (required), `specs/032-work-two-column-layout/spec.md` (required)  
-**Tests**: Not requested (manual verification via `specs/032-work-two-column-layout/quickstart.md`)  
+**Tests**: Not requested (manual verification via `specs/032-work-two-column-layout/quickstart.md`)
 
 ## Phase 1: Setup (Shared)
 
@@ -100,5 +100,3 @@ description: "Tasks for implementing Work Two-Column Layout"
 # - Validate keyboard behavior
 # - Validate mobile layout
 ```
-
-

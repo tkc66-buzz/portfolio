@@ -13,8 +13,8 @@ description: "Tasks for 020-unify-exp-projects-vivid"
 
 **Purpose**: Confirm baseline repo state for the feature branch.
 
-- [X] T001 Confirm baseline builds: run `pnpm lint` and `pnpm build` in `/Users/takeshiwatanabe/EureWorks/private/git/portfolio/`
-- [X] T002 Create `specs/020-unify-exp-projects-vivid/tasks.md` (this file) and ensure checklist format is respected
+- [x] T001 Confirm baseline builds: run `pnpm lint` and `pnpm build` in `/Users/takeshiwatanabe/EureWorks/private/git/portfolio/`
+- [x] T002 Create `specs/020-unify-exp-projects-vivid/tasks.md` (this file) and ensure checklist format is respected
 
 ---
 
@@ -22,8 +22,8 @@ description: "Tasks for 020-unify-exp-projects-vivid"
 
 **Purpose**: Establish unified data shape and section ID before any UI work.
 
-- [X] T003 Add `work` types to `src/content/portfolio.ts` (add `WorkSection` + `WorkEntry` + nested `WorkProject` and include in `Portfolio`)
-- [X] T004 Add `publicPortfolio.work` data in `src/content/portfolio.ts` (company blocks, each with exactly one `summary` paragraph and nested projects with required fields)
+- [x] T003 Add `work` types to `src/content/portfolio.ts` (add `WorkSection` + `WorkEntry` + nested `WorkProject` and include in `Portfolio`)
+- [x] T004 Add `publicPortfolio.work` data in `src/content/portfolio.ts` (company blocks, each with exactly one `summary` paragraph and nested projects with required fields)
 
 **Checkpoint**: `getPortfolio()` returns a `work` section with items, without runtime errors.
 
@@ -35,12 +35,12 @@ description: "Tasks for 020-unify-exp-projects-vivid"
 
 **Independent Test**: `pnpm dev` → open home page → TOC contains Work → Work section renders multiple company blocks and their nested Projects with safe wrapping on mobile width.
 
-- [X] T005 [P] [US1] Create `src/components/sections/WorkSection.tsx` to render `portfolio.work` (period + company + one `summary` paragraph + nested Projects list)
-- [X] T006 [US1] Update `src/app/page.tsx` to render `<WorkSection />` and stop rendering `<ExperienceSection />` and `<ProjectsSection />`
-- [X] T007 [US1] Update `src/components/toc.ts` to replace `experience/projects` with `work` in `TocItemId` and `TOC_ITEMS`
-- [X] T008 [US1] Ensure `WorkSection` uses stable anchor `id="work"` and `scroll-mt-[var(--menu-offset)]` like other sections
-- [X] T009 [US1] Ensure wrapping/readability: apply `break-words` and (if needed) `whitespace-pre-line` to Work summary and nested project fields in `src/components/sections/WorkSection.tsx`
-- [X] T010 [US1] Remove or deprecate unused sections: delete `src/components/sections/ExperienceSection.tsx` and `src/components/sections/ProjectsSection.tsx` (or keep but unused, per lint/build constraints)
+- [x] T005 [P] [US1] Create `src/components/sections/WorkSection.tsx` to render `portfolio.work` (period + company + one `summary` paragraph + nested Projects list)
+- [x] T006 [US1] Update `src/app/page.tsx` to render `<WorkSection />` and stop rendering `<ExperienceSection />` and `<ProjectsSection />`
+- [x] T007 [US1] Update `src/components/toc.ts` to replace `experience/projects` with `work` in `TocItemId` and `TOC_ITEMS`
+- [x] T008 [US1] Ensure `WorkSection` uses stable anchor `id="work"` and `scroll-mt-[var(--menu-offset)]` like other sections
+- [x] T009 [US1] Ensure wrapping/readability: apply `break-words` and (if needed) `whitespace-pre-line` to Work summary and nested project fields in `src/components/sections/WorkSection.tsx`
+- [x] T010 [US1] Remove or deprecate unused sections: delete `src/components/sections/ExperienceSection.tsx` and `src/components/sections/ProjectsSection.tsx` (or keep but unused, per lint/build constraints)
 
 **Checkpoint**: Home page shows Work section only (no Experience/Projects), TOC jumps to Work, layout is readable on mobile.
 
@@ -52,10 +52,10 @@ description: "Tasks for 020-unify-exp-projects-vivid"
 
 **Independent Test**: With `.env.local` removed/unset, `pnpm dev` still renders the page with repo content and no private URL fetch is attempted/required.
 
-- [X] T011 [US2] Update `src/content/portfolio.ts` to disable `PORTFOLIO_PRIVATE_SOURCE="url"` behavior (treat as unsupported / ignore URL mode)
-- [X] T012 [US2] Update docs to remove spreadsheet ops as a recommended path: edit `specs/002-portfolio-private-content/quickstart.md` to reflect “no spreadsheet operation”
-- [X] T013 [US2] Deprecate spreadsheet-specific docs by updating these files to note “運用しない/不要”: `specs/002-portfolio-private-content/spec.md`, `specs/002-portfolio-private-content/quickstart.md`, `specs/015-sheet-anchorid/spec.md`, `specs/015-sheet-anchorid/quickstart.md`
-- [X] T014 [US2] Verify `pnpm dev` works with no private env vars set (document in `specs/020-unify-exp-projects-vivid/quickstart.md` if adjustments are needed)
+- [x] T011 [US2] Update `src/content/portfolio.ts` to disable `PORTFOLIO_PRIVATE_SOURCE="url"` behavior (treat as unsupported / ignore URL mode)
+- [x] T012 [US2] Update docs to remove spreadsheet ops as a recommended path: edit `specs/002-portfolio-private-content/quickstart.md` to reflect “no spreadsheet operation”
+- [x] T013 [US2] Deprecate spreadsheet-specific docs by updating these files to note “運用しない/不要”: `specs/002-portfolio-private-content/spec.md`, `specs/002-portfolio-private-content/quickstart.md`, `specs/015-sheet-anchorid/spec.md`, `specs/015-sheet-anchorid/quickstart.md`
+- [x] T014 [US2] Verify `pnpm dev` works with no private env vars set (document in `specs/020-unify-exp-projects-vivid/quickstart.md` if adjustments are needed)
 
 **Checkpoint**: Running locally without private env vars is the default and documented.
 
@@ -67,10 +67,10 @@ description: "Tasks for 020-unify-exp-projects-vivid"
 
 **Independent Test**: Compare before/after on mobile and desktop: headings/links/accent colors are more distinct; text remains readable with sufficient contrast.
 
-- [X] T015 [P] [US3] Define/adjust palette tokens in `src/app/globals.css` (e.g., add a brighter accent color and ensure contrast)
-- [X] T016 [P] [US3] Update section “frame” backgrounds/borders for more vivid separation (touch `src/components/sections/*.tsx` as needed, starting with `WorkSection.tsx`)
-- [X] T017 [US3] Update link styles for clearer affordance (e.g., underline + hover color) in `src/app/globals.css` or component classes
-- [X] T018 [US3] Update `src/components/Hero.tsx` (and/or TOC) to use more vivid accents without harming readability
+- [x] T015 [P] [US3] Define/adjust palette tokens in `src/app/globals.css` (e.g., add a brighter accent color and ensure contrast)
+- [x] T016 [P] [US3] Update section “frame” backgrounds/borders for more vivid separation (touch `src/components/sections/*.tsx` as needed, starting with `WorkSection.tsx`)
+- [x] T017 [US3] Update link styles for clearer affordance (e.g., underline + hover color) in `src/app/globals.css` or component classes
+- [x] T018 [US3] Update `src/components/Hero.tsx` (and/or TOC) to use more vivid accents without harming readability
 
 **Checkpoint**: Top page feels brighter; no regressions in layout/contrast.
 
@@ -80,12 +80,12 @@ description: "Tasks for 020-unify-exp-projects-vivid"
 
 **Purpose**: Cleanup, docs sync, and final quality gates.
 
-- [X] T019 Update `README.md` to reflect the new Work section and removal of Experience/Projects split (top-level UX change)
-- [X] T020 Update `AGENTS.md` to reflect section/IA changes and any operational notes (top-level UX change)
-- [X] T021 Update `CLAUDE.md` to reflect section/IA changes and any boot guidance changes (top-level UX change)
-- [X] T022 Run `pnpm lint` and fix any issues introduced by deleted/unused components
-- [X] T023 Run `pnpm build` and fix any issues (ensure deployability)
-- [X] T024 Validate `specs/020-unify-exp-projects-vivid/quickstart.md` steps end-to-end
+- [x] T019 Update `README.md` to reflect the new Work section and removal of Experience/Projects split (top-level UX change)
+- [x] T020 Update `AGENTS.md` to reflect section/IA changes and any operational notes (top-level UX change)
+- [x] T021 Update `CLAUDE.md` to reflect section/IA changes and any boot guidance changes (top-level UX change)
+- [x] T022 Run `pnpm lint` and fix any issues introduced by deleted/unused components
+- [x] T023 Run `pnpm build` and fix any issues (ensure deployability)
+- [x] T024 Validate `specs/020-unify-exp-projects-vivid/quickstart.md` steps end-to-end
 
 ---
 
@@ -144,5 +144,3 @@ Task: T016 [P] [US3] Update section styles in src/components/sections/*.tsx
 2. Deliver US2 (no spreadsheet operation; disable URL mode; docs)
 3. Deliver US3 (vivid UI pass)
 4. Finish with docs sync + `pnpm lint/build`
-
-

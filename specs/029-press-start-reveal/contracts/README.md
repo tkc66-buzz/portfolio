@@ -25,5 +25,3 @@ publicly observable DOM/CSS behavior that other components rely on.
 - The START control must be keyboard-activatable.
 - After unlocking, focus must land on a predictable navigation point (Menu container or first Menu item).
 - Reduced motion preference must be respected (minimal/no animation).
-
-

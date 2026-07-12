@@ -1,7 +1,7 @@
 # Research: Remove Env/Spreadsheet Private Content
 
 **Feature**: `033-remove-env-sheet`  
-**Date**: 2025-12-29  
+**Date**: 2025-12-29
 
 ## Decision: Remove env-var “private override” mode entirely
 
@@ -25,4 +25,3 @@
 
 - **Decision**: Update `README.md`, `AGENTS.md`, and `CLAUDE.md` to remove all mentions of env/spreadsheet sourcing.
 - **Rationale**: Constitution principle V (docs kept in sync) and prevents future misuse.
-

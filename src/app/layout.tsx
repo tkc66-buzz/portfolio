@@ -47,9 +47,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <head>
         <script dangerouslySetInnerHTML={{ __html: startGateScript }} />
       </head>
-      <body className={`${noto.variable} ${press.variable} text-white`}>
-        {children}
-      </body>
+      <body className={`${noto.variable} ${press.variable} text-white`}>{children}</body>
     </html>
   );
 }

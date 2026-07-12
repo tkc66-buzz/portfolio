@@ -1,7 +1,7 @@
 # Data Model: Remove Env/Spreadsheet Private Content
 
 **Feature**: `033-remove-env-sheet`  
-**Date**: 2025-12-29  
+**Date**: 2025-12-29
 
 ## Summary
 
@@ -19,4 +19,3 @@ This change **removes** an optional sourcing path. The portfolio data model stay
 ## Validation Rules
 
 - Portfolio normalization/validation can remain only if it still adds value for committed content.
-

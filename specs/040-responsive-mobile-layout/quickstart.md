@@ -87,15 +87,15 @@ Use Chrome DevTools → Toggle device toolbar for each viewport.
 
 ## Key Files
 
-| File | Changes |
-|------|---------|
-| `src/app/page.tsx` | Page container responsive padding |
-| `src/app/globals.css` | NES.css mobile overrides, mobile menu, Work RPG |
-| `src/components/Hero.tsx` | Responsive padding, font sizes, image size |
-| `src/components/TableOfContents.tsx` | Button sizing adjustments |
-| `src/components/MobileMenu.tsx` | Overlay responsive padding |
-| `src/components/sections/WorkQuestLog.tsx` | Badge overflow prevention |
-| `src/components/sections/SkillsSection.tsx` | Label and progress bar responsive |
-| `src/components/sections/ActivitiesSection.tsx` | Grid and badge responsive |
-| `src/components/sections/WritingSection.tsx` | Button group stacking |
-| `src/components/sections/ContactSection.tsx` | Button group stacking |
+| File                                            | Changes                                         |
+| ----------------------------------------------- | ----------------------------------------------- |
+| `src/app/page.tsx`                              | Page container responsive padding               |
+| `src/app/globals.css`                           | NES.css mobile overrides, mobile menu, Work RPG |
+| `src/components/Hero.tsx`                       | Responsive padding, font sizes, image size      |
+| `src/components/TableOfContents.tsx`            | Button sizing adjustments                       |
+| `src/components/MobileMenu.tsx`                 | Overlay responsive padding                      |
+| `src/components/sections/WorkQuestLog.tsx`      | Badge overflow prevention                       |
+| `src/components/sections/SkillsSection.tsx`     | Label and progress bar responsive               |
+| `src/components/sections/ActivitiesSection.tsx` | Grid and badge responsive                       |
+| `src/components/sections/WritingSection.tsx`    | Button group stacking                           |
+| `src/components/sections/ContactSection.tsx`    | Button group stacking                           |

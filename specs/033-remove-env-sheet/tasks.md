@@ -6,7 +6,7 @@ description: "Tasks for implementing removal of env/spreadsheet private content 
 
 **Input**: Design documents from `specs/033-remove-env-sheet/`  
 **Prerequisites**: `specs/033-remove-env-sheet/plan.md` (required), `specs/033-remove-env-sheet/spec.md` (required)  
-**Tests**: Not requested (manual verification via `specs/033-remove-env-sheet/quickstart.md`)  
+**Tests**: Not requested (manual verification via `specs/033-remove-env-sheet/quickstart.md`)
 
 ## Phase 1: Setup (Shared Infrastructure)
 
@@ -83,4 +83,3 @@ description: "Tasks for implementing removal of env/spreadsheet private content 
 ### Parallel Opportunities
 
 - [ ] T018 [P] (Optional) Repo-wide search + docs scan can be done in parallel with code refactor once target list is known
-

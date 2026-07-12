@@ -7,9 +7,11 @@
 **Status**: RESOLVED
 
 `ActivityGroup.name` in `src/content/portfolio.ts:85` is a string union:
+
 ```typescript
 name: "Talks" | "Books" | "Community" | "Achievements";
 ```
+
 This must be extended to include `"Articles"`.
 
 ## Q2: How does ActivitiesSection render different group types?
@@ -17,9 +19,11 @@ This must be extended to include `"Articles"`.
 **Status**: RESOLVED
 
 In `src/components/sections/ActivitiesSection.tsx:60`:
+
 ```typescript
 const isTalk = group.name === "Talks";
 ```
+
 - **Talks**: Rendered in a 2-column grid (`grid grid-cols-1 md:grid-cols-2`) with `TALK_CARD_CLASS` card styling and `TalkLinkPreview` component.
 - **All other groups**: Rendered as a vertical list (`space-y-3`) with year badge + title + optional context + optional link button.
 
@@ -40,6 +44,7 @@ New order: Talks → Books → **Articles** → Community → Achievements.
 **Status**: RESOLVED
 
 Based on the fetched article page:
+
 - **year**: `"2024"` (publication date: 2024/01/19)
 - **title**: `"CodeZine連載：Platform Engineering入門"`
 - **context**: `"CodeZine（翔泳社）でPlatform Engineeringの入門連載を執筆しました。"`

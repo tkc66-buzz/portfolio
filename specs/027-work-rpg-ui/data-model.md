@@ -89,5 +89,3 @@ All stats must be derived from existing Work data (no manual inputs).
 - Quest list must expose selected state:
   - `aria-selected=true` for selected quest button
   - focus-visible ring must be visible on keyboard navigation
-
-

@@ -24,11 +24,11 @@ pnpm dev
 
 ## 実装ファイル
 
-| ファイル | 変更種別 | 説明 |
-|----------|----------|------|
-| `src/components/MobileMenu.tsx` | NEW | モバイルメニューのClient Component |
-| `src/components/TableOfContents.tsx` | MODIFY | レスポンシブ分岐追加 |
-| `src/app/globals.css` | MODIFY | モバイルメニュー用スタイル追加 |
+| ファイル                             | 変更種別 | 説明                               |
+| ------------------------------------ | -------- | ---------------------------------- |
+| `src/components/MobileMenu.tsx`      | NEW      | モバイルメニューのClient Component |
+| `src/components/TableOfContents.tsx` | MODIFY   | レスポンシブ分岐追加               |
+| `src/app/globals.css`                | MODIFY   | モバイルメニュー用スタイル追加     |
 
 ## テスト手順
 

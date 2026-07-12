@@ -37,7 +37,7 @@ description: "Tasks for 018 – Activities: Achievements (Awards)"
 - [ ] T007 [US1] Add 1 temporary local-only Achievements item to validate rendering, then decide final source:
   - keep it in `publicPortfolio` (if it’s truly public), or
   - move it to private override (if it should be private)
-  (`src/content/portfolio.ts` and/or your private override source)
+    (`src/content/portfolio.ts` and/or your private override source)
 - [ ] T008 [US1] Confirm override semantics note is present and correct in `specs/018-activities-achievements/contracts/README.md` (groups array is replaced, not deep-merged)
 
 **Checkpoint**: Achievements group can be rendered, and external link behavior remains safe.

@@ -5,7 +5,7 @@
 **Status**: Draft  
 **Input**: User description: "WorkセクションをRPGのステータス画面/クエストログ風にして、1つだけ奇抜な見た目とアニメーションを入れたい"
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 ### User Story 1 - A “different game screen” in Work (Priority: P1)
 
@@ -57,7 +57,7 @@
 - キーボード操作でも導線が分かる（フォーカスが見える）
 - 動きは抑制可能（OS設定等）
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 ### Functional Requirements
 
@@ -69,13 +69,13 @@
 - **FR-006**: システム MUST 動きが過剰にならない/抑制可能である（快適性）
 - **FR-007**: システム SHOULD Workの“奇抜UI”は Work のみに閉じ、他セクションへ波及させない
 
-### Key Entities *(include if feature involves data)*
+### Key Entities _(include if feature involves data)_
 
 - **Work entry**: 会社/組織ごとのブロック（既存データ）
 - **Quest**: プロジェクト（既存データ）
 - **Selected quest**: 選択中のプロジェクト（表示状態）
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 ### Measurable Outcomes
 

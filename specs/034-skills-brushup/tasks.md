@@ -6,7 +6,7 @@ description: "Tasks for implementing Skills brushup (content-first)"
 
 **Input**: Design documents from `specs/034-skills-brushup/`  
 **Prerequisites**: `specs/034-skills-brushup/plan.md` (required), `specs/034-skills-brushup/spec.md` (required)  
-**Tests**: Not requested (manual verification via `specs/034-skills-brushup/quickstart.md`)  
+**Tests**: Not requested (manual verification via `specs/034-skills-brushup/quickstart.md`)
 
 ## Phase 1: Setup (Shared Infrastructure)
 
@@ -80,5 +80,3 @@ description: "Tasks for implementing Skills brushup (content-first)"
 ### Parallel Opportunities
 
 - [ ] T015 [P] (Optional) Adjust SkillsSection copy (`src/components/sections/SkillsSection.tsx`) in parallel with content ordering changes once the desired message is decided
-
-

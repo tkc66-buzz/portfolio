@@ -1,7 +1,7 @@
 # Data Model: Skills Brushup
 
 **Feature**: `034-skills-brushup`  
-**Date**: 2025-12-29  
+**Date**: 2025-12-29
 
 ## Summary
 
@@ -26,4 +26,3 @@ No new entities are introduced. This feature refines the existing Skills content
 - Each displayed skill MUST have `years`.
 - If `firstUsedYear` is set, `lastUsedYear` MUST also be set (and vice versa).
 - Prefer avoiding duplicate `label` across categories to reduce confusion.
-

@@ -1,10 +1,4 @@
-export type TocItemId =
-  | "profile"
-  | "work"
-  | "writing"
-  | "activities"
-  | "skills"
-  | "contact";
+export type TocItemId = "profile" | "work" | "writing" | "activities" | "skills" | "contact";
 
 export type TocItem = {
   id: TocItemId;

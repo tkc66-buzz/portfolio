@@ -5,4 +5,3 @@ export const START_GATE_CLASS_STARTING = "is-starting";
 export const START_GATE_CLASS_STARTED = "is-started";
 
 export const START_GATE_EVENT = "start-gate-change";
-

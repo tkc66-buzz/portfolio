@@ -11,7 +11,7 @@
 
 - 対象URL: [Speaker Deck プロフィール](https://speakerdeck.com/tkc66buzz)
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 ### User Story 1 - Visitors can discover talk slides easily (Priority: P1)
 
@@ -47,7 +47,7 @@ As a visitor, when I open the Speaker Deck link, it is clearly an external desti
 - Speaker Deck 側が一時的に閲覧できない/ブロックされている: ポートフォリオ側は壊れず、リンクは通常の外部リンクとして扱われる。
 - JavaScript が無効: Activities/Talks のリンクは閲覧・クリックできる（基本は静的コンテンツとして動作）。
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 ### Functional Requirements
 
@@ -57,11 +57,11 @@ As a visitor, when I open the Speaker Deck link, it is clearly an external desti
 - **FR-004**: The change MUST be consistent with the existing content structure (Talks items/links) so it remains maintainable.
 - **FR-005**: The repo MUST remain buildable and deployable using the standard workflow.
 
-### Key Entities *(include if feature involves data)*
+### Key Entities _(include if feature involves data)_
 
 - **External Link**: label + URL for the Speaker Deck profile.
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 ### Measurable Outcomes
 

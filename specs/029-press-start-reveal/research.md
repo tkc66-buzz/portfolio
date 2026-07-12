@@ -21,5 +21,3 @@
 - **Rationale**: Inclusive UX; avoids discomfort while preserving the interaction.
 - **Alternatives considered**:
   - Always animate: rejected due to accessibility concerns.
-
-

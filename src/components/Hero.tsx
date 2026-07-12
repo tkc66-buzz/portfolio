@@ -92,7 +92,7 @@ export function Hero() {
   }
 
   return (
-    <section className="frame bg-[#1b1b1b] p-4 text-center text-fami-ivory sm:p-6 md:p-8">
+    <section className="frame text-fami-ivory bg-[#1b1b1b] p-4 text-center sm:p-6 md:p-8">
       <div className="flex flex-col items-center gap-6 md:flex-row md:justify-center md:gap-8">
         {/* Profile Image */}
         <div className="flex-shrink-0">
@@ -102,23 +102,27 @@ export function Hero() {
             width={200}
             height={200}
             priority
-            className="aspect-square w-28 border-4 border-fami-gold sm:w-32 md:w-48 lg:w-56"
+            className="border-fami-gold aspect-square w-28 border-4 sm:w-32 md:w-48 lg:w-56"
           />
         </div>
 
         {/* Text Content */}
         <div className="flex flex-col items-center">
           <p
-            className="blink-soft mb-3 text-xs uppercase tracking-[0.3em] text-fami-gold"
+            className="blink-soft text-fami-gold mb-3 text-xs tracking-[0.3em] uppercase"
             style={{ fontFamily: "var(--font-press)" }}
           >
             {started ? "READY" : "PRESS START"}
           </p>
-          <h1 className="text-xl sm:text-2xl md:text-3xl" style={{ fontFamily: "var(--font-press)" }}>
+          <h1
+            className="text-xl sm:text-2xl md:text-3xl"
+            style={{ fontFamily: "var(--font-press)" }}
+          >
             Takeshi Watanabe <span className="text-fami-gold">(Buzz)</span>
           </h1>
-          <p className="mt-4 text-sm [font-family:var(--font-noto)] sm:text-base md:text-lg">
-            Software Engineer @ eureka_inc | Match Group | Go | TypeScript | Terraform | AWS | Google Cloud | strong interest in system reliability and architecture
+          <p className="mt-4 [font-family:var(--font-noto)] text-sm sm:text-base md:text-lg">
+            Software Engineer @ eureka_inc | Match Group | Go | TypeScript | Terraform | AWS |
+            Google Cloud | strong interest in system reliability and architecture
           </p>
 
           {!started ? (

@@ -21,7 +21,7 @@ Add an "Articles" group to the Activities section to accommodate the user's Code
 
 ## Constitution Check
 
-*GATE: Passed — no violations.*
+_GATE: Passed — no violations._
 
 - **Principle I (Personality-First)**: Real published articles strengthen the evidence surface. ✅
 - **Principle II (Retro + Modern UX)**: No visual changes; uses existing responsive layout. ✅

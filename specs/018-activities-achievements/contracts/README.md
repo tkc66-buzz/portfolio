@@ -17,7 +17,7 @@ In this codebase, private overrides are merged shallowly:
 
 So if you provide `activities.groups`, it will **replace the entire groups array** (it does not deep-merge group items).
 
-**Recommendation**: If you override `activities.groups`, include *all* groups you want to show (Talks/Books/Community/Achievements) in the desired order.
+**Recommendation**: If you override `activities.groups`, include _all_ groups you want to show (Talks/Books/Community/Achievements) in the desired order.
 
 ### Example (recommended): include all groups
 
@@ -64,5 +64,3 @@ So if you provide `activities.groups`, it will **replace the entire groups array
 ## Spreadsheet (Apps Script) contract
 
 Out of scope for this feature: the current Apps Script exporter only supports `experience` + `projects`.
-
-

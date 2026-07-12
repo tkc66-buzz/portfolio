@@ -6,7 +6,7 @@
 ## Summary
 
 Make local development always reflect the latest Experience spreadsheet changes on a normal browser
-reload, by disabling data caching in development *only*. Preserve the existing production caching
+reload, by disabling data caching in development _only_. Preserve the existing production caching
 behavior (driven by the current revalidate window).
 
 ## Technical Context
@@ -23,7 +23,7 @@ behavior (driven by the current revalidate window).
 
 ## Constitution Check
 
-*GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
+_GATE: Must pass before Phase 0 research. Re-check after Phase 1 design._
 
 - **I. Personality-First Storytelling**: No narrative/content change; only dev workflow improvement.
 - **II. Retro Aesthetic, Modern Usability**: No UI changes; nothing that degrades usability.

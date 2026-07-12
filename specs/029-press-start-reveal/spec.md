@@ -5,13 +5,13 @@
 **Status**: Draft  
 **Input**: User description: "Cの案も追加で実装して"
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 <!--
   IMPORTANT: User stories should be PRIORITIZED as user journeys ordered by importance.
   Each user story/journey must be INDEPENDENTLY TESTABLE - meaning if you implement just ONE of them,
   you should still have a viable MVP (Minimum Viable Product) that delivers value.
-  
+
   Assign priorities (P1, P2, P3, etc.) to each story, where P1 is the most critical.
   Think of each story as a standalone slice of functionality that can be:
   - Developed independently
@@ -77,7 +77,7 @@ As a visitor who prefers reduced motion, I can still press START to unlock the M
 - What happens when the user activates START multiple times rapidly?
 - What happens when the user scrolls or uses anchor links before START?
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 <!--
   ACTION REQUIRED: The content in this section represents placeholders.
@@ -86,25 +86,25 @@ As a visitor who prefers reduced motion, I can still press START to unlock the M
 
 ### Functional Requirements
 
- - **FR-001**: The page MUST provide a clearly discoverable START control within the Hero area.
- - **FR-002**: Before START, the Menu MUST be visually hidden and non-interactive (no accidental clicks/focus).
- - **FR-003**: Activating START MUST unlock the Menu and make it visible and interactive.
- - **FR-004**: The unlock state MUST persist for the duration of the browsing session (session-scoped).
- - **FR-005**: The START interaction MUST be keyboard-accessible and provide a logical focus target after unlocking (Menu or first Menu item).
- - **FR-006**: The transition MUST respect reduced motion preference by avoiding intensive motion when reduced motion is enabled.
- - **FR-007**: If session persistence is unavailable, the feature MUST still function for the current page view (unlock works, but may not persist).
- - **FR-008**: The feature MUST NOT store any personal data; the persisted state is limited to a simple started/unstarted flag.
+- **FR-001**: The page MUST provide a clearly discoverable START control within the Hero area.
+- **FR-002**: Before START, the Menu MUST be visually hidden and non-interactive (no accidental clicks/focus).
+- **FR-003**: Activating START MUST unlock the Menu and make it visible and interactive.
+- **FR-004**: The unlock state MUST persist for the duration of the browsing session (session-scoped).
+- **FR-005**: The START interaction MUST be keyboard-accessible and provide a logical focus target after unlocking (Menu or first Menu item).
+- **FR-006**: The transition MUST respect reduced motion preference by avoiding intensive motion when reduced motion is enabled.
+- **FR-007**: If session persistence is unavailable, the feature MUST still function for the current page view (unlock works, but may not persist).
+- **FR-008**: The feature MUST NOT store any personal data; the persisted state is limited to a simple started/unstarted flag.
 
-*Example of marking unclear requirements:*
+_Example of marking unclear requirements:_
 
 - (No [NEEDS CLARIFICATION] items for this feature.)
 
-### Key Entities *(include if feature involves data)*
+### Key Entities _(include if feature involves data)_
 
 - **[Entity 1]**: [What it represents, key attributes without implementation]
 - **[Entity 2]**: [What it represents, relationships to other entities]
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 <!--
   ACTION REQUIRED: Define measurable success criteria.

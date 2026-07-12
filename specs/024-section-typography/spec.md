@@ -5,13 +5,13 @@
 **Status**: Draft  
 **Input**: User description: "各SectionContentの文字サイズが小さすぎるので上げたい。"
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 <!--
   IMPORTANT: User stories should be PRIORITIZED as user journeys ordered by importance.
   Each user story/journey must be INDEPENDENTLY TESTABLE - meaning if you implement just ONE of them,
   you should still have a viable MVP (Minimum Viable Product) that delivers value.
-  
+
   Assign priorities (P1, P2, P3, etc.) to each story, where P1 is the most critical.
   Think of each story as a standalone slice of functionality that can be:
   - Developed independently
@@ -76,7 +76,7 @@
 - 文字サイズ上げにより “情報量が多く見える” ので、余白/行間が必要になる
 - Activities/Skills のような密度が高い箇所が破綻しない
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 <!--
   ACTION REQUIRED: The content in this section represents placeholders.
@@ -90,11 +90,11 @@
 - **FR-003**: システム MUST 見出し階層（H2/H3）と本文の視覚的コントラストを維持する
 - **FR-004**: システム SHOULD 本文のタイポグラフィ（サイズ/行間）を共通トークンとして一箇所に集約する（CSSクラス or 定数）
 
-### Key Entities *(include if feature involves data)*
+### Key Entities _(include if feature involves data)_
 
 - N/A (UI-only)
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 <!--
   ACTION REQUIRED: Define measurable success criteria.

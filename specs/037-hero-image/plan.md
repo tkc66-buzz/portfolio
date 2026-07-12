@@ -23,7 +23,7 @@ Add a single profile image to the hero section that maintains the retro aestheti
 
 ## Constitution Check
 
-*GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
+_GATE: Must pass before Phase 0 research. Re-check after Phase 1 design._
 
 ### Initial Evaluation (Pre-Phase 0)
 
@@ -156,15 +156,15 @@ No violations - all constitution checks passed. No complexity justifications nee
 
 ### Design Artifacts Summary
 
-| Artifact                                                 | Status       | Key Content                                         |
-| -------------------------------------------------------- | ------------ | --------------------------------------------------- |
-| [spec.md](spec.md)                                       | ✅ Complete  | User stories, requirements, success criteria        |
-| [plan.md](plan.md)                                       | ✅ Complete  | Technical context, architecture decisions           |
-| [research.md](research.md)                               | ✅ Complete  | 7 key decisions with rationale and alternatives     |
-| [data-model.md](data-model.md)                           | ✅ Complete  | Image asset specs, component props, file structure  |
-| [contracts/](contracts/)                                 | ✅ Complete  | No API contracts (frontend-only feature)            |
-| [quickstart.md](quickstart.md)                           | ✅ Complete  | Testing checklist, troubleshooting guide            |
-| [checklists/requirements.md](checklists/requirements.md) | ✅ Complete  | Spec quality validation (all items passed)          |
+| Artifact                                                 | Status      | Key Content                                        |
+| -------------------------------------------------------- | ----------- | -------------------------------------------------- |
+| [spec.md](spec.md)                                       | ✅ Complete | User stories, requirements, success criteria       |
+| [plan.md](plan.md)                                       | ✅ Complete | Technical context, architecture decisions          |
+| [research.md](research.md)                               | ✅ Complete | 7 key decisions with rationale and alternatives    |
+| [data-model.md](data-model.md)                           | ✅ Complete | Image asset specs, component props, file structure |
+| [contracts/](contracts/)                                 | ✅ Complete | No API contracts (frontend-only feature)           |
+| [quickstart.md](quickstart.md)                           | ✅ Complete | Testing checklist, troubleshooting guide           |
+| [checklists/requirements.md](checklists/requirements.md) | ✅ Complete | Spec quality validation (all items passed)         |
 
 ## Next Steps
 

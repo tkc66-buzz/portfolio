@@ -1,7 +1,7 @@
 # Research: Speaker Deck URL
 
 **Feature**: `036-speakerdeck-url`  
-**Date**: 2025-12-29  
+**Date**: 2025-12-29
 
 ## Decision: Place the link under Activities → Talks
 
@@ -16,4 +16,3 @@
 
 - **Decision**: Add a Talks list entry (data-only) rather than introducing a new UI affordance.
 - **Rationale**: Keeps “one source of truth” in `src/content/portfolio.ts` and avoids extra component surface area.
-

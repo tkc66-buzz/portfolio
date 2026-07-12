@@ -1,7 +1,7 @@
 # Quickstart: Work Two-Column Layout
 
 **Feature**: `032-work-two-column-layout`  
-**Date**: 2025-12-29  
+**Date**: 2025-12-29
 
 ## Goal
 
@@ -34,4 +34,3 @@ Open the site and scroll to **Work** (or use the menu after **PRESS START**).
 ### Mobile (< 768px)
 
 - Panels stack vertically; no overflow.
-

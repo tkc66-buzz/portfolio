@@ -10,14 +10,16 @@
 スマートフォンでポートフォリオサイトにアクセスすると、メニューバーの上部が画面から見切れてしまう問題が発生している。
 
 ### 現状の実装
+
 - メニューバーは `sticky` で `top: var(--menu-top)` に配置
 - モバイル: `--menu-top: 0.75rem` (12px)
 - デスクトップ: `--menu-top: 1rem` (16px)
 
 ### 採用する解決策
+
 **ハンバーガーメニュー（折りたたみ式）** - モバイルでは折りたたみ式のハンバーガーメニューに変更し、画面スペースを確保しつつナビゲーション機能を維持する。
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 ### User Story 1 - Mobile User Views Page (Priority: P1)
 
@@ -56,7 +58,7 @@
 - メニュー展開中に画面回転した場合は自動的に閉じて適切なUIに切り替わる
 - reduced-motion設定時はアニメーションを無効化する
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 ### Functional Requirements
 
@@ -78,7 +80,7 @@
 - Q: メニュー展開時の表示スタイルはどうしますか？ → A: フルスクリーンオーバーレイ（ゲームメニュー風）
 - Q: ハンバーガーメニューに切り替えるブレークポイントは？ → A: 640px未満（Tailwind sm未満）
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 ### Measurable Outcomes
 

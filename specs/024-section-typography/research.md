@@ -22,5 +22,3 @@
 ## Open Questions
 
 - Whether dense parts (Skills progress labels, badges) should remain small (`text-xs`) while descriptions become `text-base`.
-
-
