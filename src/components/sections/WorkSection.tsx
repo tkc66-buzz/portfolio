@@ -105,7 +105,7 @@ export async function WorkSection() {
       </header>
 
       <p className="section-body-muted mt-3">
-        会社/組織ごとに概要をまとめ、配下に具体的な取り組み（PROJECT）を載せています。
+        会社/組織ごとに取り組んだ具体的な活動を載せています。
       </p>
 
       <div className="work-timeline__list [font-family:var(--font-noto)]">

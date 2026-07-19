@@ -9,8 +9,15 @@
 
 :root {
   color-scheme: dark;
-  --menu-top: 0.75rem;
-  --menu-offset: 9.5rem;
+  --topnav-h: 3.25rem;
+  --page-top-pt: 2.5rem;
+  --menu-offset: 5rem;
+}
+
+@media (min-width: 640px) {
+  html.is-started {
+    --page-top-pt: calc(var(--topnav-h) + 1.5rem);
+  }
 }
 
 html,
@@ -180,12 +187,54 @@ html.is-starting body::after {
   will-change: width;
 }
 
-/* Current section highlight (Menu) */
+/* Top nav bar (full-width fixed header) */
+.topnav {
+  border-bottom: 2px solid rgba(215, 176, 91, 0.4);
+}
+
+/* Mobile: hide top nav (hamburger handles navigation instead).
+   Unlayered CSS wins over Tailwind's hidden/@layer utilities. */
+@media (max-width: 639px) {
+  .topnav {
+    display: none;
+  }
+}
+
+/* padding-top is driven by --page-top-pt (set via CSS custom property above) */
+
+/* Compact progress strip at bottom of topnav */
+.topnav .hud-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+}
+
+.topnav .hud-progress__track {
+  height: 3px;
+  border: none;
+  box-shadow: none;
+}
+
+.topnav .hud-progress p {
+  display: none;
+}
+
+/* Top nav text links */
+.nav-link {
+  color: rgba(248, 241, 220, 0.6);
+  transition: color 120ms steps(2, end);
+}
+
+.nav-link:hover {
+  color: rgba(215, 176, 91, 0.95);
+}
+
+/* Current section highlight */
 .toc-active {
-  box-shadow:
-    0 0 0 3px rgba(215, 176, 91, 0.9),
-    0 0 18px rgba(215, 176, 91, 0.22);
-  filter: brightness(1.2);
+  color: rgba(215, 176, 91, 0.95);
+  border-bottom-color: rgba(215, 176, 91, 0.8);
 }
 
 /* Gamefeel: subtle, CSS-first motion (must respect reduced motion) */
@@ -531,6 +580,13 @@ html.is-starting body::after {
 
 .mobile-menu-btn--open .mobile-menu-btn__line:nth-child(3) {
   transform: translateY(-10px) rotate(-45deg);
+}
+
+/* Hide hamburger on sm+ (unlayered CSS wins over sm:hidden in @layer utilities) */
+@media (min-width: 640px) {
+  .mobile-menu-btn {
+    display: none;
+  }
 }
 
 .mobile-menu-overlay {
