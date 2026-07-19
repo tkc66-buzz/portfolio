@@ -6,7 +6,6 @@ export type TocItem = {
 };
 
 export const TOC_ITEMS: TocItem[] = [
-  { id: "profile", label: "Profile" },
   { id: "work", label: "Work" },
   { id: "writing", label: "Writing" },
   { id: "activities", label: "Activities" },

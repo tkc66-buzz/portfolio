@@ -42,7 +42,7 @@ function useStartGateStarted() {
   return useSyncExternalStore(subscribeStartGate, getStartGateSnapshot, getStartGateServerSnapshot);
 }
 
-export function Hero() {
+export function Hero({ profileBody }: { profileBody: string }) {
   const started = useStartGateStarted();
   const startingRef = useRef(false);
 
@@ -92,54 +92,57 @@ export function Hero() {
   }
 
   return (
-    <section className="frame text-fami-ivory bg-[#1b1b1b] p-4 text-center sm:p-6 md:p-8">
-      <div className="flex flex-col items-center gap-6 md:flex-row md:justify-center md:gap-8">
-        {/* Profile Image */}
-        <div className="flex-shrink-0">
-          <Image
-            src="/assets/profile.png"
-            alt="Profile photo of Takeshi Watanabe"
-            width={200}
-            height={200}
-            priority
-            className="border-fami-gold aspect-square w-28 border-4 sm:w-32 md:w-48 lg:w-56"
-          />
-        </div>
+    <section
+      id="profile"
+      className="frame text-fami-ivory scroll-mt-[var(--menu-offset)] bg-[#1b1b1b] p-4 text-center sm:p-6 md:p-8"
+    >
+      <div className="flex flex-col items-center gap-4">
+        <p
+          className="blink-soft text-fami-gold text-center text-xs tracking-[0.3em] uppercase"
+          style={{ fontFamily: "var(--font-press)" }}
+        >
+          {started ? "READY" : "PRESS START"}
+        </p>
 
-        {/* Text Content */}
-        <div className="flex flex-col items-center">
-          <p
-            className="blink-soft text-fami-gold mb-3 text-xs tracking-[0.3em] uppercase"
-            style={{ fontFamily: "var(--font-press)" }}
-          >
-            {started ? "READY" : "PRESS START"}
-          </p>
-          <h1
-            className="text-xl sm:text-2xl md:text-3xl"
-            style={{ fontFamily: "var(--font-press)" }}
-          >
-            Takeshi Watanabe <span className="text-fami-gold">(Buzz)</span>
-          </h1>
-          <p className="mt-4 [font-family:var(--font-noto)] text-sm sm:text-base md:text-lg">
-            Senior Software Engineer at Eureka, part of Match Group. I build reliable,
-            high-performance cloud systems with Go, TypeScript, Terraform, AWS, and Google
-            Cloud—focused on resilient architecture, observability, and an exceptional developer
-            experience.
-          </p>
+        <Image
+          src="/assets/profile.png"
+          alt="Profile photo of Takeshi Watanabe"
+          width={200}
+          height={200}
+          priority
+          className="border-fami-gold aspect-square w-28 border-4 sm:w-32 md:w-40"
+        />
 
-          {!started ? (
-            <div className="mt-6">
-              <button
-                type="button"
-                className="nes-btn is-primary btn-game"
-                onClick={onStart}
-                aria-label="Press Start to reveal the menu"
-              >
-                START
-              </button>
-            </div>
-          ) : null}
-        </div>
+        <h1
+          className="text-xl sm:text-2xl md:text-3xl"
+          style={{ fontFamily: "var(--font-press)" }}
+        >
+          Takeshi Watanabe <span className="text-fami-gold">(Buzz)</span>
+        </h1>
+        <p className="[font-family:var(--font-noto)] text-sm sm:text-base md:text-lg">
+          Senior Software Engineer at Eureka, part of Match Group. I build reliable,
+          high-performance cloud systems with Go, TypeScript, Terraform, AWS, and Google
+          Cloud—focused on resilient architecture, observability, and an exceptional developer
+          experience.
+        </p>
+        {started ? (
+          <p className="[font-family:var(--font-noto)] text-sm sm:text-base">
+            {profileBody}
+          </p>
+        ) : null}
+
+        {!started ? (
+          <div className="mt-2 flex justify-center">
+            <button
+              type="button"
+              className="nes-btn is-primary btn-game"
+              onClick={onStart}
+              aria-label="Press Start to reveal the menu"
+            >
+              START
+            </button>
+          </div>
+        ) : null}
       </div>
     </section>
   );

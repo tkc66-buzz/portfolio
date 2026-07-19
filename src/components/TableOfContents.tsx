@@ -26,27 +26,29 @@ export function TableOfContents() {
       id="menu"
       aria-label="Menu"
       tabIndex={-1}
-      className="topnav hud fixed top-0 inset-x-0 z-50 hidden bg-[#1b1b1b]/90 backdrop-blur supports-[backdrop-filter]:bg-[#1b1b1b]/70 sm:flex sm:flex-col"
+      className="topnav hud fixed inset-x-0 top-0 z-50 hidden bg-[#1b1b1b]/90 backdrop-blur supports-[backdrop-filter]:bg-[#1b1b1b]/70 sm:flex"
     >
-      <div className="mx-auto flex w-full max-w-5xl items-center gap-3 px-4 py-2 md:px-8">
-        <h2
-          className="text-fami-gold shrink-0 text-[0.65rem] tracking-[0.2em]"
-          style={{ fontFamily: "var(--font-press)" }}
+      <div className="mx-auto flex w-full max-w-5xl items-center gap-6 px-4 py-5 md:px-8">
+        <a
+          href="#profile"
+          data-toc-id="profile"
+          className="text-fami-gold focus-visible:ring-fami-gold inline-flex shrink-0 items-center gap-2 border-b-2 border-transparent text-sm leading-none tracking-[0.15em] uppercase focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#111]"
+          aria-label="Profile"
         >
-          MENU
-        </h2>
-        <ul className="flex flex-1 flex-wrap gap-3">
+          <PixelIcon src="/assets/pixel/icons/profile.svg" decorative size="md" />
+          BUZZ
+        </a>
+
+        <ul className="!mb-0 flex flex-1 items-center gap-5">
           {TOC_ITEMS.map((item) => (
             <li key={item.id}>
               <a
                 data-toc-id={item.id}
-                className="nes-btn is-primary is-small btn-game focus-visible:ring-fami-gold shrink-0 text-[0.65rem] tracking-wide uppercase focus:outline-none focus-visible:ring-4 focus-visible:ring-offset-4 focus-visible:ring-offset-[#111]"
+                className="nav-link focus-visible:ring-fami-gold inline-flex items-center gap-2 border-b-2 border-transparent text-sm leading-none tracking-wide uppercase focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#111]"
                 href={tocHref(item.id)}
               >
-                <span className="inline-flex items-center gap-1.5">
-                  <PixelIcon src={tocIconSrc(item.id)} decorative size="sm" />
-                  <span>{item.label}</span>
-                </span>
+                <PixelIcon src={tocIconSrc(item.id)} decorative size="md" />
+                {item.label}
               </a>
             </li>
           ))}
