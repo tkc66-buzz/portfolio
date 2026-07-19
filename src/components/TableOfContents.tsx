@@ -19,39 +19,40 @@ function tocIconSrc(id: (typeof TOC_ITEMS)[number]["id"]) {
   }
 }
 
-/** Desktop sticky menu - only visible on sm and larger screens */
+/** Full-width fixed top nav bar - only visible on sm+ screens */
 export function TableOfContents() {
   return (
     <nav
       id="menu"
       aria-label="Menu"
       tabIndex={-1}
-      className="hud frame text-fami-ivory sticky top-[var(--menu-top)] z-50 hidden bg-[#1b1b1b]/90 p-4 backdrop-blur supports-[backdrop-filter]:bg-[#1b1b1b]/70 sm:block"
+      className="topnav hud fixed top-0 inset-x-0 z-50 hidden bg-[#1b1b1b]/90 backdrop-blur supports-[backdrop-filter]:bg-[#1b1b1b]/70 sm:flex sm:flex-col"
     >
-      <div className="mb-3 flex items-baseline justify-between">
-        <h2 className="text-fami-gold text-sm" style={{ fontFamily: "var(--font-press)" }}>
+      <div className="mx-auto flex w-full max-w-5xl items-center gap-3 px-4 py-2 md:px-8">
+        <h2
+          className="text-fami-gold shrink-0 text-[0.65rem] tracking-[0.2em]"
+          style={{ fontFamily: "var(--font-press)" }}
+        >
           MENU
         </h2>
+        <ul className="flex flex-1 flex-wrap gap-3">
+          {TOC_ITEMS.map((item) => (
+            <li key={item.id}>
+              <a
+                data-toc-id={item.id}
+                className="nes-btn is-primary is-small btn-game focus-visible:ring-fami-gold shrink-0 text-[0.65rem] tracking-wide uppercase focus:outline-none focus-visible:ring-4 focus-visible:ring-offset-4 focus-visible:ring-offset-[#111]"
+                href={tocHref(item.id)}
+              >
+                <span className="inline-flex items-center gap-1.5">
+                  <PixelIcon src={tocIconSrc(item.id)} decorative size="sm" />
+                  <span>{item.label}</span>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
-
       <ScrollHud />
-
-      <ul className="flex flex-wrap gap-2">
-        {TOC_ITEMS.map((item) => (
-          <li key={item.id}>
-            <a
-              data-toc-id={item.id}
-              className="nes-btn is-primary is-small btn-game focus-visible:ring-fami-gold shrink-0 text-[0.7rem] tracking-wide uppercase focus:outline-none focus-visible:ring-4 focus-visible:ring-offset-4 focus-visible:ring-offset-[#111]"
-              href={tocHref(item.id)}
-            >
-              <span className="inline-flex items-center gap-2">
-                <PixelIcon src={tocIconSrc(item.id)} decorative size="sm" />
-                <span>{item.label}</span>
-              </span>
-            </a>
-          </li>
-        ))}
-      </ul>
     </nav>
   );
 }
