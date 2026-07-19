@@ -81,8 +81,16 @@ export type ActivityItem = {
   link?: ExternalLink;
 };
 
+enum ActivityGroupName {
+  Talks = "Talks",
+  Books = "Books",
+  Articles = "Articles",
+  Community = "Community",
+  Achievements = "Achievements",
+}
+
 export type ActivityGroup = {
-  name: "Talks" | "Books" | "Articles" | "Community" | "Achievements";
+  name: ActivityGroupName;
   items: ActivityItem[];
 };
 
@@ -141,7 +149,7 @@ export const publicPortfolio: Portfolio = {
     id: "profile",
     heading: "Profile",
     body:
-      "Machine Learning Engineer、Data Scientist、Infrastructure Engineer、Platform Engineer などの職種を経験してきました。現在は株式会社エウレカで、Go を中心にバックエンド開発に携わっています。" +
+      "Machine Learning Engineer、Data Scientist、Infrastructure Engineer、Platform Engineer などの職種を経験してきました。現在は株式会社エウレカで、Go を中心としたバックエンド開発に携わっています。" +
       "副業では、サービス立ち上げ初期からインフラ基盤をゼロから構築したり、TypeScript を用いたフルスタック開発にも取り組んでいます",
   },
   work: {
@@ -153,13 +161,13 @@ export const publicPortfolio: Portfolio = {
         period: "2018-2019",
         company: WORK_LABELS.primary[0],
         summary:
-          "3カ月間のIT研修で、最優秀システム開発賞を受賞。第一希望である国際システム部に配属。銀行海外支部のための、業務アプリ開発に携わる。",
+          "新卒入社。3カ月間の新卒システム開発研修では同期の中で優勝を果たす。その後第一希望である国際システム開発事業部に配属。銀行海外支部のための、業務アプリ開発に携わる。",
         projects: [
           {
             anchorId: "project-bank-business-app-development",
             title: "海外銀行業務アプリ開発",
             summary:
-              "3カ月間のIT研修で、最優秀システム開発賞を受賞。第一希望である国際システム部に配属。銀行海外支部のための、業務アプリ開発に携わる。",
+              "みずほ銀行海外支店向けの業務アプリ開発に携わる。ちょうど内製化の流れもあり、Javaを用いた業務アプリケーションの開発、MySQLを用いたデータベース設計・運用、HTML/CSS/JavaScriptを用いたフロントエンド開発を担当。",
             role: "developer",
             tech: ["Java", "MySQL", "HTML/CSS/JavaScript"],
           },
@@ -170,7 +178,7 @@ export const publicPortfolio: Portfolio = {
         period: "2019-2022",
         company: WORK_LABELS.primary[1],
         summary:
-          "独立系SIerで、複数領域（アプリ/データ/基盤）を横断しながら、現場の制約下での改善や意思決定を経験。仕様・運用・体制の“現実”に合わせて最適解を作る力を鍛えました。",
+          "独立系SIerで主にAWSを用いたインフラ基盤構築、API開発、プラットフォーム基盤整備、MLOps基盤構築、などを担当しました。大規模ネットワークの構築やハイブリットSSO認証基盤の構築なども経験しました。エンジニア以外だと情シス業務や採用活動なども経験しました。",
         projects: [
           {
             anchorId: "project-mlops-infra-and-api-development",
@@ -189,7 +197,7 @@ export const publicPortfolio: Portfolio = {
             tech: ["OpenShift", "Python", "Elastic Stack", "Ansible"],
           },
           {
-            anchorId: "project-next-generation-core-network-development",
+            anchorId: "project-hybrid-sso-auth",
             title: "KeycloatとCognitoを使用したハイブリットSSO認証基盤の構築",
             summary:
               "各サービスで登録とログインが必要という課題がありました。そこで、KeycloakをECSに立てスケールできる横断認証基盤として構築導入を行いました。",
@@ -205,9 +213,9 @@ export const publicPortfolio: Portfolio = {
         summary: "大規模サービスのBackend領域で、Global Application基盤の開発を担当しています。",
         projects: [
           {
-            anchorId: "project-global-application-backend-kr-development",
+            anchorId: "project-global-application-backend-development",
             title: "Global Application Backend KRの開発",
-            summary: "Pairs韓国展開のBackend APIの開発を行いました。",
+            summary: "Pairs韓国、台湾展開のBackendの開発を行いました。",
             role: "developer",
             tech: ["Go", "AWS", "MySQL", "Observability"],
           },
@@ -245,7 +253,7 @@ export const publicPortfolio: Portfolio = {
     heading: "Activities",
     groups: [
       {
-        name: "Talks",
+        name: ActivityGroupName.Talks,
         items: [
           {
             year: "2020",
@@ -270,7 +278,7 @@ export const publicPortfolio: Portfolio = {
         ],
       },
       {
-        name: "Books",
+        name: ActivityGroupName.Books,
         items: [
           {
             year: "2024",
@@ -285,7 +293,7 @@ export const publicPortfolio: Portfolio = {
         ],
       },
       {
-        name: "Articles",
+        name: ActivityGroupName.Articles,
         items: [
           {
             year: "2024",
@@ -299,7 +307,7 @@ export const publicPortfolio: Portfolio = {
         ],
       },
       {
-        name: "Community",
+        name: ActivityGroupName.Community,
         items: [
           {
             year: "2024",
@@ -322,7 +330,7 @@ export const publicPortfolio: Portfolio = {
         ],
       },
       {
-        name: "Achievements",
+        name: ActivityGroupName.Achievements,
         items: [
           {
             year: "2019",
@@ -388,9 +396,9 @@ export const publicPortfolio: Portfolio = {
     blurb: "副業・技術相談など、お気軽にご連絡ください。",
     links: [
       { label: "X", href: "https://x.com/buzz_tkc" },
-      { label: "Email", href: "worktkc2018@gmail.com" },
       { label: "GitHub", href: "https://github.com/tkc66-buzz" },
       { label: "LinkedIn", href: "https://www.linkedin.com/in/takeshi-watananbe-4736a8285/" },
+      { label: "Email", href: "worktkc2018@gmail.com" },
     ],
   },
 };
