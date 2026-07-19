@@ -72,7 +72,12 @@ export type WorkEntry = {
 
 export type Work = SectionContent & { items: WorkEntry[] };
 export type Skills = SectionContent & { items: Skill[]; categories?: SkillCategory[] };
-export type Writing = SectionContent & { items: ExternalLink[] };
+export type WritingItem = ExternalLink & {
+  title?: string;
+  year?: string;
+  context?: string;
+};
+export type Writing = SectionContent & { items: WritingItem[] };
 
 export type ActivityItem = {
   year: string;
@@ -83,8 +88,6 @@ export type ActivityItem = {
 
 enum ActivityGroupName {
   Talks = "Talks",
-  Books = "Books",
-  Articles = "Articles",
   Community = "Community",
   Achievements = "Achievements",
 }
@@ -244,8 +247,31 @@ export const publicPortfolio: Portfolio = {
     id: "writing",
     heading: "Writing",
     items: [
-      { label: "Tech (Medium)", href: "https://medium.com/@buzz_tkc" },
-      { label: "Casual (sizu.me)", href: "https://sizu.me/buzz" },
+      {
+        label: "Tech Blog",
+        context: "業務で得た知見をアウトプットしたものです。",
+        href: "https://medium.com/@buzz_tkc",
+      },
+      {
+        label: "Casual Blog",
+        context: "読んだ本やMonthlyの振り返りといった日常生活のアウトプットを投稿しています。",
+        href: "https://sizu.me/buzz",
+      },
+      {
+        label: "技術書典",
+        title: "Real World Platform Engineering: 現場の知恵とノウハウ",
+        year: "2024",
+        context:
+          "Platform Engineeringの現場でのノウハウや導入についてMeetupメンバーで執筆した技術書です。",
+        href: "https://techbookfest.org/product/qunTLHG5hLbL91bBX9dqDU?productVariantID=diV811bQsBeU5YfWhtGym0",
+      },
+      {
+        label: "外部メディア",
+        title: "CodeZine連載：Platform Engineering入門",
+        year: "2024",
+        context: "CodeZine（翔泳社）でPlatform Engineeringの入門連載を執筆しました。",
+        href: "https://codezine.jp/article/detail/18856",
+      },
     ],
   },
   activities: {
@@ -273,35 +299,6 @@ export const publicPortfolio: Portfolio = {
             link: {
               label: "DS2024",
               href: "https://event.shoeisha.jp/devsumi/20240215/session/4807",
-            },
-          },
-        ],
-      },
-      {
-        name: ActivityGroupName.Books,
-        items: [
-          {
-            year: "2024",
-            title: "Real World Platform Engineering: 現場の知恵とノウハウ",
-            context:
-              "Platform Engineeringの現場でのノウハウや導入についてMeetup メンバーで書籍を執筆し、技術書典と技書博で発売しました。",
-            link: {
-              label: "技術書典",
-              href: "https://techbookfest.org/product/qunTLHG5hLbL91bBX9dqDU?productVariantID=diV811bQsBeU5YfWhtGym0",
-            },
-          },
-        ],
-      },
-      {
-        name: ActivityGroupName.Articles,
-        items: [
-          {
-            year: "2024",
-            title: "CodeZine連載：Platform Engineering入門",
-            context: "CodeZine（翔泳社）でPlatform Engineeringの入門連載を執筆しました。",
-            link: {
-              label: "CodeZine",
-              href: "https://codezine.jp/article/detail/18856",
             },
           },
         ],

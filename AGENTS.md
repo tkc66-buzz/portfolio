@@ -31,6 +31,7 @@ Unified cheat sheet so any AI agent (Claude Code, GPT, etc.) can understand the 
 2. **Environment** – `.npmrc` sets `shamefully-hoist=true`, `strict-peer-dependencies=false`. npm will warn but pnpm honors them.
 3. **Assets** – Favicon assets live under `src/app/` (e.g. `src/app/favicon.ico`, `src/app/icon.svg`).
 4. **Styling Flow** – NES.css + Tailwind; prefer utility classes plus `.nes-*` components. Mobile-first responsive approach: default styles target 320px+, then `sm:` (640px), `md:` (768px), `lg:` (1024px). NES.css components have mobile overrides in `globals.css` at `max-width: 639px`.
+   - The unified retro blue accent token, `fami-blue` (`#4f86c6`), is used by Activity filters/badges, Top Menu active states, and NES primary buttons.
 5. **Testing** – No automated tests yet; rely on lint/build. Agents should add tests when implementing logic.
 
 ## UI / Information Architecture Notes
@@ -43,10 +44,10 @@ Unified cheat sheet so any AI agent (Claude Code, GPT, etc.) can understand the 
   for in-page anchor navigation.
 - Content data is centralized in `src/content/portfolio.ts` for maintainability.
   - Skills support categorized groups (`skills.categories`) with a backward-compatible flat list (`skills.items`) derived from categories.
-    - Skills use `years` (required) and can optionally include `firstUsedYear` / `lastUsedYear` to show recency.
-  - Writing/Blog links live in `portfolio.writing` and are rendered in `src/components/sections/WritingSection.tsx`.
-  - Activities (Talks/Books/Community) live in `portfolio.activities` and are rendered in `src/components/sections/ActivitiesSection.tsx`.
-    - Activities includes a one-time “Achievement Unlocked” toast (`src/components/AchievementToast.tsx`) shown when the section first enters view (session-scoped, dismissible, reduced-motion aware).
+    - Skills use `years` (required) and can optionally include `firstUsedYear` / `lastUsedYear` to show recency; an active skill omits the current calendar year from its range.
+  - Writing/Blog links, books, and external media articles live in `portfolio.writing` and are rendered in `src/components/sections/WritingSection.tsx`.
+  - Activities (Talks/Community/Achievements) live in `portfolio.activities` and are rendered in `src/components/sections/ActivitiesSection.tsx`.
+    - Activities uses `src/components/sections/ActivitiesOutputGrid.tsx` for category filters, responsive output cards, in-card URL previews, and direct links.
   - Work (company/organization blocks with nested Projects) lives in `portfolio.work` and is rendered in `src/components/sections/WorkSection.tsx`.
     - Work includes a deliberately “unique screen” RPG-style layout driven by a small client component (`src/components/sections/WorkQuestLog.tsx`) plus derived view models (`workRpgVm.ts`).
   - Optional visuals:
@@ -87,6 +88,7 @@ Use the following checklist whenever you modify code, dependencies, or build/dep
 - 041-add-codezine-series: Added TypeScript 5.x + Next.js 16.0.7, React 19.2.1 + Tailwind CSS 3.4.18, NES.css 2.3.0
 
 <!-- BEGIN:nextjs-agent-rules -->
+
 # This is NOT the Next.js you know
 
 This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.

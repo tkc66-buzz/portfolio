@@ -1,6 +1,8 @@
 import { getPortfolio } from "@/content/portfolio";
 import { PixelIcon } from "@/components/PixelIcon";
 
+const CURRENT_YEAR = new Date().getFullYear();
+
 function formatYears(years: number) {
   if (Number.isInteger(years)) return `${years}y`;
   return `${years}y`;
@@ -8,6 +10,9 @@ function formatYears(years: number) {
 
 function formatUsageRange(skill: { firstUsedYear?: number; lastUsedYear?: number }) {
   if (typeof skill.firstUsedYear === "number" && typeof skill.lastUsedYear === "number") {
+    if (skill.lastUsedYear >= CURRENT_YEAR) {
+      return skill.firstUsedYear < CURRENT_YEAR ? `${skill.firstUsedYear}–` : null;
+    }
     return `${skill.firstUsedYear}–${skill.lastUsedYear}`;
   }
   return null;
@@ -36,7 +41,7 @@ export async function SkillsSection() {
         <span>{skills.heading}</span>
       </h2>
       <p className="section-body-muted mt-3">
-        スキルは “経験年数（実務で触った目安）” を軸に、強みの分布が伝わるように整理しています。
+        スキルは実務で触った経験年数をベースにまとめています。
       </p>
       {categories ? (
         <div className="mt-4 space-y-6">

@@ -99,9 +99,6 @@ export async function WorkSection() {
           <PixelIcon src="/assets/pixel/icons/work.svg" decorative size="md" />
           <span>{work.heading}</span>
         </h2>
-        <span className="pixel-float text-fami-gold text-xs tracking-[0.3em] uppercase">
-          WORK LOG
-        </span>
       </header>
 
       <p className="section-body-muted mt-3">
