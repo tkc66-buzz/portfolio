@@ -2,6 +2,7 @@
 
 @theme {
   --color-fami-red: #a20000;
+  --color-fami-blue: #4f86c6;
   --color-fami-gold: #d7b05b;
   --color-fami-ivory: #f8f1dc;
   --color-fami-ink: #111111;
@@ -27,6 +28,33 @@ body {
 
 body {
   background: #111;
+}
+
+/* Keep NES.css primary controls aligned with the Activity retro-blue accent. */
+.nes-btn.is-primary {
+  color: var(--color-fami-ivory);
+  background-color: var(--color-fami-blue);
+}
+
+.nes-btn.is-primary::after {
+  box-shadow: inset -4px -4px #2f5f98;
+}
+
+.nes-btn.is-primary:hover {
+  color: var(--color-fami-ivory);
+  background-color: #6097d3;
+}
+
+.nes-btn.is-primary:hover::after {
+  box-shadow: inset -6px -6px #2f5f98;
+}
+
+.nes-btn.is-primary:focus {
+  box-shadow: 0 0 0 6px rgb(79 134 198 / 30%);
+}
+
+.nes-btn.is-primary:active:not(.is-disabled)::after {
+  box-shadow: inset 4px 4px #2f5f98;
 }
 
 /* Start gate (PRESS START reveal)
@@ -228,13 +256,13 @@ html.is-starting body::after {
 }
 
 .nav-link:hover {
-  color: rgba(215, 176, 91, 0.95);
+  color: rgb(79 134 198 / 95%);
 }
 
 /* Current section highlight */
 .toc-active {
-  color: rgba(215, 176, 91, 0.95);
-  border-bottom-color: rgba(215, 176, 91, 0.8);
+  color: rgb(79 134 198 / 95%);
+  border-bottom-color: rgb(79 134 198 / 80%);
 }
 
 /* Gamefeel: subtle, CSS-first motion (must respect reduced motion) */
@@ -391,7 +419,6 @@ html.is-starting body::after {
   min-width: 0;
 }
 
-
 .work-timeline__project-label {
   font-size: 0.6rem;
   text-transform: uppercase;
@@ -450,73 +477,6 @@ html.is-starting body::after {
 }
 
 /* Guardrail: avoid expensive animation patterns (keep transforms/opacity only). */
-
-/* Achievement Unlocked "collection" indicator (Activities only) */
-.activities-toast .achievement-toast-indicator {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-press);
-}
-
-.activities-toast .achievement-toast-indicator--pending {
-  align-items: baseline;
-}
-
-.activities-toast .achievement-toast-collect {
-  padding: 0.25rem 0.5rem;
-  line-height: 1;
-}
-
-.activities-toast .activities-gate {
-  margin-top: 0.75rem;
-}
-
-.activities-toast .activities-gate__summary {
-  list-style: none;
-}
-
-.activities-toast .activities-gate__summary::-webkit-details-marker {
-  display: none;
-}
-
-.activities-toast .activities-gate__summary:focus-visible {
-  outline: none;
-}
-
-.activities-toast .activities-gate__body {
-  margin-top: 0.75rem;
-}
-
-.activities-toast .achievement-toast-indicator__badge > span {
-  font-size: 0.65rem;
-  letter-spacing: 0.15em;
-}
-
-.activities-toast .achievement-toast-indicator__text {
-  font-size: 0.65rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(248, 241, 220, 0.7);
-}
-
-@keyframes achievement-collected-pop {
-  0% {
-    opacity: 0;
-    transform: translate3d(0, -4px, 0) scale(0.98);
-  }
-  100% {
-    opacity: 1;
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .activities-toast .achievement-toast-indicator--fx {
-    animation: achievement-collected-pop 220ms steps(2, end) both;
-    will-change: opacity, transform;
-  }
-}
 
 /* Typography tokens */
 .section-body {
@@ -658,8 +618,8 @@ html.is-starting body::after {
 
 .mobile-menu-overlay__link:hover,
 .mobile-menu-overlay__link:focus {
-  border-color: rgba(215, 176, 91, 0.95);
-  background: rgba(215, 176, 91, 0.1);
+  border-color: rgb(79 134 198 / 95%);
+  background: rgb(79 134 198 / 10%);
 }
 
 .mobile-menu-overlay__link:active {

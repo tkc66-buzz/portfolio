@@ -5,12 +5,13 @@ Famicom-style portfolio for Takeshi Watanabe (Buzz). Built with Next.js 16 + Typ
 ## What's included now
 
 - Hero + Menu + Profile/Work/Writing/Activities/Skills/Contact sections (single-page) composed via `src/components/*`
-- Famicom palette (red `#a20000`, gold `#d7b05b`, background `#111`) and retro typography (Press Start 2P + Noto Sans JP)
+- Writing groups blog, book, and external-media article links; Activities focuses on talks, community, and achievements
+- Famicom palette (red `#a20000`, unified blue accent `#4f86c6`, gold `#d7b05b`, background `#111`) and retro typography (Press Start 2P + Noto Sans JP)
 - NES.css buttons, badges, and progress bars (plus a few CSS-only motion tokens, reduced-motion aware)
 - Menu is revealed via a Hero **PRESS START** interaction (session-scoped) and provides in-page navigation
 - Menu is a **sticky HUD**: it stays visible while scrolling for fast section jumping
 - Work is intentionally “different”: an RPG-style **STATUS / QUEST LOG / DETAIL** layout with keyboard-friendly quest selection
-- Activities gets a one-time **"Achievement Unlocked"** toast when first reached (dismissible; reduced-motion safe)
+- Activities is shown as a filterable, responsive output-card grid; each linked card includes an in-card `PREVIEW` plus a direct external link
 - **Responsive mobile-first layout**: all sections adapt to 320px+ viewports with NES.css mobile overrides, progressive padding (`px-3 sm:px-4 md:px-8`), and button stacking on phones
 
 ## Project layout
@@ -86,7 +87,7 @@ When a change affects dependencies or workflows, remember to update README / doc
 - Skills can be maintained either as a flat list (`skills.items`) or grouped by category
   (`skills.categories`) for clearer storytelling.
   - `years` (hands-on years) is required; subjective scoring is intentionally not used.
-  - Optionally add `firstUsedYear` / `lastUsedYear` (numeric years) to show recency vs past usage (e.g. `7y (2018–2024)`).
+  - Optionally add `firstUsedYear` / `lastUsedYear` (numeric years) to show recency vs past usage (e.g. `7y (2018–2024)`); current usage omits the current year and displays as `2018–`.
 - Drop a `public/og.png` and extend `src/app/layout.tsx` metadata for richer previews.
 - Customize the browser tab icon via `src/app/icon.svg` (and keep `src/app/favicon.ico` as fallback).
 - Tweak NES colors or swap the background (`src/app/globals.css`) for other retro palettes.

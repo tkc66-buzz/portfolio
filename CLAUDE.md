@@ -24,15 +24,16 @@ Focused tips for Anthropic Claude Code / Workbench agents interacting with this 
 - `src/components/sections/WorkSection.tsx` – Unified Work section (company blocks with nested Projects). Work is rendered as a deliberately “unique screen” (RPG-like STATUS / QUEST LOG / DETAIL).
 - `src/components/sections/WorkQuestLog.tsx` – Client component that handles quest selection state + detail swapping (kept small on purpose).
 - `src/components/sections/workRpgVm.ts` / `src/components/sections/workRpgId.ts` – Derived view models and stable quest id generation (deterministic + de-dup suffix).
-- `src/components/sections/WritingSection.tsx` – Writing/blog links section (external links).
-- `src/components/sections/ActivitiesSection.tsx` – Activities section (Talks/Books/Community).
-- `src/components/AchievementToast.tsx` – Client-only “Achievement Unlocked” toast (session-scoped: shown once on first in-view, dismissible, reduced-motion aware).
+- `src/components/sections/WritingSection.tsx` – Writing/blog, book, and external-media links section.
+- `src/components/sections/ActivitiesSection.tsx` – Activities section shell (Talks/Community/Achievements).
+- `src/components/sections/ActivitiesOutputGrid.tsx` – Client-side category filters, responsive output-card grid, and in-card URL previews for Activities.
 - `src/app/icon.svg` – Primary browser tab icon (SVG). Keep `src/app/favicon.ico` as fallback.
 - `src/content/portfolio.ts` – Public content (committed in repo).
-  - Skills use `years` (required) and can optionally include `firstUsedYear` / `lastUsedYear` (numeric years) to show recency.
+  - Skills use `years` (required) and can optionally include `firstUsedYear` / `lastUsedYear` (numeric years) to show recency; active skills omit the current calendar year from their range.
 - `public/assets/` – Static diagrams/screenshots (optional); Projects can specify `project.asset` to render visuals.
 - `public/assets/pixel/icons/` – Pixel-style icon set (optional); use `src/components/PixelIcon.tsx`.
 - `src/app/globals.css` – Global palette + small CSS-only motion utilities (reduced-motion aware) + NES.css mobile overrides (`max-width: 639px`).
+- The unified `fami-blue` palette token (`#4f86c6`) is used by Activity accents, Top Menu active states, and NES primary buttons.
 - `src/app/layout.tsx` – Imports NES.css, fonts, metadata; extend when adding OG tags or global providers.
 - `postcss.config.js` – Uses `@tailwindcss/postcss` (Tailwind v4); modify when adding PostCSS plugins.
 - `src/app/globals.css` – Tailwind v4 entry (`@import "tailwindcss"`) + `@theme` for custom colors (fami-*). No `tailwind.config.js` needed.
