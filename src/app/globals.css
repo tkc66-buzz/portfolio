@@ -227,164 +227,7 @@ html.is-starting body::after {
   }
 }
 
-/* Work RPG UI (Work-section only) */
-.work-rpg .work-rpg__layout {
-  display: grid;
-  gap: 1rem;
-}
-
-@media (min-width: 768px) {
-  .work-rpg .work-rpg__layout {
-    /* Max 2 columns on desktop:
-       Left: STATUS + QUEST LOG (stacked)
-       Right: DETAIL (spans rows) */
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
-    align-items: start;
-  }
-
-  .work-rpg .work-rpg__panel--status {
-    grid-column: 1;
-    grid-row: 1;
-  }
-
-  .work-rpg .work-rpg__panel--log {
-    grid-column: 1;
-    grid-row: 2;
-  }
-
-  .work-rpg .work-rpg__panel--detail {
-    grid-column: 2;
-    grid-row: 1 / span 2;
-    align-self: stretch;
-  }
-}
-
-.work-rpg .work-rpg__panel {
-  position: relative;
-  border: 3px solid rgba(215, 176, 91, 0.9);
-  box-shadow: 3px 3px 0 rgba(162, 0, 0, 0.9);
-  background: rgba(0, 0, 0, 0.35);
-  padding: 0.75rem;
-  overflow: hidden;
-  /* Guardrail: allow grid children to shrink to avoid horizontal overflow */
-  min-width: 0;
-}
-
-.work-rpg .work-rpg__panel--detail dd {
-  min-width: 0;
-}
-
-.work-rpg .work-rpg__panel::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.16;
-  background-image: repeating-linear-gradient(
-    to bottom,
-    rgba(215, 176, 91, 0.18) 0px,
-    rgba(215, 176, 91, 0.18) 1px,
-    rgba(0, 0, 0, 0) 4px,
-    rgba(0, 0, 0, 0) 6px
-  );
-  transform: translateZ(0);
-}
-
-.work-rpg .work-rpg__panel::after {
-  content: "";
-  position: absolute;
-  inset: -40% -10%;
-  pointer-events: none;
-  opacity: 0.08;
-  background: linear-gradient(135deg, rgba(215, 176, 91, 0.9) 0%, rgba(0, 0, 0, 0) 50%);
-  transform: translate3d(-20%, -20%, 0);
-}
-
-.work-rpg .work-rpg__label {
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  letter-spacing: 0.25em;
-  color: rgba(215, 176, 91, 0.95);
-  font-family: var(--font-press);
-}
-
-.work-rpg .work-rpg__stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.5rem;
-}
-
-.work-rpg .work-rpg__stat {
-  display: flex;
-  justify-content: space-between;
-  gap: 0.5rem;
-  border: 2px solid rgba(215, 176, 91, 0.35);
-  background: rgba(0, 0, 0, 0.25);
-  padding: 0.5rem 0.6rem;
-}
-
-.work-rpg .work-rpg__statKey {
-  font-size: 0.6rem;
-  letter-spacing: 0.2em;
-  color: rgba(215, 176, 91, 0.9);
-  font-family: var(--font-press);
-}
-
-.work-rpg .work-rpg__statVal {
-  font-size: 0.9rem;
-  color: rgba(248, 241, 220, 0.95);
-  font-family: var(--font-press);
-}
-
-.work-rpg .work-rpg__questRow {
-  margin-top: 0.5rem;
-}
-
-.work-rpg .work-rpg__questBtn {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  border: 2px solid rgba(215, 176, 91, 0.35);
-  background: rgba(0, 0, 0, 0.25);
-  padding: 0.5rem 0.6rem;
-  text-align: left;
-  transition:
-    transform 120ms steps(2, end),
-    filter 120ms steps(2, end);
-  will-change: transform;
-}
-
-.work-rpg .work-rpg__questBtn:hover {
-  filter: brightness(1.12);
-}
-
-.work-rpg .work-rpg__questBtn:active {
-  transform: translateY(2px);
-}
-
-.work-rpg .work-rpg__questTitle {
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  color: rgba(248, 241, 220, 0.95);
-}
-
-.work-rpg .work-rpg__questRow.is-selected .work-rpg__questBtn {
-  border-color: rgba(215, 176, 91, 0.95);
-}
-
-@media (min-width: 768px) {
-  /* Optional: keep the list scannable without making the whole Work card excessively tall */
-  .work-rpg .work-rpg__panel--log [role="tablist"] {
-    max-height: min(22rem, calc(100vh - 18rem));
-    overflow: auto;
-    padding-right: 0.25rem;
-  }
-}
-
+/* Work Timeline (Work-section only) */
 @keyframes work-rpg-shimmer {
   0% {
     transform: translate3d(-20%, -20%, 0);
@@ -396,8 +239,139 @@ html.is-starting body::after {
   }
 }
 
+.work-timeline__list {
+  position: relative;
+  margin-top: 1.5rem;
+}
+
+.work-timeline__list::before {
+  content: "";
+  position: absolute;
+  top: 0.75rem;
+  bottom: 0.75rem;
+  left: 0.55rem;
+  width: 3px;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(215, 176, 91, 0.85) 0px,
+    rgba(215, 176, 91, 0.85) 5px,
+    rgba(0, 0, 0, 0) 5px,
+    rgba(0, 0, 0, 0) 9px
+  );
+}
+
+.work-timeline__entry {
+  position: relative;
+  padding-left: 2rem;
+  padding-bottom: 2.5rem;
+}
+
+.work-timeline__entry:last-child {
+  padding-bottom: 0;
+}
+
+.work-timeline__node {
+  position: absolute;
+  left: 0;
+  top: 0.65rem;
+  width: 1.1rem;
+  height: 1.1rem;
+  border: 3px solid rgba(215, 176, 91, 0.95);
+  background: #1b1b1b;
+  box-shadow: 2px 2px 0 rgba(162, 0, 0, 0.9);
+  transform: rotate(45deg);
+}
+
+.work-timeline__company-block {
+  border: 3px solid rgba(215, 176, 91, 0.9);
+  box-shadow: 3px 3px 0 rgba(162, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.35);
+  padding: 0.875rem 1rem;
+  position: relative;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.work-timeline__company-block::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.14;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(215, 176, 91, 0.18) 0px,
+    rgba(215, 176, 91, 0.18) 1px,
+    rgba(0, 0, 0, 0) 4px,
+    rgba(0, 0, 0, 0) 6px
+  );
+  transform: translateZ(0);
+}
+
+.work-timeline__company-block::after {
+  content: "";
+  position: absolute;
+  inset: -40% -10%;
+  pointer-events: none;
+  opacity: 0.07;
+  background: linear-gradient(135deg, rgba(215, 176, 91, 0.9) 0%, rgba(0, 0, 0, 0) 50%);
+  transform: translate3d(-20%, -20%, 0);
+}
+
+.work-timeline__company-name {
+  font-size: 0.8rem;
+  color: rgba(215, 176, 91, 0.95);
+  font-family: var(--font-press);
+  word-break: break-word;
+}
+
+.work-timeline__projects {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  list-style: none;
+  padding: 0;
+}
+
+.work-timeline__project-card {
+  border: 2px solid rgba(215, 176, 91, 0.35);
+  background: rgba(0, 0, 0, 0.25);
+  padding: 0.75rem;
+  position: relative;
+  min-width: 0;
+}
+
+
+.work-timeline__project-label {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: rgba(215, 176, 91, 0.75);
+  font-family: var(--font-press);
+}
+
+.work-timeline__project-title {
+  font-size: 0.7rem;
+  color: rgba(215, 176, 91, 0.95);
+  font-family: var(--font-press);
+  word-break: break-word;
+  line-height: 1.6;
+  margin-top: 0.25rem;
+}
+
+.work-timeline__meta-key {
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(215, 176, 91, 0.9);
+  font-family: var(--font-press);
+  width: 3rem;
+  flex-shrink: 0;
+}
+
 @media (prefers-reduced-motion: no-preference) {
-  .work-rpg .work-rpg__panel::after {
+  .work-timeline__company-block::after {
     animation: work-rpg-shimmer 1400ms ease-in-out infinite alternate;
     will-change: transform, opacity;
   }
@@ -412,7 +386,7 @@ html.is-starting body::after {
     animation: none !important;
   }
 
-  .work-rpg .work-rpg__panel::after {
+  .work-timeline__company-block::after {
     animation: none !important;
   }
 }

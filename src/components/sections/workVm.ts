@@ -1,5 +1,5 @@
 import type { ExternalLink, WorkEntry } from "@/content/portfolio";
-import { createWorkRpgQuestId } from "@/components/sections/workRpgId";
+import { createWorkRpgQuestId } from "@/components/sections/workId";
 
 export type WorkRpgQuestVM = {
   id: string;

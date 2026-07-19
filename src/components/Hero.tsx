@@ -121,8 +121,10 @@ export function Hero() {
             Takeshi Watanabe <span className="text-fami-gold">(Buzz)</span>
           </h1>
           <p className="mt-4 [font-family:var(--font-noto)] text-sm sm:text-base md:text-lg">
-            Software Engineer @ eureka_inc | Match Group | Go | TypeScript | Terraform | AWS |
-            Google Cloud | strong interest in system reliability and architecture
+            Senior Software Engineer at Eureka, part of Match Group. I build reliable,
+            high-performance cloud systems with Go, TypeScript, Terraform, AWS, and Google
+            Cloud—focused on resilient architecture, observability, and an exceptional developer
+            experience.
           </p>
 
           {!started ? (
