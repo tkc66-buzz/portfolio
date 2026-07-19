@@ -396,7 +396,7 @@ html.is-starting body::after {
 }
 
 .work-timeline__company-name {
-  font-size: 0.8rem;
+  font-size: 1rem;
   color: rgba(215, 176, 91, 0.95);
   font-family: var(--font-press);
   word-break: break-word;
@@ -420,7 +420,7 @@ html.is-starting body::after {
 }
 
 .work-timeline__project-label {
-  font-size: 0.6rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.25em;
   color: rgba(215, 176, 91, 0.75);
@@ -428,7 +428,7 @@ html.is-starting body::after {
 }
 
 .work-timeline__project-title {
-  font-size: 0.7rem;
+  font-size: 1rem;
   color: rgba(215, 176, 91, 0.95);
   font-family: var(--font-press);
   word-break: break-word;
@@ -437,12 +437,12 @@ html.is-starting body::after {
 }
 
 .work-timeline__meta-key {
-  font-size: 0.6rem;
+  font-size: 0.75rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: rgba(215, 176, 91, 0.9);
   font-family: var(--font-press);
-  width: 3rem;
+  width: 3.5rem;
   flex-shrink: 0;
 }
 
@@ -486,8 +486,8 @@ html.is-starting body::after {
 }
 
 .section-body-muted {
-  font-size: 0.875rem; /* tailwind: text-sm */
-  line-height: 1.25rem;
+  font-size: 1rem; /* tailwind: text-base */
+  line-height: 1.75rem;
   font-family: var(--font-noto);
   color: rgba(248, 241, 220, 0.9); /* close to text-fami-ivory/90 */
 }

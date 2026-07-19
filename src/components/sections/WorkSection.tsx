@@ -57,21 +57,23 @@ function WorkTimelineEntry({ entry }: { entry: WorkEntry }) {
                 id={project.anchorId}
                 className="work-timeline__project-card"
               >
-                <p className="work-timeline__project-label">PROJECT</p>
-                <h4 className="work-timeline__project-title">{project.title}</h4>
+                <div className="flex items-baseline gap-2 flex-wrap">
+                  <p className="work-timeline__project-label">PROJECT</p>
+                  <h4 className="work-timeline__project-title">{project.title}</h4>
+                </div>
 
-                <p className="text-fami-ivory/90 mt-2 text-sm leading-relaxed break-words whitespace-pre-line">
+                <p className="text-fami-ivory/90 mt-2 text-base leading-relaxed break-words whitespace-pre-line">
                   {project.summary}
                 </p>
 
-                <dl className="mt-3 space-y-1 text-xs">
-                  <div className="flex gap-1.5">
+                <dl className="mt-3 space-y-1">
+                  <div className="flex items-center gap-2">
                     <dt className="work-timeline__meta-key">Role</dt>
-                    <dd className="text-fami-ivory/90 break-words">{project.role}</dd>
+                    <dd className="text-fami-ivory/90 text-base break-words">{project.role}</dd>
                   </div>
-                  <div className="flex gap-1.5">
-                    <dt className="work-timeline__meta-key">Tech</dt>
-                    <dd className="text-fami-ivory/90 break-words">{project.tech.join(" / ")}</dd>
+                  <div className="flex items-start gap-2">
+                    <dt className="work-timeline__meta-key mt-1">Tech</dt>
+                    <dd className="text-fami-ivory/90 text-base break-words">{project.tech.join(" / ")}</dd>
                   </div>
                 </dl>
               </li>
