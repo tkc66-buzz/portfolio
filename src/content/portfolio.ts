@@ -308,6 +308,24 @@ export const publicPortfolio: Portfolio = {
               label: "DS2024",
               href: "https://event.shoeisha.jp/devsumi/20240215/session/4807",
             },
+            image: {
+              src: "/assets/activities/devsumi2024.jpeg",
+              alt: "Developpers Summit 2024 集合写真",
+            },
+          },
+          {
+            year: "2026",
+            title: "Cloud Native Kaigi",
+            context:
+              "CloudNative、Platform Engineering、SRE、3つの人気カンファレンスが共同した、日本最大級の2000人以上が参加するクラウドネイティブカンファレンスに登壇し、PairsのGlobal Re:Architectureについて発表しました。",
+            link: {
+              label: "CNDK2026",
+              href: "https://kaigi.cloudnativedays.jp",
+            },
+            image: {
+              src: "/assets/activities/cnk2026-talk.jpeg",
+              alt: "Cloud Native Kaigi 2026 登壇写真",
+            },
           },
         ],
       },
@@ -319,18 +337,30 @@ export const publicPortfolio: Portfolio = {
             title: "Platform Engineering Kaigi Core Staff",
             context: "日本初となるPlatform Engineeringに関するカンファレンス開催に貢献しました。",
             link: { label: "PEK2024", href: "https://www.cnia.io/pek2024/" },
+            image: {
+              src: "/assets/activities/pek2024.jpg",
+              alt: "Platform Engineering Kaigi 2024 集合写真",
+            },
           },
           {
             year: "2019-2025",
             title: "SRE NEXT Core Staff",
             context: "SRE NEXT Core Staffとして、SNS、 会場、 スポンサー、 司会等を担当しました。",
             link: { label: "SRE NEXT", href: "https://sre-next.dev/" },
+            image: {
+              src: "/assets/activities/srenext2023.jpeg",
+              alt: "SRE NEXT 2023 集合写真",
+            },
           },
           {
             year: "2022-2025",
             title: "Cloud Native Days Core Staff",
             context: "Cloud Native Daysの配信担当としてハイブリッドイベント開催に貢献しました。",
             link: { label: "CND Home", href: "https://cloudnativedays.jp/" },
+            image: {
+              src: "/assets/activities/cndt2023.jpeg",
+              alt: "Cloud Native Days 2023 配信画像",
+            },
           },
         ],
       },
@@ -353,13 +383,17 @@ export const publicPortfolio: Portfolio = {
             year: "2021",
             title: "AWS Certified DevOps Engineer - Professional 取得。",
             image: {
-              src: "/assets/aws-certified-devops-engineer-professional.png",
+              src: "/assets/activities/aws-certified-devops-engineer-professional.png",
               alt: "AWS Certified DevOps Engineer - Professional badge",
             },
           },
           {
             year: "2025",
-            title: "4半期MVPを受賞しました。",
+            title: "株式会社エウレカでPairsの韓国展開を成功させ、4半期MVPを受賞しました。",
+            image: {
+              src: "/assets/activities/eureka-2025mvp.jpg",
+              alt: "株式会社エウレカ 4半期MVP badge",
+            },
           },
         ],
       },
