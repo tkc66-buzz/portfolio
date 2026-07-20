@@ -48,7 +48,7 @@ export async function SkillsSection() {
           {categories.map((cat) => (
             <div key={cat.name}>
               <h3
-                className="text-fami-gold text-xs tracking-[0.3em] uppercase"
+                className="text-fami-gold text-xs tracking-[0.3em]"
                 style={{ fontFamily: "var(--font-press)" }}
               >
                 {cat.name}
@@ -56,7 +56,7 @@ export async function SkillsSection() {
               <div className="mt-3 space-y-4">
                 {cat.items.map((skill) => (
                   <div key={`${cat.name}:${skill.label}`}>
-                    <div className="text-fami-gold flex flex-wrap items-center justify-between gap-1 text-xs tracking-[0.2em] uppercase">
+                    <div className="text-fami-gold flex flex-wrap items-center justify-between gap-1 text-xs tracking-[0.2em]">
                       <span className="min-w-0">{skill.label}</span>
                       <span className="normal-case">
                         {formatYears(skill.years)}
@@ -78,7 +78,7 @@ export async function SkillsSection() {
         <div className="mt-3 space-y-4">
           {skills.items.map((skill) => (
             <div key={skill.label}>
-              <div className="text-fami-gold flex flex-wrap items-center justify-between gap-1 text-xs tracking-[0.2em] uppercase">
+              <div className="text-fami-gold flex flex-wrap items-center justify-between gap-1 text-xs tracking-[0.2em]">
                 <span className="min-w-0">{skill.label}</span>
                 <span className="normal-case">
                   {formatYears(skill.years)}

@@ -47,7 +47,7 @@ Unified cheat sheet so any AI agent (Claude Code, GPT, etc.) can understand the 
     - Skills use `years` (required) and can optionally include `firstUsedYear` / `lastUsedYear` to show recency; an active skill omits the current calendar year from its range.
   - Writing/Blog links, books, and external media articles live in `portfolio.writing` and are rendered in `src/components/sections/WritingSection.tsx`.
   - Activities (Talks/Community/Achievements) live in `portfolio.activities` and are rendered in `src/components/sections/ActivitiesSection.tsx`.
-    - Activities uses `src/components/sections/ActivitiesOutputGrid.tsx` for category filters, responsive output cards, in-card URL previews, and direct links.
+    - Activities uses `src/components/sections/ActivitiesOutputGrid.tsx` for category filters and responsive output cards, ordered newest first (a period uses its ending year). An optional local `image` is rendered above the card text; entries without one are text-only.
   - Work (company/organization blocks with nested Projects) lives in `portfolio.work` and is rendered in `src/components/sections/WorkSection.tsx`.
     - Work includes a deliberately “unique screen” RPG-style layout driven by a small client component (`src/components/sections/WorkQuestLog.tsx`) plus derived view models (`workRpgVm.ts`).
   - Optional visuals:
