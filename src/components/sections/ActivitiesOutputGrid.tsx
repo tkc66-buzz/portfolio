@@ -35,7 +35,7 @@ function toOutputs(groups: ActivityGroup[]): Output[] {
     .toSorted((a, b) => latestActivityYear(b.year) - latestActivityYear(a.year));
 }
 
-function OutputCard({ item }: { item: Output }) {
+function OutputCard({ item, priority }: { item: Output; priority?: boolean }) {
   return (
     <li className="border-fami-gold/25 hover:border-fami-gold/70 group min-w-0 overflow-hidden rounded-lg border bg-[#171717] transition-colors">
       {item.image ? (
@@ -46,6 +46,8 @@ function OutputCard({ item }: { item: Output }) {
             fill
             sizes="(min-width: 640px) 50vw, 100vw"
             className="object-cover"
+            priority={priority}
+            loading={priority ? "eager" : undefined}
           />
         </div>
       ) : null}
@@ -123,8 +125,8 @@ export function ActivitiesOutputGrid({ groups }: { groups: ActivityGroup[] }) {
 
       {visibleOutputs.length > 0 ? (
         <ul className="grid grid-cols-1 gap-4 [font-family:var(--font-noto)] sm:grid-cols-2">
-          {visibleOutputs.map((item) => (
-            <OutputCard key={`${item.category}:${item.year}:${item.title}`} item={item} />
+          {visibleOutputs.map((item, i) => (
+            <OutputCard key={`${item.category}:${item.year}:${item.title}`} item={item} priority={i === 0} />
           ))}
         </ul>
       ) : (
