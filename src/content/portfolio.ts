@@ -383,7 +383,7 @@ export const publicPortfolio: Portfolio = {
             year: "2021",
             title: "AWS Certified DevOps Engineer - Professional 取得。",
             image: {
-              src: "/assets/activities/aws-certified-devops-engineer-professional.png",
+              src: "/assets/activities/devops-professional.png",
               alt: "AWS Certified DevOps Engineer - Professional badge",
             },
           },
