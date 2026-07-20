@@ -83,6 +83,14 @@ export type ActivityItem = {
   year: string;
   title: string;
   context?: string;
+  /**
+   * Optional local visual displayed above the activity text.
+   * Store files under `public/assets/` and reference them from `/assets/...`.
+   */
+  image?: {
+    src: string;
+    alt: string;
+  };
   link?: ExternalLink;
 };
 
@@ -343,7 +351,11 @@ export const publicPortfolio: Portfolio = {
           },
           {
             year: "2021",
-            title: "AWS Certified DevOps Engineer Professional 取得。",
+            title: "AWS Certified DevOps Engineer - Professional 取得。",
+            image: {
+              src: "/assets/aws-certified-devops-engineer-professional.png",
+              alt: "AWS Certified DevOps Engineer - Professional badge",
+            },
           },
           {
             year: "2025",

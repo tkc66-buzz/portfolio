@@ -1,9 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import { useMemo, useState } from "react";
 import type { ActivityGroup, ActivityItem } from "@/content/portfolio";
 
 const FILTERS = ["All", "Talks", "Community", "Achievements"] as const;
+const YEAR_PATTERN = /\d{4}/g;
 type Filter = (typeof FILTERS)[number];
 
 const CATEGORY_CLASSES: Record<string, string> = {
@@ -20,88 +22,79 @@ function isExternalHttpHref(href: string) {
   return href.startsWith("http://") || href.startsWith("https://");
 }
 
+function latestActivityYear(year: string) {
+  const years = year.match(YEAR_PATTERN)?.map(Number) ?? [];
+  return Math.max(0, ...years);
+}
+
 function toOutputs(groups: ActivityGroup[]): Output[] {
-  return groups.flatMap((group) =>
-    group.items.map((item) => ({ ...item, category: group.name as Output["category"] })),
-  );
+  return groups
+    .flatMap((group) =>
+      group.items.map((item) => ({ ...item, category: group.name as Output["category"] })),
+    )
+    .toSorted((a, b) => latestActivityYear(b.year) - latestActivityYear(a.year));
 }
 
 function OutputCard({ item }: { item: Output }) {
-  const [previewOpen, setPreviewOpen] = useState(false);
-  const card = (
-    <div className="flex h-full flex-col p-4 sm:p-5">
-      <div className="mb-3 flex items-center gap-2">
-        <span
-          className={`rounded-full border px-2 py-0.5 text-[0.6rem] font-bold tracking-[0.08em] uppercase ${CATEGORY_CLASSES[item.category]}`}
-        >
-          {item.category}
-        </span>
-        <time className="text-fami-ivory/60 text-xs">{item.year}</time>
-      </div>
-      <h3 className="text-fami-ivory flex items-start gap-2 text-sm leading-relaxed font-bold">
-        {item.link ? (
-          <a
-            href={item.link.href}
-            target={isExternalHttpHref(item.link.href) ? "_blank" : undefined}
-            rel={isExternalHttpHref(item.link.href) ? "noreferrer" : undefined}
-            className="hover:text-fami-gold flex-1 transition-colors"
-          >
-            {item.title}
-          </a>
-        ) : (
-          <span className="flex-1">{item.title}</span>
-        )}
-        {item.link ? (
-          <span aria-hidden="true" className="text-fami-gold shrink-0">
-            ↗
-          </span>
-        ) : null}
-      </h3>
-      {item.context ? (
-        <p className="section-body-muted mt-2 flex-1 leading-relaxed">{item.context}</p>
+  return (
+    <li className="border-fami-gold/25 hover:border-fami-gold/70 group min-w-0 overflow-hidden rounded-lg border bg-[#171717] transition-colors">
+      {item.image ? (
+        <div className="border-fami-gold/25 relative aspect-[16/9] overflow-hidden border-b bg-white">
+          <Image
+            src={item.image.src}
+            alt={item.image.alt}
+            fill
+            sizes="(min-width: 640px) 50vw, 100vw"
+            className="object-contain"
+          />
+        </div>
       ) : null}
-      {item.link ? (
-        <div className="mt-4 flex flex-wrap items-center gap-3">
-          <button
-            type="button"
-            className="border-fami-blue bg-fami-blue text-fami-ivory focus-visible:ring-fami-gold rounded px-2.5 py-1 text-xs font-bold transition-colors hover:brightness-110 focus:outline-none focus-visible:ring-4"
-            aria-expanded={previewOpen}
-            onClick={() => setPreviewOpen((open) => !open)}
+
+      <article className="flex h-full flex-col p-4 sm:p-5">
+        <div className="mb-3 flex items-center gap-2">
+          <span
+            className={`rounded-full border px-2 py-0.5 text-[0.6rem] font-bold tracking-[0.08em] uppercase ${CATEGORY_CLASSES[item.category]}`}
           >
-            {previewOpen ? "CLOSE" : "PREVIEW"}
-          </button>
+            {item.category}
+          </span>
+          <time className="text-fami-ivory/60 text-xs">{item.year}</time>
+        </div>
+
+        <h3 className="text-fami-ivory flex items-start gap-2 text-sm leading-relaxed font-bold">
+          {item.link ? (
+            <a
+              href={item.link.href}
+              target={isExternalHttpHref(item.link.href) ? "_blank" : undefined}
+              rel={isExternalHttpHref(item.link.href) ? "noreferrer" : undefined}
+              className="hover:text-fami-gold flex-1 transition-colors"
+            >
+              {item.title}
+            </a>
+          ) : (
+            <span className="flex-1">{item.title}</span>
+          )}
+          {item.link ? (
+            <span aria-hidden="true" className="text-fami-gold shrink-0">
+              ↗
+            </span>
+          ) : null}
+        </h3>
+
+        {item.context ? (
+          <p className="section-body-muted mt-2 flex-1 leading-relaxed">{item.context}</p>
+        ) : null}
+
+        {item.link ? (
           <a
             href={item.link.href}
             target={isExternalHttpHref(item.link.href) ? "_blank" : undefined}
             rel={isExternalHttpHref(item.link.href) ? "noreferrer" : undefined}
-            className="text-fami-gold text-xs underline underline-offset-4"
+            className="text-fami-gold mt-4 text-xs underline underline-offset-4"
           >
             {item.link.label} ↗
           </a>
-        </div>
-      ) : null}
-
-      {item.link && previewOpen ? (
-        <div className="border-fami-gold/30 mt-4 overflow-hidden rounded border bg-black/30">
-          <iframe
-            title={`${item.title} preview`}
-            src={item.link.href}
-            className="h-56 w-full bg-white"
-            loading="lazy"
-            referrerPolicy="no-referrer"
-            sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
-          />
-          <p className="text-fami-ivory/60 px-2.5 py-2 text-[0.65rem]">
-            表示できない場合はリンクから開いてください。
-          </p>
-        </div>
-      ) : null}
-    </div>
-  );
-
-  return (
-    <li className="border-fami-gold/25 hover:border-fami-gold/70 min-w-0 rounded-lg border bg-black/20 transition-colors">
-      {card}
+        ) : null}
+      </article>
     </li>
   );
 }

@@ -11,7 +11,7 @@ Famicom-style portfolio for Takeshi Watanabe (Buzz). Built with Next.js 16 + Typ
 - Menu is revealed via a Hero **PRESS START** interaction (session-scoped) and provides in-page navigation
 - Menu is a **sticky HUD**: it stays visible while scrolling for fast section jumping
 - Work is intentionally “different”: an RPG-style **STATUS / QUEST LOG / DETAIL** layout with keyboard-friendly quest selection
-- Activities is shown as a filterable, responsive output-card grid; each linked card includes an in-card `PREVIEW` plus a direct external link
+- Activities is shown as a filterable, responsive output-card grid in descending chronological order; an item may optionally place a local image above its text, while image-free items remain text-only
 - **Responsive mobile-first layout**: all sections adapt to 320px+ viewports with NES.css mobile overrides, progressive padding (`px-3 sm:px-4 md:px-8`), and button stacking on phones
 
 ## Project layout
@@ -81,6 +81,7 @@ When a change affects dependencies or workflows, remember to update README / doc
 ## Customizing next steps
 
 - Update the copy/data in `src/content/portfolio.ts` (profile/work/writing/activities/skills/contact).
+- To add an Activity image, place it under `public/assets/` and set `image: { src: "/assets/...", alt: "..." }` on that activity; the text is rendered below the image.
 - Add optional retro icons:
   - Put pixel-style icons under `public/assets/pixel/icons/`
   - Use `src/components/PixelIcon.tsx` in headings/links (decorative by default; reduced a11y noise)

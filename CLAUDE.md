@@ -26,7 +26,7 @@ Focused tips for Anthropic Claude Code / Workbench agents interacting with this 
 - `src/components/sections/workRpgVm.ts` / `src/components/sections/workRpgId.ts` – Derived view models and stable quest id generation (deterministic + de-dup suffix).
 - `src/components/sections/WritingSection.tsx` – Writing/blog, book, and external-media links section.
 - `src/components/sections/ActivitiesSection.tsx` – Activities section shell (Talks/Community/Achievements).
-- `src/components/sections/ActivitiesOutputGrid.tsx` – Client-side category filters, responsive output-card grid, and in-card URL previews for Activities.
+- `src/components/sections/ActivitiesOutputGrid.tsx` – Client-side category filters and responsive output-card grid for Activities, ordered newest first (a period uses its ending year); optional local Activity images render above text, otherwise cards are text-only.
 - `src/app/icon.svg` – Primary browser tab icon (SVG). Keep `src/app/favicon.ico` as fallback.
 - `src/content/portfolio.ts` – Public content (committed in repo).
   - Skills use `years` (required) and can optionally include `firstUsedYear` / `lastUsedYear` (numeric years) to show recency; active skills omit the current calendar year from their range.
