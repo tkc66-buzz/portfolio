@@ -105,7 +105,7 @@ export function Hero({ profileBody }: { profileBody: string }) {
         </p>
 
         <Image
-          src="/assets/profile.png"
+          src="/assets/profile/profile.png"
           alt="Profile photo of Takeshi Watanabe"
           width={200}
           height={200}
@@ -113,10 +113,7 @@ export function Hero({ profileBody }: { profileBody: string }) {
           className="border-fami-gold aspect-square w-28 border-4 sm:w-32 md:w-40"
         />
 
-        <h1
-          className="text-xl sm:text-2xl md:text-3xl"
-          style={{ fontFamily: "var(--font-press)" }}
-        >
+        <h1 className="text-xl sm:text-2xl md:text-3xl" style={{ fontFamily: "var(--font-press)" }}>
           Takeshi Watanabe <span className="text-fami-gold">(Buzz)</span>
         </h1>
         <p className="[font-family:var(--font-noto)] text-sm sm:text-base md:text-lg">
@@ -126,9 +123,7 @@ export function Hero({ profileBody }: { profileBody: string }) {
           experience.
         </p>
         {started ? (
-          <p className="[font-family:var(--font-noto)] text-sm sm:text-base">
-            {profileBody}
-          </p>
+          <p className="[font-family:var(--font-noto)] text-sm sm:text-base">{profileBody}</p>
         ) : null}
 
         {!started ? (

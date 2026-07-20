@@ -39,13 +39,13 @@ function OutputCard({ item }: { item: Output }) {
   return (
     <li className="border-fami-gold/25 hover:border-fami-gold/70 group min-w-0 overflow-hidden rounded-lg border bg-[#171717] transition-colors">
       {item.image ? (
-        <div className="border-fami-gold/25 relative aspect-[16/9] overflow-hidden border-b bg-white">
+        <div className="border-fami-gold/25 relative aspect-[16/9] overflow-hidden border-b">
           <Image
             src={item.image.src}
             alt={item.image.alt}
             fill
             sizes="(min-width: 640px) 50vw, 100vw"
-            className="object-contain"
+            className="object-cover"
           />
         </div>
       ) : null}
