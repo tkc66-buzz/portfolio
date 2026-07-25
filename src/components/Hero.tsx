@@ -1,5 +1,6 @@
 "use client";
 
+import { HeroPixelTitle } from "@/components/HeroPixelTitle";
 import {
   START_GATE_CLASS_NOT_STARTED,
   START_GATE_CLASS_STARTED,
@@ -104,6 +105,8 @@ export function Hero({ profileBody }: { profileBody: string }) {
           {started ? "READY" : "PRESS START"}
         </p>
 
+        <HeroPixelTitle started={started} text="BUZZ" />
+
         <Image
           src="/assets/profile/profile.png"
           alt="Profile photo of Takeshi Watanabe"
@@ -114,7 +117,7 @@ export function Hero({ profileBody }: { profileBody: string }) {
         />
 
         <h1 className="text-xl sm:text-2xl md:text-3xl" style={{ fontFamily: "var(--font-press)" }}>
-          Takeshi Watanabe <span className="text-fami-gold">(Buzz)</span>
+          Takeshi Watanabe
         </h1>
         <p className="[font-family:var(--font-noto)] text-sm sm:text-base md:text-lg">
           Senior Software Engineer at Eureka, part of Match Group. I build reliable,

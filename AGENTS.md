@@ -39,12 +39,14 @@ Unified cheat sheet so any AI agent (Claude Code, GPT, etc.) can understand the 
 - Landing page composition lives in `src/app/page.tsx` and is intentionally thin.
 - Menu navigation is implemented via `src/components/TableOfContents.tsx` + `src/components/toc.ts`.
 - Menu is revealed via a Hero **PRESS START** interaction (session-scoped), then provides in-page navigation.
+  - The Hero shows a pixel-assemble logo (`src/components/HeroPixelTitle.tsx`): chunky Canvas dots scatter before start and spring into the "BUZZ" wordmark once the start gate opens (reduced-motion snaps assembled; an `sr-only` label preserves the text).
 - Menu is styled as a sticky “HUD” so it remains visible while scrolling.
 - Semantic sections live under `src/components/sections/*` and each owns a stable `id`
   for in-page anchor navigation.
 - Content data is centralized in `src/content/portfolio.ts` for maintainability.
   - Skills support categorized groups (`skills.categories`) with a backward-compatible flat list (`skills.items`) derived from categories.
     - Skills use `years` (required) and can optionally include `firstUsedYear` / `lastUsedYear` to show recency; an active skill omits the current calendar year from its range.
+    - Each skill renders as an RPG-style "level" bar (`src/components/sections/SkillLevelBar.tsx`): the years count up and the `nes-progress` bar fills to the real value when scrolled into view (reduced-motion snaps to final).
   - Writing/Blog links, books, and external media articles live in `portfolio.writing` and are rendered in `src/components/sections/WritingSection.tsx`.
   - Activities (Talks/Community/Achievements) live in `portfolio.activities` and are rendered in `src/components/sections/ActivitiesSection.tsx`.
     - Activities uses `src/components/sections/ActivitiesOutputGrid.tsx` for category filters and responsive output cards, ordered newest first (a period uses its ending year). An optional local `image` is rendered above the card text; entries without one are text-only.
