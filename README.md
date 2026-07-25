@@ -9,6 +9,8 @@ Famicom-style portfolio for Takeshi Watanabe (Buzz). Built with Next.js 16 + Typ
 - Famicom palette (red `#a20000`, unified blue accent `#4f86c6`, gold `#d7b05b`, background `#111`) and retro typography (Press Start 2P + Noto Sans JP)
 - NES.css buttons, badges, and progress bars (plus a few CSS-only motion tokens, reduced-motion aware)
 - Menu is revealed via a Hero **PRESS START** interaction (session-scoped) and provides in-page navigation
+- Hero features a **pixel-assemble logo**: Canvas dots scatter, then spring into the "BUZZ" wordmark when you press START (reduced-motion aware)
+- Skills render as **RPG-style level bars** whose years count up and fill in as they scroll into view
 - Menu is a **sticky HUD**: it stays visible while scrolling for fast section jumping
 - Work is intentionally “different”: an RPG-style **STATUS / QUEST LOG / DETAIL** layout with keyboard-friendly quest selection
 - Activities is shown as a filterable, responsive output-card grid in descending chronological order; an item may optionally place a local image above its text, while image-free items remain text-only

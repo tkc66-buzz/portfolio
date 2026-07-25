@@ -20,6 +20,8 @@ Focused tips for Anthropic Claude Code / Workbench agents interacting with this 
 - `src/app/page.tsx` – Landing page composition (Hero → Menu → sections). Keep it thin; put content in sections and data in `src/content/portfolio.ts`.
 - `src/components/TableOfContents.tsx` – Menu UI (in-page navigation, sticky HUD).
 - `src/components/Hero.tsx` – Hero header (includes **PRESS START** interaction that reveals the Menu; session-scoped).
+- `src/components/HeroPixelTitle.tsx` – Client Canvas "BUZZ" logo: chunky pixel dots scatter before start and spring into formation when the start gate opens (reduced-motion snaps assembled; `sr-only` label for a11y/SEO).
+- `src/components/sections/SkillLevelBar.tsx` – Client component rendering each skill as an RPG "level" bar: years count up + `nes-progress` fills to the real value on scroll-into-view (IntersectionObserver, reduced-motion aware).
 - `src/components/sections/*` – Semantic sections; each owns a stable `id` for `#hash` navigation.
 - `src/components/sections/WorkSection.tsx` – Unified Work section (company blocks with nested Projects). Work is rendered as a deliberately “unique screen” (RPG-like STATUS / QUEST LOG / DETAIL).
 - `src/components/sections/WorkQuestLog.tsx` – Client component that handles quest selection state + detail swapping (kept small on purpose).
@@ -47,7 +49,7 @@ Focused tips for Anthropic Claude Code / Workbench agents interacting with this 
 
 ## Deployment Checklist for Claude
 
-1. Bump `package.json` version if the change is user-facing (current version: `1.1.0`).
+1. Bump `package.json` version if the change is user-facing (current version: `1.2.0`).
 2. Run `pnpm build` to catch Next.js warnings before pushing.
 3. Ensure docs (`README.md`, `AGENTS.md`, `CLAUDE.md`) mention new dependencies or workflows.
 4. Merge to `main` and push to trigger Vercel.

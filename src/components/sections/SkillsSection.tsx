@@ -1,12 +1,8 @@
 import { getPortfolio } from "@/content/portfolio";
 import { PixelIcon } from "@/components/PixelIcon";
+import { SkillLevelBar } from "@/components/sections/SkillLevelBar";
 
 const CURRENT_YEAR = new Date().getFullYear();
-
-function formatYears(years: number) {
-  if (Number.isInteger(years)) return `${years}y`;
-  return `${years}y`;
-}
 
 function formatUsageRange(skill: { firstUsedYear?: number; lastUsedYear?: number }) {
   if (typeof skill.firstUsedYear === "number" && typeof skill.lastUsedYear === "number") {
@@ -55,20 +51,13 @@ export async function SkillsSection() {
               </h3>
               <div className="mt-3 space-y-4">
                 {cat.items.map((skill) => (
-                  <div key={`${cat.name}:${skill.label}`}>
-                    <div className="text-fami-gold flex flex-wrap items-center justify-between gap-1 text-xs tracking-[0.2em]">
-                      <span className="min-w-0">{skill.label}</span>
-                      <span className="normal-case">
-                        {formatYears(skill.years)}
-                        {formatUsageRange(skill) ? ` (${formatUsageRange(skill)})` : ""}
-                      </span>
-                    </div>
-                    <progress
-                      className="nes-progress is-warning"
-                      value={skill.years}
-                      max={maxYears}
-                    />
-                  </div>
+                  <SkillLevelBar
+                    key={`${cat.name}:${skill.label}`}
+                    label={skill.label}
+                    years={skill.years}
+                    max={maxYears}
+                    rangeLabel={formatUsageRange(skill)}
+                  />
                 ))}
               </div>
             </div>
@@ -77,16 +66,13 @@ export async function SkillsSection() {
       ) : (
         <div className="mt-3 space-y-4">
           {skills.items.map((skill) => (
-            <div key={skill.label}>
-              <div className="text-fami-gold flex flex-wrap items-center justify-between gap-1 text-xs tracking-[0.2em]">
-                <span className="min-w-0">{skill.label}</span>
-                <span className="normal-case">
-                  {formatYears(skill.years)}
-                  {formatUsageRange(skill) ? ` (${formatUsageRange(skill)})` : ""}
-                </span>
-              </div>
-              <progress className="nes-progress is-warning" value={skill.years} max={maxYears} />
-            </div>
+            <SkillLevelBar
+              key={skill.label}
+              label={skill.label}
+              years={skill.years}
+              max={maxYears}
+              rangeLabel={formatUsageRange(skill)}
+            />
           ))}
         </div>
       )}
