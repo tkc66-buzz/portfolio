@@ -14,7 +14,7 @@ Unified cheat sheet so any AI agent (Claude Code, GPT, etc.) can understand the 
 | --------------- | ---------------------- | -------------------------------------- | ----------------------------------------------------------------- |
 | Runtime         | Node.js                | >=20.9.0 (workstation default v25.2.0) | Matches Next.js 16 requirement.                                   |
 | Package Manager | pnpm                   | 10.13.1                                | Uses `pnpm-lock.yaml`; install via `pnpm install`.                |
-| Framework       | Next.js                | 16.0.3 (App Router, `src/` layout)     | React Compiler disabled.                                          |
+| Framework       | Next.js                | 16.3.6 (App Router, `src/` layout)     | React Compiler disabled.                                          |
 | Language        | TypeScript             | ^5.x                                   | `moduleResolution: bundler`, `@/*` alias -> `./src/*`.            |
 | UI Library      | React / React DOM      | 19.2.0                                 | Concurrent React 19 APIs available.                               |
 | Styling         | Tailwind CSS           | 3.4.18                                 | Config in `tailwind.config.js`; `globals.css` imports directives. |
