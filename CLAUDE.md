@@ -49,7 +49,7 @@ Focused tips for Anthropic Claude Code / Workbench agents interacting with this 
 
 ## Deployment Checklist for Claude
 
-1. Bump `package.json` version if the change is user-facing (current version: `1.3.2`).
+1. Bump `package.json` version if the change is user-facing (current version: `1.3.3`).
 2. Run `pnpm build` to catch Next.js warnings before pushing.
 3. Ensure docs (`README.md`, `AGENTS.md`, `CLAUDE.md`) mention new dependencies or workflows.
 4. Merge to `main` and push to trigger Vercel.
