@@ -49,7 +49,7 @@ Unified cheat sheet so any AI agent (Claude Code, GPT, etc.) can understand the 
     - Each skill renders as an RPG-style "level" bar (`src/components/sections/SkillLevelBar.tsx`): the years count up and the `nes-progress` bar fills to the real value when scrolled into view (reduced-motion snaps to final).
   - Writing/Blog links, books, and external media articles live in `portfolio.writing` and are rendered in `src/components/sections/WritingSection.tsx`.
   - Activities (Talks/Community/Achievements) live in `portfolio.activities` and are rendered in `src/components/sections/ActivitiesSection.tsx`.
-    - Activities uses `src/components/sections/ActivitiesOutputGrid.tsx` for category filters and responsive output cards, ordered newest first (a period uses its ending year). An optional local `image` is rendered above the card text; entries without one are text-only.
+    - Activities uses `src/components/sections/ActivitiesOutputGrid.tsx` for category filters and responsive output cards, ordered newest first (an optional `date` field, `YYYY-MM-DD`/`YYYY-MM`, gives month/day precision; otherwise a period uses its ending year). An optional local `image` is rendered above the card text; entries without one are text-only. Each item supports a primary `link` and an optional `slides` link (e.g. Speaker Deck), both shown in the card footer.
   - Work (company/organization blocks with nested Projects) lives in `portfolio.work` and is rendered in `src/components/sections/WorkSection.tsx`.
     - Work includes a deliberately “unique screen” RPG-style layout driven by a small client component (`src/components/sections/WorkQuestLog.tsx`) plus derived view models (`workRpgVm.ts`).
   - Optional visuals:

@@ -80,7 +80,14 @@ export type WritingItem = ExternalLink & {
 export type Writing = SectionContent & { items: WritingItem[] };
 
 export type ActivityItem = {
+  /** Display label for the period (e.g. "2026", "2019-2025"). */
   year: string;
+  /**
+   * Optional precise event date for sorting, `YYYY-MM-DD` or `YYYY-MM`.
+   * When present it takes precedence over `year` so same-year items order by
+   * month/day. Falls back to the latest year in `year` when omitted.
+   */
+  date?: string;
   title: string;
   context?: string;
   /**
@@ -90,8 +97,16 @@ export type ActivityItem = {
   image?: {
     src: string;
     alt: string;
+    /**
+     * Optional CSS `object-position` for the cropped thumbnail (e.g. "top",
+     * "center 20%"). Defaults to center; use it to keep the focal point of a
+     * portrait/off-center photo in view within the 16:9 card.
+     */
+    objectPosition?: string;
   };
   link?: ExternalLink;
+  /** Optional slides/deck link shown alongside the primary link. */
+  slides?: ExternalLink;
 };
 
 enum ActivityGroupName {
@@ -315,6 +330,46 @@ export const publicPortfolio: Portfolio = {
           },
           {
             year: "2026",
+            date: "2026-09-11",
+            title: "Go Conference",
+            context:
+              "Podは生きているのにGoだけが落ちる——GOGCとGOMEMLIMITで追うInvisible OOM Killの謎について登壇しました。",
+            link: {
+              label: "Go Conference 2026",
+              href: "https://gocon.jp/2026/",
+            },
+            slides: {
+              label: "スライド",
+              href: "https://speakerdeck.com/tkc66buzz/pod-ha-iki-te-iru-noni-go-dakega-ochiru-gogc-to-gomemlimit-de-ou-invisible-oom-kill-no-nazo",
+            },
+            image: {
+              src: "/assets/activities/gocon2026.jpg",
+              alt: "Go Conference 2026 登壇写真",
+            },
+          },
+          {
+            year: "2026",
+            date: "2026-09-05",
+            title: "Product Engineering Conference",
+            context:
+              "初開催のProduct Enginnering Conferenceで11倍の倍率を通り、プロダクト思考 × 基盤思考をAIで実現するCompound Engineeringについて登壇しました。",
+            link: {
+              label: "PEC2026",
+              href: "https://product-engineering.jp/2026/",
+            },
+            slides: {
+              label: "スライド",
+              href: "https://speakerdeck.com/tkc66buzz/purodakuto-shikou-x-kiban-shikou-o-ai-de-jitsugen-suru-compound-engineering",
+            },
+            image: {
+              src: "/assets/activities/pec2026.jpg",
+              alt: "Product Engineering Conference 2026 スピーカーTシャツと名札",
+              objectPosition: "center 15%",
+            },
+          },
+          {
+            year: "2026",
+            date: "2026-05-14",
             title: "Cloud Native Kaigi",
             context:
               "CloudNative、Platform Engineering、SRE、3つの人気カンファレンスが共同した、日本最大級の2000人以上が参加するクラウドネイティブカンファレンスに登壇し、PairsのGlobal Re:Architectureについて発表しました。",
@@ -325,6 +380,10 @@ export const publicPortfolio: Portfolio = {
             image: {
               src: "/assets/activities/cnk2026-talk.jpeg",
               alt: "Cloud Native Kaigi 2026 登壇写真",
+            },
+            slides: {
+              label: "スライド",
+              href: "https://speakerdeck.com/tkc66buzz/er-zhong-kai-fa-fu-zhai-woone-applicationhua-dejie-kupeazunogurobarure-architectzhan-lue",
             },
           },
         ],

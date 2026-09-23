@@ -28,7 +28,7 @@ Focused tips for Anthropic Claude Code / Workbench agents interacting with this 
 - `src/components/sections/workRpgVm.ts` / `src/components/sections/workRpgId.ts` – Derived view models and stable quest id generation (deterministic + de-dup suffix).
 - `src/components/sections/WritingSection.tsx` – Writing/blog, book, and external-media links section.
 - `src/components/sections/ActivitiesSection.tsx` – Activities section shell (Talks/Community/Achievements).
-- `src/components/sections/ActivitiesOutputGrid.tsx` – Client-side category filters and responsive output-card grid for Activities, ordered newest first (a period uses its ending year); optional local Activity images render above text, otherwise cards are text-only.
+- `src/components/sections/ActivitiesOutputGrid.tsx` – Client-side category filters and responsive output-card grid for Activities, ordered newest first (an optional `date` field, `YYYY-MM-DD`/`YYYY-MM`, gives month/day precision; otherwise a period uses its ending year); optional local Activity images render above text, otherwise cards are text-only. Each item can carry a primary `link` plus an optional `slides` link (e.g. Speaker Deck), both rendered in the card footer.
 - `src/app/icon.svg` – Primary browser tab icon (SVG). Keep `src/app/favicon.ico` as fallback.
 - `src/content/portfolio.ts` – Public content (committed in repo).
   - Skills use `years` (required) and can optionally include `firstUsedYear` / `lastUsedYear` (numeric years) to show recency; active skills omit the current calendar year from their range.
@@ -49,7 +49,7 @@ Focused tips for Anthropic Claude Code / Workbench agents interacting with this 
 
 ## Deployment Checklist for Claude
 
-1. Bump `package.json` version if the change is user-facing (current version: `1.2.0`).
+1. Bump `package.json` version if the change is user-facing (current version: `1.3.0`).
 2. Run `pnpm build` to catch Next.js warnings before pushing.
 3. Ensure docs (`README.md`, `AGENTS.md`, `CLAUDE.md`) mention new dependencies or workflows.
 4. Merge to `main` and push to trigger Vercel.
