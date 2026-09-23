@@ -49,7 +49,7 @@ Focused tips for Anthropic Claude Code / Workbench agents interacting with this 
 
 ## Deployment Checklist for Claude
 
-1. Bump `package.json` version if the change is user-facing (current version: `1.3.0`).
+1. Bump `package.json` version if the change is user-facing (current version: `1.3.1`).
 2. Run `pnpm build` to catch Next.js warnings before pushing.
 3. Ensure docs (`README.md`, `AGENTS.md`, `CLAUDE.md`) mention new dependencies or workflows.
 4. Merge to `main` and push to trigger Vercel.
@@ -93,7 +93,7 @@ TypeScript 7 is the Go-based rewrite. Key differences from TS5:
 
 ## Active Technologies
 
-- TypeScript 7.0.2 + Next.js 16.3.0-preview.5 (Turbopack), React 19.2.1, Tailwind CSS 4.3.2, NES.css 2.3.0
+- TypeScript 7.0.2 + Next.js 16.3.6 (Turbopack), React 19.2.1, Tailwind CSS 4.3.2, NES.css 2.3.0
 - `@typescript/native-preview` (Go-based TS compiler, for Next.js build detection)
 - `@babel/eslint-parser` + `@babel/preset-typescript` + `@babel/preset-react` (replaces typescript-eslint)
 - `@tailwindcss/postcss` v4 (replaces `tailwindcss` PostCSS plugin)
