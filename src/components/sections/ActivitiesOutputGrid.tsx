@@ -27,12 +27,29 @@ function latestActivityYear(year: string) {
   return Math.max(0, ...years);
 }
 
+/**
+ * Numeric sort key (`YYYYMMDD`) used to order activities newest-first.
+ * Prefers an explicit `date` (`YYYY-MM-DD` / `YYYY-MM`) so same-year items sort
+ * by month/day; otherwise falls back to the latest year in `year` (month/day 0),
+ * ranking dated entries above year-only entries within the same year.
+ */
+function activitySortKey(item: ActivityItem) {
+  if (item.date) {
+    const [y, m = "0", d = "0"] = item.date.split("-");
+    const year = Number(y);
+    if (Number.isFinite(year)) {
+      return year * 10000 + Number(m) * 100 + Number(d);
+    }
+  }
+  return latestActivityYear(item.year) * 10000;
+}
+
 function toOutputs(groups: ActivityGroup[]): Output[] {
   return groups
     .flatMap((group) =>
       group.items.map((item) => ({ ...item, category: group.name as Output["category"] })),
     )
-    .toSorted((a, b) => latestActivityYear(b.year) - latestActivityYear(a.year));
+    .toSorted((a, b) => activitySortKey(b) - activitySortKey(a));
 }
 
 function OutputCard({ item, priority }: { item: Output; priority?: boolean }) {
@@ -46,6 +63,9 @@ function OutputCard({ item, priority }: { item: Output; priority?: boolean }) {
             fill
             sizes="(min-width: 640px) 50vw, 100vw"
             className="object-cover"
+            style={
+              item.image.objectPosition ? { objectPosition: item.image.objectPosition } : undefined
+            }
             priority={priority}
             loading={priority ? "eager" : undefined}
           />
@@ -86,15 +106,29 @@ function OutputCard({ item, priority }: { item: Output; priority?: boolean }) {
           <p className="section-body-muted mt-2 flex-1 leading-relaxed">{item.context}</p>
         ) : null}
 
-        {item.link ? (
-          <a
-            href={item.link.href}
-            target={isExternalHttpHref(item.link.href) ? "_blank" : undefined}
-            rel={isExternalHttpHref(item.link.href) ? "noreferrer" : undefined}
-            className="text-fami-gold mt-4 text-xs underline underline-offset-4"
-          >
-            {item.link.label} ↗
-          </a>
+        {item.link || item.slides ? (
+          <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2">
+            {item.link ? (
+              <a
+                href={item.link.href}
+                target={isExternalHttpHref(item.link.href) ? "_blank" : undefined}
+                rel={isExternalHttpHref(item.link.href) ? "noreferrer" : undefined}
+                className="text-fami-gold text-xs underline underline-offset-4"
+              >
+                {item.link.label} ↗
+              </a>
+            ) : null}
+            {item.slides ? (
+              <a
+                href={item.slides.href}
+                target={isExternalHttpHref(item.slides.href) ? "_blank" : undefined}
+                rel={isExternalHttpHref(item.slides.href) ? "noreferrer" : undefined}
+                className="text-fami-gold text-xs underline underline-offset-4"
+              >
+                {item.slides.label} ↗
+              </a>
+            ) : null}
+          </div>
         ) : null}
       </article>
     </li>
@@ -126,7 +160,11 @@ export function ActivitiesOutputGrid({ groups }: { groups: ActivityGroup[] }) {
       {visibleOutputs.length > 0 ? (
         <ul className="grid grid-cols-1 gap-4 [font-family:var(--font-noto)] sm:grid-cols-2">
           {visibleOutputs.map((item, i) => (
-            <OutputCard key={`${item.category}:${item.year}:${item.title}`} item={item} priority={i === 0} />
+            <OutputCard
+              key={`${item.category}:${item.year}:${item.title}`}
+              item={item}
+              priority={i === 0}
+            />
           ))}
         </ul>
       ) : (
