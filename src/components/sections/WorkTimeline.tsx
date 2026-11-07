@@ -308,6 +308,21 @@ function WorkDetail({
                     <span className="font-pixel">ROLE</span>{" "}
                     <span className="font-body">{project.role}</span>
                   </p>
+                  {project.links && project.links.length > 0 ? (
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {project.links.map((l) => (
+                        <a
+                          key={l.href}
+                          href={l.href}
+                          target={isExternalHttpHref(l.href) ? "_blank" : undefined}
+                          rel={isExternalHttpHref(l.href) ? "noreferrer" : undefined}
+                          className="type-label text-fami-ivory hover:text-fami-gold focus-visible:ring-fami-gold rounded-md border border-[var(--accent)] bg-black/40 px-3 py-1.5 no-underline transition-colors hover:bg-white/5 focus:outline-none focus-visible:ring-2"
+                        >
+                          {l.label} ↗
+                        </a>
+                      ))}
+                    </div>
+                  ) : null}
                 </div>
               </li>
             ))}

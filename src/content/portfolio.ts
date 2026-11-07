@@ -19,6 +19,8 @@ export type Project = {
   summary: string;
   role: string;
   tech: string[];
+  /** Optional related links (press releases, articles). Rendered as link buttons; don't paste URLs into `summary`. */
+  links?: ExternalLink[];
 };
 
 export type Skill = {
@@ -242,17 +244,29 @@ export const publicPortfolio: Portfolio = {
             anchorId: "project-global-application-kr-backend-development",
             title: "Global Application KRのBackend開発",
             summary:
-              "Global版Pairsとして日本版とは別で存在していた既存のApplicationをOne ApplicationとしてReplaseし、ReLaunchしました。自分の役割はその韓国展開におけるBack-end開発の主担当です。One Appとして初めてのグローバル展開ということもあり、携わる領域は多岐に渡りました。Back-endの開発だけでなく、時にはBack-endと繋ぎ込みを行うFront-endやインフラ側など担当する内容も幅広く、同時に早く対処することが必要でした。プロジェクトメンバー以外の人にもサポートをもらいながら、認証をはじめとしたサブシステムの開発も行いました。無事韓国版のReLaunchを成功させ、MVPを受賞しました。\n https://www.itmedia.co.jp/business/articles/2506/26/news009.html",
+              "Global版Pairsとして日本版とは別で存在していた既存のApplicationをOne ApplicationとしてReplaseし、ReLaunchしました。自分の役割はその韓国展開におけるBack-end開発の主担当です。One Appとして初めてのグローバル展開ということもあり、携わる領域は多岐に渡りました。Back-endの開発だけでなく、時にはBack-endと繋ぎ込みを行うFront-endやインフラ側など担当する内容も幅広く、同時に早く対処することが必要でした。プロジェクトメンバー以外の人にもサポートをもらいながら、認証をはじめとしたサブシステムの開発も行いました。無事韓国版のReLaunchを成功させ、MVPを受賞しました。",
             role: "developer",
             tech: ["Go", "AWS", "GCP", "Observability"],
+            links: [
+              {
+                label: "ITmedia",
+                href: "https://www.itmedia.co.jp/business/articles/2506/26/news009.html",
+              },
+            ],
           },
           {
             anchorId: "project-global-application-tw-backend-development",
             title: "Global Application TWのBackend開発",
             summary:
-              "Global版Pairsとして日本版とは別で存在していた既存のApplicationをOne ApplicationとしてReplaseしました。韓国版と合わせて台湾版もOne Applicationに統合し、これにてOne Application統合Projectが完了し、日本市場向けと同じサービスレベルの新アプリを複数国に展開する下地を整えることができました。自分はBackendの開発をリードしつつ、終盤はTech Leadとしてチーム全体の開発をリードしました。 \n https://prtimes.jp/main/html/rd/p/000000295.000005528.html",
+              "Global版Pairsとして日本版とは別で存在していた既存のApplicationをOne ApplicationとしてReplaseしました。韓国版と合わせて台湾版もOne Applicationに統合し、これにてOne Application統合Projectが完了し、日本市場向けと同じサービスレベルの新アプリを複数国に展開する下地を整えることができました。自分はBackendの開発をリードしつつ、終盤はTech Leadとしてチーム全体の開発をリードしました。",
             role: "developer",
             tech: ["Go", "AWS", "GCP", "Observability"],
+            links: [
+              {
+                label: "PR TIMES",
+                href: "https://prtimes.jp/main/html/rd/p/000000295.000005528.html",
+              },
+            ],
           },
         ],
       },
