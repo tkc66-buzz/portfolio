@@ -58,7 +58,9 @@ export type WorkEntry = {
    * Use something public-safe (avoid sensitive internal IDs).
    */
   key: string;
-  period: string; // display-only (e.g. "2019–2025")
+  period: string; // display-only (e.g. "2019–2025"); also parsed for the timeline ("現在" = now)
+  /** Timeline lane: main career or side work. Defaults to "main". */
+  kind?: "main" | "side";
   company: string; // public-safe label
   /**
    * Exactly one paragraph for the company/organization.
@@ -174,9 +176,7 @@ export const publicPortfolio: Portfolio = {
   profile: {
     id: "profile",
     heading: "Profile",
-    body:
-      "Machine Learning Engineer、Data Scientist、Infrastructure Engineer、Platform Engineer などの職種を経験してきました。現在は株式会社エウレカで、Go を中心としたバックエンド開発に携わっています。" +
-      "副業では、サービス立ち上げ初期からインフラ基盤をゼロから構築したり、TypeScript を用いたフルスタック開発にも取り組んでいます",
+    body: "Machine Learning Engineer、Data Scientist、Infrastructure Engineer、Platform Engineer などの職種を経験してきました。現在は株式会社エウレカで、Goを中心としたバックエンド開発に携わっています。",
   },
   work: {
     id: "work",
@@ -239,28 +239,46 @@ export const publicPortfolio: Portfolio = {
         summary: "大規模サービスのBackend領域で、Global Application基盤の開発を担当しています。",
         projects: [
           {
-            anchorId: "project-global-application-backend-development",
-            title: "Global Application Backend KRの開発",
-            summary: "Pairs韓国、台湾展開のBackendの開発を行いました。",
+            anchorId: "project-global-application-kr-backend-development",
+            title: "Global Application KRのBackend開発",
+            summary:
+              "Global版Pairsとして日本版とは別で存在していた既存のApplicationをOne ApplicationとしてReplaseし、ReLaunchしました。自分の役割はその韓国展開におけるBack-end開発の主担当です。One Appとして初めてのグローバル展開ということもあり、携わる領域は多岐に渡りました。Back-endの開発だけでなく、時にはBack-endと繋ぎ込みを行うFront-endやインフラ側など担当する内容も幅広く、同時に早く対処することが必要でした。プロジェクトメンバー以外の人にもサポートをもらいながら、認証をはじめとしたサブシステムの開発も行いました。無事韓国版のReLaunchを成功させ、MVPを受賞しました。\n https://www.itmedia.co.jp/business/articles/2506/26/news009.html",
             role: "developer",
-            tech: ["Go", "AWS", "MySQL", "Observability"],
+            tech: ["Go", "AWS", "GCP", "Observability"],
+          },
+          {
+            anchorId: "project-global-application-tw-backend-development",
+            title: "Global Application TWのBackend開発",
+            summary:
+              "Global版Pairsとして日本版とは別で存在していた既存のApplicationをOne ApplicationとしてReplaseしました。韓国版と合わせて台湾版もOne Applicationに統合し、これにてOne Application統合Projectが完了し、日本市場向けと同じサービスレベルの新アプリを複数国に展開する下地を整えることができました。自分はBackendの開発をリードしつつ、終盤はTech Leadとしてチーム全体の開発をリードしました。 \n https://prtimes.jp/main/html/rd/p/000000295.000005528.html",
+            role: "developer",
+            tech: ["Go", "AWS", "GCP", "Observability"],
           },
         ],
       },
       {
         key: "company-side",
-        period: "2023-現在",
+        period: "2023-2026",
+        kind: "side",
         company: WORK_LABELS.side,
         summary:
-          "サービス立ち上げ初期から技術選定インフラ基盤の構築、フルスタックのアプリケーション開発を担当しています。",
+          "サービス立ち上げ初期から技術選定インフラ基盤、アプリケーション基盤、ジョブ基盤の構築、フルスタックのアプリケーション開発を担当しました。",
         projects: [
           {
             anchorId: "project-greenfield-infra-and-full-stack-application-development",
             title: "ゼロからのインフラ基盤構築とフルスタックのアプリケーション開発",
             summary:
-              "立ち上げ初期に環境分離と自動化を整え、継続運用できるインフラ基盤をゼロから構築しました。また、フルスタックのアプリケーション開発を担当しています。",
+              "立ち上げ初期に環境分離と自動化を整え、継続運用できるインフラ基盤をゼロから構築しました。また、フルスタックのアプリケーション開発を担当しました。",
             role: "developer",
             tech: ["AWS", "Google Cloud", "Terraform", "TypeScript"],
+          },
+          {
+            anchorId: "project-job-foundation-development",
+            title: "ジョブ実行基盤の構築",
+            summary:
+              "非同期で動く、スケジュールジョブ基盤、ワーカージョブ基盤をTemporalで構築しました。",
+            role: "developer",
+            tech: ["Google Cloud", "Terraform", "TypeScript", "Temporal"],
           },
         ],
       },
@@ -473,7 +491,7 @@ export const publicPortfolio: Portfolio = {
         ],
       },
       {
-        name: "Platform / Infrastructure",
+        name: "Platform / Infra",
         items: [
           skillRange("AWS", 2019, CURRENT_YEAR),
           skillRange("Terraform", 2021, CURRENT_YEAR),
@@ -495,7 +513,7 @@ export const publicPortfolio: Portfolio = {
   contact: {
     id: "contact",
     heading: "Contact",
-    blurb: "副業・技術相談など、お気軽にご連絡ください。",
+    blurb: "副業・技術相談など、お気軽にご連絡ください",
     links: [
       { label: "X", href: "https://x.com/buzz_tkc" },
       { label: "GitHub", href: "https://github.com/tkc66-buzz" },

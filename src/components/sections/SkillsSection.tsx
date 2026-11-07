@@ -1,5 +1,5 @@
 import { getPortfolio } from "@/content/portfolio";
-import { PixelIcon } from "@/components/PixelIcon";
+import { SectionShell } from "@/components/sections/SectionShell";
 import { SkillLevelBar } from "@/components/sections/SkillLevelBar";
 
 const CURRENT_YEAR = new Date().getFullYear();
@@ -24,58 +24,30 @@ export async function SkillsSection() {
     .filter((v): v is number => typeof v === "number" && Number.isFinite(v) && v >= 0);
   const maxYears = yearValues.length > 0 ? Math.max(...yearValues, 5) : 5;
 
+  const tiles = categories
+    ? categories.flatMap((c) => c.items.map((skill) => ({ category: c.name, skill })))
+    : skills.items.map((skill) => ({ category: "Skill", skill }));
+
   return (
-    <section
+    <SectionShell
       id={skills.id}
-      className="frame text-fami-ivory scroll-mt-[var(--menu-offset)] bg-[#1b1b1b] p-6"
+      heading={skills.heading}
+      icon="/assets/pixel/icons/skills.svg"
+      lead="実務で触った経験年数ベースのステータス。"
     >
-      <h2
-        className="text-fami-gold flex items-center gap-2 text-xl"
-        style={{ fontFamily: "var(--font-press)" }}
-      >
-        <PixelIcon src="/assets/pixel/icons/skills.svg" decorative size="md" />
-        <span>{skills.heading}</span>
-      </h2>
-      <p className="section-body-muted mt-3">
-        スキルは実務で触った経験年数をベースにまとめています。
-      </p>
-      {categories ? (
-        <div className="mt-4 space-y-6">
-          {categories.map((cat) => (
-            <div key={cat.name}>
-              <h3
-                className="text-fami-gold text-xs tracking-[0.3em]"
-                style={{ fontFamily: "var(--font-press)" }}
-              >
-                {cat.name}
-              </h3>
-              <div className="mt-3 space-y-4">
-                {cat.items.map((skill) => (
-                  <SkillLevelBar
-                    key={`${cat.name}:${skill.label}`}
-                    label={skill.label}
-                    years={skill.years}
-                    max={maxYears}
-                    rangeLabel={formatUsageRange(skill)}
-                  />
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      ) : (
-        <div className="mt-3 space-y-4">
-          {skills.items.map((skill) => (
-            <SkillLevelBar
-              key={skill.label}
-              label={skill.label}
-              years={skill.years}
-              max={maxYears}
-              rangeLabel={formatUsageRange(skill)}
-            />
-          ))}
-        </div>
-      )}
-    </section>
+      <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4">
+        {tiles.map(({ category, skill }, i) => (
+          <SkillLevelBar
+            key={`${category}:${skill.label}`}
+            category={category}
+            label={skill.label}
+            years={skill.years}
+            max={maxYears}
+            rangeLabel={formatUsageRange(skill)}
+            delayMs={i * 60}
+          />
+        ))}
+      </ul>
+    </SectionShell>
   );
 }

@@ -1,3 +1,8 @@
+/* NES.css lives in its own layer between Tailwind's base and utilities: it still
+   overrides preflight (so .nes-btn etc. look right) but Tailwind utilities win
+   over its element defaults (e.g. `a { color: #209cee }`, dark body text). */
+@layer theme, base, nes, components, utilities;
+@import "nes.css/css/nes.min.css" layer(nes);
 @import "tailwindcss";
 
 @theme {
@@ -6,28 +11,127 @@
   --color-fami-gold: #d7b05b;
   --color-fami-ivory: #f8f1dc;
   --color-fami-ink: #111111;
+  --color-fami-night: #0b0d12;
+  --color-fami-panel: #141822;
 }
 
 :root {
   color-scheme: dark;
-  --topnav-h: 3.25rem;
-  --page-top-pt: 2.5rem;
+  --topnav-h: 4.25rem;
   --menu-offset: 5rem;
 }
 
-@media (min-width: 640px) {
-  html.is-started {
-    --page-top-pt: calc(var(--topnav-h) + 1.5rem);
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }
 
 html,
 body {
-  height: 100%;
+  min-height: 100%;
 }
 
 body {
-  background: #111;
+  background: var(--color-fami-night);
+  color: var(--color-fami-ivory);
+  /* Pixel font everywhere (as NES.css did). Press Start 2P has no Japanese, so
+     Japanese glyphs fall back to the bundled PixelMplus12 Bold subset, whose
+     glyphs are re-fitted (scripts/subset-pixel-font.py) to Press Start's cap
+     height, baseline and spacing so "株式会社Eureka" reads as one font. */
+  font-family: var(--font-press), var(--font-pixel-jp), var(--font-noto), system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+/* Faint pixel grid behind the whole page (keeps the retro texture without boxes). */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(215, 176, 91, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(215, 176, 91, 0.045) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse at 50% 30%, black 20%, transparent 75%);
+}
+
+/* ── Type scale: the ONLY place text sizes are defined ──
+   Use these instead of Tailwind text-* size utilities so sizes stay uniform.
+   label   pixel UI text: tags, years, meta, nav, axis, buttons   14px (≈12.6px Latin at 90%)
+   title   card / item titles                                    16 → 18px
+   body    descriptive copy (pair with .font-body)               16 → 18px
+   lead    section leads, hero intro                             18 → 20px
+   stat    big numbers (skill years)                             28 → 36px
+   heading section headings                                      30 → 48px
+   display hero name / nickname                                  28 → 36 → 48px */
+@layer components {
+  .type-label {
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+  .type-title {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+  .type-body {
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+  .type-lead {
+    font-size: 1.125rem;
+    line-height: 1.8;
+  }
+  .type-stat {
+    font-size: 1.75rem;
+    line-height: 1.1;
+  }
+  .type-heading {
+    font-size: 1.875rem;
+    line-height: 1.25;
+  }
+  .type-display {
+    font-size: 1.75rem;
+    line-height: 1.35;
+  }
+
+  @media (min-width: 640px) {
+    .type-title,
+    .type-body {
+      font-size: 1.125rem;
+    }
+    .type-lead {
+      font-size: 1.25rem;
+    }
+    .type-stat,
+    .type-display {
+      font-size: 2.25rem;
+    }
+    .type-heading {
+      font-size: 3rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .type-display {
+      font-size: 3rem;
+    }
+  }
+}
+
+.font-pixel {
+  font-family: var(--font-press), var(--font-pixel-jp), var(--font-noto), monospace;
+}
+
+/* Readable copy (descriptions/paragraphs) stays on Noto Sans JP. */
+.font-body {
+  font-family: var(--font-noto), system-ui, sans-serif;
 }
 
 /* Keep NES.css primary controls aligned with the Activity retro-blue accent. */
@@ -57,126 +161,13 @@ body {
   box-shadow: inset 4px 4px #2f5f98;
 }
 
-/* Start gate (PRESS START reveal)
-   Progressive enhancement: content is visible by default and only gated when JS
-   adds `html.not-started` / `html.is-starting`. */
-html.not-started .start-gated,
-html.is-starting .start-gated {
-  display: none;
-}
-
-html.is-starting body::before,
-html.is-starting body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  pointer-events: auto;
-}
-
-/* Scanlines + subtle phosphor tint */
-html.is-starting body::before {
-  background-image:
-    repeating-linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0) 0px,
-      rgba(0, 0, 0, 0) 2px,
-      rgba(0, 0, 0, 0.18) 3px,
-      rgba(0, 0, 0, 0.18) 4px
-    ),
-    linear-gradient(180deg, rgba(215, 176, 91, 0.1), rgba(0, 0, 0, 0));
-  mix-blend-mode: multiply;
-  opacity: 0.9;
-}
-
-/* Boot flash + vignette */
-html.is-starting body::after {
-  background:
-    radial-gradient(circle at 50% 40%, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0) 55%),
-    radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.65) 100%);
-  opacity: 0;
-}
-
-@keyframes start-gate-flash {
-  0% {
-    opacity: 0;
-  }
-  30% {
-    opacity: 0.95;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes start-gate-jitter {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0);
-  }
-  25% {
-    transform: translate3d(0, -1px, 0);
-  }
-  55% {
-    transform: translate3d(0, 1px, 0);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  html.is-starting body::before {
-    animation: start-gate-jitter 220ms steps(2, end) infinite;
-    will-change: transform;
-  }
-  html.is-starting body::after {
-    animation: start-gate-flash 520ms steps(3, end) both;
-    will-change: opacity;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html.is-starting body::before,
-  html.is-starting body::after {
-    animation: none !important;
-  }
-  html.is-starting body::after {
-    opacity: 0.15;
-  }
-}
-
-.frame {
-  border: 4px solid #d7b05b;
-  box-shadow: 4px 4px 0 #a20000;
-  background: #212529;
-}
-
-.hud {
-  overflow: hidden;
-  background-image:
-    repeating-linear-gradient(
-      to bottom,
-      rgba(215, 176, 91, 0.08) 0px,
-      rgba(215, 176, 91, 0.08) 1px,
-      rgba(0, 0, 0, 0) 3px,
-      rgba(0, 0, 0, 0) 6px
-    ),
-    linear-gradient(
-      135deg,
-      rgba(215, 176, 91, 0.18) 0%,
-      rgba(215, 176, 91, 0.04) 45%,
-      rgba(0, 0, 0, 0) 70%
-    );
-  background-blend-mode: screen;
-}
-
 /* Motion polish tokens (interactive feedback) */
 .btn-game {
   position: relative;
   transform: translateZ(0);
   transition:
     transform 120ms steps(2, end),
-    filter 120ms steps(2, end),
-    box-shadow 120ms steps(2, end);
-  will-change: transform;
+    filter 120ms steps(2, end);
 }
 
 .btn-game:hover {
@@ -187,15 +178,26 @@ html.is-starting body::after {
   transform: translateY(2px);
 }
 
-/* HUD progress */
+/* ── Top nav ── */
+.topnav {
+  border-bottom: 1px solid rgba(215, 176, 91, 0.18);
+}
+
+@media (max-width: 639px) {
+  .topnav {
+    display: none;
+  }
+}
+
 .hud-progress {
-  margin-top: 0.75rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .hud-progress__track {
-  height: 10px;
-  border: 3px solid rgba(215, 176, 91, 0.9);
-  box-shadow: 3px 3px 0 rgba(162, 0, 0, 0.9);
+  height: 3px;
   background: rgba(0, 0, 0, 0.55);
   overflow: hidden;
 }
@@ -203,81 +205,46 @@ html.is-starting body::after {
 .hud-progress__fill {
   height: 100%;
   width: var(--hud-progress, 0%);
-  background-image: repeating-linear-gradient(
-    90deg,
-    rgba(215, 176, 91, 0.95) 0px,
-    rgba(215, 176, 91, 0.95) 6px,
-    rgba(215, 176, 91, 0.55) 6px,
-    rgba(215, 176, 91, 0.55) 10px
-  );
-  background-size: 24px 10px;
-  transform: translateZ(0);
-  will-change: width;
+  background: linear-gradient(90deg, var(--color-fami-blue), var(--color-fami-gold));
 }
 
-/* Top nav bar (full-width fixed header) */
-.topnav {
-  border-bottom: 2px solid rgba(215, 176, 91, 0.4);
-}
-
-/* Mobile: hide top nav (hamburger handles navigation instead).
-   Unlayered CSS wins over Tailwind's hidden/@layer utilities. */
-@media (max-width: 639px) {
-  .topnav {
-    display: none;
-  }
-}
-
-/* padding-top is driven by --page-top-pt (set via CSS custom property above) */
-
-/* Compact progress strip at bottom of topnav */
-.topnav .hud-progress {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: 0;
-}
-
-.topnav .hud-progress__track {
-  height: 3px;
-  border: none;
-  box-shadow: none;
-}
-
-.topnav .hud-progress p {
-  display: none;
-}
-
-/* Top nav text links */
 .nav-link {
-  color: rgba(248, 241, 220, 0.6);
-  transition: color 120ms steps(2, end);
+  color: rgba(248, 241, 220, 0.65);
+  transition: color 150ms ease;
 }
 
 .nav-link:hover {
-  color: rgb(79 134 198 / 95%);
+  color: var(--color-fami-ivory);
 }
 
-/* Current section highlight */
 .toc-active {
-  color: rgb(79 134 198 / 95%);
-  border-bottom-color: rgb(79 134 198 / 80%);
+  color: var(--color-fami-gold);
+  border-bottom-color: var(--color-fami-gold);
 }
 
-/* Gamefeel: subtle, CSS-first motion (must respect reduced motion) */
-.pixel-float {
-  animation: pixel-float 1600ms ease-in-out infinite;
-  will-change: transform;
+/* ── Hero ── */
+.hero-avatar {
+  transition: transform 250ms ease-out;
+  transform-style: preserve-3d;
 }
 
-@keyframes pixel-float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-3px);
+/* With JS + motion allowed, the voxel intro plays first, so start the crisp
+   image hidden (HeroAvatar sets an inline opacity once the voxels settle). */
+html.reveal-ready .hero-avatar img {
+  opacity: 0;
+}
+
+.hero-glow {
+  background:
+    radial-gradient(circle at 50% 30%, rgba(79, 134, 198, 0.22), transparent 45%),
+    radial-gradient(circle at 50% 30%, rgba(215, 176, 91, 0.1), transparent 65%);
+}
+
+@media (min-width: 1024px) {
+  .hero-glow {
+    background:
+      radial-gradient(circle at 30% 50%, rgba(79, 134, 198, 0.24), transparent 40%),
+      radial-gradient(circle at 30% 50%, rgba(215, 176, 91, 0.1), transparent 60%);
   }
 }
 
@@ -291,221 +258,224 @@ html.is-starting body::after {
     opacity: 1;
   }
   50% {
-    opacity: 0.55;
+    opacity: 0.45;
   }
 }
 
-@keyframes hud-stripes {
-  0% {
-    background-position: 0 0;
-  }
+.scroll-cue {
+  animation: scroll-cue 1600ms ease-in-out infinite;
+}
+
+@keyframes scroll-cue {
+  0%,
   100% {
-    background-position: 48px 0;
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(6px);
+    opacity: 1;
   }
 }
 
-/* Work Timeline (Work-section only) */
-@keyframes work-rpg-shimmer {
-  0% {
-    transform: translate3d(-20%, -20%, 0);
-    opacity: 0.06;
-  }
+/* Glowing gradient text for the hero name. */
+.text-shine {
+  background: linear-gradient(
+    100deg,
+    var(--color-fami-ivory) 0%,
+    var(--color-fami-ivory) 40%,
+    var(--color-fami-gold) 50%,
+    var(--color-fami-ivory) 60%,
+    var(--color-fami-ivory) 100%
+  );
+  background-size: 250% 100%;
+  background-clip: text;
+  color: transparent;
+  animation: text-shine 6s ease-in-out infinite;
+}
+
+@keyframes text-shine {
+  0%,
   100% {
-    transform: translate3d(0%, 0%, 0);
-    opacity: 0.12;
+    background-position: 100% 0;
+  }
+  50% {
+    background-position: 0% 0;
   }
 }
 
-.work-timeline__list {
+/* ── Scroll reveal ──
+   Only hides content when the inline layout script marked JS as ready, so the
+   page stays fully readable without JS. */
+html.reveal-ready [data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  transition:
+    opacity 700ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+html.reveal-ready [data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── Cards ── */
+.card {
   position: relative;
-  margin-top: 1.5rem;
+  border: 1px solid rgba(215, 176, 91, 0.16);
+  border-radius: 0.75rem;
+  background: linear-gradient(180deg, rgba(20, 24, 34, 0.92), rgba(14, 17, 24, 0.92));
+  transition:
+    border-color 200ms ease,
+    transform 250ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    box-shadow 250ms ease;
 }
 
-.work-timeline__list::before {
-  content: "";
-  position: absolute;
-  top: 0.75rem;
-  bottom: 0.75rem;
-  left: 0.55rem;
-  width: 3px;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(215, 176, 91, 0.85) 0px,
-    rgba(215, 176, 91, 0.85) 5px,
-    rgba(0, 0, 0, 0) 5px,
-    rgba(0, 0, 0, 0) 9px
-  );
+.card-hover:hover,
+.card-hover:focus-within {
+  border-color: rgba(215, 176, 91, 0.6);
+  transform: translateY(-4px);
+  box-shadow:
+    0 18px 40px -18px rgba(79, 134, 198, 0.45),
+    4px 4px 0 rgba(162, 0, 0, 0.55);
 }
 
-.work-timeline__entry {
-  position: relative;
-  padding-left: 2rem;
-  padding-bottom: 2.5rem;
-}
-
-.work-timeline__entry:last-child {
-  padding-bottom: 0;
-}
-
-.work-timeline__node {
-  position: absolute;
-  left: 0;
-  top: 0.65rem;
-  width: 1.1rem;
-  height: 1.1rem;
-  border: 3px solid rgba(215, 176, 91, 0.95);
-  background: #1b1b1b;
-  box-shadow: 2px 2px 0 rgba(162, 0, 0, 0.9);
-  transform: rotate(45deg);
-}
-
-.work-timeline__company-block {
-  border: 3px solid rgba(215, 176, 91, 0.9);
-  box-shadow: 3px 3px 0 rgba(162, 0, 0, 0.9);
-  background: rgba(0, 0, 0, 0.35);
-  padding: 0.875rem 1rem;
-  position: relative;
-  overflow: hidden;
-  min-width: 0;
-}
-
-.work-timeline__company-block::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.14;
-  background-image: repeating-linear-gradient(
-    to bottom,
-    rgba(215, 176, 91, 0.18) 0px,
-    rgba(215, 176, 91, 0.18) 1px,
-    rgba(0, 0, 0, 0) 4px,
-    rgba(0, 0, 0, 0) 6px
-  );
-  transform: translateZ(0);
-}
-
-.work-timeline__company-block::after {
-  content: "";
-  position: absolute;
-  inset: -40% -10%;
-  pointer-events: none;
-  opacity: 0.07;
-  background: linear-gradient(135deg, rgba(215, 176, 91, 0.9) 0%, rgba(0, 0, 0, 0) 50%);
-  transform: translate3d(-20%, -20%, 0);
-}
-
-.work-timeline__company-name {
-  font-size: 1rem;
-  color: rgba(215, 176, 91, 0.95);
-  font-family: var(--font-press);
-  word-break: break-word;
-}
-
-.work-timeline__projects {
-  margin-top: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  list-style: none;
-  padding: 0;
-}
-
-.work-timeline__project-card {
-  border: 2px solid rgba(215, 176, 91, 0.35);
-  background: rgba(0, 0, 0, 0.25);
-  padding: 0.75rem;
-  position: relative;
-  min-width: 0;
-}
-
-.work-timeline__project-label {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.25em;
-  color: rgba(215, 176, 91, 0.75);
-  font-family: var(--font-press);
-}
-
-.work-timeline__project-title {
-  font-size: 1rem;
-  color: rgba(215, 176, 91, 0.95);
-  font-family: var(--font-press);
-  word-break: break-word;
+.chip {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(79, 134, 198, 0.45);
+  border-radius: 999px;
+  background: rgba(79, 134, 198, 0.12);
+  padding: 0.25rem 0.7rem;
+  font-size: 0.875rem; /* = .type-label */
   line-height: 1.6;
-  margin-top: 0.25rem;
+  color: rgba(248, 241, 220, 0.9);
 }
 
-.work-timeline__meta-key {
-  font-size: 0.75rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: rgba(215, 176, 91, 0.9);
-  font-family: var(--font-press);
-  width: 3.5rem;
-  flex-shrink: 0;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .work-timeline__company-block::after {
-    animation: work-rpg-shimmer 1400ms ease-in-out infinite alternate;
-    will-change: transform, opacity;
+/* Re-triggerable entrance used when content swaps (filters, timeline detail). */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
   }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 450ms cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+  animation-delay: var(--stagger, 0ms);
+}
+
+/* ── Work timeline (gantt) ── */
+.gantt-grid {
+  background-image: linear-gradient(90deg, rgba(248, 241, 220, 0.08) 1px, transparent 1px);
+  background-size: calc(100% / var(--gantt-cols)) 100%;
+}
+
+.gantt-bar {
+  transform-origin: left center;
+  transition:
+    transform 900ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    filter 150ms ease,
+    box-shadow 150ms ease;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+html.reveal-ready [data-reveal] .gantt-bar {
+  transform: scaleX(0);
+}
+
+html.reveal-ready [data-reveal].is-revealed .gantt-bar {
+  transform: scaleX(1);
+}
+
+.gantt-bar:hover {
+  filter: brightness(1.15);
+}
+
+.gantt-bar[aria-pressed="true"] {
+  box-shadow:
+    0 0 0 2px var(--color-fami-ivory),
+    0 0 24px rgba(215, 176, 91, 0.55);
+}
+
+/* Detail "callout": caret under the selected bar + panel in the bar's color. */
+.work-caret {
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 12px solid var(--accent);
+  transition: left 450ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.work-callout {
+  border: 2px solid var(--accent);
+  box-shadow: 4px 4px 0 rgba(162, 0, 0, 0.6);
+}
+
+.work-kind-badge {
+  background: var(--accent);
+  color: var(--color-fami-night);
+}
+
+.work-project {
+  border-left: 3px solid var(--accent);
+}
+
+.work-project__num {
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+
+/* ── Skill tiles ── */
+.skill-meter {
+  height: 8px;
+  border-radius: 2px;
+  background: rgba(248, 241, 220, 0.08);
+  overflow: hidden;
+}
+
+.skill-meter__fill {
+  height: 100%;
+  width: var(--meter, 0%);
+  background: repeating-linear-gradient(
+    90deg,
+    var(--color-fami-gold) 0 10px,
+    rgba(0, 0, 0, 0) 10px 12px
+  );
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .btn-game {
+  .btn-game,
+  .card,
+  .gantt-bar,
+  .work-caret {
     transition: none !important;
   }
-  .pixel-float,
-  .blink-soft {
+  .blink-soft,
+  .scroll-cue,
+  .text-shine,
+  .animate-fade-up {
     animation: none !important;
   }
-
-  .work-timeline__company-block::after {
-    animation: none !important;
+  .card-hover:hover,
+  .card-hover:focus-within {
+    transform: none;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .hud-progress__fill {
-    animation: hud-stripes 700ms linear infinite;
-  }
-  .toc-active {
-    animation: blink-soft 1200ms steps(2, end) infinite;
-  }
-}
-
-/* Guardrail: avoid expensive animation patterns (keep transforms/opacity only). */
-
-/* Typography tokens */
-.section-body {
-  font-size: 1rem; /* tailwind: text-base */
-  line-height: 1.75rem; /* tailwind: leading-relaxed */
-  font-family: var(--font-noto);
-}
-
-.section-body-muted {
-  font-size: 1rem; /* tailwind: text-base */
-  line-height: 1.75rem;
-  font-family: var(--font-noto);
-  color: rgba(248, 241, 220, 0.9); /* close to text-fami-ivory/90 */
-}
-
-/* Badge tokens */
-.year-badge {
-  font-size: 1rem;
-  line-height: 1.25rem;
-}
-
-/* Mobile Menu (hamburger + overlay) */
+/* ── Mobile Menu (hamburger + overlay) ── */
 .mobile-menu-btn {
-  /* Force fixed positioning */
   position: fixed !important;
   top: 1rem !important;
   right: 1rem !important;
   z-index: 99999 !important;
-  /* Layout */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -514,16 +484,17 @@ html.is-starting body::after {
   width: 44px;
   height: 44px;
   padding: 8px;
-  /* Styling */
-  border: 3px solid rgba(215, 176, 91, 0.9);
+  border: 2px solid rgba(215, 176, 91, 0.9);
+  border-radius: 0.5rem;
   box-shadow: 3px 3px 0 rgba(162, 0, 0, 0.9);
-  background: rgba(0, 0, 0, 0.95);
+  background: rgba(11, 13, 18, 0.9);
+  backdrop-filter: blur(8px);
 }
 
 .mobile-menu-btn__line {
   display: block;
   width: 20px;
-  height: 4px;
+  height: 3px;
   background: rgba(215, 176, 91, 0.95);
   transition:
     transform 150ms steps(2, end),
@@ -531,7 +502,7 @@ html.is-starting body::after {
 }
 
 .mobile-menu-btn--open .mobile-menu-btn__line:nth-child(1) {
-  transform: translateY(10px) rotate(45deg);
+  transform: translateY(9px) rotate(45deg);
 }
 
 .mobile-menu-btn--open .mobile-menu-btn__line:nth-child(2) {
@@ -539,10 +510,9 @@ html.is-starting body::after {
 }
 
 .mobile-menu-btn--open .mobile-menu-btn__line:nth-child(3) {
-  transform: translateY(-10px) rotate(-45deg);
+  transform: translateY(-9px) rotate(-45deg);
 }
 
-/* Hide hamburger on sm+ (unlayered CSS wins over sm:hidden in @layer utilities) */
 @media (min-width: 640px) {
   .mobile-menu-btn {
     display: none;
@@ -556,7 +526,7 @@ html.is-starting body::after {
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  background: rgba(27, 27, 27, 0.98);
+  background: rgba(11, 13, 18, 0.98);
   animation: mobile-menu-fade-in 200ms steps(3, end) both;
 }
 
@@ -582,7 +552,8 @@ html.is-starting body::after {
   align-items: center;
   width: 44px;
   height: 44px;
-  border: 3px solid rgba(215, 176, 91, 0.9);
+  border: 2px solid rgba(215, 176, 91, 0.9);
+  border-radius: 0.5rem;
   box-shadow: 3px 3px 0 rgba(162, 0, 0, 0.9);
   background: rgba(0, 0, 0, 0.7);
   font-family: var(--font-press);
@@ -602,11 +573,12 @@ html.is-starting body::after {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.75rem 1rem;
-  border: 3px solid rgba(215, 176, 91, 0.5);
-  background: rgba(0, 0, 0, 0.35);
+  padding: 1rem;
+  border: 1px solid rgba(215, 176, 91, 0.35);
+  border-radius: 0.75rem;
+  background: rgba(20, 24, 34, 0.9);
   font-family: var(--font-press);
-  font-size: 0.85rem;
+  font-size: 1rem; /* = .type-title */
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: rgba(248, 241, 220, 0.95);
@@ -622,11 +594,6 @@ html.is-starting body::after {
   background: rgb(79 134 198 / 10%);
 }
 
-.mobile-menu-overlay__link:active {
-  transform: translateY(2px);
-}
-
-/* Scroll lock when mobile menu is open */
 body.mobile-menu-open {
   overflow: hidden;
 }
@@ -643,29 +610,11 @@ body.mobile-menu-open {
 /* ── Responsive: NES.css mobile overrides (< sm breakpoint) ── */
 @media (max-width: 639px) {
   .nes-btn {
-    padding: 2px 6px;
-    font-size: 0.75rem;
-  }
-
-  .nes-badge > span {
-    font-size: 0.625rem;
-  }
-
-  .nes-container {
-    padding: 0.75rem;
-  }
-
-  .mobile-menu-overlay {
-    padding: 0.75rem;
+    padding: 4px 10px;
+    font-size: 0.875rem; /* = .type-label */
   }
 }
 
-/* NES.css progress bars: always respect parent width */
-.nes-progress {
-  max-width: 100%;
-}
-
-/* Global text overflow safety */
 body {
   overflow-wrap: break-word;
 }

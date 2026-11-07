@@ -2,19 +2,11 @@
 
 import Image from "next/image";
 import { useMemo, useState } from "react";
-import type { ActivityGroup, ActivityItem } from "@/content/portfolio";
+import type { ActivityGroup, ActivityItem, ExternalLink } from "@/content/portfolio";
 
 const FILTERS = ["All", "Talks", "Community", "Achievements"] as const;
 const YEAR_PATTERN = /\d{4}/g;
 type Filter = (typeof FILTERS)[number];
-
-const CATEGORY_CLASSES: Record<string, string> = {
-  Talks: "border-fami-blue/50 bg-fami-blue/15 text-fami-blue",
-  Books: "border-fami-blue/50 bg-fami-blue/15 text-fami-blue",
-  Articles: "border-fami-blue/50 bg-fami-blue/15 text-fami-blue",
-  Community: "border-fami-blue/50 bg-fami-blue/15 text-fami-blue",
-  Achievements: "border-fami-blue/50 bg-fami-blue/15 text-fami-blue",
-};
 
 type Output = ActivityItem & { category: Exclude<Filter, "All"> };
 
@@ -52,85 +44,100 @@ function toOutputs(groups: ActivityGroup[]): Output[] {
     .toSorted((a, b) => activitySortKey(b) - activitySortKey(a));
 }
 
-function OutputCard({ item, priority }: { item: Output; priority?: boolean }) {
+function ExternalAnchor({ link, className }: { link: ExternalLink; className: string }) {
+  const external = isExternalHttpHref(link.href);
   return (
-    <li className="border-fami-gold/25 hover:border-fami-gold/70 group min-w-0 overflow-hidden rounded-lg border bg-[#171717] transition-colors">
-      {item.image ? (
-        <div className="border-fami-gold/25 relative aspect-[16/9] overflow-hidden border-b">
+    <a
+      href={link.href}
+      target={external ? "_blank" : undefined}
+      rel={external ? "noreferrer" : undefined}
+      className={className}
+    >
+      {link.label} ↗
+    </a>
+  );
+}
+
+function CardMeta({ item }: { item: Output }) {
+  return (
+    <div className="flex items-center gap-2">
+      <span className="chip uppercase">{item.category}</span>
+      <time className="font-pixel text-fami-gold type-label">{item.year}</time>
+    </div>
+  );
+}
+
+function CardLinks({ item }: { item: Output }) {
+  if (!item.link && !item.slides) return null;
+  const cls =
+    "border-fami-gold/50 text-fami-ivory hover:border-fami-gold hover:bg-fami-gold/15 hover:text-fami-gold rounded-md border bg-black/40 px-3 py-1.5 type-label no-underline transition-colors";
+  return (
+    <div className="mt-3 flex flex-wrap gap-2">
+      {item.link ? <ExternalAnchor link={item.link} className={cls} /> : null}
+      {item.slides ? <ExternalAnchor link={item.slides} className={cls} /> : null}
+    </div>
+  );
+}
+
+function OutputCard({ item, featured, index }: { item: Output; featured: boolean; index: number }) {
+  const style = { ["--stagger" as never]: `${Math.min(index, 8) * 60}ms` };
+
+  if (item.image) {
+    return (
+      <li
+        className={`card card-hover animate-fade-up group flex flex-col overflow-hidden ${featured ? "sm:col-span-2 sm:row-span-2" : ""}`}
+        style={style}
+      >
+        <div
+          className={`relative overflow-hidden ${featured ? "aspect-[16/9] sm:aspect-auto sm:min-h-[18rem] sm:flex-1" : "aspect-[16/9]"}`}
+        >
           <Image
             src={item.image.src}
             alt={item.image.alt}
             fill
-            sizes="(min-width: 640px) 50vw, 100vw"
-            className="object-cover"
+            sizes={
+              featured
+                ? "(min-width: 1024px) 66vw, 100vw"
+                : "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+            }
+            className="object-cover transition-transform duration-700 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
             style={
               item.image.objectPosition ? { objectPosition: item.image.objectPosition } : undefined
             }
-            priority={priority}
-            loading={priority ? "eager" : undefined}
+            priority={featured}
+            loading={featured ? "eager" : undefined}
+          />
+          <div
+            aria-hidden="true"
+            className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#0e1118] to-transparent"
           />
         </div>
-      ) : null}
-
-      <article className="flex h-full flex-col p-4 sm:p-5">
-        <div className="mb-3 flex items-center gap-2">
-          <span
-            className={`rounded-full border px-2 py-0.5 text-[0.6rem] font-bold tracking-[0.08em] uppercase ${CATEGORY_CLASSES[item.category]}`}
-          >
-            {item.category}
-          </span>
-          <time className="text-fami-ivory/60 text-xs">{item.year}</time>
-        </div>
-
-        <h3 className="text-fami-ivory flex items-start gap-2 text-sm leading-relaxed font-bold">
-          {item.link ? (
-            <a
-              href={item.link.href}
-              target={isExternalHttpHref(item.link.href) ? "_blank" : undefined}
-              rel={isExternalHttpHref(item.link.href) ? "noreferrer" : undefined}
-              className="hover:text-fami-gold flex-1 transition-colors"
-            >
-              {item.title}
-            </a>
-          ) : (
-            <span className="flex-1">{item.title}</span>
-          )}
-          {item.link ? (
-            <span aria-hidden="true" className="text-fami-gold shrink-0">
-              ↗
-            </span>
+        <article className="flex flex-col p-5 sm:p-6">
+          <CardMeta item={item} />
+          <h3 className="type-title mt-3">{item.title}</h3>
+          {item.context ? (
+            <p className="font-body type-body text-fami-ivory/75 mt-2 line-clamp-3">
+              {item.context}
+            </p>
           ) : null}
-        </h3>
+          <CardLinks item={item} />
+        </article>
+      </li>
+    );
+  }
 
-        {item.context ? (
-          <p className="section-body-muted mt-2 flex-1 leading-relaxed">{item.context}</p>
-        ) : null}
-
-        {item.link || item.slides ? (
-          <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2">
-            {item.link ? (
-              <a
-                href={item.link.href}
-                target={isExternalHttpHref(item.link.href) ? "_blank" : undefined}
-                rel={isExternalHttpHref(item.link.href) ? "noreferrer" : undefined}
-                className="text-fami-gold text-xs underline underline-offset-4"
-              >
-                {item.link.label} ↗
-              </a>
-            ) : null}
-            {item.slides ? (
-              <a
-                href={item.slides.href}
-                target={isExternalHttpHref(item.slides.href) ? "_blank" : undefined}
-                rel={isExternalHttpHref(item.slides.href) ? "noreferrer" : undefined}
-                className="text-fami-gold text-xs underline underline-offset-4"
-              >
-                {item.slides.label} ↗
-              </a>
-            ) : null}
-          </div>
-        ) : null}
-      </article>
+  return (
+    <li className="card card-hover animate-fade-up flex flex-col p-5 sm:p-6" style={style}>
+      <CardMeta item={item} />
+      <h3 className="type-title mt-3">{item.title}</h3>
+      {item.context ? (
+        <p className="font-body type-body text-fami-ivory/75 mt-2 line-clamp-3 flex-1">
+          {item.context}
+        </p>
+      ) : (
+        <div className="flex-1" />
+      )}
+      <CardLinks item={item} />
     </li>
   );
 }
@@ -142,15 +149,15 @@ export function ActivitiesOutputGrid({ groups }: { groups: ActivityGroup[] }) {
     filter === "All" ? outputs : outputs.filter((item) => item.category === filter);
 
   return (
-    <div className="mt-6">
-      <div className="mb-6 flex flex-wrap gap-2" aria-label="Activity categories">
+    <div>
+      <div data-reveal className="mb-8 flex flex-wrap gap-2" aria-label="Activity categories">
         {FILTERS.map((option) => (
           <button
             key={option}
             type="button"
             onClick={() => setFilter(option)}
             aria-pressed={filter === option}
-            className={`focus-visible:ring-fami-gold rounded-full border px-3 py-1.5 text-xs font-bold transition-colors focus:outline-none focus-visible:ring-4 ${filter === option ? "border-fami-blue bg-fami-blue text-fami-ivory" : "border-fami-gold/30 text-fami-ivory/70 hover:border-fami-gold hover:text-fami-ivory bg-black/20"}`}
+            className={`font-pixel focus-visible:ring-fami-gold type-label rounded-md border px-3 py-2 tracking-[0.05em] uppercase transition-colors focus:outline-none focus-visible:ring-2 ${filter === option ? "border-fami-blue bg-fami-blue text-fami-ivory shadow-[3px_3px_0_#a20000]" : "border-fami-gold/30 text-fami-ivory/70 hover:border-fami-gold hover:text-fami-ivory bg-black/30"}`}
           >
             {option}
           </button>
@@ -158,19 +165,21 @@ export function ActivitiesOutputGrid({ groups }: { groups: ActivityGroup[] }) {
       </div>
 
       {visibleOutputs.length > 0 ? (
-        <ul className="grid grid-cols-1 gap-4 [font-family:var(--font-noto)] sm:grid-cols-2">
+        <ul
+          key={filter}
+          className="grid grid-flow-dense grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
+        >
           {visibleOutputs.map((item, i) => (
             <OutputCard
               key={`${item.category}:${item.year}:${item.title}`}
               item={item}
-              priority={i === 0}
+              index={i}
+              featured={i === 0 && Boolean(item.image)}
             />
           ))}
         </ul>
       ) : (
-        <p className="text-fami-ivory/70 py-10 text-center [font-family:var(--font-noto)] text-sm">
-          Coming soon
-        </p>
+        <p className="text-fami-ivory/70 type-label py-10 text-center">Coming soon</p>
       )}
     </div>
   );

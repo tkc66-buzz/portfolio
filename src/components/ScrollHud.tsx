@@ -1,7 +1,6 @@
 "use client";
 
 import { TOC_ITEMS, type TocItemId } from "@/components/toc";
-import { START_GATE_EVENT } from "@/components/startGate";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 type ScrollHudState = {
@@ -17,7 +16,6 @@ function clamp01(n: number) {
 
 export function ScrollHud() {
   const ids = useMemo(() => TOC_ITEMS.map((i) => i.id), []);
-  const idToLabel = useMemo(() => new Map(TOC_ITEMS.map((i) => [i.id, i.label] as const)), []);
 
   const [state, setState] = useState<ScrollHudState>({
     activeSectionId: (ids[0] ?? "profile") as TocItemId,
@@ -107,14 +105,6 @@ export function ScrollHud() {
       });
     };
 
-    const onStartGate = () => {
-      // When gated content becomes visible, offsets must be recomputed.
-      window.requestAnimationFrame(() => {
-        computeOffsets();
-        update();
-      });
-    };
-
     const onResize = () => {
       computeOffsets();
       onScroll();
@@ -122,7 +112,6 @@ export function ScrollHud() {
 
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onResize);
-    window.addEventListener(START_GATE_EVENT, onStartGate);
 
     return () => {
       if (rafRef.current != null) {
@@ -131,7 +120,6 @@ export function ScrollHud() {
       }
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onResize);
-      window.removeEventListener(START_GATE_EVENT, onStartGate);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -144,9 +132,6 @@ export function ScrollHud() {
           style={{ ["--hud-progress" as never]: `${Math.round(state.progressRatio * 100)}%` }}
         />
       </div>
-      <p className="text-fami-gold mt-2 text-[0.65rem] tracking-[0.25em] uppercase">
-        STAGE: {idToLabel.get(state.activeSectionId) ?? state.activeSectionId}
-      </p>
     </div>
   );
 }
