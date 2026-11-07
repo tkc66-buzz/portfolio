@@ -25,7 +25,7 @@ Focused tips for Anthropic Claude Code / Workbench agents interacting with this 
 - `src/components/sections/SectionShell.tsx` – Shared section band (pixel heading with icon + lead, `max-w-7xl`; no "01 / STAGE" style numbering — removed on request).
 - `src/components/sections/SkillLevelBar.tsx` – Client skill "level" tile: years count up + segmented meter fills on scroll-into-view (reduced-motion aware).
 - `src/components/sections/*` – Semantic sections; each owns a stable `id` for `#hash` navigation.
-- `src/components/sections/WorkSection.tsx` – Work section (server) → `WorkTimeline.tsx` (client gantt: MAIN/SIDE lanes; the selected bar gets a sliding caret pointing at a color-matched callout panel with ◀ ▶ prev/next, ABOUT / TECH STACK / numbered PROJECTS. The old mobile pills were dropped — prev/next covers small screens).
+- `src/components/sections/WorkSection.tsx` – Work section (server) → `WorkTimeline.tsx` (client gantt: MAIN/SIDE lanes; the selected bar gets a sliding caret pointing at a color-matched callout panel with ◀ ▶ prev/next, ABOUT / TECH STACK / numbered PROJECTS. Project `links?: ExternalLink[]` render as link buttons under each project; never paste URLs into `summary` (it is plain text). The old mobile pills were dropped — prev/next covers small screens).
 - `src/components/sections/workTimelineVm.ts` – Parses `period` (`"現在"` = now) into fractional years and lanes entries by `WorkEntry.kind` (`"main"` default, `"side"`), sets `ongoing`, and sorts entries chronologically (prev/next relies on it).
 - `src/components/sections/WritingSection.tsx` – Writing/blog, book, and external-media links section.
 - `src/components/sections/ActivitiesSection.tsx` – Activities section shell (Talks/Community/Achievements).
@@ -56,7 +56,7 @@ Focused tips for Anthropic Claude Code / Workbench agents interacting with this 
 
 ## Deployment Checklist for Claude
 
-1. Bump `package.json` version if the change is user-facing (current version: `1.4.0`).
+1. Bump `package.json` version if the change is user-facing (current version: `1.4.1`).
 2. Run `pnpm build` to catch Next.js warnings before pushing.
 3. Ensure docs (`README.md`, `AGENTS.md`, `CLAUDE.md`) mention new dependencies or workflows.
 4. Merge to `main` and push to trigger Vercel.
