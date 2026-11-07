@@ -26,28 +26,31 @@ export function TableOfContents() {
       id="menu"
       aria-label="Menu"
       tabIndex={-1}
-      className="topnav hud fixed inset-x-0 top-0 z-50 hidden bg-[#1b1b1b]/90 backdrop-blur supports-[backdrop-filter]:bg-[#1b1b1b]/70 sm:flex"
+      className="topnav fixed inset-x-0 top-0 z-50 hidden bg-[#0b0d12]/80 backdrop-blur-md sm:flex"
     >
-      <div className="mx-auto flex w-full max-w-5xl items-center gap-6 px-4 py-5 md:px-8">
+      <div className="mx-auto flex w-full max-w-7xl items-center gap-8 px-5 py-4 sm:px-8">
         <a
           href="#profile"
           data-toc-id="profile"
-          className="text-fami-gold focus-visible:ring-fami-gold inline-flex shrink-0 items-center gap-2 border-b-2 border-transparent text-sm leading-none tracking-[0.15em] uppercase focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#111]"
+          className="font-pixel text-fami-gold focus-visible:ring-fami-gold type-label inline-flex shrink-0 items-center gap-2 border-b-2 border-transparent leading-none tracking-[0.15em] uppercase focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0d12]"
           aria-label="Profile"
         >
-          <PixelIcon src="/assets/pixel/icons/profile.svg" decorative size="md" />
+          <PixelIcon src="/assets/pixel/icons/profile.svg" decorative size="lg" />
           BUZZ
         </a>
 
-        <ul className="!mb-0 flex flex-1 items-center gap-5">
+        <ul className="!mb-0 ml-auto flex items-center gap-4 lg:gap-7">
           {TOC_ITEMS.map((item) => (
             <li key={item.id}>
               <a
                 data-toc-id={item.id}
-                className="nav-link focus-visible:ring-fami-gold inline-flex items-center gap-2 border-b-2 border-transparent text-sm leading-none tracking-wide uppercase focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#111]"
+                className="nav-link focus-visible:ring-fami-gold type-label inline-flex items-center gap-2 border-b-2 border-transparent py-1 leading-none tracking-wide uppercase focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0d12]"
                 href={tocHref(item.id)}
               >
-                <PixelIcon src={tocIconSrc(item.id)} decorative size="md" />
+                {/* Icons only on lg+: at sm/md the labels alone need all the width. */}
+                <span className="hidden lg:inline-flex">
+                  <PixelIcon src={tocIconSrc(item.id)} decorative size="lg" />
+                </span>
                 {item.label}
               </a>
             </li>

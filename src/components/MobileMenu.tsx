@@ -2,7 +2,6 @@
 
 import { TOC_ITEMS, tocHref, type TocItemId } from "@/components/toc";
 import { PixelIcon } from "@/components/PixelIcon";
-import { START_GATE_CLASS_STARTED, START_GATE_EVENT } from "@/components/startGate";
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 
@@ -18,23 +17,6 @@ function getServerSnapshot() {
 }
 function useHasMounted() {
   return useSyncExternalStore(subscribeNoop, getClientSnapshot, getServerSnapshot);
-}
-
-// Check if START button has been pressed
-function subscribeStartGate(onStoreChange: () => void) {
-  if (typeof window === "undefined") return () => {};
-  window.addEventListener(START_GATE_EVENT, onStoreChange);
-  return () => window.removeEventListener(START_GATE_EVENT, onStoreChange);
-}
-function getStartGateSnapshot() {
-  if (typeof document === "undefined") return false;
-  return document.documentElement.classList.contains(START_GATE_CLASS_STARTED);
-}
-function getStartGateServerSnapshot() {
-  return false;
-}
-function useStartGateStarted() {
-  return useSyncExternalStore(subscribeStartGate, getStartGateSnapshot, getStartGateServerSnapshot);
 }
 
 function tocIconSrc(id: TocItemId) {
@@ -56,7 +38,6 @@ function tocIconSrc(id: TocItemId) {
 
 export function MobileMenu() {
   const mounted = useHasMounted();
-  const started = useStartGateStarted();
   const [isOpen, setIsOpen] = useState(false);
   const overlayRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
@@ -157,8 +138,8 @@ export function MobileMenu() {
     close();
   };
 
-  // Don't render until mounted (hydration) and started (START button pressed)
-  if (!mounted || !started) {
+  // Don't render until mounted (hydration)
+  if (!mounted) {
     return null;
   }
 
@@ -184,15 +165,13 @@ export function MobileMenu() {
         <div
           ref={overlayRef}
           id="mobile-menu-overlay"
-          className="mobile-menu-overlay frame hud"
+          className="mobile-menu-overlay"
           role="dialog"
           aria-modal="true"
           aria-label="Navigation menu"
         >
           <div className="mobile-menu-overlay__header">
-            <h2 className="text-fami-gold text-sm" style={{ fontFamily: "var(--font-press)" }}>
-              MENU
-            </h2>
+            <h2 className="font-pixel text-fami-gold type-label">MENU</h2>
             <button
               ref={closeButtonRef}
               type="button"
@@ -212,7 +191,7 @@ export function MobileMenu() {
                 className="mobile-menu-overlay__link"
                 onClick={handleLinkClick}
               >
-                <PixelIcon src={tocIconSrc(item.id)} decorative size="md" />
+                <PixelIcon src={tocIconSrc(item.id)} decorative size="lg" />
                 <span>{item.label}</span>
               </a>
             ))}

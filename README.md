@@ -1,27 +1,27 @@
 # Portfolio
 
-Famicom-style portfolio for Takeshi Watanabe (Buzz). Built with Next.js 16 + TypeScript + Tailwind CSS + NES.css. The site ships real content via `src/content/portfolio.ts`, and selectively adds “game UI” touches (HUD, pixel motion, and an RPG-style Work screen) without breaking readability.
+Famicom-style portfolio for Takeshi Watanabe (Buzz). Built with Next.js 16 + TypeScript + Tailwind CSS + three.js (with NES.css for a few retro widgets). The site ships real content via `src/content/portfolio.ts` in a retro × modern layout: full-width sections, large type, and scroll-driven motion.
 
 ## What's included now
 
 - Hero + Menu + Profile/Work/Writing/Activities/Skills/Contact sections (single-page) composed via `src/components/*`
 - Writing groups blog, book, and external-media article links; Activities focuses on talks, community, and achievements
-- Famicom palette (red `#a20000`, unified blue accent `#4f86c6`, gold `#d7b05b`, background `#111`) and retro typography (Press Start 2P + Noto Sans JP)
-- NES.css buttons, badges, and progress bars (plus a few CSS-only motion tokens, reduced-motion aware)
-- Menu is revealed via a Hero **PRESS START** interaction (session-scoped) and provides in-page navigation
-- Hero features a **pixel-assemble logo**: Canvas dots scatter, then spring into the "BUZZ" wordmark when you press START (reduced-motion aware)
-- Skills render as **RPG-style level bars** whose years count up and fill in as they scroll into view
+- Famicom palette (red `#a20000`, unified blue accent `#4f86c6`, gold `#d7b05b`, night background `#0b0d12`) and typography (Press Start 2P everywhere like the original NES.css look; Press Start 2P is bundled (OFL) and drawn at 90% so Latin balances the Japanese; Japanese in titles uses the bundled bold pixel font PixelMplus12 (subset, M+ license, see `scripts/subset-pixel-font.py`) so mixed text like 株式会社Eureka stays one pixel style; descriptive copy uses `.font-body` = Noto Sans JP)
+- **Simple hero with a large pixel avatar** (two columns on desktop): the crisp original icon in a gold frame that tilts toward the pointer; on load (and on click) it is rebuilt from 3D voxels (`HeroAvatar.tsx`, three.js, lazy-loaded) that drop in and bounce, then cross-fades back to the image. The hero shows the name, the nickname ("a.k.a. BUZZ"), the role, a short bio, socials, and a SCROLL cue. Reduced motion / no WebGL shows the plain image
+- All content is visible immediately (no gate); sections fade in on scroll via one `RevealObserver` (disabled for reduced motion / no JS)
+- Skills render as a compact grid of **level tiles** whose years count up as they scroll into view
 - Menu is a **sticky HUD**: it stays visible while scrolling for fast section jumping
-- Work is intentionally “different”: an RPG-style **STATUS / QUEST LOG / DETAIL** layout with keyboard-friendly quest selection
-- Activities is shown as a filterable, responsive output-card grid in descending chronological order; an item may optionally place a local image above its text, while image-free items remain text-only
-- **Responsive mobile-first layout**: all sections adapt to 320px+ viewports with NES.css mobile overrides, progressive padding (`px-3 sm:px-4 md:px-8`), and button stacking on phones
+- Work is a **gantt-style career timeline** (main / side lanes); selecting a bar opens a color-matched callout (a caret slides under the bar) with period, duration, ABOUT / TECH STACK / numbered PROJECTS, and ◀ ▶ to step through companies
+- Activities is a filterable **bento grid** in descending chronological order; the newest image item is featured large, images sit above the text, and descriptions are clamped
+- **One global type scale** (`type-label` / `type-title` / `type-body` / `type-lead` / `type-stat` / `type-heading` / `type-display` in `globals.css`): every text size on the page comes from it, so small text stays readable (labels are 14px)
+- **Responsive mobile-first layout**: sections use a `max-w-7xl` container and multi-column grids that collapse to 1–2 columns at 320px+
 
 ## Project layout
 
 ```text
 src/
   app/
-    layout.tsx      // fonts, NES import, metadata
+    layout.tsx      // fonts, metadata (NES.css is layered in globals.css)
     page.tsx        // assembles Hero → Menu → sections/*
     globals.css     // Tailwind + palette helpers
     favicon.ico     // legacy favicon fallback
@@ -48,7 +48,7 @@ pnpm install
 pnpm dev
 ```
 
-Visit <http://localhost:3000>, press **START** in the Hero to reveal the Menu, then scroll through each section to see the retro layout and interactions.
+Visit <http://localhost:3000>, move the pointer over (or click) the hero avatar, then scroll through each section.
 
 ## Scripts
 
@@ -63,7 +63,7 @@ Visit <http://localhost:3000>, press **START** in the Hero to reveal the Menu, t
 ## Next phases
 
 1. **Phase 2 – Content**: swap placeholder text for real About/Projects/Skills/Contact data.
-2. **Phase 3 – Polish**: dot backgrounds, NES balloons, PRESS START animation, cursor effects, etc.
+2. **Phase 3 – Polish**: dot backgrounds, NES balloons, cursor effects, etc.
 
 When a change affects dependencies or workflows, remember to update README / docs alongside the code
 

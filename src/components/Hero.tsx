@@ -1,147 +1,74 @@
-"use client";
+import { HeroAvatar } from "@/components/HeroAvatar";
+import { PixelIcon } from "@/components/PixelIcon";
+import { getPortfolio } from "@/content/portfolio";
 
-import { HeroPixelTitle } from "@/components/HeroPixelTitle";
-import {
-  START_GATE_CLASS_NOT_STARTED,
-  START_GATE_CLASS_STARTED,
-  START_GATE_CLASS_STARTING,
-  START_GATE_EVENT,
-  START_GATE_STORAGE_KEY,
-} from "@/components/startGate";
-import Image from "next/image";
-import { useRef, useSyncExternalStore } from "react";
+const SOCIAL_ICONS: Record<string, string> = {
+  GitHub: "/assets/pixel/icons/github.svg",
+  X: "/assets/pixel/icons/x.svg",
+  LinkedIn: "/assets/pixel/icons/linkedin.svg",
+};
 
-function isReducedMotionPreferred() {
-  if (typeof window === "undefined") return false;
-  return Boolean(window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches);
-}
-
-function focusMenu(reducedMotion: boolean) {
-  if (typeof document === "undefined") return;
-  const menu = document.getElementById("menu") as HTMLElement | null;
-  if (!menu) return;
-  menu.scrollIntoView({ block: "start", behavior: reducedMotion ? "auto" : "smooth" });
-  menu.focus({ preventScroll: true });
-}
-
-function subscribeStartGate(onStoreChange: () => void) {
-  if (typeof window === "undefined") return () => {};
-  window.addEventListener(START_GATE_EVENT, onStoreChange);
-  return () => window.removeEventListener(START_GATE_EVENT, onStoreChange);
-}
-
-function getStartGateSnapshot() {
-  if (typeof document === "undefined") return false;
-  return document.documentElement.classList.contains(START_GATE_CLASS_STARTED);
-}
-
-function getStartGateServerSnapshot() {
-  return false;
-}
-
-function useStartGateStarted() {
-  return useSyncExternalStore(subscribeStartGate, getStartGateSnapshot, getStartGateServerSnapshot);
-}
-
-export function Hero({ profileBody }: { profileBody: string }) {
-  const started = useStartGateStarted();
-  const startingRef = useRef(false);
-
-  function unlock() {
-    const root = document.documentElement;
-
-    root.classList.remove(START_GATE_CLASS_NOT_STARTED);
-    root.classList.remove(START_GATE_CLASS_STARTING);
-    root.classList.add(START_GATE_CLASS_STARTED);
-    window.dispatchEvent(new Event(START_GATE_EVENT));
-  }
-
-  function onStart() {
-    if (startingRef.current) return;
-    const root = document.documentElement;
-    const reducedMotion = isReducedMotionPreferred();
-
-    if (root.classList.contains(START_GATE_CLASS_STARTED)) {
-      window.dispatchEvent(new Event(START_GATE_EVENT));
-      focusMenu(reducedMotion);
-      return;
-    }
-
-    startingRef.current = true;
-
-    try {
-      sessionStorage.setItem(START_GATE_STORAGE_KEY, "1");
-    } catch {
-      // Graceful: unlock still works for this view, but may not persist.
-    }
-
-    root.classList.remove(START_GATE_CLASS_NOT_STARTED);
-
-    if (reducedMotion) {
-      unlock();
-      focusMenu(true);
-      startingRef.current = false;
-      return;
-    }
-
-    root.classList.add(START_GATE_CLASS_STARTING);
-    window.setTimeout(() => {
-      unlock();
-      focusMenu(false);
-      startingRef.current = false;
-    }, 520);
-  }
+export async function Hero() {
+  const { profile, work, contact } = await getPortfolio();
+  const socials = contact.links.filter((l) => SOCIAL_ICONS[l.label]);
 
   return (
     <section
-      id="profile"
-      className="frame text-fami-ivory scroll-mt-[var(--menu-offset)] bg-[#1b1b1b] p-4 text-center sm:p-6 md:p-8"
+      id={profile.id}
+      className="relative isolate flex min-h-[100svh] scroll-mt-[var(--menu-offset)] items-center overflow-hidden px-5 pt-20 pb-24 sm:px-8"
     >
-      <div className="flex flex-col items-center gap-4">
-        <p
-          className="blink-soft text-fami-gold text-center text-xs tracking-[0.3em] uppercase"
-          style={{ fontFamily: "var(--font-press)" }}
-        >
-          {started ? "READY" : "PRESS START"}
-        </p>
+      <div className="hero-glow pointer-events-none absolute inset-0 -z-10" aria-hidden="true" />
 
-        <HeroPixelTitle started={started} text="BUZZ" />
-
-        <Image
+      <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-4 text-center lg:flex-row lg:gap-12 lg:text-left">
+        {/* Bounded by width and viewport height so the whole hero fits one screen. */}
+        <HeroAvatar
           src="/assets/profile/profile.png"
-          alt="Profile photo of Takeshi Watanabe"
-          width={200}
-          height={200}
-          priority
-          className="border-fami-gold aspect-square w-28 border-4 sm:w-32 md:w-40"
+          alt="Pixel-art portrait of Takeshi Watanabe"
+          className="aspect-square w-[min(92vw,30rem,calc(100svh-24rem))] shrink-0 sm:w-[min(32rem,calc(100svh-22rem))] lg:w-[min(46vw,40rem,calc(100svh-12rem))]"
         />
 
-        <h1 className="text-xl sm:text-2xl md:text-3xl" style={{ fontFamily: "var(--font-press)" }}>
-          Takeshi Watanabe
-        </h1>
-        <p className="[font-family:var(--font-noto)] text-sm sm:text-base md:text-lg">
-          Senior Software Engineer at Eureka, part of Match Group. I build reliable,
-          high-performance cloud systems with Go, TypeScript, Terraform, AWS, and Google
-          Cloud—focused on resilient architecture, observability, and an exceptional developer
-          experience.
-        </p>
-        {started ? (
-          <p className="[font-family:var(--font-noto)] text-sm sm:text-base">{profileBody}</p>
-        ) : null}
-
-        {!started ? (
-          <div className="mt-2 flex justify-center">
-            <button
-              type="button"
-              className="nes-btn is-primary btn-game"
-              onClick={onStart}
-              aria-label="Press Start to reveal the menu"
+        <div className="flex min-w-0 flex-col items-center lg:items-start">
+          <h1 className="text-shine type-display">Takeshi Watanabe</h1>
+          <p className="mt-3 flex items-baseline gap-3">
+            <span className="text-fami-ivory/60 type-label">a.k.a.</span>
+            <span
+              className="text-fami-gold type-display"
+              style={{ textShadow: "4px 4px 0 #a20000" }}
             >
-              START
-            </button>
+              BUZZ
+            </span>
+          </p>
+          <p className="text-fami-blue type-label mt-4 tracking-[0.15em]">
+            SENIOR SOFTWARE ENGINEER @ EUREKA
+          </p>
+          <p className="font-body type-lead text-fami-ivory/70 mt-4 max-w-2xl">{profile.body}</p>
+
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+            {socials.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={link.label}
+                className="border-fami-gold/30 hover:border-fami-gold hover:bg-fami-gold/10 focus-visible:ring-fami-gold inline-flex h-14 w-14 items-center justify-center rounded-lg border bg-black/30 transition-colors focus:outline-none focus-visible:ring-2"
+              >
+                <PixelIcon src={SOCIAL_ICONS[link.label]} decorative size="xl" />
+              </a>
+            ))}
           </div>
-        ) : null}
+        </div>
       </div>
+
+      <a
+        href={`#${work.id}`}
+        className="text-fami-ivory/70 hover:text-fami-gold focus-visible:ring-fami-gold type-label absolute bottom-5 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2 rounded-md px-3 py-1 tracking-[0.3em] focus:outline-none focus-visible:ring-2"
+      >
+        SCROLL
+        <span className="scroll-cue text-fami-gold type-title" aria-hidden="true">
+          ▼
+        </span>
+      </a>
     </section>
   );
 }

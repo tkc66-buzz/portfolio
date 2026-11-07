@@ -1,28 +1,18 @@
 import { getPortfolio } from "@/content/portfolio";
-import { PixelIcon } from "@/components/PixelIcon";
 import { ActivitiesOutputGrid } from "@/components/sections/ActivitiesOutputGrid";
+import { SectionShell } from "@/components/sections/SectionShell";
 
 export async function ActivitiesSection() {
   const { activities } = await getPortfolio();
 
   return (
-    <section
+    <SectionShell
       id={activities.id}
-      className="frame activities-toast text-fami-ivory scroll-mt-[var(--menu-offset)] bg-[#1b1b1b] p-6"
+      heading={activities.heading}
+      icon="/assets/pixel/icons/activities.svg"
+      lead="登壇・コミュニティ運営・受賞/実績。新しい順に並んでいます。"
     >
-      <h2
-        className="text-fami-gold flex items-center gap-2 text-xl"
-        style={{ fontFamily: "var(--font-press)" }}
-      >
-        <PixelIcon src="/assets/pixel/icons/activities.svg" decorative size="md" />
-        <span>{activities.heading}</span>
-      </h2>
-
-      <p className="section-body-muted mt-3">
-        登壇・執筆・コミュニティ活動・受賞/実績をまとめています。
-      </p>
-
       <ActivitiesOutputGrid groups={activities.groups} />
-    </section>
+    </SectionShell>
   );
 }

@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export type PixelIconSize = "sm" | "md";
+export type PixelIconSize = "sm" | "md" | "lg" | "xl";
 
 type PixelIconProps = {
   src: string;
@@ -17,6 +17,8 @@ type PixelIconProps = {
 const SIZE_PX: Record<PixelIconSize, number> = {
   sm: 16,
   md: 20,
+  lg: 28,
+  xl: 40,
 };
 
 export function PixelIcon({
